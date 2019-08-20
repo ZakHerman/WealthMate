@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthMate.Android", "Wealt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthMate.iOS", "WealthMate.iOS\WealthMate.iOS.csproj", "{FD899492-5C3A-41AC-AC66-73268947613B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthMate", "WealthMate\WealthMate.csproj", "{758AD54D-7E40-4D6D-85A5-46B2AEF0BC9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WealthMate", "WealthMate\WealthMate.csproj", "{758AD54D-7E40-4D6D-85A5-46B2AEF0BC9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FF347D26-ECEB-409A-967C-A31A9BFCAFB5}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\PhpstormProjects\Test\Database.php = ..\..\..\PhpstormProjects\Test\Database.php
+		..\..\..\PhpstormProjects\Test\Test.php = ..\..\..\PhpstormProjects\Test\Test.php
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

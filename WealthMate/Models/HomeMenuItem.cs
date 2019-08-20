@@ -7,8 +7,7 @@ namespace WealthMate.Models
     public enum MenuItemType
     {
         Browse,
-        About,
-        Test
+        About
     }
     public class HomeMenuItem
     {
