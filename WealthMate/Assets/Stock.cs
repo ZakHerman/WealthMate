@@ -2,7 +2,7 @@
 
 //Object created, not instantiated yet.
 
-public class Class1
+public class Stock
 {
     //Data to receive directly from NZX (Entity Relationship diagram)
     private float current_price;
