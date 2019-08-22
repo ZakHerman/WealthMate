@@ -1,21 +1,22 @@
-﻿using System;
-
-public class TermDeposit
+﻿namespace WealthMate.PublicAssets
 {
-    private string provider { get; set; }
-    private float minDeposit { get; set; }
-    private float maxDeposit { get; set; }
-    private float length { get; set; }
-    private float interestRate { get; set; }
+    public class TermDeposit
+    {
+        public string Provider { get; set; }
+        public float MinDeposit { get; set; }
+        public float MaxDeposit { get; set; }
+        public float Length { get; set; }
+        public float InterestRate { get; set; }
 
-    public TermDeposit(string provider, float minDeposit, float maxDeposit, float length, float interestRate)
-	{
-        this.provider = provider;
-        this.minDeposit = minDeposit;
-        this.maxDeposit = maxDeposit;
-        this.length = length;
-        this.interestRate = interestRate;
-	}
+        public TermDeposit(string provider, float minDeposit, float maxDeposit, float length, float interestRate)
+        {
+            Provider = provider;
+            MinDeposit = minDeposit;
+            MaxDeposit = maxDeposit;
+            Length = length;
+            InterestRate = interestRate;
+        }
 
-    // TODO: hard code the term deposit info from each bank
+        // TODO: hard code the term deposit info from each bank
+    }
 }

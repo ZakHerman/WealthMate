@@ -23,5 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="PrivateAssets\" />
+    <Folder Include="PublicAssets\" />
   </ItemGroup>
 </Project>

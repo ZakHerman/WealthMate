@@ -2,56 +2,60 @@
 
 //Object created, not instantiated yet.
 
-public class Stock
+namespace WealthMate.PublicAssets
 {
-    //Data to receive directly from NZX (Entity Relationship diagram)
-    public float CurrentPrice;
-    public float PriceOpen;
-    public float PriceClose;
-    public float DayHigh;
-    public float DayLow;
-    public float YearHigh;
-    public float YearLow;
-    public float DayAverage;
-    public int Shares;
-    public int Volume;
-    public string CompanyName;
-
-    public Stock(float price, DateTime price_date, int shares, int volume)
-	{
-        this.CurrentPrice = price;
-        this.Shares = shares;
-        this.Volume = volume;
-
-        //defaults:
-        this.PriceOpen = price;
-        this.PriceClose = price;
-        this.DayHigh = price;
-        this.DayLow = price;
-        this.DayAverage = price;
-	}
-
-    public Stock(string company_name)
+    public class Stock
     {
-        this.CompanyName = company_name;
-        //defaults:
-        this.PriceOpen = 0.00f;
-        this.PriceClose = 0.00f;
-        this.CurrentPrice = 0.00f;
-        this.DayAverage = 0.00f;
-        this.DayHigh = 0.00f;
-        this.DayLow = 0.00f;
-        this.YearHigh = 0.00f;
-        this.YearLow = 0.00f;
-        this.Shares = 0;
-        this.Volume = 0;
+        //Data to receive directly from NZX (Entity Relationship diagram)
+        public float CurrentPrice { get; set; }
+        public DateTime PriceDate { get; set; }
+        public float PriceOpen { get; set; }
+        public float PriceClose { get; set; }
+        public float DayHigh { get; set; }
+        public float DayLow { get; set; }
+        public float FiftyTwoWeekHigh { get; set; }
+        public float FiftyTwoWeekLow { get; set; }
+        public float DayAverage { get; set; }
+        public int Shares { get; set; }
+        public int Volume { get; set; }
+        public string CompanyName { get; set; }
 
-    }
+        public Stock(float price, DateTime priceDate, int shares, int volume)
+        {
+            CurrentPrice = price;
+            PriceDate = priceDate;
+            Shares = shares;
+            Volume = volume;
 
-    //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
-    public void UpdateStock()
-    {
-        //.....
+            //defaults:
+            PriceOpen = price;
+            PriceClose = price;
+            DayHigh = price;
+            DayLow = price;
+            DayAverage = price;
+        }
+
+        public Stock(string companyName)
+        {
+            CompanyName = companyName;
+            //defaults:
+            PriceOpen = 0.00f;
+            PriceClose = 0.00f;
+            CurrentPrice = 0.00f;
+            DayAverage = 0.00f;
+            DayHigh = 0.00f;
+            DayLow = 0.00f;
+            FiftyTwoWeekHigh = 0.00f;
+            FiftyTwoWeekLow = 0.00f;
+            Shares = 0;
+            Volume = 0;
+
+        }
+
+        //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
+        public void UpdateStock()
+        {
+            //.....
+        }
     }
 }
-
