@@ -2,7 +2,10 @@
 
 public class TermDeposit
 {
-	public TermDeposit()
+    private float amount_invested;
+    private float interest_decision;
+
+    public TermDeposit()
 	{
 
 	}
