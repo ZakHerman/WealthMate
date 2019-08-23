@@ -5,17 +5,17 @@
 public class Stock
 {
     //Data to receive directly from NZX (Entity Relationship diagram)
-    private float current_price;
-    private float price_open;
-    private float price_close;
-    private float day_high;
-    private float day_low;
-    private float year_high;
-    private float year_low;
-    private float day_average;
-    private int shares;
-    private int volume;
-    private string company_name;
+    private float current_price {get; set;}
+    private float price_open {get; set;}
+    private float price_close {get; set;}
+    private float day_high {get; set;}
+    private float day_low {get; set;}
+    private float year_high {get; set;}
+    private float year_low {get; set;}
+    private float day_average {get; set;}
+    private int shares {get; set;}
+    private int volume {get; set;}
+    private string company_name {get;}
 
     public Stock(float price, DateTime price_date, int shares, int volume)
 	{
@@ -52,53 +52,6 @@ public class Stock
     public void updateStock()
     {
         //.....
-    }
-
-
-    //Getters:
-    public float getPrice()
-    {
-        return this.current_price;
-    }
-
-    public float getOpenPrice()
-    {
-        return this.price_open;
-    }
-
-    public float getClosePrice()
-    {
-        return this.price_close;
-    }
-
-    public float getDayHigh()
-    {
-        return this.day_high;
-    }
-
-    public float getDayLow()
-    {
-        return this.day_low;
-    }
-
-    public float getYearHigh()
-    {
-        return this.year_high;
-    }
-
-    public float getYearLow()
-    {
-        return this.year_low;
-    }
-
-    public int getShares()
-    {
-        return this.shares;
-    }
-
-    public int getVolume()
-    {
-        return this.volume;
     }
 
 }
