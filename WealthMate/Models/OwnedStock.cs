@@ -39,7 +39,7 @@ class OwnedStock : OwnedAsset
         }
     }
 
-    private OwnedStock(ref string name, string purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, 0, 0, 0, 0, 0)
+    private OwnedStock(ref string name, string purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
     {
         PurchasedPrice = purchasedPrice;
         SharesPurchased = sharesPurchased;

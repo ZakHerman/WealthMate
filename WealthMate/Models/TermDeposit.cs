@@ -22,7 +22,7 @@
         // Done for all but only 1 year length
         // Awaiting group confirmation to do other segments too
 
-        TermDeposit ANZTermDeposit = new TermDeposit("ANZ", 10000.00, null, 1, 2.85);
+  /*      TermDeposit ANZTermDeposit = new TermDeposit("ANZ", 10000.00, null, 1, 2.85);
         TermDeposit ASB1TermInvestment = new TermDeposit("ASB", 5000.00, 9999.00, 1, 2.00);
         TermDeposit ASB2TermInvestment = new TermDeposit("ASB", 10000.00, 49999.00, 1, 2.75);
         TermDeposit BNZ1TermInvestment = new TermDeposit("BNZ", 2000.00, 4999.00, 1, 2.80);
@@ -72,7 +72,7 @@
         TermDeposit WairarapaBldgSocy1TermInvestment = new TermDeposit("Wairarapa Bldg Socy", 500.00, 1999.00, 1, 1.50);
         TermDeposit WairarapaBldgSocy2TermInvestment = new TermDeposit("Wairarapa Bldg Socy", 2000.00, 4999.00, 1, 2.30);
         TermDeposit WairarapaBldgSocy3TermInvestment = new TermDeposit("Wairarapa Bldg Socy", 5000.00, InfiniteMaxDeposit, 1, 3.10);
-        TermDeposit WestpacTermInvestment = new TermDeposit("Westpac", 5000.00, 5000000.00, 1, 2.75);
+        TermDeposit WestpacTermInvestment = new TermDeposit("Westpac", 5000.00, 5000000.00, 1, 2.75);*/
 
 
     }

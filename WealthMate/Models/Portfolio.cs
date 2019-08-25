@@ -4,10 +4,10 @@
     {
         //Auto-implemented variables, from class diagram. "Owned Asset" is a separate class.
         //private List<OwnedAsset> ownedAssets;
-        public float Total { get; set; }
-        public float DayReturn { get; set; }
-        public float TotalReturn { get; set; }
-        public float ReturnGoal { get; set; }
+        private float Total { get; set; }
+        private float DayReturn { get; set; }
+        private float TotalReturn { get; set; }
+        private float ReturnGoal { get; set; }
 
         public Portfolio()
         {
