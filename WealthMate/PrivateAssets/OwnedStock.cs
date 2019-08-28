@@ -6,8 +6,10 @@ class OwnedStock : OwnedAsset
     private float SharesPurchased { get; set; }
     private float CurrentPrice { get; }
     private float PriceClose { get; }
+    //Elli: can we rename the underscore values, this is confusing!
     private float _dayReturn;
-    private float DayReturn
+    //Elli: Updated DayReturn to protected so I can access from portfolio
+    public float DayReturn
     {
         get
         {
