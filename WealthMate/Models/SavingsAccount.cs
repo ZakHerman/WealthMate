@@ -1,4 +1,4 @@
-﻿namespace WealthMate.PublicAssets
+﻿namespace WealthMate.Models
 {
     public class SavingsAccount
     {

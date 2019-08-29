@@ -1,53 +1,56 @@
 ﻿using System;
 
-class OwnedStock : OwnedAsset
+namespace WealthMate.Models
 {
-    private float PurchasedPrice { get; set; }
-    private float SharesPurchased { get; set; }
-    private float CurrentPrice { get; }
-    private float PriceClose { get; }
-    //Elli: can we rename the underscore values, this is confusing!
-    private float _dayReturn;
-    //Elli: Updated DayReturn to protected so I can access from portfolio
-    public float DayReturn
+    class OwnedStock : OwnedAsset
     {
-        get
+        private float PurchasedPrice { get; set; }
+        private float SharesPurchased { get; set; }
+        private float CurrentPrice { get; }
+        private float PriceClose { get; }
+        //Elli: can we rename the underscore values, this is confusing!
+        private float _dayReturn;
+        //Elli: Updated DayReturn to protected so I can access from portfolio
+        public float DayReturn
         {
-            _dayReturn = CurrentValue - (PriceClose * SharesPurchased);
-            return _dayReturn;
+            get
+            {
+                _dayReturn = CurrentValue - (PriceClose * SharesPurchased);
+                return _dayReturn;
+            }
         }
-    }
-    private float _dayReturnRate;
-    private float DayReturnRate
-    {
-        get
+        private float _dayReturnRate;
+        private float DayReturnRate
         {
-            _dayReturnRate = (DayReturn / PrincipalValue) * 100;
-            return _dayReturnRate;
+            get
+            {
+                _dayReturnRate = (DayReturn / PrincipalValue) * 100;
+                return _dayReturnRate;
+            }
         }
-    }
-    protected override float PrincipalValue
-    {
-        get
+        protected override float PrincipalValue
         {
-            return PurchasedPrice * SharesPurchased;
+            get
+            {
+                return PurchasedPrice * SharesPurchased;
+            }
         }
-    }
-    public override float CurrentValue
-    {
-        get
+        public override float CurrentValue
         {
-            return CurrentPrice * SharesPurchased;
+            get
+            {
+                return CurrentPrice * SharesPurchased;
+            }
         }
-    }
 
-    private OwnedStock(ref string name, string purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
-    {
-        PurchasedPrice = purchasedPrice;
-        SharesPurchased = sharesPurchased;
-        CurrentPrice = currentPrice;
-        PriceClose = priceClose;
-        _dayReturn = DayReturn;
-        _dayReturnRate = DayReturnRate;
+        private OwnedStock(ref string name, string purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
+        {
+            PurchasedPrice = purchasedPrice;
+            SharesPurchased = sharesPurchased;
+            CurrentPrice = currentPrice;
+            PriceClose = priceClose;
+            _dayReturn = DayReturn;
+            _dayReturnRate = DayReturnRate;
+        }
     }
 }

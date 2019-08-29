@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace WealthMate.PrivateAssets
+namespace WealthMate.Models
 {
     public class Portfolio
     {
-        private List<OwnedAsset> OwnedAssets;
+        public List<OwnedAsset> OwnedAssets { get; }            //Changed this to property in order for Owned Assets to be accessed.
         public float CurrentTotal {
             get
             {
