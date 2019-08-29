@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace WealthMate.PrivateAssets
 {
     public class Portfolio
     {
-        //Auto-implemented variables, from class diagram. "Owned Asset" is a separate class.
-        private OwnedAsset[] OwnedAssets = new OwnedAsset[100];
+        private List<OwnedAsset> OwnedAssets;
         public float CurrentTotal {
             get
             {
@@ -45,43 +45,20 @@ namespace WealthMate.PrivateAssets
 
         public Portfolio()
         {
-            //Max of 100 assets in the portfolio?
-            OwnedAssets = new OwnedAsset[100];
+            OwnedAssets = new List<OwnedAsset>();
             ReturnGoal = 0.00f;
         }
 
-        public void addAsset(OwnedAsset asset)
+        public void AddAsset(OwnedAsset asset)
         {
-            int i = 0;
-            while(this.OwnedAssets[i] != null && i < this.OwnedAssets.Length) {
-                i++;
-            }
-
-            if(this.OwnedAssets[i] != null) {
-                Debug.WriteLine("Asset list is full.");
-            }                        
-            else {
-                this.OwnedAssets[i] = asset;
-                Debug.WriteLine("Asset successfully added");
-            }
+            this.OwnedAssets.Add(asset);
+            Debug.WriteLine("Asset successfully added");
         }
 
-        public void removeAsset(OwnedAsset asset)
+        public void RemoveAsset(OwnedAsset asset)
         {
-            bool removed = false;
-
-            for(int i = 0; i < this.OwnedAssets.Length; i++) {
-                    if(OwnedAssets[i] == asset) {
-                        OwnedAssets[i] = null;
-                        removed = true;
-                    }                                           
-            }
-            if(removed == true) {
-                Debug.WriteLine("Asset successfully removed");
-            }
-            else {
-                    Debug.WriteLine("Asset not found");
-            }            
+            this.OwnedAssets.Remove(asset);
+            Debug.WriteLine("Asset successfully removed");
         }
     }
 }
