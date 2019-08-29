@@ -4,6 +4,7 @@ public class OwnedAsset
 {
     private string AssetName { get; set; }
     private string PurchaseDate { get; set; }
+    private string Type { get; set; }
     private int Length { get; set; }
     private float InterestRate { get; set; }
     private int CompoundRate { get; set; }
@@ -41,10 +42,11 @@ public class OwnedAsset
         }
     }
 
-    public OwnedAsset(string assetName, string purchaseDate, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
+    public OwnedAsset(string assetName, string purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
     {
         AssetName = assetName;
         PurchaseDate = purchaseDate;
+        Type = type;
         RegularPayment = regularPayment;
         PrincipalValue = principalValue;
         InterestRate = interestRate;
