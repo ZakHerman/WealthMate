@@ -5,7 +5,7 @@ namespace WealthMate.Models
 {
     public class Portfolio
     {
-        public List<OwnedAsset> OwnedAssets { get; }            //Changed this to property in order for Owned Assets to be accessed.
+        public List<OwnedAsset> OwnedAssets { get; }
         public float CurrentTotal {
             get
             {
@@ -15,6 +15,11 @@ namespace WealthMate.Models
                     total =+ asset.CurrentValue;
                 }
                 return total;
+            }
+            set
+            {
+                //This needs to be tested to see if the set value can still be overriden.
+                CurrentTotal = CurrentTotal;
             }
         }
         public float DayReturn {
@@ -41,13 +46,19 @@ namespace WealthMate.Models
                 return returns;
             }
         }
-        public float ReturnGoal { get; set; }
+        
+        //Sprint 2:
+        //public float ReturnGoal { get; set; }
 
+        //------------------------------------------------------------------------------------------------------------
         public Portfolio()
         {
             OwnedAssets = new List<OwnedAsset>();
-            ReturnGoal = 0.00f;
+            //Sprint 2:
+            //ReturnGoal = 0.00f;
         }
+
+        //-------------------------------------------------------------------------------------------------------------
 
         public void AddAsset(OwnedAsset asset)
         {
@@ -60,5 +71,7 @@ namespace WealthMate.Models
             this.OwnedAssets.Remove(asset);
             Debug.WriteLine("Asset successfully removed");
         }
+    
     }
+
 }
