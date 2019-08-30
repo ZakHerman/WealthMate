@@ -2,7 +2,7 @@
 
 //Object created, not instantiated yet.
 
-namespace WealthMate.PublicAssets
+namespace WealthMate.Models
 {
     public class Stock
     {
