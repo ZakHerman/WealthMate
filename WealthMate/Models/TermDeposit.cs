@@ -3,36 +3,94 @@
     public class TermDeposit
     {
         public string Provider { get; set; }
+        public string CreditRating { get; set; }
         public float MinDeposit { get; set; }
         public float MaxDeposit { get; set; }
         public float LengthInMonths { get; set; }
         public float InterestRate { get; set; }
         public float InfiniteMaxDeposit; // for term deposits with no max deposit
         public float NoMinimumDeposit; // for term deposits with no min deposit
-
-        public TermDeposit(string provider, float minDeposit, float maxDeposit, float length, float interestRate)
+        
+        public TermDeposit(string provider, string creditRating, float minDeposit, float maxDeposit, float length, float interestRate)
         {
             Provider = provider;
+            CreditRating = creditRating;
             MinDeposit = minDeposit;
             MaxDeposit = maxDeposit;
-            LengthInYears = length;
+            LengthInMonths = length;
             InterestRate = interestRate;
         }
-        
-        // TODO: do for all time groups
-        public List<TermDeposit> termDepositList()
+
+        // default for owned term deposit
+        public TermDeposit(TermDeposit termDeposit, float amountInvested, float interestDecision)
+        { }
+
+        public TermDeposit OwnedTermDeposit(TermDeposit pTermDeposit, float amountInvested, float interestDecision)
+        {
+            TermDeposit ownedTermDeposit = new TermDeposit(pTermDeposit, amountInvested, interestDecision);
+
+            return ownedTermDeposit;
+        }
+
+        public void viewTermDeposits()
+        {
+            // GUI aspect to view the list of term deposits
+        }
+
+
+        public string toString()
+        {
+             return Provider+"; "+CreditRating+"; "+MinDeposit+"; "+MaxDeposit+"; "+LengthInMonths+"; "+InterestRate;
+        }  
+
+
+        // Gwen: calculate the returns of the owned term deposit - will this be in this class? 
+        // Also we should have incremental calculation e.g. if the user checks 3 months into their 6 month term. 
+           
+        public double calculateReturns()
+        {
+            /* double depositReturns = 0.0;
+            switch (termDeposit.LengthInMonths)
+            {
+                case 3:
+                    double newRate = interestDecision / 90;
+                    break;
+                case 6:
+                    double newRate = interestDecision / 120;
+                    break;
+                case 9:
+                    double newRate = interestDecision / 270;
+                    break;
+                case 12:
+                    double newRate = interestDecision / 365;
+                    break;
+                case 18:
+                    double newRate = interestDecision / 485;
+                    break;
+                case 24:
+                    double newRate = interestDecision / 730;
+                    break;
+            }
+            depositReturns = newRate * amountInvested;
+            return depositReturns; */
+        }
+    }
+}
+
+
+
+
+
+
+            // will copy into the database
+       /* public List<TermDeposit> termDepositList()
         {
             List<TermDeposit> termDeposits = new List<TermDeposit>();
 
-            // under 12 month time period, awaiting confirmation from team
-            termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 1, 0.35));
-            termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 2, 1.00));
             termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 3, 2.20));
-            termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 5, 2.60));
             termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 6, 2.90));
             termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 9, 2.80));
             termDeposits.Add(new TermDeposit("ANZ", 10000.00, InfiniteMaxDeposit, 12, 2.80));
-
             termDeposits.Add(new TermDeposit("ASB", 5000.00, 9999.00, 1, 2.00));
             termDeposits.Add(new TermDeposit("ASB", 10000.00, 49999.00, 1, 2.75));
             termDeposits.Add(new TermDeposit("BNZ", 2000.00, 4999.00, 1, 2.80));
@@ -86,22 +144,5 @@
             termDeposits.Add(new TermDeposit());
 
             return termDeposits;
-        }
+        } */
 
-        public TermDeposit viewCreditRating(List<TermDeposit> termDeposits)
-        {
-            // search Term Deposits, return credit rating
-        }
-
-        public TermDeposit viewMinimumPrincipalAmount(List<TermDeposit> termDeposits)
-        {
-            // search Term Deposits, return principal amount
-        }
-        
-        public TermDeposit viewHoldingPeriod(List<TermDeposit> termDeposits)
-        {
-            // search Term Deposits, return holding period
-        }
-       
-    }
-}
