@@ -20,19 +20,20 @@ namespace WealthMate.Models
         public int Volume { get; set; }
         public string CompanyName { get; set; }
 
-        public Stock(float price, DateTime priceDate, int shares, int volume)
+        public Stock(string name, float price, DateTime priceDate, int shares, int volume)
         {
-            CurrentPrice = price;
-            PriceDate = priceDate;
-            Shares = shares;
-            Volume = volume;
+            this.CurrentPrice = price;
+            this.PriceDate = priceDate;
+            this.Shares = shares;
+            this.Volume = volume;
+            this.CompanyName = name;
 
             //defaults:
-            PriceOpen = price;
-            PriceClose = price;
-            DayHigh = price;
-            DayLow = price;
-            DayAverage = price;
+            this.PriceOpen = price;
+            this.PriceClose = price;
+            this.DayHigh = price;
+            this.DayLow = price;
+            this.DayAverage = price;
         }
 
         public Stock(string companyName)
