@@ -42,7 +42,7 @@
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
                             <Label Text="{Binding Description}" 
-                                d:Text="Item descripton"
+                                d:Text="Item description"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
@@ -52,5 +52,5 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-    
+
 </ContentPage>

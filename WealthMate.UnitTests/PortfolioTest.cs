@@ -20,13 +20,6 @@ namespace WealthMate.UnitTests
         }
 
         [TestMethod]
-        //Elli's test method for checking setter privacy..
-        //public void TestSetAccess()
-        //{
-        //    testPortfolio.CurrentTotal = 17;
-        //    Console.WriteLine(testPortfolio.CurrentTotal);
-        //}
-
         public void TestAddAsset()
         {
             testPortfolio.AddAsset(testAsset);

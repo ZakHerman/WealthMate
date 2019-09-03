@@ -17,15 +17,10 @@ namespace WealthMate.Models
                 }
                 return total;
             }
-            set
-            {
-                //This needs to be tested to see if the set value can still be overriden.
-                CurrentTotal = CurrentTotal;
-            }
         }
         public float DayReturn {
         get
-            {   //Need to confirm if "OwnedStock" can be used & if the "if" statement is req.
+            {   //Need to confirm if the "if" statement is req.
                 float dayTotal = 0.0f;
                 foreach(OwnedStock stock in OwnedAssets) {
 

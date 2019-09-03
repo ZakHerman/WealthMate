@@ -8,7 +8,7 @@
         public float MaxDeposit { get; set; }
         public float LengthInMonths { get; set; }
         public float InterestRate { get; set; }
-        public float InfiniteMaxDeposit; // for term deposits with no max deposit
+        public float NoMaxDeposit; // for term deposits with no max deposit
         public float NoMinimumDeposit; // for term deposits with no min deposit
         
         public TermDeposit(string provider, string creditRating, float minDeposit, float maxDeposit, float length, float interestRate)
@@ -49,7 +49,7 @@
            
        /* public double calculateReturns()
         {
-            /* double depositReturns = 0.0;
+             double depositReturns = 0.0;
             switch (termDeposit.LengthInMonths)
             {
                 case 3:
@@ -72,8 +72,8 @@
                     break;
             }
             depositReturns = newRate * amountInvested;
-            return depositReturns; */
-      //  }
+            return depositReturns;
+        }*/
     }
 }
 
