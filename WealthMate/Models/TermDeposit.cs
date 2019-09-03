@@ -47,7 +47,7 @@
         // Gwen: calculate the returns of the owned term deposit - will this be in this class? 
         // Also we should have incremental calculation e.g. if the user checks 3 months into their 6 month term. 
            
-        public double calculateReturns()
+       /* public double calculateReturns()
         {
             /* double depositReturns = 0.0;
             switch (termDeposit.LengthInMonths)
@@ -73,7 +73,7 @@
             }
             depositReturns = newRate * amountInvested;
             return depositReturns; */
-        }
+      //  }
     }
 }
 

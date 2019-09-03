@@ -6,6 +6,7 @@ namespace WealthMate.Models
     public class Portfolio
     {
         public List<OwnedAsset> OwnedAssets { get; }
+   
         public float CurrentTotal {
             get
             {
