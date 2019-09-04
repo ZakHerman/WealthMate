@@ -24,6 +24,7 @@ namespace WealthMate.UnitTests
             Assert.IsTrue(testPortfolio.OwnedAssets.Contains(testAsset));
         }
 
+        [TestMethod]
         public void TestRemoveAsset()
         {
             testPortfolio.AddAsset(testAsset);
@@ -31,8 +32,9 @@ namespace WealthMate.UnitTests
             testPortfolio.RemoveAsset(testAsset);
             Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset));
         }
+
         [TestMethod]
-        public void testPortfolioTotalValue()
+        public void TestPortfolioTotalValue()
         {
             float delta = 0.01f;
             float actual = testPortfolio.CurrentTotal;
@@ -40,26 +42,28 @@ namespace WealthMate.UnitTests
             Assert.AreEqual(expected, actual, delta, "Portfolio total value does not match");
         }
 
-        public void testPortfolioTotalReturn()
+        [TestMethod]
+        public void TestPortfolioTotalReturn()
         {
             //Zak
         }
 
-        public void testPortfolioTotalReturnRate()
+        [TestMethod]
+        public void TestPortfolioTotalReturnRate()
         {
             //Zak
         }
 
-        public void testPortfolioDayReturn()
+        [TestMethod]
+        public void TestPortfolioDayReturn()
         {
             //Zak
         }
 
-        public void testPortfolioDayReturnRate()
+        [TestMethod]
+        public void TestPortfolioDayReturnRate()
         {
             //Zak
         }
-
-
     }
 }
