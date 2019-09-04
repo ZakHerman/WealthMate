@@ -20,7 +20,7 @@
     <TabbedPage.Children>
         <NavigationPage IconImageSource="financials.png">
             <x:Arguments>
-                <views:FinancialsPage />
+                <views:FinancialPage />
             </x:Arguments>
         </NavigationPage>
 

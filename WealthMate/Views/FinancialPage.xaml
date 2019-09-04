@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"  
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+              x:Class="WealthMate.Views.FinancialPage"  
+              Title="{Binding Title}"
+              >
+    <TabbedPage.Children>
+        <ContentPage Title="Watchlist">
+            <StackLayout>
+                <BoxView Color="DarkGray" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Stocks">
+            <StackLayout>
+                <BoxView Color="DarkRed" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Term Deposits">
+            <StackLayout>
+                <BoxView Color="DarkBlue" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Savings">
+            <StackLayout>
+                <BoxView Color="DarkGreen" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+        <ContentPage Title="Other">
+            <StackLayout>
+                <BoxView Color="DarkOrange" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>
