@@ -143,4 +143,16 @@
       <Name>WealthMate</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\financials.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\portfolio.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\search.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\settings.jpg" />
+  </ItemGroup>
 </Project>

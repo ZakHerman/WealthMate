@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
+using TabbedPage = Xamarin.Forms.TabbedPage;
 
 namespace WealthMate.Views
 {
@@ -13,6 +14,7 @@ namespace WealthMate.Views
         public MainPage()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
         }
     }
 }
