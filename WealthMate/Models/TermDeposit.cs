@@ -2,78 +2,32 @@
 {
     public class TermDeposit
     {
+        // public term deposit data to read in from the database
         public string Provider { get; set; }
         public string CreditRating { get; set; }
         public float MinDeposit { get; set; }
         public float MaxDeposit { get; set; }
         public float LengthInMonths { get; set; }
         public float InterestRate { get; set; }
-        public float NoMaxDeposit; // for term deposits with no max deposit
-        public float NoMinimumDeposit; // for term deposits with no min deposit
+        public float NoMaxDeposit; 
+        public float NoMinimumDeposit; 
         
         public TermDeposit(string provider, string creditRating, float minDeposit, float maxDeposit, float length, float interestRate)
         {
-            Provider = provider;
-            CreditRating = creditRating;
-            MinDeposit = minDeposit;
-            MaxDeposit = maxDeposit;
-            LengthInMonths = length;
-            InterestRate = interestRate;
+            this.Provider = provider;
+            this.CreditRating = creditRating;
+            this.MinDeposit = minDeposit;
+            this.MaxDeposit = maxDeposit;
+            this.LengthInMonths = length;
+            this.InterestRate = interestRate;
+            this.NoMaxDeposit = 1 / 0; // infinity
+            this.NoMinimumDeposit = 0;
         }
-
-        // default for owned term deposit
-        public TermDeposit(TermDeposit termDeposit, float amountInvested, float interestDecision)
-        { }
-
-        public TermDeposit OwnedTermDeposit(TermDeposit pTermDeposit, float amountInvested, float interestDecision)
-        {
-            TermDeposit ownedTermDeposit = new TermDeposit(pTermDeposit, amountInvested, interestDecision);
-
-            return ownedTermDeposit;
-        }
-
-        public void viewTermDeposits()
-        {
-            // GUI aspect to view the list of term deposits
-        }
-
 
         public string toString()
         {
              return Provider+"; "+CreditRating+"; "+MinDeposit+"; "+MaxDeposit+"; "+LengthInMonths+"; "+InterestRate;
-        }  
-
-
-        // Gwen: calculate the returns of the owned term deposit - will this be in this class? 
-        // Also we should have incremental calculation e.g. if the user checks 3 months into their 6 month term. 
-           
-       /* public double calculateReturns()
-        {
-             double depositReturns = 0.0;
-            switch (termDeposit.LengthInMonths)
-            {
-                case 3:
-                    double newRate = interestDecision / 90;
-                    break;
-                case 6:
-                    double newRate = interestDecision / 120;
-                    break;
-                case 9:
-                    double newRate = interestDecision / 270;
-                    break;
-                case 12:
-                    double newRate = interestDecision / 365;
-                    break;
-                case 18:
-                    double newRate = interestDecision / 485;
-                    break;
-                case 24:
-                    double newRate = interestDecision / 730;
-                    break;
-            }
-            depositReturns = newRate * amountInvested;
-            return depositReturns;
-        }*/
+        } 
     }
 }
 
