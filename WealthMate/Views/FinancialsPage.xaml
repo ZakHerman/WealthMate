@@ -4,9 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.ItemsPage"
+             x:Class="WealthMate.Views.FinancialsPage"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseFinancialsPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />

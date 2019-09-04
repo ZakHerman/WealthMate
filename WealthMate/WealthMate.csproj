@@ -20,4 +20,13 @@
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PortfolioPage.xaml.cs">
+      <DependentUpon>PortfolioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FinancialsPage.xaml.cs">
+      <DependentUpon>FinancialsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
