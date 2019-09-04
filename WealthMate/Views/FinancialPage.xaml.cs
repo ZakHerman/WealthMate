@@ -16,6 +16,13 @@ namespace WealthMate.Views
         public FinancialPage()
         {
             InitializeComponent();
+
+            NavBarLayout.Children.Add(
+                NavBarTitle,
+                // Center the text of the titleview
+                new Rectangle(0.5, 0.5, 0.9, 1),
+                AbsoluteLayoutFlags.All
+            );
         }
     }
 }

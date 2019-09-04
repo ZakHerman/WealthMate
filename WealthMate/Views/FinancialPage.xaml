@@ -1,9 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"  
-              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-              x:Class="WealthMate.Views.FinancialPage"  
-              Title="{Binding Title}"
-              >
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+              x:Class="WealthMate.Views.FinancialPage"
+              androidSpecific:TabbedPage.IsSmoothScrollEnabled="false">
+
+    <NavigationPage.TitleView>
+        <AbsoluteLayout x:Name="NavBarLayout">
+            <Image x:Name="NavBarLogo"
+                   Source="logo.png"
+                   HeightRequest="64"
+                   WidthRequest="64" />
+            <Label x:Name="NavBarTitle"
+                   Text="$48,782.50"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   FontSize="20"/>
+        </AbsoluteLayout>
+    </NavigationPage.TitleView>
+
     <TabbedPage.Children>
         <ContentPage Title="Watchlist">
             <StackLayout>

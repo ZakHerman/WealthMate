@@ -11,7 +11,8 @@
             xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
             androidSpecific:TabbedPage.BarItemColor="#66FFFFFF"
-            androidSpecific:TabbedPage.BarSelectedItemColor="White">
+            androidSpecific:TabbedPage.BarSelectedItemColor="White"
+            androidSpecific:TabbedPage.IsSmoothScrollEnabled="false">
 
     <TabbedPage.Effects>
         <models:DisableShift />
