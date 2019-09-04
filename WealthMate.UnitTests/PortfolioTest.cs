@@ -31,10 +31,13 @@ namespace WealthMate.UnitTests
             testPortfolio.RemoveAsset(testAsset);
             Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset));
         }
-
+        [TestMethod]
         public void testPortfolioTotalValue()
         {
-            //Devin
+            float delta = 0.01f;
+            float actual = testPortfolio.CurrentTotal;
+            float expected = 2753.75f;//need to check this calcluation with regular payment factor. Also need to check that the asset current value method works correctly 
+            Assert.AreEqual(expected, actual, delta, "Portfolio total value does not match");
         }
 
         public void testPortfolioTotalReturn()
