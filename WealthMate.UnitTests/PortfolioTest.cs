@@ -10,8 +10,6 @@ namespace WealthMate.UnitTests
         private OwnedAsset testAsset;
         private OwnedAsset testAsset2;
 
-
-        
         public PortfolioTest()
         {
            testPortfolio = new Portfolio();
