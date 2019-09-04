@@ -22,11 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\FinancialPage.xaml.cs">
+      <DependentUpon>FinancialPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PortfolioPage.xaml.cs">
       <DependentUpon>PortfolioPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\FinancialsPage.xaml.cs">
-      <DependentUpon>FinancialsPage.xaml</DependentUpon>
-    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\FinancialPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
