@@ -31,7 +31,7 @@ namespace WealthMate.UnitTests
             testPortfolio.RemoveAsset(testAsset);
             Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset));
         }
-        [TestMethod]
+        [TestMethod]//currently returning zero as CurrentTotal method checks the Portfolio class for OwnedAssets
         public void testPortfolioTotalValue()
         {
             float delta = 0.01f;

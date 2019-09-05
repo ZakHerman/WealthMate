@@ -25,6 +25,30 @@ namespace WealthMate.UnitTests
 
         }
 
+        [TestMethod]
+        public void TestDailyReturnPercent()
+        {
+
+        }
+        
+        [TestMethod]
+        public void TestDailyReturnAbs()
+        {
+
+        }
+
+        [TestMethod]
+        public void testTotalReturnPercent()
+        {
+
+        }
+
+        [TestMethod]
+        public void testTotalReturnAbs()
+        {
+
+        }
+
 
     }
 }
