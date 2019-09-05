@@ -4,43 +4,50 @@ namespace WealthMate.Models
 {
     public class OwnedAsset
     {
-        private string AssetName { get; set; }
-        private string PurchaseDate { get; set; }
-        private string Type { get; set; }
-        private int Length { get; set; }
-        private float InterestRate { get; set; }
-        private int CompoundRate { get; set; }
-        private float RegularPayment { get; set; }
-        protected virtual float PrincipalValue { get; set; }
-        private float _currentValue;
+        public string AssetName { get; set; }
+        public string PurchaseDate { get; set; }
+        public string Type { get; set; }
+        public int Length { get; set; }
+        public float InterestRate { get; set; }
+        public int CompoundRate { get; set; }
+        public float RegularPayment { get; set; }
+        public virtual float PrincipalValue { get; set; }
         public virtual float CurrentValue
         {
             get
             {
+                return CurrentValue;
+            }
+            set
+            {
                 var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), Length * CompoundRate);
 
                 if (RegularPayment > 0)
-                    return (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), Length * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
+                    CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), Length * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
                 else
-                    return NonPaymentValue;
+                    CurrentValue = NonPaymentValue;
             }
         }
-        private float _totalReturn;
         public float TotalReturn
         {
             get
             {
-                _totalReturn = CurrentValue - PrincipalValue;
-                return _totalReturn;
+                return TotalReturn;
+            }
+            set
+            {
+                TotalReturn = CurrentValue - PrincipalValue;
             }
         }
-        private float _totalReturnRate;
         public float TotalReturnRate
         {
             get
             {
-                _totalReturnRate = (TotalReturn / PrincipalValue) * 100;
-                return _totalReturnRate;
+                return TotalReturnRate;
+            }
+            set
+            {
+                TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
             }
         }
 
@@ -54,9 +61,9 @@ namespace WealthMate.Models
             InterestRate = interestRate;
             Length = length;
             CompoundRate = compoundRate;
-            _currentValue = CurrentValue;
-            _totalReturn = TotalReturn;
-            _totalReturnRate = TotalReturnRate;
+            CurrentValue = CurrentValue;
+            TotalReturn = TotalReturn;
+            TotalReturnRate = TotalReturnRate;
         }
     }
 }
