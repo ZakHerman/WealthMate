@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"  
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-              x:Class="WealthMate.Views.FinancialPage"
-              androidSpecific:TabbedPage.IsSmoothScrollEnabled="false">
+              x:Class="WealthMate.Views.FinancialPage">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
@@ -27,21 +25,25 @@
                 <BoxView Color="DarkGray" VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ContentPage>
+
         <ContentPage Title="Stocks">
             <StackLayout>
                 <BoxView Color="DarkRed" VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ContentPage>
+
         <ContentPage Title="Term Deposits">
             <StackLayout>
                 <BoxView Color="DarkBlue" VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ContentPage>
+
         <ContentPage Title="Savings">
             <StackLayout>
                 <BoxView Color="DarkGreen" VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ContentPage>
+
         <ContentPage Title="Other">
             <StackLayout>
                 <BoxView Color="DarkOrange" VerticalOptions="FillAndExpand" />
