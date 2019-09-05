@@ -10,8 +10,6 @@ namespace WealthMate.UnitTests
         private OwnedAsset testAsset;
         private OwnedAsset testAsset2;
 
-
-        
         public PortfolioTest()
         {
            testPortfolio = new Portfolio();
@@ -26,6 +24,7 @@ namespace WealthMate.UnitTests
             Assert.IsTrue(testPortfolio.OwnedAssets.Contains(testAsset));
         }
 
+        [TestMethod]
         public void TestRemoveAsset()
         {
             testPortfolio.AddAsset(testAsset);
@@ -34,31 +33,37 @@ namespace WealthMate.UnitTests
             Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset));
         }
 
-        public void testPortfolioTotalValue()
+        [TestMethod]
+        public void TestPortfolioTotalValue()
         {
-            //Devin
+            float delta = 0.01f;
+            float actual = testPortfolio.CurrentTotal;
+            float expected = 2753.75f;//need to check this calcluation with regular payment factor. Also need to check that the asset current value method works correctly 
+            Assert.AreEqual(expected, actual, delta, "Portfolio total value does not match");
         }
 
-        public void testPortfolioTotalReturn()
-        {
-            //Zak
-        }
-
-        public void testPortfolioTotalReturnRate()
-        {
-            //Zak
-        }
-
-        public void testPortfolioDayReturn()
+        [TestMethod]
+        public void TestPortfolioTotalReturn()
         {
             //Zak
         }
 
-        public void testPortfolioDayReturnRate()
+        [TestMethod]
+        public void TestPortfolioTotalReturnRate()
         {
             //Zak
         }
 
+        [TestMethod]
+        public void TestPortfolioDayReturn()
+        {
+            //Zak
+        }
 
+        [TestMethod]
+        public void TestPortfolioDayReturnRate()
+        {
+            //Zak
+        }
     }
 }

@@ -5,28 +5,41 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:WealthMate.Views"
-            x:Class="WealthMate.Views.MainPage">
+            x:Class="WealthMate.Views.MainPage"
+            BarBackgroundColor="#2196F3"
+            BarTextColor="White"
+            xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+            androidSpecific:TabbedPage.BarItemColor="#66FFFFFF"
+            androidSpecific:TabbedPage.BarSelectedItemColor="White"
+            androidSpecific:TabbedPage.IsSmoothScrollEnabled="false">
+
+    <TabbedPage.Effects>
+        <models:DisableShift />
+    </TabbedPage.Effects>
 
     <TabbedPage.Children>
-        <NavigationPage Title="Browse">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
+        <NavigationPage IconImageSource="financials.png">
             <x:Arguments>
-                <views:ItemsPage />
+                <views:FinancialPage />
             </x:Arguments>
         </NavigationPage>
-        
-        <NavigationPage Title="About">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
+
+        <NavigationPage IconImageSource="portfolio.png">
             <x:Arguments>
-                <views:AboutPage />
+                <views:PortfolioPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage IconImageSource="search.png">
+            <x:Arguments>
+                <views:PortfolioPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage IconImageSource="settings.png">
+            <x:Arguments>
+                <views:PortfolioPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
