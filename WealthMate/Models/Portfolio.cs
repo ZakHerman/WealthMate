@@ -19,13 +19,13 @@ namespace WealthMate.Models
         }
         public float DayReturn {
         get
-            {   //Need to confirm if the "if" statement is req.
+            {
                 float dayTotal = 0.0f;
                 foreach(OwnedStock stock in OwnedAssets) {
 
-                    if (stock is OwnedStock) {
+                    //if (stock is OwnedStock) {
                         dayTotal =+ stock.DayReturn;
-                    }
+                    //}
                 }
                 return dayTotal;
             }
