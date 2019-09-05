@@ -20,7 +20,7 @@
             this.MaxDeposit = maxDeposit;
             this.LengthInMonths = length;
             this.InterestRate = interestRate;
-            this.NoMaxDeposit = 1 / 0; // infinity
+            this.NoMaxDeposit = 0; // infinity
             this.NoMinimumDeposit = 0;
         }
 
