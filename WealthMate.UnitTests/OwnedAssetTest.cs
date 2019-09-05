@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WealthMate.Models;
+using System;
 
 namespace WealthMate.UnitTests
 {
@@ -12,9 +13,9 @@ namespace WealthMate.UnitTests
 
         public OwnedAssetTest()
         {
-            test1 = new OwnedAsset("ANZ Bank", "18/03/18", "Term Deposit", 10000, 0.27f, 12, 4, 0);
-            test2 = new OwnedAsset("ASB Bank", "08/01/19", "Term Deposit", 2000, 0.30f, 6, 4, 0);
-            test3 = new OwnedAsset("TSB Bank", "29/02/17", "Term Deposit", 1000, 0.20f, 3, 4, 0);
+            test1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 0.27f, 12, 4, 0);
+            test2 = new OwnedAsset("ASB Bank", new DateTime(2019, 1, 8), "Term Deposit", 2000, 0.30f, 6, 4, 0);
+            test3 = new OwnedAsset("TSB Bank", new DateTime(2017, 2, 29), "Term Deposit", 1000, 0.20f, 3, 4, 0);
         }
 
         [TestMethod]

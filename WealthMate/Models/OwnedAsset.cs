@@ -5,9 +5,9 @@ namespace WealthMate.Models
     public class OwnedAsset
     {
         public string AssetName { get; set; }
-        public string PurchaseDate { get; set; }
+        public DateTime PurchaseDate { get; set; }
         public string Type { get; set; }
-        public int Length { get; set; }
+        public int Length { get; set; }                             //In number of years
         public float InterestRate { get; set; }
         public int CompoundRate { get; set; }
         public float RegularPayment { get; set; }
@@ -20,10 +20,12 @@ namespace WealthMate.Models
             }
             set
             {
-                var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), Length * CompoundRate);
+                var DaysBetween = (DateTime.Today - PurchaseDate).TotalDays;
+
+                var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween/365) * CompoundRate);
 
                 if (RegularPayment > 0)
-                    CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), Length * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
+                    CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween/ 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
                 else
                     CurrentValue = NonPaymentValue;
             }
@@ -51,7 +53,7 @@ namespace WealthMate.Models
             }
         }
 
-        public OwnedAsset(string assetName, string purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
+        public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
         {
             AssetName = assetName;
             PurchaseDate = purchaseDate;
