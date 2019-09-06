@@ -53,7 +53,7 @@ namespace WealthMate.Models
             }
         }
 
-        public OwnedStock(ref string name, string purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
+        public OwnedStock(ref string name, DateTime purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
