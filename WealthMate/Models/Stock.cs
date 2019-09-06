@@ -19,6 +19,12 @@ namespace WealthMate.Models
         public int Shares { get; set; }
         public int Volume { get; set; }
         public string CompanyName { get; set; }
+        public string Symbol { get; set; }
+
+        public Stock()
+        {
+
+        }
 
         public Stock(string name, float price, DateTime priceDate, int shares, int volume)
         {
