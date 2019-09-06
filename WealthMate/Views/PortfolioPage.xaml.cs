@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using WealthMate.Models;
+using WealthMate.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +15,8 @@ namespace WealthMate.Views
         public PortfolioPage()
         {
             InitializeComponent();
+
+            BindingContext = new PieChart();
         }
     }
 }
