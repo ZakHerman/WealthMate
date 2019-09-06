@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
-using Xamarin.Forms.Xaml;
-using TabbedPage = Xamarin.Forms.TabbedPage;
 
 namespace WealthMate.Views
 {
     [DesignTimeVisible(false)]
-    public partial class FinancialPage : TabbedPage
+    public partial class FinancialPage
     {
         public FinancialPage()
         {
