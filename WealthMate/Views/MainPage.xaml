@@ -6,13 +6,10 @@
             mc:Ignorable="d"
             xmlns:views="clr-namespace:WealthMate.Views"
             x:Class="WealthMate.Views.MainPage"
-            BarBackgroundColor="#2196F3"
-            BarTextColor="White"
-            xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
-            androidSpecific:TabbedPage.BarItemColor="#66FFFFFF"
-            androidSpecific:TabbedPage.BarSelectedItemColor="White"
-            androidSpecific:TabbedPage.IsSmoothScrollEnabled="false">
+            BarBackgroundColor="#2196F3"
+            UnselectedTabColor="#66FFFFFF"
+            SelectedTabColor="White">
 
     <TabbedPage.Effects>
         <models:DisableShift />
