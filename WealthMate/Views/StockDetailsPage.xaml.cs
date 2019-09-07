@@ -15,6 +15,7 @@ namespace WealthMate.Views
 
             BindingContext = this;
 
+            CompanyNameText.BindingContext = stock;
             CurrentPriceText.BindingContext = stock;
         }
     }

@@ -3,15 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:WealthMate.Models"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockDetailsPage"
              Title="{Binding Stock.Symbol}">
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
+            <Label x:Name ="CompanyNameText"
+                Text="{Binding CompanyName}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
             <Label x:Name ="CurrentPriceText"
                 Text="{Binding CurrentPrice}"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" />
+                FontSize="Large"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
