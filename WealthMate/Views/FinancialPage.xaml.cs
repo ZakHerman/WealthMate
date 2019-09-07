@@ -4,6 +4,7 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using ListView = Xamarin.Forms.ListView;
 
 namespace WealthMate.Views
 {
@@ -50,6 +51,18 @@ namespace WealthMate.Views
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
+        }
+
+        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selected = (Stock)e.Item;
+
+            if (selected == null)
+                return;
+
+            await Navigation.PushAsync(new StockDetailsPage(selected));
+  
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
