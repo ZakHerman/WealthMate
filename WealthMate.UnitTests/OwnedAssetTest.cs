@@ -45,29 +45,29 @@ namespace WealthMate.UnitTests
             Assert.AreEqual(expectedRate, totalRetRate);
         }
 
-        [TestMethod]
-        public void TestDailyReturnPercent()
-        {
+        //[TestMethod]
+        //public void TestDailyReturnPercent()
+        //{
 
-        }
+        //}
         
-        [TestMethod]
-        public void TestDailyReturnAbs()
-        {
+        //[TestMethod]
+        //public void TestDailyReturnAbs()
+        //{
 
-        }
+        //}
 
-        [TestMethod]
-        public void testTotalReturnPercent()
-        {
+        //[TestMethod]
+        //public void testTotalReturnPercent()
+        //{
 
-        }
+        //}
 
-        [TestMethod]
-        public void testTotalReturnAbs()
-        {
+        //[TestMethod]
+        //public void testTotalReturnAbs()
+        //{
 
-        }
+        //}
 
 
     }
