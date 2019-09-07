@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.FinancialPage"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate">
+            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+            xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
@@ -11,7 +12,7 @@
                    HeightRequest="64"
                    WidthRequest="64" />
             <Label x:Name="NavBarTitle"
-                   Text="$48,782.50"
+                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                    FontAttributes="Bold"
@@ -26,8 +27,8 @@
                 <models:Stock/>
             </ContentPage.BindingContext>
 
-            <ListView x:Name="WatchlistView" RowHeight="42">
-                <ListView.ItemTemplate>
+            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="44" DragStartMode="OnHold">
+                <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Margin="12, 0, 12, 0">
@@ -38,13 +39,14 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image Grid.Column="0" Source="{Binding Symbol}"/>
-                                <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" Margin="4, 0, 0, 0"/>
+                                <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="StartAndExpand" FontSize="20" LineBreakMode="TailTruncation" Margin="4, 2, 0, 0" />
+                                <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4, 0, 0, 2"/>
                                 <Label Grid.Column="2" Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" FontSize="16" HorizontalOptions="EndAndExpand" TextColor="ForestGreen" LineBreakMode="NoWrap"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </ContentPage>
 
         <ContentPage Title="Stocks">

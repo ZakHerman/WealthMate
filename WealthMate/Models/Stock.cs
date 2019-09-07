@@ -1,13 +1,28 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 //Object created, not instantiated yet.
 
 namespace WealthMate.Models
 {
-    public class Stock
+    public class Stock : INotifyPropertyChanged
     {
+        private float _currentPrice;
         //Data to receive directly from NZX (Entity Relationship diagram)
-        public float CurrentPrice { get; set; }
+        public float CurrentPrice
+        {
+
+            get => _currentPrice;
+            set
+            {
+                if (_currentPrice != value)
+                {
+                    _currentPrice = value;
+                    onPropertyChanged();
+                }
+            }
+        }
         public DateTime PriceDate { get; set; }
         public float PriceOpen { get; set; }
         public float PriceClose { get; set; }
@@ -63,6 +78,13 @@ namespace WealthMate.Models
         public void UpdateStock()
         {
             //.....
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void onPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
