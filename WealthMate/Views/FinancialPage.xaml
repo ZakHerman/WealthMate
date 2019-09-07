@@ -27,7 +27,7 @@
                 <models:Stock/>
             </ContentPage.BindingContext>
 
-            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="44">
+            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="44" DragStartMode="OnHold">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

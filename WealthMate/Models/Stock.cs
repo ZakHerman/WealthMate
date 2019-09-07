@@ -16,7 +16,7 @@ namespace WealthMate.Models
             get => _currentPrice;
             set
             {
-                if (_currentPrice == value)
+                if (_currentPrice != value)
                 {
                     _currentPrice = value;
                     onPropertyChanged();
