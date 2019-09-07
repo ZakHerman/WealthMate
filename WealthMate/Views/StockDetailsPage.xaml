@@ -7,10 +7,11 @@
              x:Class="WealthMate.Views.StockDetailsPage"
              Title="{Binding Stock.Symbol}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
+            <Label x:Name ="CurrentPriceText"
+                Text="{Binding CurrentPrice}"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
