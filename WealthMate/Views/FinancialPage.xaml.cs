@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using WealthMate.Models;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using ListView = Xamarin.Forms.ListView;
 
@@ -24,7 +23,7 @@ namespace WealthMate.Views
                 AbsoluteLayoutFlags.All
             );
 
-            On<Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
 
             NavBarTitle.BindingContext = new PortfolioPage();
             WatchlistView.ItemsSource = Stocks;

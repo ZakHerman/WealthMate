@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace WealthMate.Views
@@ -10,9 +9,9 @@ namespace WealthMate.Views
         public MainPage()
         {
             InitializeComponent();
-            On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom); // Set navigation bar to bottom
-            On<Android>().SetIsSwipePagingEnabled(false); // Disable tabbed page swiping
-            On<Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom); // Set navigation bar to bottom
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSwipePagingEnabled(false); // Disable tabbed page swiping
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
         }
     }
 }
