@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
-using ListView = Xamarin.Forms.ListView;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace WealthMate.Views
 {
@@ -16,6 +17,8 @@ namespace WealthMate.Views
         {
             InitializeComponent();
 
+            WatchlistView.ItemTapped += WatchlistView_ItemTapped;
+
             NavBarLayout.Children.Add(
                 NavBarTitle,
                 // Center the text of the titleview
@@ -26,7 +29,24 @@ namespace WealthMate.Views
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
 
             NavBarTitle.BindingContext = new PortfolioPage();
+            GenerateExample();
             WatchlistView.ItemsSource = Stocks;
+        }
+
+        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selected = (Stock)e.ItemData;
+
+            if (selected == null)
+                return;
+
+            await Navigation.PushAsync(new StockDetailsPage(selected));
+  
+            ((SfListView)sender).SelectedItem = null;
+        }
+
+        private void GenerateExample()
+        {
             Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
             Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f});
@@ -51,18 +71,6 @@ namespace WealthMate.Views
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
-        }
-
-        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var selected = (Stock)e.Item;
-
-            if (selected == null)
-                return;
-
-            await Navigation.PushAsync(new StockDetailsPage(selected));
-  
-            ((ListView)sender).SelectedItem = null;
         }
     }
 }

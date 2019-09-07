@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.FinancialPage"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate">
+            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+            xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
@@ -26,8 +27,8 @@
                 <models:Stock/>
             </ContentPage.BindingContext>
 
-            <ListView x:Name="WatchlistView" RowHeight="44" ItemTapped="WatchlistView_ItemTapped">
-                <ListView.ItemTemplate>
+            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="44">
+                <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Margin="12, 0, 12, 0">
@@ -44,8 +45,8 @@
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </ContentPage>
 
         <ContentPage Title="Stocks">
