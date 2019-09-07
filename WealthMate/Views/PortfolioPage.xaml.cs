@@ -1,19 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using WealthMate.Models;
+﻿using System.ComponentModel;
 using WealthMate.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class PortfolioPage : ContentPage
+    public partial class PortfolioPage
     {
+        public float TotalValue { get; set; }
+
         public PortfolioPage()
         {
+            TotalValue = 634635.5623f;
             InitializeComponent();
 
             BindingContext = new PieChart();

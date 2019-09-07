@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-using WealthMate.Services;
-using WealthMate.Views;
+﻿using WealthMate.Views;
 
 namespace WealthMate
 {
@@ -11,7 +9,6 @@ namespace WealthMate
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 

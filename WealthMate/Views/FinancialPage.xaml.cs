@@ -26,6 +26,7 @@ namespace WealthMate.Views
 
             On<Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
 
+            NavBarTitle.BindingContext = new PortfolioPage();
             WatchlistView.ItemsSource = Stocks;
             Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});

@@ -11,7 +11,7 @@
                    HeightRequest="64"
                    WidthRequest="64" />
             <Label x:Name="NavBarTitle"
-                   Text="$48,782.50"
+                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                    FontAttributes="Bold"
