@@ -8,6 +8,7 @@
              x:Class="WealthMate.Views.StockDetailsPage"
              Title="{Binding Stock.CompanyName}">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
             <Label x:Name ="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
@@ -54,5 +55,6 @@
             </Grid>
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
