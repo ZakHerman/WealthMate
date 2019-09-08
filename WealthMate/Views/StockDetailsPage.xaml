@@ -29,11 +29,11 @@
                 <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="PriceDate" YBindingPath="CurrentPrice"/>
             </chart:SfChart>
 
-            <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" />
-            <Label x:Name ="CurrentPriceTimeStampText" Text="[DATE AND TIME]" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" />
-            <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" />
+            <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+            <Label x:Name ="CurrentPriceTimeStampText" Text="[DATE AND TIME]" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
-            <Grid>
+            <Grid Margin="10, 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
