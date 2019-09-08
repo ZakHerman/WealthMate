@@ -3,33 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:models="clr-namespace:WealthMate.Models"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockDetailsPage"
              Title="{Binding Stock.Symbol}">
-
     <ContentPage.Content>
         <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
-
+            <Label x:Name ="CompanyNameText"
+                Text="{Binding CompanyName}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
 
             <Label x:Name ="CurrentPriceText"
-                Text="{Binding Stock.CurrentPrice}"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" />
+                Text="{Binding CurrentPrice}"
+                FontSize="Large"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
 
-            <chart:SfChart x:Name="Chart" VerticalOptions="FillAndExpand">
- 
-                <chart:SfChart.PrimaryAxis>
-                    <chart:DateTimeAxis/>
-                </chart:SfChart.PrimaryAxis>
- 
-                <chart:SfChart.SecondaryAxis>
-                    <chart:NumericalAxis/>
-                </chart:SfChart.SecondaryAxis>
- 
-                <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="PriceDate" YBindingPath="CurrentPrice"/>
- 
-            </chart:SfChart>
+            <Label x:Name ="CurrentPriceTimeStampText"
+                Text="[DATE AND TIME]"
+                FontSize="Small"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+            <Label x:Name ="StockGraph"
+                Text="[STOCKS GRAPH]"
+                FontSize="Large"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <Label x:Name ="KeyStatisticsLabel"
+                Text="Key Statistics"
+                FontSize="Large"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Close Price: [PRICE]" Grid.Row="0" Grid.Column="0" />
+                <Label Text="Open Price: [PRICE]" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Day Low: [PRICE]" Grid.Row="1" Grid.Column="0" />
+                <Label Text="Day High: [PRICE]" Grid.Row="1" Grid.Column="1" />
+                <Label Text="52 Week Low: [PRICE]" Grid.Row="2" Grid.Column="0" />
+                <Label Text="52 Week High: [PRICE]" Grid.Row="2" Grid.Column="1" />
+                <Label Text="Shares: [FIGURE]" Grid.Row="3" Grid.Column="0" />
+                <Label Text="Volume: [FIGURE]" Grid.Row="3" Grid.Column="1" />
+            </Grid>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
