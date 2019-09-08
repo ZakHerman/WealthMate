@@ -30,8 +30,7 @@
             <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="44" DragStartMode="OnHold">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="12, 0, 12, 0">
+                        <Grid Margin="12, 0, 12, 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32" />
                                     <ColumnDefinition Width="*" />
@@ -43,7 +42,6 @@
                                 <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4, 0, 0, 2"/>
                                 <Label Grid.Column="2" Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" FontSize="16" HorizontalOptions="EndAndExpand" TextColor="ForestGreen" LineBreakMode="NoWrap"/>
                             </Grid>
-                        </ViewCell>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
             </syncfusion:SfListView>
