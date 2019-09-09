@@ -12,6 +12,7 @@ namespace WealthMate.Views
     public partial class FinancialPage
     {
         public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
+        public ObservableCollection<TermDeposit> TermDeposits { get; } = new ObservableCollection<TermDeposit>();
 
         public FinancialPage()
         {
@@ -30,8 +31,10 @@ namespace WealthMate.Views
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
 
             NavBarTitle.BindingContext = new PortfolioPage();
-            GenerateExample();
+            GenerateStockExample();
+            GenerateTermDepositExample();
             WatchlistView.ItemsSource = Stocks;
+            TermDepositlistView.ItemsSource = TermDeposits;
         }
 
         private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -47,7 +50,7 @@ namespace WealthMate.Views
         }
 
         // Dummy data to use before using database
-        private void GenerateExample()
+        private void GenerateStockExample()
         {
             Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
@@ -73,6 +76,12 @@ namespace WealthMate.Views
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
+        }
+
+        public void GenerateTermDepositExample()
+        {
+            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f});
+            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 3});
         }
     }
 }

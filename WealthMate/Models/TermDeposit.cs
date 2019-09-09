@@ -9,8 +9,14 @@
         public float MaxDeposit { get; set; }
         public float LengthInMonths { get; set; }
         public float InterestRate { get; set; }
+        public string Logo { get; set; }
         public float NoMaxDeposit; 
-        public float NoMinimumDeposit; 
+        public float NoMinimumDeposit;
+
+        public TermDeposit()
+        {
+
+        }
         
         public TermDeposit(string provider, string creditRating, float minDeposit, float maxDeposit, float length, float interestRate)
         {
