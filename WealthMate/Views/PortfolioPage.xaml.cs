@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using WealthMate.ViewModels;
+using Xamarin.Forms;
 
 namespace WealthMate.Views
 {
@@ -12,6 +13,15 @@ namespace WealthMate.Views
         {
             TotalValue = 634635.5623f;
             InitializeComponent();
+
+            NavBarLayout.Children.Add(
+                NavBarTitle,
+                // Center the text of the titleview
+                new Rectangle(0.5, 0.5, 0.9, 1),
+                AbsoluteLayoutFlags.All
+            );
+
+            NavBarTitle.BindingContext = this;
 
             BindingContext = new PieChart();
         }
