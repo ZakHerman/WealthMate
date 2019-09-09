@@ -2,7 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.FinancialPage"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate">
+            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+            xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
@@ -11,7 +12,7 @@
                    HeightRequest="64"
                    WidthRequest="64" />
             <Label x:Name="NavBarTitle"
-                   Text="$48,782.50"
+                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                    FontAttributes="Bold"
@@ -26,25 +27,27 @@
                 <models:Stock/>
             </ContentPage.BindingContext>
 
-            <ListView x:Name="WatchlistView" RowHeight="42">
-                <ListView.ItemTemplate>
+            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+                <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="12, 0, 12, 0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="32" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                        <Grid Margin="12,0,12,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                                <Image Grid.Column="0" Source="{Binding Symbol}"/>
-                                <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" Margin="4, 0, 0, 0"/>
-                                <Label Grid.Column="2" Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" FontSize="16" HorizontalOptions="EndAndExpand" TextColor="ForestGreen" LineBreakMode="NoWrap"/>
-                            </Grid>
-                        </ViewCell>
+                            <Image Grid.Column="0" Source="{Binding Symbol}"/>
+                            <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="StartAndExpand" FontSize="20" LineBreakMode="TailTruncation" Margin="4,5,0,0" />
+                            <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4,0,0,5"/>
+
+                            <Frame Grid.Column="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
+                                <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
+                            </Frame>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </ContentPage>
 
         <ContentPage Title="Stocks">
@@ -54,9 +57,27 @@
         </ContentPage>
 
         <ContentPage Title="Term Deposits">
-            <StackLayout>
-                <BoxView Color="DarkBlue" VerticalOptions="FillAndExpand"/>
-            </StackLayout>
+            <ContentPage.BindingContext>
+                <models:TermDeposit/>
+            </ContentPage.BindingContext>
+
+            <syncfusion:SfListView x:Name="TermDepositlistView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="12,0,12,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="{Binding Logo}"/>
+                            <Label Grid.Column="1" Text="{Binding Provider}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </ContentPage>
 
         <ContentPage Title="Savings">

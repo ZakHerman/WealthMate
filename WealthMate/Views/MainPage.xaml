@@ -6,13 +6,13 @@
             mc:Ignorable="d"
             xmlns:views="clr-namespace:WealthMate.Views"
             x:Class="WealthMate.Views.MainPage"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+            xmlns:effects="clr-namespace:WealthMate.Effects;assembly=WealthMate"
             BarBackgroundColor="#2196F3"
             UnselectedTabColor="#66FFFFFF"
             SelectedTabColor="White">
 
     <TabbedPage.Effects>
-        <models:DisableShift />
+        <effects:DisableShift />
     </TabbedPage.Effects>
 
     <TabbedPage.Children>

@@ -75,6 +75,9 @@ namespace WealthMate.Droid
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_total_label = global::WealthMate.Droid.Resource.String.sfchart_total_label;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::WealthMate.Droid.Resource.String.w;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::WealthMate.Droid.Resource.String.week;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::WealthMate.Droid.Resource.String.ApplicationName;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::WealthMate.Droid.Resource.String.Hello;
+			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::WealthMate.Droid.Resource.String.Load_More;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::WealthMate.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::WealthMate.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::WealthMate.Droid.Resource.Attribute.font;
@@ -7849,6 +7852,15 @@ namespace WealthMate.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0c004f
+			public const int ApplicationName = 2131492943;
+			
+			// aapt resource value: 0x7f0c004e
+			public const int Hello = 2131492942;
+			
+			// aapt resource value: 0x7f0c0050
+			public const int Load_More = 2131492944;
+			
 			// aapt resource value: 0x7f0c0018
 			public const int abc_action_bar_home_description = 2131492888;
 			
@@ -8077,47 +8089,47 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c004c
 			public const int path_password_strike_through = 2131492940;
 			
-			// aapt resource value: 0x7f0c004f
-			public const int q = 2131492943;
+			// aapt resource value: 0x7f0c0052
+			public const int q = 2131492946;
 			
-			// aapt resource value: 0x7f0c004e
-			public const int quarter = 2131492942;
+			// aapt resource value: 0x7f0c0051
+			public const int quarter = 2131492945;
 			
 			// aapt resource value: 0x7f0c0033
 			public const int search_menu_title = 2131492915;
 			
-			// aapt resource value: 0x7f0c0055
-			public const int sfchart_close_label = 2131492949;
-			
 			// aapt resource value: 0x7f0c0058
-			public const int sfchart_decrease_label = 2131492952;
+			public const int sfchart_close_label = 2131492952;
 			
-			// aapt resource value: 0x7f0c0052
-			public const int sfchart_high_label = 2131492946;
+			// aapt resource value: 0x7f0c005b
+			public const int sfchart_decrease_label = 2131492955;
 			
-			// aapt resource value: 0x7f0c0057
-			public const int sfchart_increase_label = 2131492951;
+			// aapt resource value: 0x7f0c0055
+			public const int sfchart_high_label = 2131492949;
 			
-			// aapt resource value: 0x7f0c0053
-			public const int sfchart_low_label = 2131492947;
-			
-			// aapt resource value: 0x7f0c0054
-			public const int sfchart_open_label = 2131492948;
+			// aapt resource value: 0x7f0c005a
+			public const int sfchart_increase_label = 2131492954;
 			
 			// aapt resource value: 0x7f0c0056
-			public const int sfchart_others_label = 2131492950;
+			public const int sfchart_low_label = 2131492950;
+			
+			// aapt resource value: 0x7f0c0057
+			public const int sfchart_open_label = 2131492951;
 			
 			// aapt resource value: 0x7f0c0059
-			public const int sfchart_total_label = 2131492953;
+			public const int sfchart_others_label = 2131492953;
+			
+			// aapt resource value: 0x7f0c005c
+			public const int sfchart_total_label = 2131492956;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int status_bar_notification_info_overflow = 2131492941;
 			
-			// aapt resource value: 0x7f0c0051
-			public const int w = 2131492945;
+			// aapt resource value: 0x7f0c0054
+			public const int w = 2131492948;
 			
-			// aapt resource value: 0x7f0c0050
-			public const int week = 2131492944;
+			// aapt resource value: 0x7f0c0053
+			public const int week = 2131492947;
 			
 			static String()
 			{

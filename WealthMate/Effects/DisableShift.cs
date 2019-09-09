@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace WealthMate.Models
+namespace WealthMate.Effects
 {
     public class DisableShift : RoutingEffect
     {

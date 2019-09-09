@@ -31,5 +31,6 @@ namespace WealthMate.ViewModels
             pieChart.Add(testAsset);
             pieChart.Add(testAsset2);
         }
+
     }
 }
