@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TermDepositPage : ContentPage
+    public partial class TermDepositPage : TabbedPage
     {
         public TermDepositPage()
         {
