@@ -2,53 +2,20 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.FinancialPage"
+            xmlns:local="clr-namespace:WealthMate.Views;assembly=WealthMate"
             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
-            <Image x:Name="NavBarLogo"
-                   Source="logo.png"
-                   HeightRequest="64"
-                   WidthRequest="64" />
-            <Label x:Name="NavBarTitle"
-                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   FontSize="20"/>
+            <Image x:Name="NavBarLogo" Source="logo" HeightRequest="64" WidthRequest="64" />
+            <Label x:Name="NavBarTitle" Text="{Binding TotalValue, StringFormat='{0:C}'}" HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
 
     <TabbedPage.Children>
-        <ContentPage Title="Watchlist">
-            <ContentPage.BindingContext>
-                <models:Stock/>
-            </ContentPage.BindingContext>
-
-            <syncfusion:SfListView x:Name="WatchlistView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="12,0,12,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="32" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Source="{Binding Symbol}"/>
-                            <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="StartAndExpand" FontSize="20" LineBreakMode="TailTruncation" Margin="4,5,0,0" />
-                            <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4,0,0,5"/>
-
-                            <Frame Grid.Column="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
-                                <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
-        </ContentPage>
+        <local:WatchlistPage/>
 
         <ContentPage Title="Stocks">
             <StackLayout>
