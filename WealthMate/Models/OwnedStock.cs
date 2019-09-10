@@ -2,7 +2,7 @@
 
 namespace WealthMate.Models
 {
-    class OwnedStock : OwnedAsset
+    public class OwnedStock : OwnedAsset
     {
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
@@ -53,12 +53,12 @@ namespace WealthMate.Models
             }
         }
 
-        public OwnedStock(ref string name, DateTime purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
+        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased) : base(stock.CompanyName, purchaseDate, "stock", 0, 0, 0, 0, 0)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
-            CurrentPrice = currentPrice;
-            PriceClose = priceClose;
+            CurrentPrice = stock.CurrentPrice;
+            PriceClose = stock.PriceClose;
             DayReturn = DayReturn;
             DayReturnRate = DayReturnRate;
         }
