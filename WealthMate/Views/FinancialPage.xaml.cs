@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using WealthMate.Models;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using AndroidPlatform = Xamarin.Forms.PlatformConfiguration.Android;
@@ -10,8 +8,6 @@ namespace WealthMate.Views
     [DesignTimeVisible(false)]
     public partial class FinancialPage
     {
-        public ObservableCollection<TermDeposit> TermDeposits { get; } = new ObservableCollection<TermDeposit>();
-
         public FinancialPage()
         {
             InitializeComponent();
@@ -23,14 +19,6 @@ namespace WealthMate.Views
             On<AndroidPlatform>().SetIsSmoothScrollEnabled(false);
 
             NavBarTitle.BindingContext = new PortfolioPage();
-            GenerateTermDepositExample();
-            TermDepositlistView.ItemsSource = TermDeposits;
-        }
-        
-        public void GenerateTermDepositExample()
-        {
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f});
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 3});
         }
     }
 }
