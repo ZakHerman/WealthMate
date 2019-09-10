@@ -12,22 +12,24 @@ namespace WealthMate.Models
         public int CompoundRate { get; set; }
         public float RegularPayment { get; set; }
         public virtual float PrincipalValue { get; set; }
+
+        private float _currentValue;
         public virtual float CurrentValue
         {
             get
             {
-                return CurrentValue;
+                return _currentValue;
             }
             set
             {
                 var DaysBetween = (DateTime.Today - PurchaseDate).TotalDays;
 
-                var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween/365) * CompoundRate);
+                var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween / 365) * CompoundRate);
 
                 if (RegularPayment > 0)
-                    CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween/ 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
+                    _currentValue= (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween / 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
                 else
-                    CurrentValue = NonPaymentValue;
+                    _currentValue = NonPaymentValue;
             }
         }
         public float TotalReturn
@@ -67,5 +69,7 @@ namespace WealthMate.Models
             TotalReturn = TotalReturn;
             TotalReturnRate = TotalReturnRate;
         }
+
+
     }
 }
