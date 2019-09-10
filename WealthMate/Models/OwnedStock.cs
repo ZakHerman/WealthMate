@@ -31,7 +31,7 @@ namespace WealthMate.Models
                 DayReturnRate = (DayReturn / PrincipalValue) * 100;
             }
         }
-        public override float PrincipalValue
+        public override float PrincipalValue //total price paid
         {
             get
             {
