@@ -6,16 +6,16 @@
              xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.WatchlistPage"
+             x:Class="WealthMate.Views.StockListPage"
              x:Name="Root"
-             Title="Watchlist">
+             Title="Stocks">
 
     <ContentPage.BindingContext>
         <models:Stock />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
+        <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12,0,12,0">

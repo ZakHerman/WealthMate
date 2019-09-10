@@ -1,49 +1,57 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+using Syncfusion.ListView.XForms;
 using WealthMate.Models;
-using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views
 {
-    [DesignTimeVisible(false)]
-    public partial class FinancialDetailPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class StockListPage
     {
         public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
 
-        public FinancialDetailPage()
+        public StockListPage()
         {
             InitializeComponent();
 
-            NavBarLayout.Children.Add(
-                NavBarTitle,
-                // Center the text of the titleview
-                new Rectangle(0.5, 0.5, 0.9, 1),
-                AbsoluteLayoutFlags.All
-            );
+            GenerateExample();
+        }
 
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
+        // Event handler for watchlist stock being pressed
+        private async void StockListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selected = (Stock)e.ItemData;
 
-            WatchlistView.ItemsSource = Stocks;
+            if (selected == null)
+                return;
+
+            // Push stockdetailspage on top of stack
+            await Navigation.PushAsync(new StockDetailsPage(selected));
+  
+            ((SfListView)sender).SelectedItem = null;
+        }
+
+        // Dummy data to use before using database
+        private void GenerateExample()
+        {
             Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
             Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f});
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 52521.23f});
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 63791.23f});
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 22522.52f});
+            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 2});
+            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 1});
+            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 0.01f});
             Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 1.23f});
+            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 0f});
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
             Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f});
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 52521.23f});
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 6352525252791.23f});
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 22522.52f});
+            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 3});
+            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 15f});
+            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 4});
             Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f});
             Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 1.23f});

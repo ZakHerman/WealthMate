@@ -2,7 +2,6 @@
 using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
-using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace WealthMate.Views
 {
