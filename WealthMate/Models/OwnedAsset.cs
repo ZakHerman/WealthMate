@@ -62,8 +62,22 @@ namespace WealthMate.Models
             PrincipalValue = principalValue;
             InterestRate = interestRate;
             Length = length;
-            CompoundRate = compoundRate;
+            CompoundRate = compoundRate; //how often per year that interest is calculated/added
             CurrentValue = CurrentValue;
+            TotalReturn = TotalReturn;
+            TotalReturnRate = TotalReturnRate;
+        }
+        //Default constructor - temporary!
+        public OwnedAsset()
+        {
+            AssetName = "Unknown";
+            PurchaseDate = new DateTime(2019, 1, 1, 0, 0, 0);
+            Type = "Unknown";
+            RegularPayment = 0f;
+            PrincipalValue = 0f;
+            InterestRate = 0f;
+            CompoundRate = 1; //how often per year that interest is calculated/added
+            CurrentValue = 0f;
             TotalReturn = TotalReturn;
             TotalReturnRate = TotalReturnRate;
         }

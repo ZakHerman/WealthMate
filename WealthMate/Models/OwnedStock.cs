@@ -2,7 +2,7 @@
 
 namespace WealthMate.Models
 {
-    class OwnedStock : OwnedAsset
+    public class OwnedStock : OwnedAsset
     {
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
@@ -30,7 +30,7 @@ namespace WealthMate.Models
                 DayReturnRate = (DayReturn / PrincipalValue) * 100;
             }
         }
-        public override float PrincipalValue
+        public override float PrincipalValue //total price paid
         {
             get
             {
