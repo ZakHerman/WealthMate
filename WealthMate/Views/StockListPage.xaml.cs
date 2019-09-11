@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Syncfusion.ListView.XForms;
 using WealthMate.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views
@@ -18,7 +20,7 @@ namespace WealthMate.Views
         }
 
         // Event handler for watchlist stock being pressed
-        private async void StockListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void StockListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var selected = (Stock)e.ItemData;
 
@@ -58,6 +60,31 @@ namespace WealthMate.Views
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
+        }
+
+        //search functionality below
+        SearchBar searchBar = null;
+        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchBar = (sender as SearchBar);
+            if (stockList.DataSource != null)
+            {
+                this.stockList.DataSource.Filter = FilterStocks;
+                this.stockList.DataSource.RefreshFilter();
+            }
+        }
+
+        private bool FilterStocks(object obj)
+        {
+            if (searchBar == null || searchBar.Text == null)
+                return true;
+
+            var stock = obj as Stock;
+            if (stock.CompanyName.ToLower().Contains(searchBar.Text.ToLower())
+                 || stock.Symbol.ToLower().Contains(searchBar.Text.ToLower()))
+                return true;
+            else
+                return false;
         }
     }
 }
