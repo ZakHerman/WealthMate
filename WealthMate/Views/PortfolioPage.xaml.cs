@@ -37,7 +37,7 @@ namespace WealthMate.Views
             GenerateStockExample();
             GenerateTermDepositExample();
             //OwnedAssetListView.ItemsSource = Stocks;
-            OwnedTDListView.ItemsSource = TermDeposits;
+            //OwnedTDListView.ItemsSource = TermDeposits;
 
 
 
@@ -58,7 +58,7 @@ namespace WealthMate.Views
             string name = stockTestA.CompanyName;
             float currentPrice = stockTestA.CurrentPrice;
             float priceClosed = stockTestA.PriceClose;
-            Stocks.Add(new OwnedStock(ref name, new System.DateTime(2019, 08, 14, 0, 0, 0), 4.5f, 14f, ref currentPrice, ref priceClosed));
+            Stocks.Add(new OwnedStock(stockTestA, new System.DateTime(2019, 08, 14, 0, 0, 0), 4.5f, 14f));
 
         }
     }

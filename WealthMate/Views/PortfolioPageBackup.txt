@@ -69,7 +69,50 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
             </StackLayout>
         </ContentPage>
 
- 
+        <ContentPage Title="List">
+          <ContentPage.BindingContext>
+            <models:OwnedAsset/>
+          </ContentPage.BindingContext>
+
+          <ContentPage.Content>
+          <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" x:Name="OwnedAssetListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView.ItemTemplate>
+          <DataTemplate>
+            <Grid Margin="12,0,12,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="16" />
+              </Grid.ColumnDefinitions>
+
+              <Image Grid.Column="0" Source="{Binding Symbol}"/>
+              <Label Grid.Column="1" Text ="{Binding SharesPurchased}"/>
+              <Label Grid.Column="2" Text ="{Binding PurchasedPrice}"/>
+              <Label Grid.Column="3" Text ="Binding CurrentPrice, StringFormat='{0:C}'}"/>
+            </Grid>
+          </DataTemplate>
+            <StackLayout>
+                <BoxView Color="DarkRed" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+            </syncfusion:SfListView.ItemTemplate>
+          </syncfusion:SfListView>
+          <syncfusion:SfListView x:Name="OwnedTDListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView.ItemTemplate>
+              <DataTemplate>
+                <Grid Margin="12,0,12,0">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+
+                  <Image Grid.Column="0" Source="{Binding Logo}"/>
+                  <Label Grid.Column="1" Text="{Binding PrincipalValue}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" />
+                  <Label Grid.Column="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
+                </Grid>
+              </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+          </syncfusion:SfListView>
+            </ContentPage.Content>
+        </ContentPage>
     </TabbedPage.Children>
 </TabbedPage>
 
