@@ -30,7 +30,7 @@
                 </chart:SfChart>
 
                 <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
-                <Label x:Name ="CurrentPriceTimeStampText" Text="[DATE AND TIME]" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
                 <Grid Margin="10, 0">
@@ -44,14 +44,14 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="Close Price: [PRICE]" Grid.Row="0" Grid.Column="0" />
-                    <Label Text="Open Price: [PRICE]" Grid.Row="0" Grid.Column="1" />
-                    <Label Text="Day Low: [PRICE]" Grid.Row="1" Grid.Column="0" />
-                    <Label Text="Day High: [PRICE]" Grid.Row="1" Grid.Column="1" />
-                    <Label Text="52 Week Low: [PRICE]" Grid.Row="2" Grid.Column="0" />
-                    <Label Text="52 Week High: [PRICE]" Grid.Row="2" Grid.Column="1" />
-                    <Label Text="Shares: [FIGURE]" Grid.Row="3" Grid.Column="0" />
-                    <Label Text="Volume: [FIGURE]" Grid.Row="3" Grid.Column="1" />
+                    <Label Text="{Binding Stock.PriceClose, StringFormat='Close Price: {0:N}'}" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="{Binding Stock.PriceOpen, StringFormat='Open Price: {0:N}'}" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="{Binding Stock.DayLow, StringFormat='Day Low: {0:N}'}" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="{Binding Stock.DayHigh, StringFormat='Day High: {0:N}'}" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='52 Week Low: {0:N}'}" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:N}'}" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N}'}" Grid.Row="3" Grid.Column="0" />
+                    <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N}'}" Grid.Row="3" Grid.Column="1" />
                 </Grid>
             </StackLayout>
         </ScrollView>
