@@ -8,21 +8,28 @@ namespace WealthMate.Models
         private float _dayReturnRate;
         private float _principalValue;
         private float _currentValue;
+        private float _currentPrice;
+        private float _priceClose;
 
         public Stock Stock { get; set; }
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
-
-        // Get only properties are never assigned
-        public float CurrentPrice { get; }
-        public float PriceClose { get; }
-
+        public float CurrentPrice
+        {
+            get => _currentPrice;
+            set => _currentPrice = Stock.CurrentPrice;
+        }
+        public float PriceClose
+        {
+            get => _priceClose;
+            set => _priceClose = Stock.PriceClose;
+        }
         // Setter should be using value keyword
         // Currently can not set these properties
         public float DayReturn
         {
             get => _dayReturn;
-            set => _dayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);
+            set => _dayReturn = _currentValue - (_currentPrice * SharesPurchased);
         }
 
         // Setter should be using value keyword
@@ -30,7 +37,7 @@ namespace WealthMate.Models
         public float DayReturnRate
         {
             get => _dayReturnRate;
-            set => _dayReturnRate = (DayReturn / PrincipalValue) * 100;
+            set => _dayReturnRate = (_dayReturn / _principalValue) * 100;
         }
 
         // Setter should be using value keyword
@@ -44,7 +51,7 @@ namespace WealthMate.Models
         public override float CurrentValue
         {
             get => _currentValue;
-            set => _currentValue = Stock.CurrentPrice * SharesPurchased;
+            set => _currentValue = _currentPrice * SharesPurchased;
         }
 
         // Unnecessary use of base class as nothing is being used from it and first parameter is passing companyname for AssetName

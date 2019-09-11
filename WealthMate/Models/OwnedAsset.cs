@@ -25,12 +25,12 @@ namespace WealthMate.Models
             get => _currentValue;
             set
             {
-                var daysBetween = (DateTime.Today - PurchaseDate).TotalDays;
+                TimeSpan daysBetween = DateTime.Today - PurchaseDate;
 
-                var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween / 365) * CompoundRate);
+                var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate);
 
                 if (RegularPayment > 0)
-                    _currentValue= (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween / 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
+                    _currentValue= (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
                 else
                     _currentValue = nonPaymentValue;
             }
@@ -63,9 +63,9 @@ namespace WealthMate.Models
             InterestRate = interestRate;
             Length = length;
             CompoundRate = compoundRate; //how often per year that interest is calculated/added
-            /*CurrentValue = CurrentValue;
-            TotalReturn = TotalReturn;
-            TotalReturnRate = TotalReturnRate;*/
+            CurrentValue = _currentValue;
+            TotalReturn = _totalReturn;
+            TotalReturnRate = _totalReturnRate;
         }
 
         // Virtual member in constructor call

@@ -15,14 +15,14 @@ namespace WealthMate.UnitTests
         {
             test1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 0.27f, 12, 4, 0);
             test2 = new OwnedAsset("ASB Bank", new DateTime(2019, 1, 8), "Term Deposit", 2000, 0.30f, 6, 4, 0);
-            test3 = new OwnedAsset("TSB Bank", new DateTime(2017, 2, 29), "Term Deposit", 1000, 0.20f, 3, 4, 0);
+            test3 = new OwnedAsset("TSB Bank", new DateTime(2017, 2, 21), "Term Deposit", 1000, 0.20f, 3, 4, 0);
         }
 
         [TestMethod]
         public void TestCurrentValue()
         {
-            float expectedVal = 0.0f;
-            float currentVal = test1.CurrentValue;
+            float expectedVal = 10064.59f;
+            float currentVal = (float)Math.Round(test1.CurrentValue, 2);
 
             Assert.AreEqual(expectedVal, currentVal);
         }
