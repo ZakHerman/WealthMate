@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             mc:Ignorable="d"
+             x:Class="WealthMate.Views.TermDepositListPage"
+             x:Name="Root"
+             Title="Term Deposits">
+
+    <ContentPage.BindingContext>
+        <models:TermDeposit />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <syncfusion:SfListView ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="12,0,12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="{Binding Logo}"/>
+                        <Label Grid.Column="1" Text="{Binding Provider}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" />
+                        <Label Grid.Column="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+    </ContentPage.Content>
+</ContentPage> 

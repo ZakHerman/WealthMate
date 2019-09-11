@@ -4,6 +4,7 @@ namespace WealthMate.Models
 {
     public class OwnedStock : OwnedAsset
     {
+        public Stock Stock { get; set; }
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
         public float CurrentPrice { get; }
@@ -16,7 +17,7 @@ namespace WealthMate.Models
             }
             set
             {
-                DayReturn = CurrentValue - (PriceClose * SharesPurchased);
+                DayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);
             }
         }
         public float DayReturnRate
@@ -49,16 +50,15 @@ namespace WealthMate.Models
             }
             set
             {
-                CurrentValue = CurrentPrice * SharesPurchased;
+                CurrentValue = Stock.CurrentPrice * SharesPurchased;
             }
         }
 
-        public OwnedStock(ref string name, DateTime purchaseDate, float purchasedPrice, float sharesPurchased, ref float currentPrice, ref float priceClose) : base(name, purchaseDate, "stock", 0, 0, 0, 0, 0)
+        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased) : base(stock.CompanyName, purchaseDate, "stock", 0, 0, 0, 0, 0)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
-            CurrentPrice = currentPrice;
-            PriceClose = priceClose;
+            Stock = stock;
             DayReturn = DayReturn;
             DayReturnRate = DayReturnRate;
         }
