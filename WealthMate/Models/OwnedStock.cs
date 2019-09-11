@@ -47,6 +47,7 @@ namespace WealthMate.Models
             set => _currentValue = Stock.CurrentPrice * SharesPurchased;
         }
 
+        // Unnecessary use of base class as nothing is being used from it and first parameter is passing companyname for AssetName
         public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased) : base(stock.CompanyName, purchaseDate, "stock", 0, 0, 0, 0, 0)
         {
             PurchasedPrice = purchasedPrice;

@@ -15,21 +15,27 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
         <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12,0,12,0">
                         <Grid.ColumnDefinitions>
+                            <!-- Company image size -->
                             <ColumnDefinition Width="32" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
+                        <!-- Stock company logo -->
                         <Image Grid.Column="0" Source="{Binding Symbol}" />
+                        <!-- stock company name -->
                         <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="StartAndExpand" FontSize="20" LineBreakMode="TailTruncation" Margin="4,5,0,0" />
+                        <!-- Stock symbol -->
                         <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4,0,0,5" />
 
                         <Frame Grid.Column="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
+                            <!-- Stock current price -->
                             <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen" />
                         </Frame>
                     </Grid>
