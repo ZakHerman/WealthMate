@@ -4,6 +4,10 @@ namespace WealthMate.Models
 {
     public class OwnedAsset
     {
+        private float _currentValue;
+        private float _totalReturn;
+        private float _totalReturnRate;
+
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string Type { get; set; }
@@ -12,49 +16,43 @@ namespace WealthMate.Models
         public int CompoundRate { get; set; }
         public float RegularPayment { get; set; }
         public virtual float PrincipalValue { get; set; }
-
-        private float _currentValue;
+        
+        // Setter should be using value keyword
+        // Replace set code with a method in compound interest method (possibly in a separate static class)
+        // Interest calculation will be incorrect when daysBetween includes leap years
         public virtual float CurrentValue
         {
-            get
-            {
-                return _currentValue;
-            }
+            get => _currentValue;
             set
             {
-                var DaysBetween = (DateTime.Today - PurchaseDate).TotalDays;
+                var daysBetween = (DateTime.Today - PurchaseDate).TotalDays;
 
-                var NonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween / 365) * CompoundRate);
+                var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween / 365) * CompoundRate);
 
                 if (RegularPayment > 0)
-                    _currentValue= (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (DaysBetween / 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + NonPaymentValue;
+                    _currentValue= (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween / 365) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
                 else
-                    _currentValue = NonPaymentValue;
-            }
-        }
-        public float TotalReturn
-        {
-            get
-            {
-                return TotalReturn;
-            }
-            set
-            {
-                TotalReturn = CurrentValue - PrincipalValue;
-            }
-        }
-        public float TotalReturnRate
-        {
-            get
-            {
-                return TotalReturnRate;
-            }
-            set
-            {
-                TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
+                    _currentValue = nonPaymentValue;
             }
         }
 
+        // Setter should be using value keyword
+        // Currently can not set these properties
+        public float TotalReturn
+        {
+            get => _totalReturn;
+            set => _totalReturn = CurrentValue - PrincipalValue;
+        }
+
+        // Setter should be using value keyword
+        public float TotalReturnRate
+        {
+            get => _totalReturnRate;
+            set => _totalReturnRate = (TotalReturn / PrincipalValue) * 100;
+        }
+
+        // Virtual member in constructor call
+        // https://stackoverflow.com/questions/119506/virtual-member-call-in-a-constructor
         public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
         {
             AssetName = assetName;
@@ -65,10 +63,12 @@ namespace WealthMate.Models
             InterestRate = interestRate;
             Length = length;
             CompoundRate = compoundRate; //how often per year that interest is calculated/added
-            CurrentValue = CurrentValue;
+            /*CurrentValue = CurrentValue;
             TotalReturn = TotalReturn;
-            TotalReturnRate = TotalReturnRate;
+            TotalReturnRate = TotalReturnRate;*/
         }
+
+        // Virtual member in constructor call
         //Default constructor - temporary!
         public OwnedAsset()
         {
