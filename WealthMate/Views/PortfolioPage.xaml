@@ -31,10 +31,12 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
             <StackLayout>
                 <chart:SfChart VerticalOptions="FillAndExpand">
 
+                    <!-- Shows the total returns of the portfolio as the title - as per the wireframe-->
                     <chart:SfChart.Title>
-                        <chart:ChartTitle Text="Assets Portfolio Breakdown" TextColor="SeaGreen" TextAlignment="Center" Font="20"/>
+                        <chart:ChartTitle Text="{Binding Portfolio.TotalReturn, StringFormat='${0:F0}'}" TextColor="ForestGreen" TextAlignment="Center" Font="20"/>
                     </chart:SfChart.Title>
-
+    
+                    <!--The pie chart-->
                     <chart:SfChart.Series>
                         <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "StockName" YBindingPath="Quantity" EnableTooltip="True">
                             <chart:PieSeries.ColorModel>
@@ -48,6 +50,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                         </chart:PieSeries>
                     </chart:SfChart.Series>
 
+                    <!--The pie chart legends of categories and returns-->
                     <chart:SfChart.Legend>
                         <chart:ChartLegend x:Name="Legend" DockPosition="Bottom" OverflowMode="Wrap">
                             <chart:ChartLegend.ItemTemplate>

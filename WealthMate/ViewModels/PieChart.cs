@@ -28,6 +28,7 @@ namespace WealthMate.ViewModels
             testAsset.Quantity = 10;
             testAsset2.Quantity = 90;
 
+
             pieChart.Add(testAsset);
             pieChart.Add(testAsset2);
         }

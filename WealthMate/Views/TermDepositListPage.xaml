@@ -15,6 +15,8 @@
     </ContentPage.BindingContext>
 
     <Grid>
+        
+        <!--The swipe functionality to add a term deposit to portfolio-->
         <syncfusion:SfListView AllowSwiping="True" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
             <syncfusion:SfListView.RightSwipeTemplate>
                 <DataTemplate x:Name="RightSwipeTemplate">
@@ -26,6 +28,7 @@
                 </DataTemplate>
             </syncfusion:SfListView.RightSwipeTemplate>
 
+            <!--The list view of the term deposits-->
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12,0,12,0">
