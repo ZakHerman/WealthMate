@@ -32,10 +32,21 @@ namespace WealthMate.Models
         public int Volume { get; set; }
         public string CompanyName { get; set; }
         public string Symbol { get; set; }
+        private bool _positiveDayReturns;
+        public bool PositiveDayReturns
+        {
+            get => _positiveDayReturns;
+            set
+            {
+                if (_currentPrice >= PriceClose)
+                    _positiveDayReturns = true;
+                else
+                    _positiveDayReturns = false;
+            }
+        }
 
         public Stock()
         {
-
         }
 
         public Stock(string name, float price, DateTime priceDate, int shares, int volume)
@@ -75,6 +86,7 @@ namespace WealthMate.Models
         public void UpdateStock()
         {
             //.....
+            PositiveDayReturns = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -31,8 +31,25 @@
                 </chart:SfChart>
                 
                 <!--Labels underneath graph-->
-
-                <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26" />
+                        <!--Image size of arrow-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" Margin="10, 0, 0, 0" Grid.Row="0" Grid.Column="0"/>
+                    <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Margin="0, 5, 0 , 0">
+                        <Image.Triggers>
+                            <DataTrigger TargetType ="Image" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
+                                <Setter Property="Source" Value="uparrow.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </Grid>
+                
                 <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate, StringFormat='As at {0:d MMMM yyyy HH:mm:ss} NZST'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
