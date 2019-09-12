@@ -7,34 +7,39 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockDetailsPage"
              Title="{Binding Stock.CompanyName}">
+    
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView>                                                                    <!--Allows for scrolling in page-->
             <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
                 <Label x:Name ="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
-                <chart:SfChart x:Name="Chart" VerticalOptions="FillAndExpand">
-                    <chart:SfChart.PrimaryAxis>
+                <chart:SfChart x:Name="Chart" VerticalOptions="FillAndExpand">          <!--Stock graph details-->
+                    <chart:SfChart.PrimaryAxis>                                         <!--X-Axis is Date/Time-->>
                         <chart:DateTimeAxis/>
                     </chart:SfChart.PrimaryAxis>
      
-                    <chart:SfChart.SecondaryAxis>
+                    <chart:SfChart.SecondaryAxis>                                       <!--Y-Axis is the price of the stock-->
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
 
-                    <chart:SfChart.ChartBehaviors>
+                    <chart:SfChart.ChartBehaviors>                                      <!--Zoom behaviour-->
                         <chart:ChartZoomPanBehavior ZoomMode="X"/>
                         <chart:ChartTrackballBehavior/>
                     </chart:SfChart.ChartBehaviors>
      
                     <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="PriceDate" YBindingPath="CurrentPrice"/>
                 </chart:SfChart>
+                
+                <!--Labels underneath graph-->
 
                 <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
+                <!--Grid of Key Statistics of Stock-->
                 <Grid Margin="10, 0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />        <!--Height and Width are the maximum size-->
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -44,14 +49,15 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding Stock.PriceClose, StringFormat='Close Price: {0:N}'}" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="{Binding Stock.PriceClose, StringFormat='Close Price: {0:N}'}" Grid.Row="0" Grid.Column="0" />     <!--Stock Statistic Details-->
                     <Label Text="{Binding Stock.PriceOpen, StringFormat='Open Price: {0:N}'}" Grid.Row="0" Grid.Column="1" />
                     <Label Text="{Binding Stock.DayLow, StringFormat='Day Low: {0:N}'}" Grid.Row="1" Grid.Column="0" />
                     <Label Text="{Binding Stock.DayHigh, StringFormat='Day High: {0:N}'}" Grid.Row="1" Grid.Column="1" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='52 Week Low: {0:N}'}" Grid.Row="2" Grid.Column="0" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:N}'}" Grid.Row="2" Grid.Column="1" />
-                    <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N}'}" Grid.Row="3" Grid.Column="0" />
-                    <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N}'}" Grid.Row="3" Grid.Column="1" />
+                    <Label Text="{Binding Stock.DayAverage, StringFormat='Day Average: {0:N}'}" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='52 Week Low: {0:N}'}" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:N}'}" Grid.Row="3" Grid.Column="0" />
+                    <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N}'}" Grid.Row="3" Grid.Column="1" />
+                    <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N}'}" Grid.Row="4" Grid.Column="0" />
                 </Grid>
             </StackLayout>
         </ScrollView>

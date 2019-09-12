@@ -9,13 +9,13 @@ namespace WealthMate.Views
         public Stock Stock { get; }
         public StockHistory StockHistory { get; }
 
-        public StockDetailsPage(Stock stock)
+        public StockDetailsPage(Stock stock)            //Displays details of selected stock
         {
             Stock = stock;
             StockHistory = new StockHistory();
             InitializeComponent();
 
-            BindingContext = this;
+            BindingContext = this;     
         }
     }
 }
