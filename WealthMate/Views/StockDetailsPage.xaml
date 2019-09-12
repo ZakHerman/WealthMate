@@ -14,7 +14,7 @@
                 <Label x:Name ="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
                 <chart:SfChart x:Name="Chart" VerticalOptions="FillAndExpand">          <!--Stock graph details-->
-                    <chart:SfChart.PrimaryAxis>                                         <!--X-Axis is Date/Time-->>
+                    <chart:SfChart.PrimaryAxis>                                         <!--X-Axis is Date/Time-->
                         <chart:DateTimeAxis/>
                     </chart:SfChart.PrimaryAxis>
      
@@ -33,7 +33,7 @@
                 <!--Labels underneath graph-->
 
                 <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
-                <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate, StringFormat='As at {0:d MMMM yyyy HH:mm:ss} NZST'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
                 <!--Grid of Key Statistics of Stock-->
