@@ -8,5 +8,7 @@ namespace WealthMate.Models
     {
         public string StockName { get; set; }
         public int Quantity { get; set; }
+
+        public string AssetType { get; set; }
     }
 }

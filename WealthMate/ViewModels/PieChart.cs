@@ -10,6 +10,8 @@ namespace WealthMate.ViewModels
     {
         public ObservableCollection<FakeAsset> pieChart { get; set; }
 
+        //public ObservableCollection<OwnedAsset> pieChart { get; set; }
+
         public PieChart()
         {
             pieChart = new ObservableCollection<FakeAsset>();
@@ -22,12 +24,23 @@ namespace WealthMate.ViewModels
             FakeAsset testAsset = new FakeAsset();
             FakeAsset testAsset2 = new FakeAsset();
 
+            testAsset.AssetType = "Stock";
+            testAsset.AssetType = "Term Deposit";
+
             testAsset.StockName = "A2 Milk";
             testAsset2.StockName = "Fonterra";
 
             testAsset.Quantity = 10;
             testAsset2.Quantity = 90;
 
+            //testAsset.Type = "Stock";
+            //testAsset2.Type = "Term Deposit";
+
+            //testAsset.AssetName = "A2 Milk";
+            //testAsset2.AssetName = "Fonterra";
+
+            //testAsset.CurrentValue = 2500;
+            //testAsset2.CurrentValue = 120;
 
             pieChart.Add(testAsset);
             pieChart.Add(testAsset2);

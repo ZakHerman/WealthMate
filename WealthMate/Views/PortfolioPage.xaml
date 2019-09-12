@@ -55,10 +55,20 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                         <chart:ChartLegend x:Name="Legend" DockPosition="Bottom" OverflowMode="Wrap">
                             <chart:ChartLegend.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Horizontal" x:Name="root" WidthRequest="143">
-                                        <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
-                                        <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.StockName}" />
-                                        <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
+                                    <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Vertical" x:Name="root" WidthRequest="143">
+
+                                        <Grid Margin="12,0,12,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="32" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                        <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
+                                        <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.AssetType}" />
+                                        <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
+                                    </Grid>
+                                        
                                     </StackLayout>
                                 </DataTemplate>
                             </chart:ChartLegend.ItemTemplate>
