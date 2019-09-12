@@ -15,8 +15,12 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="SearchBar" Placeholder ="Search Watchlist" TextChanged="OnFilterTextChanged" />
+
+        
         <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-        <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
+        <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12,0,12,0">
@@ -42,5 +46,6 @@
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

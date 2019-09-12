@@ -3,12 +3,15 @@ using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using System;
+using Xamarin.Forms;
 
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WatchlistPage
     {
+        private SearchBar _searchBar;
+
         public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
 
         public WatchlistPage()
@@ -19,7 +22,7 @@ namespace WealthMate.Views
         }
 
         // Event handler for watchlist stock being pressed
-        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void WatchlistView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var selected = (Stock)e.ItemData;
 
@@ -59,6 +62,27 @@ namespace WealthMate.Views
             Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
             Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
             Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
+        }
+
+        //search functionality below
+        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
+        {
+            _searchBar = (sender as SearchBar);
+
+            if (Watchlist.DataSource != null)
+            {
+                Watchlist.DataSource.Filter = FilterWList;
+                Watchlist.DataSource.RefreshFilter();
+            }
+        }
+        //need to change to return stocks, TDs etc.
+        private bool FilterWList(object obj)
+        {
+            if (_searchBar?.Text == null)
+                return true;
+
+            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

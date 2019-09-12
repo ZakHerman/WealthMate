@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using WealthMate.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views
@@ -7,6 +8,7 @@ namespace WealthMate.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermDepositListPage
     {
+        private SearchBar _searchBar;
         public ObservableCollection<TermDeposit> TermDeposits { get; } = new ObservableCollection<TermDeposit>();
 
         public TermDepositListPage()
@@ -28,6 +30,26 @@ namespace WealthMate.Views
             TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 24, MaxDeposit = 20000, MinDeposit = 1000 });
             TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f, LengthInMonths = 6, MaxDeposit = 15000, MinDeposit = 10000 });
             TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 18, MaxDeposit = 1000, MinDeposit = 1000 });
+        }
+
+        //search functionality below
+        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
+        {
+            _searchBar = (sender as SearchBar);
+
+            if (TDList.DataSource != null)
+            {
+                TDList.DataSource.Filter = FilterTDeposits;
+                TDList.DataSource.RefreshFilter();
+            }
+        }
+
+        private bool FilterTDeposits(object obj)
+        {
+            if (_searchBar?.Text == null)
+                return true;
+
+            return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

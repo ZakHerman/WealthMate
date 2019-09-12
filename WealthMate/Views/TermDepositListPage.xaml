@@ -13,11 +13,14 @@
     <ContentPage.BindingContext>
         <models:TermDeposit />
     </ContentPage.BindingContext>
+    <StackLayout>
+        <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
 
-    <Grid>
-        
+        <Grid>
+
+
         <!--The swipe functionality to add a term deposit to portfolio-->
-        <syncfusion:SfListView AllowSwiping="True" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+        <syncfusion:SfListView x:Name="TDList" AllowSwiping="True" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
             <syncfusion:SfListView.RightSwipeTemplate>
                 <DataTemplate x:Name="RightSwipeTemplate">
                     <Grid BackgroundColor="#8133C096" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
@@ -53,5 +56,6 @@
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
     </Grid>
+    </StackLayout>
 
 </ContentPage> 
