@@ -13,9 +13,19 @@
     <ContentPage.BindingContext>
         <models:TermDeposit />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Content>
-        <syncfusion:SfListView ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+
+    <Grid>
+        <syncfusion:SfListView AllowSwiping="True" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView.RightSwipeTemplate>
+                <DataTemplate x:Name="RightSwipeTemplate">
+                    <Grid BackgroundColor="#8133C096" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                        <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                            <Button Grid.Column="0" Grid.Row="0" BackgroundColor="#8133C096" Text="Add to portfolio" Font="Bold,12"  TextColor="White"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.RightSwipeTemplate>
+
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="12,0,12,0">
@@ -24,7 +34,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Image Grid.Column="0" Source="{Binding Logo}"/>
                         <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Provider}" VerticalOptions="EndAndExpand" FontSize="20" LineBreakMode="TailTruncation" />
                         <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0:F0} months'}" VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" FontSize="12" TextColor="DarkGray"/>
@@ -34,10 +44,11 @@
                         <Frame Grid.Column="3" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" CornerRadius="6">
                             <Label Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="ForestGreen" />
                         </Frame>
-                        
+
                     </Grid>
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
-    </ContentPage.Content>
+    </Grid>
+
 </ContentPage> 
