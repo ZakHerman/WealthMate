@@ -16,9 +16,8 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" Grid.Row="0">
-            </SearchBar>
-            <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped" x:Name="stockList">
+            <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
+            <syncfusion:SfListView x:Name="StockList" ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0">

@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms;
@@ -10,6 +9,8 @@ namespace WealthMate.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StockListPage
     {
+        private SearchBar _searchBar;
+
         public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
 
         public StockListPage()
@@ -63,28 +64,24 @@ namespace WealthMate.Views
         }
 
         //search functionality below
-        SearchBar searchBar = null;
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            searchBar = (sender as SearchBar);
-            if (stockList.DataSource != null)
+            _searchBar = (sender as SearchBar);
+
+            if (StockList.DataSource != null)
             {
-                this.stockList.DataSource.Filter = FilterStocks;
-                this.stockList.DataSource.RefreshFilter();
+                StockList.DataSource.Filter = FilterStocks;
+                StockList.DataSource.RefreshFilter();
             }
         }
 
         private bool FilterStocks(object obj)
         {
-            if (searchBar == null || searchBar.Text == null)
+            if (_searchBar?.Text == null)
                 return true;
 
-            var stock = obj as Stock;
-            if (stock.CompanyName.ToLower().Contains(searchBar.Text.ToLower())
-                 || stock.Symbol.ToLower().Contains(searchBar.Text.ToLower()))
-                return true;
-            else
-                return false;
+            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

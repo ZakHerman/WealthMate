@@ -49,15 +49,11 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                     </chart:SfChart.Series>
 
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend x:Name="legend" DockPosition="Bottom" OverflowMode="Wrap">
+                        <chart:ChartLegend x:Name="Legend" DockPosition="Bottom" OverflowMode="Wrap">
                             <chart:ChartLegend.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Horizontal" x:Name="root" WidthRequest="143">
-                                        <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" >
-                                            <BoxView.Margin>
-                                                <OnPlatform x:TypeArguments="Thickness" WinPhone="0,4,0,0" />
-                                            </BoxView.Margin>
-                                        </BoxView>
+                                        <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
                                         <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.StockName}" />
                                         <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
                                     </StackLayout>
