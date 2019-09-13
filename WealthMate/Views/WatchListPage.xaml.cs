@@ -16,9 +16,12 @@ namespace WealthMate.Views
 
         public WatchlistPage()
         {
-            InitializeComponent();
-
             GenerateExample();
+            foreach (Stock s in Stocks)
+            {
+                s.UpdateStock();
+            }
+            InitializeComponent();
         }
 
         // Event handler for watchlist stock being pressed
