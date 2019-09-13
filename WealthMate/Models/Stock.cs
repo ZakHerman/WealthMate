@@ -44,7 +44,19 @@ namespace WealthMate.Models
                     _positiveDayReturns = false;
             }
         }
+        private float _dayReturn;
+        public float DayReturn
+        {
+            get => _dayReturn;
+            set => _dayReturn = _currentPrice - PriceClose;
+        }
 
+        private float _dayReturnRate;
+        public float DayReturnRate
+        {
+            get => _dayReturnRate;
+            set => _dayReturnRate = (_dayReturn / PriceClose) * 100;
+        }
         public Stock()
         {
         }
@@ -87,6 +99,8 @@ namespace WealthMate.Models
         {
             //.....
             PositiveDayReturns = true;
+            DayReturn = 0.0f;
+            DayReturnRate = 0.0f;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
