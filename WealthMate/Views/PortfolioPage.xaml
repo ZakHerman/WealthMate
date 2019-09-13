@@ -63,7 +63,6 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                         <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding DataPoint.AssetType}" />
                                         <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
                                     </Grid>
-                                        
                                 </DataTemplate>
                             </chart:ChartLegend.ItemTemplate>
                         </chart:ChartLegend>
@@ -71,8 +70,6 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                 </chart:SfChart>
             </StackLayout>
         </ContentPage>
-
- 
     </TabbedPage.Children>
 </TabbedPage>
 
