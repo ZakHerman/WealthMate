@@ -4,11 +4,9 @@ using System.Text;
 
 namespace WealthMate.Models
 {
-    public class FakeAsset
+    public class PieData
     {
-        public string StockName { get; set; }
-        public int Quantity { get; set; }
-
+        public float Quantity { get; set; }
         public string AssetType { get; set; }
     }
 }

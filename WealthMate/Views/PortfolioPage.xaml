@@ -38,13 +38,13 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
     
                     <!--The pie chart-->
                     <chart:SfChart.Series>
-                        <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "StockName" YBindingPath="Quantity" EnableTooltip="True">
+                        <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "AssetType" YBindingPath="Quantity" EnableTooltip="True">
                             <chart:PieSeries.ColorModel>
-                                <chart:ChartColorModel Palette="Custom">
-                                    <chart:ChartColorModel.CustomBrushes>
+                                <chart:ChartColorModel Palette="Natural">
+                                    <!--<chart:ChartColorModel.CustomBrushes>
                                         <Color>#33BDFF</Color>
                                         <Color>#33A4FF</Color>
-                                    </chart:ChartColorModel.CustomBrushes>
+                                    </chart:ChartColorModel.CustomBrushes>-->
                                 </chart:ChartColorModel>
                             </chart:PieSeries.ColorModel>
                         </chart:PieSeries>
