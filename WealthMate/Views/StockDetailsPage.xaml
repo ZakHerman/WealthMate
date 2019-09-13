@@ -5,9 +5,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.StockDetailsPage"
-             Title="{Binding Stock.CompanyName}">
-    
+             x:Class="WealthMate.Views.StockDetailsPage">
+
+
+    <NavigationPage.TitleView>
+        <Grid x:Name="TopView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <!--Image size of arrow-->
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!--Price column-->
+                <ColumnDefinition Width="37" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="NavBarTitle"
+                   Text="{Binding Stock.CompanyName}"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Start"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   FontSize="20"
+                   Grid.Column="0"
+                   Grid.Row="0"/>
+            <Image Source="starunfilled.png" Grid.Row="0" Grid.Column="1" Margin="0, 0, 15, 0">
+
+            </Image>
+        </Grid>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
         <ScrollView>                                                                    <!--Allows for scrolling in page-->
             <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
@@ -31,8 +57,41 @@
                 </chart:SfChart>
                 
                 <!--Labels underneath graph-->
-
-                <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="26" />
+                        <!--Image size of arrow-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />           <!--Price column-->
+                        <ColumnDefinition Width="auto" />           <!--Arrow column-->
+                        <ColumnDefinition Width="auto" />           <!--Return column-->
+                        <ColumnDefinition Width="auto" />           <!--Retrun rate column-->
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" Margin="10, 0, 0, 0" Grid.Row="0" Grid.Column="0"/>
+                    <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Margin="0, 5, 0 , 0">
+                        <Image.Triggers>                                                                                    <!--Change to upward arrow when positive return-->
+                            <DataTrigger TargetType ="Image" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
+                                <Setter Property="Source" Value="uparrow.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Label x:Name="DayReturnText" Text="{Binding Stock.DayReturn, StringFormat='(${0:N})'}" FontSize ="Large" TextColor="Red" Grid.Row="0" Grid.Column="2">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}"  Value="True">    <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="Color.Green" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label x:Name="DayReturnRateText" Text="{Binding Stock.DayReturnRate, StringFormat='({0:N}%)'}" FontSize ="Large" TextColor="Red" Grid.Row="0" Grid.Column="3">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}"  Value="True">    <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="Color.Green" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
+                
                 <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate, StringFormat='As at {0:d MMMM yyyy HH:mm:ss} NZST'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 

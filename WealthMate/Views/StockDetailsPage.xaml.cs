@@ -12,6 +12,7 @@ namespace WealthMate.Views
         public StockDetailsPage(Stock stock)            //Displays details of selected stock
         {
             Stock = stock;
+            stock.UpdateStock();
             StockHistory = new StockHistory();
             InitializeComponent();
 
