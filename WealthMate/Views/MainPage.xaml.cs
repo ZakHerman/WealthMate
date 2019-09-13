@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using WealthMate.Models;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using AndroidPlatform = Xamarin.Forms.PlatformConfiguration.Android;
 

@@ -11,16 +11,18 @@ namespace WealthMate.Views
     public partial class WatchlistPage
     {
         private SearchBar _searchBar;
+        public ObservableCollection<Stock> WatchListStocks { get; set; }
 
-        public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
 
         public WatchlistPage()
         {
-            GenerateExample();
-            foreach (Stock s in Stocks)
+            WatchListStocks = (Application.Current as App).User.WatchListStocks;
+
+            foreach (Stock s in WatchListStocks)
             {
                 s.UpdateStock();
             }
+
             InitializeComponent();
         }
 
@@ -36,35 +38,6 @@ namespace WealthMate.Views
             await Navigation.PushAsync(new StockDetailsPage(selected));
   
             ((SfListView)sender).SelectedItem = null;
-        }
-
-        // Dummy data to use before using database
-        private void GenerateExample()
-        {
-            Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 2, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 1, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 0.01f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 0f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 3, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 15f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 4, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
-            Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f, PriceDate = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, DayAverage = 1.15f, Shares = 1500, Volume = 100 });
         }
 
         //search functionality below

@@ -1,5 +1,7 @@
-﻿using WealthMate.Models;
+﻿using System.Collections.ObjectModel;
+using WealthMate.Models;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms;
 
 namespace WealthMate.Views
 {
@@ -17,6 +19,14 @@ namespace WealthMate.Views
             InitializeComponent();
 
             BindingContext = this;     
+        }
+
+        private void WatchListStarClicked(object sender, System.EventArgs e)
+        {
+            if ((Application.Current as App).User.WatchListStocks.Contains(Stock))
+                (Application.Current as App).User.WatchListStocks.Remove(Stock);
+            else
+                (Application.Current as App).User.WatchListStocks.Add(Stock);
         }
     }
 }
