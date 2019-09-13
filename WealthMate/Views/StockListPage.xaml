@@ -33,7 +33,7 @@
 
                             <Frame Grid.Column="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
                                 <Frame.Triggers>
-                                    <DataTrigger TargetType ="Frame" Binding="{Binding PositiveDayReturns}"  Value="False">
+                                    <DataTrigger TargetType ="Frame" Binding="{Binding PositiveDayReturns}" Value="False">
                                         <!--Change text to red when negative return-->
                                         <Setter Property="BackgroundColor" Value="Red" />
                                     </DataTrigger>
@@ -41,7 +41,7 @@
                                 
                                 <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType ="Label" Binding="{Binding PositiveDayReturns}"  Value="False">
+                                        <DataTrigger TargetType ="Label" Binding="{Binding PositiveDayReturns}" Value="False">
                                             <!--Change text to red when negative return-->
                                             <Setter Property="TextColor" Value="Color.DarkRed" />
                                         </DataTrigger>
