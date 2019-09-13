@@ -25,22 +25,16 @@ namespace WealthMate.ViewModels
             FakeAsset testAsset2 = new FakeAsset();
 
             testAsset.AssetType = "Stock";
-            testAsset.AssetType = "Term Deposit";
+            testAsset2.AssetType = "Term Deposit";
 
             testAsset.StockName = "A2 Milk";
             testAsset2.StockName = "Fonterra";
 
-            testAsset.Quantity = 10;
-            testAsset2.Quantity = 90;
+            testAsset.PercentageChange = 1.20f;
+            testAsset2.PercentageChange = 8.15f;
 
-            //testAsset.Type = "Stock";
-            //testAsset2.Type = "Term Deposit";
-
-            //testAsset.AssetName = "A2 Milk";
-            //testAsset2.AssetName = "Fonterra";
-
-            //testAsset.CurrentValue = 2500;
-            //testAsset2.CurrentValue = 120;
+            testAsset.Value = 8441.20f;
+            testAsset2.Value = 15029.56f;
 
             pieChart.Add(testAsset);
             pieChart.Add(testAsset2);
