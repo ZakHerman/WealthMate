@@ -53,7 +53,7 @@
                         <chart:ChartTrackballBehavior/>
                     </chart:SfChart.ChartBehaviors>
      
-                    <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="PriceDate" YBindingPath="CurrentPrice"/>
+                    <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="LastTrade" YBindingPath="CurrentPrice"/>
                 </chart:SfChart>
                 
                 <!--Labels underneath graph-->
@@ -92,7 +92,7 @@
                     </Label>
                 </Grid>
                 
-                <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.PriceDate, StringFormat='As at {0:d MMMM yyyy HH:mm:ss} NZST'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
+                <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.LastTrade, StringFormat='Updated at {0:d MMMM yyyy HH:mm:ss}'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
                 <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
 
                 <!--Grid of Key Statistics of Stock-->
@@ -104,19 +104,22 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding Stock.PriceClose, StringFormat='Close Price: {0:N}'}" Grid.Row="0" Grid.Column="0" />     <!--Stock Statistic Details-->
-                    <Label Text="{Binding Stock.PriceOpen, StringFormat='Open Price: {0:N}'}" Grid.Row="0" Grid.Column="1" />
-                    <Label Text="{Binding Stock.DayLow, StringFormat='Day Low: {0:N}'}" Grid.Row="1" Grid.Column="0" />
-                    <Label Text="{Binding Stock.DayHigh, StringFormat='Day High: {0:N}'}" Grid.Row="1" Grid.Column="1" />
-                    <Label Text="{Binding Stock.DayAverage, StringFormat='Day Average: {0:N}'}" Grid.Row="2" Grid.Column="0" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='52 Week Low: {0:N}'}" Grid.Row="2" Grid.Column="1" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:N}'}" Grid.Row="3" Grid.Column="0" />
-                    <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N}'}" Grid.Row="3" Grid.Column="1" />
-                    <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N}'}" Grid.Row="4" Grid.Column="0" />
+
+                    <!--Stock Statistic Details-->
+                    <Label Text="{Binding Stock.PriceClose, StringFormat='Close Price: {0:C}'}" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="{Binding Stock.PriceOpen, StringFormat='Open Price: {0:C}'}" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="{Binding Stock.DayLow, StringFormat='Day Low: {0:C}'}" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="{Binding Stock.DayHigh, StringFormat='Day High: {0:C}'}" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='52 Week Low: {0:C}'}" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:C}'}" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N0}'}" Grid.Row="3" Grid.Column="0" />
+                    <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N0}'}" Grid.Row="3" Grid.Column="1" />
+                    <Label Text="{Binding Stock.DayAverage, StringFormat='Day Average: {0:C}'}" Grid.Row="4" Grid.Column="0" />
                 </Grid>
             </StackLayout>
         </ScrollView>
