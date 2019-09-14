@@ -60,8 +60,12 @@ namespace WealthMate.Models
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
             Stock = stock;
-            DayReturn = DayReturn;
-            DayReturnRate = DayReturnRate;
+            PrincipalValue = _principalValue;
+            CurrentPrice = _currentPrice;
+            CurrentValue = _currentValue;
+            PriceClose = _priceClose;
+            DayReturn = _dayReturn;
+            DayReturnRate = _dayReturnRate;
         }
     }
 }

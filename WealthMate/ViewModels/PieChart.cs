@@ -42,7 +42,7 @@ namespace WealthMate.ViewModels
                 if (asset is OwnedStock)
                 {
                     this._stock.AssetType = "Stocks";
-                    this._stock.Quantity += 600; //asset.CurrentValue; NOT WORKING CURRENTLY
+                    this._stock.Quantity += asset.CurrentValue; //asset.CurrentValue; NOT WORKING CURRENTLY
                 }
                 // insert more code for any other possible types      
             }
