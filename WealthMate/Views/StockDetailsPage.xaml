@@ -34,6 +34,12 @@
                        Grid.Column="1"
                        Margin="0, 0, 15, 0"
                        Clicked="WatchListStarClicked">
+                <ImageButton.Triggers>
+                    <!--Change to upward arrow when positive return-->
+                    <DataTrigger TargetType ="ImageButton" Binding="{Binding Watched}" Value="True">
+                        <Setter Property="Source" Value="starfilled.png" />
+                    </DataTrigger>
+                </ImageButton.Triggers>
             </ImageButton>
         </Grid>
     </NavigationPage.TitleView>
