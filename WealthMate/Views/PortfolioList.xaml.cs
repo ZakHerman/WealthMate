@@ -14,11 +14,7 @@ namespace WealthMate.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PortfolioList : ContentPage
     {
-        public ObservableCollection<OwnedStock> OwnedStock
-        {
-            get { return OwnedStock; }
-            set { this.OwnedStock = value; }
-        }
+        public ObservableCollection<OwnedStock> OwnedStock { get; set; }
         public PortfolioList()
         {
             InitializeComponent();
