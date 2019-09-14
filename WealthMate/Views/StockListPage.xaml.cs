@@ -26,8 +26,8 @@ namespace WealthMate.Views
 
         private async void LoadStocks()
         {
-            Api.Stocks = await Api.GetStocksAsync();
-            StockList.ItemsSource = Api.Stocks;
+            await DataService.FetchStocksAsync();
+            StockList.ItemsSource = DataService.Stocks;
         }
 
         // Event handler for watchlist stock being pressed
