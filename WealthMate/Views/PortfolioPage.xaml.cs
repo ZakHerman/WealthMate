@@ -32,10 +32,6 @@ namespace WealthMate.Views
             );
 
             NavBarTitle.BindingContext = this;
-            //OwnedAssetListView.ItemsSource = Stocks;
-            //OwnedTDListView.ItemsSource = TermDeposits;
-
-
 
             BindingContext = new PieChart();
         }
