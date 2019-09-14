@@ -30,7 +30,7 @@ namespace WealthMate.Views
             stock.UpdateStock();
             StockHistory = new StockHistory();
 
-            WatchListStocks = (Application.Current as App).User.WatchListStocks;    //Takes users watched list of stocks
+            WatchListStocks = ((App) Application.Current).User.WatchListStocks;    //Takes users watched list of stocks
             Watched = _watched;
 
             InitializeComponent();
@@ -40,15 +40,15 @@ namespace WealthMate.Views
 
         private void WatchListStarClicked(object sender, System.EventArgs e)
         {
-            if ((Application.Current as App).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
+            if (((App) Application.Current).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
             {
-                (Application.Current as App).User.WatchListStocks.Remove(Stock);
-                (sender as ImageButton).Source = "starunfilled.png";
+                ((App) Application.Current).User.WatchListStocks.Remove(Stock);
+                ((ImageButton) sender).Source = "starunfilled.png";
             }
             else
             {
-                (Application.Current as App).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
-                (sender as ImageButton).Source = "starfilled.png";
+                ((App) Application.Current).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
+                ((ImageButton) sender).Source = "starfilled.png";
             }
                
         }
