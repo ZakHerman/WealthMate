@@ -9,8 +9,8 @@ namespace WealthMate.Models
     {
         private float _currentPrice;
         private bool _positiveDayReturns;
-        //Data to receive directly from NZX (Entity Relationship diagram)
-        
+        private DateTime _lastTrade;
+
         [JsonProperty("price")]
         public float CurrentPrice
         {
@@ -58,7 +58,12 @@ namespace WealthMate.Models
         public int Volume { get; set; }
 
         [JsonProperty("last_trade_time")]
-        public DateTime LastTrade { get; set; }
+        public DateTime LastTrade
+        {
+            get => _lastTrade;
+            set => _lastTrade = value.ToLocalTime();
+
+        }
 
         public bool PositiveDayReturns
         {
