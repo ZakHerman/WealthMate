@@ -6,14 +6,15 @@
              xmlns:local="clr-namespace:WealthMate.Models;assembly=WealthMate"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.PortfolioLists">
+             x:Class="WealthMate.Views.PortfolioList"
+             Title="List">
 
-  <!--<ContentPage.BindingContext>
+  <ContentPage.BindingContext>
     <local:OwnedStock />
   </ContentPage.BindingContext>
 
   <syncfusion:SfListView x:Name="List"
-                         ItemsSource="{Binding Stocks}"
+                         ItemsSource="{Binding OwnedStock}"
                          ItemSize="52">
                          
     <syncfusion:SfListView.ItemTemplate>
@@ -24,10 +25,10 @@
           <RowDefinition Height="0.6*" />
         </Grid.RowDefinitions>
         
-        <Label Text="{Binding purchaseDate}" />
+        <Label x:Name="testlabel" Text="{Binding purchaseDate}" FontSize="21" FontAttributes="Bold"/>
         <Label Grid.Row="1" Text="{Binding purchasedPrice}" TextColor="Green" FontSize="15"/>
         </Grid>
           </DataTemplate>
     </syncfusion:SfListView.ItemTemplate>                     
-    </syncfusion:SfListView>-->
+    </syncfusion:SfListView>
 </ContentPage>
