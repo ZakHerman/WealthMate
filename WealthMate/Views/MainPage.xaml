@@ -28,15 +28,15 @@
             </x:Arguments>
         </NavigationPage>
 
-        <NavigationPage IconImageSource="search.png">
+        <!--<NavigationPage IconImageSource="search.png">
             <x:Arguments>
                 <views:PortfolioPage />
             </x:Arguments>
-        </NavigationPage>
+        </NavigationPage>-->
 
         <NavigationPage IconImageSource="settings.png">
             <x:Arguments>
-                <views:PortfolioPage />
+                <views:SettingsPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
