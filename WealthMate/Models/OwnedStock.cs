@@ -55,7 +55,7 @@ namespace WealthMate.Models
         }
 
         // Unnecessary use of base class as nothing is being used from it and first parameter is passing companyname for AssetName
-        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased) : base(stock.CompanyName, purchaseDate, "stock", 0, 0, 0, 0, 0)
+        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
@@ -66,6 +66,8 @@ namespace WealthMate.Models
             PriceClose = _priceClose;
             DayReturn = _dayReturn;
             DayReturnRate = _dayReturnRate;
+            base.TotalReturn = 1;
+            base.TotalReturnRate = 1;
         }
     }
 }

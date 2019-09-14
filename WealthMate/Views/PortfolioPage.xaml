@@ -29,14 +29,18 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
     <TabbedPage.Children>
         <ContentPage Title="PieChart">
             <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='${0:F0}'}" TextColor="ForestGreen" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large"/>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F0}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large"/>
+                </Grid>
                 <chart:SfChart VerticalOptions="FillAndExpand">
-
-                    <!-- Shows the total returns of the portfolio as the title - as per the wireframe-->
-                    <chart:SfChart.Title>
-                        <chart:ChartTitle Text="{Binding Portfolio.TotalReturn, StringFormat='${0:F0}'}" TextColor="ForestGreen" TextAlignment="Center" Font="20"/>
-                    </chart:SfChart.Title>
-    
-                    <!--The pie chart-->
                     <chart:SfChart.Series>
                         <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
                             <chart:PieSeries.ColorModel>
@@ -57,11 +61,13 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                                 <ColumnDefinition Width="24" />
                                                 <ColumnDefinition Width="130" />
                                                 <ColumnDefinition Width="90" />
-                                            </Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
 
                                         <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
                                         <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding DataPoint.AssetType}" />
                                         <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
+                                        <Label Grid.Column="3" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartLegend.ItemTemplate>

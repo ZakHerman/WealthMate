@@ -17,10 +17,19 @@ namespace WealthMate.Views
     public partial class PortfolioPage
     {
         public float TotalValue { get; set; }
+        public Portfolio CurrentPortfolio { get; set; }
+        public ObservableCollection<PieData> pieChart { get; set; }
+        private PieData _termD = new PieData();
+        private PieData _bond = new PieData();
+        private PieData _stock = new PieData();
 
         public PortfolioPage()
         {
             TotalValue = 634635.5623f;
+            CurrentPortfolio = (Application.Current as App).User.Portfolio;
+            pieChart = new ObservableCollection<PieData>();
+            SetData();
+            BindingContext = this;
             InitializeComponent();
 
             NavBarLayout.Children.Add(
@@ -28,12 +37,36 @@ namespace WealthMate.Views
                 // Center the text of the titleview
                 new Rectangle(0.5, 0.5, 0.9, 1),
                 AbsoluteLayoutFlags.All
-               
+
             );
+        }
 
-            NavBarTitle.BindingContext = this;
+        //method sorts assets within portfolio into types and assigns a total value 
+        public void SetData()
+        {
+            foreach (OwnedAsset asset in CurrentPortfolio.OwnedAssets)
+            {
+                if (asset.Type.Equals("Term Deposit"))
+                {
+                    this._termD.AssetType = "Term Deposits";
+                    this._termD.Quantity += asset.CurrentValue;
+                }
+                if (asset.Type.Equals("Bond"))
+                {
+                    this._bond.AssetType = "Bonds";
+                    this._bond.Quantity += asset.CurrentValue;
+                }
+                if (asset is OwnedStock)
+                {
+                    this._stock.AssetType = "Stocks";
+                    this._stock.Quantity += asset.CurrentValue; //asset.CurrentValue; NOT WORKING CURRENTLY
+                }
+                // insert more code for any other possible types      
+            }
 
-            BindingContext = new PieChart();
+            pieChart.Add(_bond);
+            pieChart.Add(_termD);
+            pieChart.Add(_stock);
         }
     }
 }

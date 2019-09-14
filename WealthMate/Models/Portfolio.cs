@@ -6,43 +6,40 @@ namespace WealthMate.Models
     public class Portfolio
     {
         public List<OwnedAsset> OwnedAssets { get; }
-   
-        public float CurrentTotal {
-            get
-            {
-                float total = 0.0f;
-                foreach (OwnedAsset asset in OwnedAssets)
-                {
-                    total =+ asset.CurrentValue;
-                }
-                return total;
-            }
-        }
-        public float DayReturn {
-        get
-            {
-                float dayTotal = 0.0f;
-                foreach(OwnedStock stock in OwnedAssets) {
 
-                    //if (stock is OwnedStock) {
-                        dayTotal =+ stock.DayReturn;
-                    //}
-                }
-                return dayTotal;
-            }
-        }
-        public float TotalReturn {
-            get
+        private float _currentTotal;
+        public  float CurrentTotal {
+            get => _currentTotal;
+            set
             {
-                float returns = 0.0f;
                 foreach (OwnedAsset asset in OwnedAssets)
-                {
-                        returns =+ asset.TotalReturn;
-                }
-                return returns;
+                    _currentTotal += asset.CurrentValue;
             }
         }
-        
+
+        private float _totalReturn;
+        public float TotalReturn {
+            get => _totalReturn;
+            set
+            {
+                foreach (OwnedAsset asset in OwnedAssets)
+                    _totalReturn += asset.TotalReturn;
+            }
+        }
+
+        private float _totalReturnRate;
+        public float TotalReturnRate {
+            get => _totalReturnRate;
+            set
+            {
+                float _principalTotal = 0.0f;
+                foreach (OwnedAsset asset in OwnedAssets)
+                    _principalTotal += asset.PrincipalValue;
+
+                _totalReturnRate = ((CurrentTotal - _principalTotal) / _principalTotal) * 100;
+            }
+        }
+
         //Sprint 2:
         //public float ReturnGoal { get; set; }
 
@@ -50,8 +47,9 @@ namespace WealthMate.Models
         public Portfolio()
         {
             OwnedAssets = new List<OwnedAsset>();
-            //Sprint 2:
-            //ReturnGoal = 0.00f;
+            CurrentTotal = _currentTotal;
+            TotalReturn = _totalReturn;
+            TotalReturnRate = _totalReturnRate;
         }
 
         //-------------------------------------------------------------------------------------------------------------
@@ -59,13 +57,11 @@ namespace WealthMate.Models
         public void AddAsset(OwnedAsset asset)
         {
             this.OwnedAssets.Add(asset);
-            Debug.WriteLine("Asset successfully added");
         }
 
         public void RemoveAsset(OwnedAsset asset)
         {
             this.OwnedAssets.Remove(asset);
-            Debug.WriteLine("Asset successfully removed");
         }
     
     }
