@@ -18,21 +18,27 @@
         <StackLayout>
             <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
-            <syncfusion:SfListView x:Name="StockList" ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
+
+            <syncfusion:SfListView x:Name="StockList" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="12,0,12,0">
+                        <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="32" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Source="{Binding Symbol}" />
-                            <Label Grid.Column="1" Text="{Binding CompanyName}" VerticalOptions="StartAndExpand" FontSize="20" LineBreakMode="TailTruncation" Margin="4,5,0,0" />
-                            <Label Grid.Column="1" Text="{Binding Symbol}" VerticalOptions="EndAndExpand" TextColor="DarkGray" FontSize="12" Margin="4,0,0,5" />
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
 
-                            <Frame Grid.Column="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
+                            <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding Symbol}" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding CompanyName}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" VerticalOptions="Start" TextColor="DarkGray" FontSize="12" />
+
+                            <Frame Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType ="Frame" Binding="{Binding PositiveDayReturns}" Value="False">
                                         <!--Change text to red when negative return-->
