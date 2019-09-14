@@ -62,5 +62,10 @@ namespace WealthMate.Models
             DayReturn = DayReturn;
             DayReturnRate = DayReturnRate;
         }
+
+        public OwnedStock()
+        {
+
+        }
     }
 }
