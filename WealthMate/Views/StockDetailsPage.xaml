@@ -8,18 +8,17 @@
              x:Class="WealthMate.Views.StockDetailsPage">
 
 
-    <NavigationPage.TitleView>
+    <NavigationPage.TitleView>                                              <!--Top bar details-->
         <Grid x:Name="TopView">
             <Grid.RowDefinitions>
-                <RowDefinition Height="26"/>
-                <!--Image size of arrow-->
+                <RowDefinition Height="26"/>                                <!--Image size of star-->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <!--Price column-->
-                <ColumnDefinition Width="37" />
+                <ColumnDefinition Width="*" />                              <!--Size of stock name column-->
+                <ColumnDefinition Width="37" />                             <!--Size of star image column-->
             </Grid.ColumnDefinitions>
-            <Label x:Name="NavBarTitle"
+            <!--Name of stock being displayed-->
+            <Label x:Name="NavBarTitle"                                         
                    Text="{Binding Stock.CompanyName}"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Start"
@@ -28,9 +27,19 @@
                    FontSize="20"
                    Grid.Column="0"
                    Grid.Row="0"/>
-            <Image Source="starunfilled.png" Grid.Row="0" Grid.Column="1" Margin="0, 0, 15, 0">
-
-            </Image>
+            <!--Star image details-->
+            <ImageButton Source="starunfilled.png"
+                       BackgroundColor="Transparent"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Margin="0, 0, 15, 0"
+                       Clicked="WatchListStarClicked">
+                <ImageButton.Triggers>
+                    <DataTrigger TargetType ="ImageButton" Binding="{Binding Watched}" Value="True">
+                        <Setter Property="Source" Value="starfilled.png" />                                 <!--Change to unfilled arrow when stock is not being watched-->
+                    </DataTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
         </Grid>
     </NavigationPage.TitleView>
 
