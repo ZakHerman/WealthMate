@@ -7,12 +7,18 @@ using Xamarin.Forms;
 
 namespace WealthMate.ViewModels
 {
+    /// <summary>
+    /// Class containing code for PieChart
+    /// Currently class instantiates and populates a portfolio with test data
+    /// it then instantiates objects representing the piedata 
+    /// </summary>
     public class PieChart
     {
         public ObservableCollection<PieData> pieChart { get; set; }
         //get portfolio (creating a new one and adding assets until data exists)
         public Portfolio CurrentPortfolio { get; set; }
-        //insert more instances of PieData for each possible type of asset
+        //instances of PieData
+        //insert more for each possible type of asset
         private PieData _termD = new PieData();
         private PieData _bond = new PieData();
         private PieData _stock = new PieData();
@@ -24,7 +30,9 @@ namespace WealthMate.ViewModels
             SetData();
         }
 
-        //method sorts assets within portfolio into types and assigns a total value 
+        /// <summary>
+        /// method sorts assets within portfolio into types and assigns a total value to that type
+        /// </summary>
         public void SetData()
         {
             foreach (OwnedAsset asset in CurrentPortfolio.OwnedAssets)

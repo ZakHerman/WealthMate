@@ -16,6 +16,7 @@
 
     <ContentPage.Content>
         <StackLayout>
+            <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
             <syncfusion:SfListView x:Name="StockList" ItemsSource="{Binding Stocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
