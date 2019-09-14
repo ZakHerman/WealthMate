@@ -2,23 +2,32 @@
 using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
+using System;
+using Xamarin.Forms;
 
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WatchlistPage
     {
-        public ObservableCollection<Stock> Stocks { get; } = new ObservableCollection<Stock>();
+        private SearchBar _searchBar;
+        public ObservableCollection<Stock> WatchListStocks { get; set; }
+
 
         public WatchlistPage()
         {
-            InitializeComponent();
+            WatchListStocks = (Application.Current as App).User.WatchListStocks;
 
-            GenerateExample();
+            foreach (Stock s in WatchListStocks)
+            {
+                s.UpdateStock();
+            }
+
+            InitializeComponent();
         }
 
         // Event handler for watchlist stock being pressed
-        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void WatchlistView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var selected = (Stock)e.ItemData;
 
@@ -31,33 +40,33 @@ namespace WealthMate.Views
             ((SfListView)sender).SelectedItem = null;
         }
 
-        // Dummy data to use before using database
-        private void GenerateExample()
+        /// <summary>
+        /// Search bar functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
-            Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f});
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 2});
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 1});
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 0.01f});
-            Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f});
-            Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 0f});
-            Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
-            Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
-            Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f});
-            Stocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f});
-            Stocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 3});
-            Stocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 15f});
-            Stocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 4});
-            Stocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f});
-            Stocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 1.23f});
-            Stocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f});
-            Stocks.Add(new Stock {Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f});
-            Stocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f});
+            _searchBar = (sender as SearchBar);
+
+            if (Watchlist.DataSource != null)
+            {
+                Watchlist.DataSource.Filter = FilterWList;
+                Watchlist.DataSource.RefreshFilter();
+            }
+        }
+        /// <summary>
+        /// method for filtering the list view as text changes within the search bar
+        /// </summary>
+        /// <param name="obj"></param> 
+        /// <returns></returns>
+        private bool FilterWList(object obj)
+        {
+            if (_searchBar?.Text == null)
+                return true;
+
+            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

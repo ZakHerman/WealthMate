@@ -1,13 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
 namespace WealthMate.Models
 {
     public class Stock : INotifyPropertyChanged
     {
         private float _currentPrice;
-        //Data to receive directly from NZX (Entity Relationship diagram)
+        private bool _positiveDayReturns;
+        private DateTime _lastTrade;
+
+        [JsonProperty("price")]
         public float CurrentPrice
         {
             get => _currentPrice;
@@ -20,28 +24,79 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public DateTime PriceDate { get; set; }
-        public float PriceOpen { get; set; }
-        public float PriceClose { get; set; }
-        public float DayHigh { get; set; }
-        public float DayLow { get; set; }
-        public float FiftyTwoWeekHigh { get; set; }
-        public float FiftyTwoWeekLow { get; set; }
-        public float DayAverage { get; set; }
-        public int Shares { get; set; }
-        public int Volume { get; set; }
-        public string CompanyName { get; set; }
+
+        [JsonProperty("symbol")]
         public string Symbol { get; set; }
 
+        [JsonProperty("name")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("price_open")]
+        public float PriceOpen { get; set; }
+
+        [JsonProperty("price_close")]
+        public float PriceClose { get; set; }
+
+        [JsonProperty("day_high")]
+        public float DayHigh { get; set; }
+
+        [JsonProperty("day_low")]
+        public float DayLow { get; set; }
+
+        [JsonProperty("52_week_high")]
+        public float FiftyTwoWeekHigh { get; set; }
+
+        [JsonProperty("52_week_low")]
+        public float FiftyTwoWeekLow { get; set; }
+
+        public float DayAverage { get; set; }
+
+        [JsonProperty("shares")]
+        public long Shares { get; set; }
+
+        [JsonProperty("volume")]
+        public int Volume { get; set; }
+
+        [JsonProperty("last_trade_time")]
+        public DateTime LastTrade
+        {
+            get => _lastTrade;
+            set => _lastTrade = value.ToLocalTime();
+
+        }
+
+        public bool PositiveDayReturns
+        {
+            get => _positiveDayReturns;
+            set
+            {
+                if (_currentPrice >= PriceClose)
+                    _positiveDayReturns = true;
+                else
+                    _positiveDayReturns = false;
+            }
+        }
+        private float _dayReturn;
+        public float DayReturn
+        {
+            get => _dayReturn;
+            set => _dayReturn = _currentPrice - PriceClose;
+        }
+
+        private float _dayReturnRate;
+        public float DayReturnRate
+        {
+            get => _dayReturnRate;
+            set => _dayReturnRate = (_dayReturn / PriceClose) * 100;
+        }
         public Stock()
         {
-
         }
 
         public Stock(string name, float price, DateTime priceDate, int shares, int volume)
         {
             this.CurrentPrice = price;
-            this.PriceDate = priceDate;
+            this.LastTrade = priceDate;
             this.Shares = shares;
             this.Volume = volume;
             this.CompanyName = name;
@@ -75,6 +130,9 @@ namespace WealthMate.Models
         public void UpdateStock()
         {
             //.....
+            PositiveDayReturns = true;
+            DayReturn = 0.0f;
+            DayReturnRate = 0.0f;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
