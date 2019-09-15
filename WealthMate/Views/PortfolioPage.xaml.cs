@@ -4,6 +4,7 @@ using WealthMate.ViewModels;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Syncfusion;
+using System.Collections.Generic;
 
 namespace WealthMate.Views
 {
@@ -18,6 +19,7 @@ namespace WealthMate.Views
     {
         public float TotalValue { get; set; }
         public Portfolio CurrentPortfolio { get; set; }
+        public List<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
         private PieData _termD = new PieData();
         private PieData _bond = new PieData();
@@ -27,6 +29,7 @@ namespace WealthMate.Views
         {
             TotalValue = 634635.5623f;
             CurrentPortfolio = (Application.Current as App).User.Portfolio;
+            OwnedAssets = CurrentPortfolio.OwnedAssets;
             pieChart = new ObservableCollection<PieData>();
             SetData();
             BindingContext = this;

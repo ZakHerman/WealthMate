@@ -8,6 +8,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate" 
             mc:Ignorable="d"
              x:Class="WealthMate.Views.PortfolioPage"
+            x:Name="Root"
              Title="Portfolio">
 
     <NavigationPage.TitleView>
@@ -75,6 +76,30 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                     </chart:SfChart.Legend>
                 </chart:SfChart>
             </StackLayout>
+        </ContentPage>
+
+        <ContentPage Title="List">
+            <ContentPage.BindingContext>
+                <models:Stock />
+            </ContentPage.BindingContext>
+
+            <syncfusion:SfListView x:Name="List"
+                         ItemsSource="{Binding OwnedAssets, Source={x:Reference Root}}"                        ItemSize="52">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.4*" />
+                                <RowDefinition Height="0.6*" />
+                            </Grid.RowDefinitions>
+
+                            <Label x:Name="testlabel" Text="{Binding PurchaseDate}" FontSize="21" FontAttributes="Bold"/>
+                            <Label Grid.Row="1" Text="{Binding PurchaseDate}" TextColor="Green" FontSize="15"/>
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
         </ContentPage>
     </TabbedPage.Children>
 </TabbedPage>
