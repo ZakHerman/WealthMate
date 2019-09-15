@@ -7,8 +7,8 @@ namespace WealthMate.Models
 {
     public class Stock : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private float _currentPrice;
-        private bool _positiveDayReturns;
         private DateTime _lastTrade;
 
         [JsonProperty("price")]
@@ -34,7 +34,7 @@ namespace WealthMate.Models
         [JsonProperty("price_open")]
         public float PriceOpen { get; set; }
 
-        [JsonProperty("price_close")]
+        [JsonProperty("close_yesterday")]
         public float PriceClose { get; set; }
 
         [JsonProperty("day_high")]
@@ -60,78 +60,19 @@ namespace WealthMate.Models
         {
             get => _lastTrade;
             set => _lastTrade = value.ToLocalTime();
-
         }
 
-        public bool PositiveDayReturns
-        {
-            get => _positiveDayReturns;
-            set
-            {
-                if (_currentPrice >= PriceClose)
-                    _positiveDayReturns = true;
-                else
-                    _positiveDayReturns = false;
-            }
-        }
-        private float _dayReturn;
-        public float DayReturn
-        {
-            get => _dayReturn;
-            set => _dayReturn = _currentPrice - PriceClose;
-        }
-
-        private float _dayReturnRate;
-        public float DayReturnRate
-        {
-            get => _dayReturnRate;
-            set => _dayReturnRate = (_dayReturn / PriceClose) * 100;
-        }
-        public Stock()
-        {
-        }
-
-        public Stock(string name, float price, DateTime priceDate, int shares, int volume)
-        {
-            this.CurrentPrice = price;
-            this.LastTrade = priceDate;
-            this.Shares = shares;
-            this.Volume = volume;
-            this.CompanyName = name;
-
-            //defaults:
-            this.PriceOpen = price;
-            this.PriceClose = price;
-            this.DayHigh = price;
-            this.DayLow = price;
-        }
-
-        public Stock(string companyName)
-        {
-            CompanyName = companyName;
-            //defaults:
-            PriceOpen = 0.00f;
-            PriceClose = 0.00f;
-            CurrentPrice = 0.00f;
-            DayHigh = 0.00f;
-            DayLow = 0.00f;
-            FiftyTwoWeekHigh = 0.00f;
-            FiftyTwoWeekLow = 0.00f;
-            Shares = 0;
-            Volume = 0;
-
-        }
+        public float DayReturn { get; set; }
+        public float DayReturnRate { get; set; }
+        public bool PositiveDayReturns { get; set; }
 
         //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
         public void UpdateStock()
         {
-            //.....
-            PositiveDayReturns = true;
-            DayReturn = 0.0f;
-            DayReturnRate = 0.0f;
+            PositiveDayReturns = CurrentPrice >= PriceOpen;
+            DayReturn = CurrentPrice - PriceOpen;
+            DayReturnRate = DayReturn / PriceOpen * 100;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

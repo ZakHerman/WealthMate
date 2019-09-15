@@ -26,7 +26,7 @@ namespace WealthMate
             User.Portfolio.AddAsset(new OwnedAsset("Westpac", new System.DateTime(2019, 09, 09, 0, 0, 0), "Term Deposit", 12f, 1.2f, 12, 1, 3));
             User.Portfolio.AddAsset(new OwnedAsset("Air New Zealand", new System.DateTime(2019, 09, 06, 0, 0, 0), "Term Deposit", 12f, 2.4f, 9, 1, 3));
             User.Portfolio.AddAsset(new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40));
-            User.Portfolio.AddAsset(new OwnedStock(new Stock("Burger Fuel", 42.2f, new System.DateTime(2019, 09, 09, 0, 0, 0), 4, 4), new System.DateTime(2019, 09, 09, 0, 0, 0), 50.0f, 100.0f));
+            User.Portfolio.AddAsset(new OwnedStock(new Stock{CompanyName = "Burger Fuel", CurrentPrice = 42.2f, LastTrade = new DateTime(2019, 09, 09, 0, 0, 0), Shares = 4, Volume = 4}, new System.DateTime(2019, 09, 09, 0, 0, 0), 50.0f, 100.0f));
         }
 
         protected override void OnStart()
