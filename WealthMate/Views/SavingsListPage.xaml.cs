@@ -13,7 +13,12 @@ namespace WealthMate.Views
         {
             InitializeComponent();
         }
-        //search functionality below
+        
+        /// <summary>
+        /// Search bar functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             _searchBar = (sender as SearchBar);
@@ -24,7 +29,11 @@ namespace WealthMate.Views
                 SavingsList.DataSource.RefreshFilter();
             }
         }
-
+        /// <summary>
+        /// method for filtering the list view as text changes within the search bar
+        /// </summary>
+        /// <param name="obj"></param> 
+        /// <returns></returns>
         private bool FilterStocks(object obj)
         {
             if (_searchBar?.Text == null)

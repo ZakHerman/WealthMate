@@ -32,8 +32,14 @@
     <Compile Update="Views\FinancialPage.xaml.cs">
       <DependentUpon>FinancialPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PortfolioChart.xaml.cs">
+      <DependentUpon>PortfolioChart.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PortfolioPage.xaml.cs">
       <DependentUpon>PortfolioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PortfolioList.xaml.cs">
+      <DependentUpon>PortfolioList.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TermDepositListPage.xaml.cs">
       <DependentUpon>TermDepositListPage.xaml</DependentUpon>
@@ -50,7 +56,16 @@
     <EmbeddedResource Update="Views\FinancialPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortfolioChart.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortfolioList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SavingsListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StockDetailsPage.xaml">

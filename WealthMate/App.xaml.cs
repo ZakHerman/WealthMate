@@ -12,11 +12,21 @@ namespace WealthMate
         public App()
         {
             User = new User();
+            InitializeDummyUserPortfolio();                 //Temporary while we can't add Assets yet
 
             SyncfusionLicenseProvider.RegisterLicense("MTM5ODg3QDMxMzcyZTMyMmUzME9aQWh6eUtsMTNNdUlRd3VZVDFyNHovZ0hyY0RVQ29IY0FUQkE1Y0hZbjg9");
             InitializeComponent();
 
             MainPage = new MainPage();
+        }
+
+        public void InitializeDummyUserPortfolio()
+        {
+            User.Portfolio.AddAsset(new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0));
+            User.Portfolio.AddAsset(new OwnedAsset("Westpac", new System.DateTime(2019, 09, 09, 0, 0, 0), "Term Deposit", 12f, 1.2f, 12, 1, 3));
+            User.Portfolio.AddAsset(new OwnedAsset("Air New Zealand", new System.DateTime(2019, 09, 06, 0, 0, 0), "Term Deposit", 12f, 2.4f, 9, 1, 3));
+            User.Portfolio.AddAsset(new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40));
+            User.Portfolio.AddAsset(new OwnedStock(new Stock("Burger Fuel", 42.2f, new System.DateTime(2019, 09, 09, 0, 0, 0), 4, 4), new System.DateTime(2019, 09, 09, 0, 0, 0), 50.0f, 100.0f));
         }
 
         protected override void OnStart()

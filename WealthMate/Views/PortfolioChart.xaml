@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WealthMate.Views.PortfolioChart"
+             Title="PieChart">
+  <ContentPage.Content>
+
+    <StackLayout>
+        <chart:SfChart VerticalOptions="FillAndExpand">
+
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="Assets Portfolio Breakdown" TextColor="SeaGreen" TextAlignment="Center" Font="20"/>
+          </chart:SfChart.Title>
+
+          <chart:SfChart.Series>
+            <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "StockName" YBindingPath="Quantity" EnableTooltip="True">
+              <chart:PieSeries.ColorModel>
+                <chart:ChartColorModel Palette="Custom">
+                  <chart:ChartColorModel.CustomBrushes>
+                    <Color>#33BDFF</Color>
+                    <Color>#33A4FF</Color>
+                  </chart:ChartColorModel.CustomBrushes>
+                </chart:ChartColorModel>
+              </chart:PieSeries.ColorModel>
+            </chart:PieSeries>
+          </chart:SfChart.Series>
+
+          <chart:SfChart.Legend>
+            <chart:ChartLegend x:Name="legend" DockPosition="Bottom" OverflowMode="Wrap">
+              <chart:ChartLegend.ItemTemplate>
+                <DataTemplate>
+                  <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Horizontal" x:Name="root" WidthRequest="143">
+                    <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" >
+                      <BoxView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" WinPhone="0,4,0,0" />
+                      </BoxView.Margin>
+                    </BoxView>
+                    <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.StockName}" />
+                    <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
+                  </StackLayout>
+                </DataTemplate>
+              </chart:ChartLegend.ItemTemplate>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+        </chart:SfChart>
+
+        </StackLayout>
+      </ContentPage.Content>
+</ContentPage>

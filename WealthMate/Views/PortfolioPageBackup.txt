@@ -1,119 +1,197 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿13/09/19
+
+XAML:
+<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+  xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate" 
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+            xmlns:views="clr-namespace:WealthMate.Views;assembly=WealthMate"
             mc:Ignorable="d"
              x:Class="WealthMate.Views.PortfolioPage"
              Title="Portfolio">
 
-    <NavigationPage.TitleView>
-        <AbsoluteLayout x:Name="NavBarLayout">
-            <Image x:Name="NavBarLogo"
-                   Source="logo.png"
-                   HeightRequest="64"
-                   WidthRequest="64" />
-            <Label x:Name="NavBarTitle"
-                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   FontSize="20"/>
-        </AbsoluteLayout>
-    </NavigationPage.TitleView>
+  <NavigationPage.TitleView>
+    <AbsoluteLayout x:Name="NavBarLayout">
+      <Image x:Name="NavBarLogo"
+             Source="logo.png"
+             HeightRequest="64"
+             WidthRequest="64" />
+      <Label x:Name="NavBarTitle"
+             Text="{Binding TotalValue, StringFormat='{0:C}'}"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             FontAttributes="Bold"
+             TextColor="White"
+             FontSize="20"/>
+    </AbsoluteLayout>
+  </NavigationPage.TitleView>
 
-    <TabbedPage.Children>
-        <ContentPage Title="PieChart">
-            <StackLayout>
-                <chart:SfChart VerticalOptions="FillAndExpand">
+  <TabbedPage.Children>
+    <ContentPage Title="PieChart">
+      <StackLayout>
+        <chart:SfChart VerticalOptions="FillAndExpand">
 
-                    <chart:SfChart.Title>
-                        <chart:ChartTitle Text="Assets Portfolio Breakdown" TextColor="SeaGreen" TextAlignment="Center" Font="20"/>
-                    </chart:SfChart.Title>
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="Assets Portfolio Breakdown" TextColor="SeaGreen" TextAlignment="Center" Font="20"/>
+          </chart:SfChart.Title>
 
-                    <chart:SfChart.Series>
-                        <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "StockName" YBindingPath="Quantity" EnableTooltip="True">
-                            <chart:PieSeries.ColorModel>
-                                <chart:ChartColorModel Palette="Custom">
-                                    <chart:ChartColorModel.CustomBrushes>
-                                        <Color>#33BDFF</Color>
-                                        <Color>#33A4FF</Color>
-                                    </chart:ChartColorModel.CustomBrushes>
-                                </chart:ChartColorModel>
-                            </chart:PieSeries.ColorModel>
-                        </chart:PieSeries>
-                    </chart:SfChart.Series>
+          <chart:SfChart.Series>
+            <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "StockName" YBindingPath="Quantity" EnableTooltip="True">
+              <chart:PieSeries.ColorModel>
+                <chart:ChartColorModel Palette="Custom">
+                  <chart:ChartColorModel.CustomBrushes>
+                    <Color>#33BDFF</Color>
+                    <Color>#33A4FF</Color>
+                  </chart:ChartColorModel.CustomBrushes>
+                </chart:ChartColorModel>
+              </chart:PieSeries.ColorModel>
+            </chart:PieSeries>
+          </chart:SfChart.Series>
 
-                    <chart:SfChart.Legend>
-                        <chart:ChartLegend x:Name="legend" DockPosition="Bottom" OverflowMode="Wrap">
-                            <chart:ChartLegend.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Horizontal" x:Name="root" WidthRequest="143">
-                                        <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" >
-                                            <BoxView.Margin>
-                                                <OnPlatform x:TypeArguments="Thickness" WinPhone="0,4,0,0" />
-                                            </BoxView.Margin>
-                                        </BoxView>
-                                        <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.StockName}" />
-                                        <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
-                                    </StackLayout>
-                                </DataTemplate>
-                            </chart:ChartLegend.ItemTemplate>
-                        </chart:ChartLegend>
-                    </chart:SfChart.Legend>
-                </chart:SfChart>
-            </StackLayout>
-        </ContentPage>
+          <chart:SfChart.Legend>
+            <chart:ChartLegend x:Name="legend" DockPosition="Bottom" OverflowMode="Wrap">
+              <chart:ChartLegend.ItemTemplate>
+                <DataTemplate>
+                  <StackLayout BackgroundColor="{Binding DataPoint.LegendBackgroundColor}" Padding="3" Orientation="Horizontal" x:Name="root" WidthRequest="143">
+                    <BoxView Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" >
+                      <BoxView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" WinPhone="0,4,0,0" />
+                      </BoxView.Margin>
+                    </BoxView>
+                    <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.StockName}" />
+                    <Label FontSize="13" VerticalTextAlignment="Center" Text="{Binding DataPoint.Quantity}" />
+                  </StackLayout>
+                </DataTemplate>
+              </chart:ChartLegend.ItemTemplate>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+        </chart:SfChart>
+      </StackLayout>
+    </ContentPage>
 
-        <ContentPage Title="List">
-          <ContentPage.BindingContext>
-            <models:OwnedAsset/>
-          </ContentPage.BindingContext>
+    <ContentPage Title="List">
+      <ContentPage.BindingContext>
+        <views:PortfolioPage />
+      </ContentPage.BindingContext>
 
-          <ContentPage.Content>
-          <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" x:Name="OwnedAssetListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+      <ContentPage.Content>
+        <syncfusion:SfListView ItemsSource="{Binding Stocks, Source={x:Reference Root}}" x:Name="OwnedAssetListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
             <syncfusion:SfListView.ItemTemplate>
-          <DataTemplate>
-            <Grid Margin="12,0,12,0">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width ="16" />
-              </Grid.ColumnDefinitions>
 
-              <Image Grid.Column="0" Source="{Binding Symbol}"/>
-              <Label Grid.Column="1" Text ="{Binding SharesPurchased}"/>
-              <Label Grid.Column="2" Text ="{Binding PurchasedPrice}"/>
-              <Label Grid.Column="3" Text ="Binding CurrentPrice, StringFormat='{0:C}'}"/>
-            </Grid>
-          </DataTemplate>
+            <!--DOES NOT WORK FROM THIS POINT... SAYS I CANNOT ADD to syncfusion.SfListView.ItemTemplate-->
+            <DataTemplate>
+              <Grid Margin="12,0,12,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width ="16" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="{Binding Symbol}"/>
+                <Label Grid.Column="1" Text ="{Binding SharesPurchased}"/>
+                <Label Grid.Column="2" Text ="{Binding PurchasedPrice}"/>
+                <Label Grid.Column="3" Text ="Binding CurrentPrice, StringFormat='{0:C}'}"/>
+              </Grid>
+            </DataTemplate>
             <StackLayout>
-                <BoxView Color="DarkRed" VerticalOptions="FillAndExpand"/>
+              <BoxView Color="DarkRed" VerticalOptions="FillAndExpand"/>
             </StackLayout>
-            </syncfusion:SfListView.ItemTemplate>
-          </syncfusion:SfListView>
-          <syncfusion:SfListView x:Name="OwnedTDListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
-            <syncfusion:SfListView.ItemTemplate>
-              <DataTemplate>
-                <Grid Margin="12,0,12,0">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="32" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                  </Grid.ColumnDefinitions>
+          </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+        <syncfusion:SfListView x:Name="OwnedTDListView" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+          <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate>
+              <Grid Margin="12,0,12,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="32" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                  <Image Grid.Column="0" Source="{Binding Logo}"/>
-                  <Label Grid.Column="1" Text="{Binding PrincipalValue}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" />
-                  <Label Grid.Column="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
-                </Grid>
-              </DataTemplate>
-            </syncfusion:SfListView.ItemTemplate>
-          </syncfusion:SfListView>
-            </ContentPage.Content>
-        </ContentPage>
-    </TabbedPage.Children>
+                <Image Grid.Column="0" Source="{Binding Logo}"/>
+                <Label Grid.Column="1" Text="{Binding PrincipalValue}" VerticalOptions="Center" FontSize="20" LineBreakMode="TailTruncation" />
+                <Label Grid.Column="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen"/>
+              </Grid>
+            </DataTemplate>
+          </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+      </ContentPage.Content>
+    </ContentPage>
+  </TabbedPage.Children>
 </TabbedPage>
+
+
+
+
+
+
+C#:
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using WealthMate.ViewModels;
+using WealthMate.Models;
+using Xamarin.Forms;
+using Syncfusion.ListView.XForms;
+
+namespace WealthMate.Views
+{
+    /**LIST VIEW needs to show:
+    * STOCK or TERM DEPOSIT
+    * CurrentValue (stocks * current price)
+    * Total Return (smaller font)
+    * Total ReturnRate (smaller font - this is a percentage)
+    */
+    [DesignTimeVisible(false)]
+    public partial class PortfolioPage
+    {
+        public float TotalValue { get; set; }
+        public ObservableCollection<OwnedStock> Stocks { get; } = new ObservableCollection<OwnedStock>();
+        public ObservableCollection<OwnedAsset> TermDeposits { get; } = new ObservableCollection<OwnedAsset>();
+
+        public PortfolioPage()
+        {
+            TotalValue = 634635.5623f;
+            InitializeComponent();
+
+            NavBarLayout.Children.Add(
+                NavBarTitle,
+                // Center the text of the titleview
+                new Rectangle(0.5, 0.5, 0.9, 1),
+                AbsoluteLayoutFlags.All
+               
+            );
+
+            NavBarTitle.BindingContext = this;
+            GenerateStockExample();
+            GenerateTermDepositExample();
+            //OwnedAssetListView.ItemsSource = Stocks;
+            //OwnedTDListView.ItemsSource = TermDeposits;
+
+
+
+            BindingContext = new PieChart();
+        }
+
+        public void GenerateTermDepositExample()
+        {
+            TermDeposits.Add(new OwnedAsset("Westpac",new System.DateTime(2019,09,09,0,0,0),"Term Deposit",12f,1.2f,12,1,3));
+            TermDeposits.Add(new OwnedAsset("Air New Zealand", new System.DateTime(2019, 09, 06, 0, 0, 0), "Term Deposit", 12f, 2.4f, 9, 1, 3));
+        }
+
+        public void GenerateStockExample()
+        {
+
+            Stock stockTestB = new Stock { Symbol = "BFG", CompanyName = "Burger Fuel", CurrentPrice = 42.2f };
+            Stock stockTestA = new Stock { Symbol = "SPK", CompanyName = stockTestB.CompanyName, CurrentPrice = 2.2f };
+            string name = stockTestA.CompanyName;
+            float currentPrice = stockTestA.CurrentPrice;
+            float priceClosed = stockTestA.PriceClose;
+            Stocks.Add(new OwnedStock(stockTestA, new System.DateTime(2019, 08, 14, 0, 0, 0), 4.5f, 14f));
+
+        }
+    }
+}
+
 
 

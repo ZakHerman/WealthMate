@@ -1,76 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-            xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate" 
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+              xmlns:local="clr-namespace:WealthMate.Views;assembly=WealthMate"
             mc:Ignorable="d"
              x:Class="WealthMate.Views.PortfolioPage"
              Title="Portfolio">
 
-    <NavigationPage.TitleView>
-        <AbsoluteLayout x:Name="NavBarLayout">
-            <Image x:Name="NavBarLogo"
-                   Source="logo.png"
-                   HeightRequest="64"
-                   WidthRequest="64" />
-            <Label x:Name="NavBarTitle"
-                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   FontSize="20"/>
-        </AbsoluteLayout>
-    </NavigationPage.TitleView>
+  <NavigationPage.TitleView>
+    <AbsoluteLayout x:Name="NavBarLayout">
+      <Image x:Name="NavBarLogo"
+             Source="logo.png"
+             HeightRequest="64"
+             WidthRequest="64" />
+      <Label x:Name="NavBarTitle"
+             Text="{Binding TotalValue, StringFormat='{0:C}'}"
+             HorizontalTextAlignment="Center"
+             VerticalTextAlignment="Center"
+             FontAttributes="Bold"
+             TextColor="White"
+             FontSize="20"/>
+    </AbsoluteLayout>
+  </NavigationPage.TitleView>
 
-    <TabbedPage.Children>
-        <ContentPage Title="PieChart">
-            <StackLayout>
-                <chart:SfChart VerticalOptions="FillAndExpand">
-
-                    <!-- Shows the total returns of the portfolio as the title - as per the wireframe-->
-                    <chart:SfChart.Title>
-                        <chart:ChartTitle Text="{Binding Portfolio.TotalReturn, StringFormat='${0:F0}'}" TextColor="ForestGreen" TextAlignment="Center" Font="20"/>
-                    </chart:SfChart.Title>
-    
-                    <!--The pie chart-->
-                    <chart:SfChart.Series>
-                        <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath= "AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
-                            <chart:PieSeries.ColorModel>
-                                <chart:ChartColorModel Palette="Natural">
-                                </chart:ChartColorModel>
-                            </chart:PieSeries.ColorModel>
-                        </chart:PieSeries>
-                    </chart:SfChart.Series>
-
-                    <!--The pie chart legends of categories and returns-->
-                    <chart:SfChart.Legend>
-                        <chart:ChartLegend x:Name="Legend" DockPosition="Bottom" OverflowMode="Scroll" Orientation="Vertical">
-                            <chart:ChartLegend.ItemTemplate>
-                                <DataTemplate>
-
-                                        <Grid Margin="12,0,12,0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="24" />
-                                                <ColumnDefinition Width="130" />
-                                                <ColumnDefinition Width="90" />
-                                            </Grid.ColumnDefinitions>
-
-                                        <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
-                                        <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding DataPoint.AssetType}" />
-                                        <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
-                                    </Grid>
-                                </DataTemplate>
-                            </chart:ChartLegend.ItemTemplate>
-                        </chart:ChartLegend>
-                    </chart:SfChart.Legend>
-                </chart:SfChart>
-            </StackLayout>
-        </ContentPage>
-    </TabbedPage.Children>
+  <TabbedPage.Children>
+    <local:PortfolioChart />
+    <local:PortfolioList />   
+  </TabbedPage.Children>
+  
 </TabbedPage>
-
 
