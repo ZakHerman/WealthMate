@@ -79,10 +79,6 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
         </ContentPage>
 
         <ContentPage Title="List">
-            <ContentPage.BindingContext>
-                <models:Stock />
-            </ContentPage.BindingContext>
-
             <syncfusion:SfListView x:Name="List"
                          ItemsSource="{Binding OwnedAssets, Source={x:Reference Root}}"                        ItemSize="52">
 
