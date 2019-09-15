@@ -70,7 +70,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                         <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
                                         <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding DataPoint.AssetType}" />
                                         <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
-                                        <Label Grid.Column="3" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
+                                        <Label Grid.Column="3" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.ReturnPercentage, StringFormat='{0:F2}%'}" />
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartLegend.ItemTemplate>

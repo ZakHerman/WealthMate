@@ -12,5 +12,6 @@ namespace WealthMate.Models
     {
         public float Quantity { get; set; }
         public string AssetType { get; set; }
+        public float ReturnPercentage { get; set; }
     }
 }
