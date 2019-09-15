@@ -7,6 +7,8 @@ namespace WealthMate.Models
         private float _currentValue;
         private float _totalReturn;
         private float _totalReturnRate;
+        private bool _positiveTotal;
+
 
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -51,6 +53,18 @@ namespace WealthMate.Models
             set => _totalReturnRate = (TotalReturn / PrincipalValue) * 100;
         }
 
+        public bool PositiveTotal
+        {
+            get => _positiveTotal;
+            set
+            {
+                if (_totalReturn > 0f)
+                    _positiveTotal = true;
+                else
+                    _positiveTotal = false;
+            }
+        }
+
         // Virtual member in constructor call
         // https://stackoverflow.com/questions/119506/virtual-member-call-in-a-constructor
         public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
@@ -66,6 +80,7 @@ namespace WealthMate.Models
             CurrentValue = _currentValue;
             TotalReturn = _totalReturn;
             TotalReturnRate = _totalReturnRate;
+            PositiveTotal = _positiveTotal;
         }
 
         // Virtual member in constructor call
