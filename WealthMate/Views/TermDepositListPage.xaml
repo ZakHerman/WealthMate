@@ -40,7 +40,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-
+ 
                         <Image Grid.Column="0" Grid.Row="0" VerticalOptions="End" Source="{Binding Logo} "/>
                         <Label Grid.Column="1" Grid.Row="0"  Text="{Binding Provider}" VerticalOptions="EndAndExpand" FontSize="20" LineBreakMode="TailTruncation" />
                         <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0:F0} months'}" VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" FontSize="12" TextColor="DarkGray"/>
