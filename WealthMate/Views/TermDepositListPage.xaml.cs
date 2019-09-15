@@ -60,5 +60,6 @@ namespace WealthMate.Views
 
             return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
         }
+
     }
 }

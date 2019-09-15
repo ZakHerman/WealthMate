@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.TermDepositListPage"
@@ -14,23 +15,14 @@
         <models:TermDeposit />
     </ContentPage.BindingContext>
 
-    <StackLayout>
+   <StackLayout>
         <!--Searchbar, placeholder text and on text change functionality-->
         <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
 
         <Grid>
             <!--The swipe functionality to add a term deposit to portfolio-->
-            <syncfusion:SfListView x:Name="TDList" AllowSwiping="True" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
-                <syncfusion:SfListView.RightSwipeTemplate>
-                    <DataTemplate x:Name="RightSwipeTemplate">
-                        <Grid BackgroundColor="#8133C096" HorizontalOptions="Fill" VerticalOptions="Fill">
-                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
-                                <Button Grid.Column="0" Grid.Row="0" BackgroundColor="#8133C096" Text="Add to portfolio" Font="Bold,12"  TextColor="ForestGreen"/>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </syncfusion:SfListView.RightSwipeTemplate>
-
+            <syncfusion:SfListView x:Name="TDList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+               
                 <!--The list view of the term deposits-->
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -60,4 +52,50 @@
         </Grid>
     </StackLayout>
 
-</ContentPage> 
+</ContentPage>
+
+<!--<sfPopup:SfPopupLayout x:Name="popupLayout">
+        <sfPopup:SfPopupLayout.PopupView>
+            <sfPopup:PopupView WidthRequest="220" HeightRequest="120" ShowFooter="False">
+                <sfPopup:PopupView.ContentTemplate>
+                    <DataTemplate>
+                        <Label Text="ListView item is tapped"
+                               BackgroundColor="White"
+                               TextColor="Black"
+                               HorizontalTextAlignment="Center"
+                               />
+                    </DataTemplate>
+                </sfPopup:PopupView.ContentTemplate>
+            </sfPopup:PopupView>
+        </sfPopup:SfPopupLayout.PopupView>
+        <sfPopup:SfPopupLayout.Content>
+            <syncfusion:SfListView  x:Name="TDList"  ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" 
+                                    AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" Source="{Binding Logo} "/>
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Provider}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0} months'}" VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" TextColor="DarkGray"/>
+                            <Label Grid.Column="2" Grid.Row="0" Text="{Binding MinDeposit, StringFormat='{0:C0}'}" TextColor="DarkGray" VerticalOptions="End" HorizontalTextAlignment="End" FontSize="12" />
+                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding MaxDeposit, StringFormat='{0:C0}'}" TextColor="DarkGray" VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="12" />
+                            <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="18" />
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </sfPopup:SfPopupLayout.Content>
+    </sfPopup:SfPopupLayout>-->

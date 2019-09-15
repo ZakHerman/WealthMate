@@ -78,6 +78,19 @@ namespace WealthMate.Droid
 			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::WealthMate.Droid.Resource.String.ApplicationName;
 			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::WealthMate.Droid.Resource.String.Hello;
 			global::Syncfusion.ListView.XForms.Android.Resource.String.Load_More = global::WealthMate.Droid.Resource.String.Load_More;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.input_layout_drop_down_icon = global::WealthMate.Droid.Resource.Drawable.input_layout_drop_down_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglecollapseicon = global::WealthMate.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.inputlayout_togglevisibleicon = global::WealthMate.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_close_icon = global::WealthMate.Droid.Resource.Drawable.popup_forms_android_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_android_shadow = global::WealthMate.Droid.Resource.Drawable.popup_forms_android_shadow;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_dark_theme_close_icon = global::WealthMate.Droid.Resource.Drawable.popup_forms_dark_theme_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Drawable.popup_forms_light_theme_close_icon = global::WealthMate.Droid.Resource.Drawable.popup_forms_light_theme_close_icon;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.Id.BorderView = global::WealthMate.Droid.Resource.Id.BorderView;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.accept = global::WealthMate.Droid.Resource.String.accept;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.decline = global::WealthMate.Droid.Resource.String.decline;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.library_name = global::WealthMate.Droid.Resource.String.library_name;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.popup_message = global::WealthMate.Droid.Resource.String.popup_message;
+			global::Syncfusion.XForms.Android.PopupLayout.Resource.String.title = global::WealthMate.Droid.Resource.String.title;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::WealthMate.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::WealthMate.Droid.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::WealthMate.Droid.Resource.Attribute.font;
@@ -5854,26 +5867,26 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
 			
-			// aapt resource value: 0x7f02014e
-			public const int avd_hide_password_1 = 2130837838;
+			// aapt resource value: 0x7f020152
+			public const int avd_hide_password_1 = 2130837842;
 			
-			// aapt resource value: 0x7f02014f
-			public const int avd_hide_password_2 = 2130837839;
+			// aapt resource value: 0x7f020153
+			public const int avd_hide_password_2 = 2130837843;
 			
-			// aapt resource value: 0x7f020150
-			public const int avd_hide_password_3 = 2130837840;
+			// aapt resource value: 0x7f020154
+			public const int avd_hide_password_3 = 2130837844;
 			
 			// aapt resource value: 0x7f020059
 			public const int avd_show_password = 2130837593;
 			
-			// aapt resource value: 0x7f020151
-			public const int avd_show_password_1 = 2130837841;
+			// aapt resource value: 0x7f020155
+			public const int avd_show_password_1 = 2130837845;
 			
-			// aapt resource value: 0x7f020152
-			public const int avd_show_password_2 = 2130837842;
+			// aapt resource value: 0x7f020156
+			public const int avd_show_password_2 = 2130837846;
 			
-			// aapt resource value: 0x7f020153
-			public const int avd_show_password_3 = 2130837843;
+			// aapt resource value: 0x7f020157
+			public const int avd_show_password_3 = 2130837847;
 			
 			// aapt resource value: 0x7f02005a
 			public const int BFG = 2130837594;
@@ -6556,11 +6569,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f02013c
 			public const int notification_icon_background = 2130837820;
 			
-			// aapt resource value: 0x7f02014c
-			public const int notification_template_icon_bg = 2130837836;
+			// aapt resource value: 0x7f020150
+			public const int notification_template_icon_bg = 2130837840;
 			
-			// aapt resource value: 0x7f02014d
-			public const int notification_template_icon_low_bg = 2130837837;
+			// aapt resource value: 0x7f020151
+			public const int notification_template_icon_low_bg = 2130837841;
 			
 			// aapt resource value: 0x7f02013d
 			public const int notification_tile_bg = 2130837821;
@@ -6569,43 +6582,55 @@ namespace WealthMate.Droid
 			public const int notify_panel_notification_icon_bg = 2130837822;
 			
 			// aapt resource value: 0x7f02013f
-			public const int portfolio = 2130837823;
+			public const int popup_forms_android_close_icon = 2130837823;
 			
 			// aapt resource value: 0x7f020140
-			public const int search = 2130837824;
+			public const int popup_forms_android_shadow = 2130837824;
 			
 			// aapt resource value: 0x7f020141
-			public const int settings = 2130837825;
+			public const int popup_forms_dark_theme_close_icon = 2130837825;
 			
 			// aapt resource value: 0x7f020142
-			public const int SKT = 2130837826;
+			public const int popup_forms_light_theme_close_icon = 2130837826;
 			
 			// aapt resource value: 0x7f020143
-			public const int SPK = 2130837827;
+			public const int portfolio = 2130837827;
 			
 			// aapt resource value: 0x7f020144
-			public const int starfilled = 2130837828;
+			public const int search = 2130837828;
 			
 			// aapt resource value: 0x7f020145
-			public const int starunfilled = 2130837829;
+			public const int settings = 2130837829;
 			
 			// aapt resource value: 0x7f020146
-			public const int TLS = 2130837830;
+			public const int SKT = 2130837830;
 			
 			// aapt resource value: 0x7f020147
-			public const int tooltip_frame_dark = 2130837831;
+			public const int SPK = 2130837831;
 			
 			// aapt resource value: 0x7f020148
-			public const int tooltip_frame_light = 2130837832;
+			public const int starfilled = 2130837832;
 			
 			// aapt resource value: 0x7f020149
-			public const int uparrow = 2130837833;
+			public const int starunfilled = 2130837833;
 			
 			// aapt resource value: 0x7f02014a
-			public const int WBC = 2130837834;
+			public const int TLS = 2130837834;
 			
 			// aapt resource value: 0x7f02014b
-			public const int xamarin_logo = 2130837835;
+			public const int tooltip_frame_dark = 2130837835;
+			
+			// aapt resource value: 0x7f02014c
+			public const int tooltip_frame_light = 2130837836;
+			
+			// aapt resource value: 0x7f02014d
+			public const int uparrow = 2130837837;
+			
+			// aapt resource value: 0x7f02014e
+			public const int WBC = 2130837838;
+			
+			// aapt resource value: 0x7f02014f
+			public const int xamarin_logo = 2130837839;
 			
 			static Drawable()
 			{
@@ -6622,6 +6647,9 @@ namespace WealthMate.Droid
 			
 			// aapt resource value: 0x7f0b0039
 			public const int ALT = 2131427385;
+			
+			// aapt resource value: 0x7f0b0114
+			public const int BorderView = 2131427604;
 			
 			// aapt resource value: 0x7f0b003a
 			public const int CTRL = 2131427386;
@@ -7864,14 +7892,14 @@ namespace WealthMate.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0c004f
-			public const int ApplicationName = 2131492943;
+			// aapt resource value: 0x7f0c0054
+			public const int ApplicationName = 2131492948;
 			
-			// aapt resource value: 0x7f0c004e
-			public const int Hello = 2131492942;
+			// aapt resource value: 0x7f0c0053
+			public const int Hello = 2131492947;
 			
-			// aapt resource value: 0x7f0c0050
-			public const int Load_More = 2131492944;
+			// aapt resource value: 0x7f0c0055
+			public const int Load_More = 2131492949;
 			
 			// aapt resource value: 0x7f0c0018
 			public const int abc_action_bar_home_description = 2131492888;
@@ -7990,6 +8018,9 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0032
 			public const int abc_toolbar_collapse_description = 2131492914;
 			
+			// aapt resource value: 0x7f0c0051
+			public const int accept = 2131492945;
+			
 			// aapt resource value: 0x7f0c0040
 			public const int appbar_scrolling_view_behavior = 2131492928;
 			
@@ -8002,6 +8033,9 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0043
 			public const int character_counter_pattern = 2131492931;
 			
+			// aapt resource value: 0x7f0c0052
+			public const int decline = 2131492946;
+			
 			// aapt resource value: 0x7f0c0044
 			public const int fab_transformation_scrim_behavior = 2131492932;
 			
@@ -8010,6 +8044,9 @@ namespace WealthMate.Droid
 			
 			// aapt resource value: 0x7f0c0046
 			public const int hide_bottom_view_on_scroll_behavior = 2131492934;
+			
+			// aapt resource value: 0x7f0c004e
+			public const int library_name = 2131492942;
 			
 			// aapt resource value: 0x7f0c0000
 			public const int mr_button_content_description = 2131492864;
@@ -8101,47 +8138,53 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c004c
 			public const int path_password_strike_through = 2131492940;
 			
-			// aapt resource value: 0x7f0c0052
-			public const int q = 2131492946;
+			// aapt resource value: 0x7f0c0050
+			public const int popup_message = 2131492944;
 			
-			// aapt resource value: 0x7f0c0051
-			public const int quarter = 2131492945;
+			// aapt resource value: 0x7f0c0057
+			public const int q = 2131492951;
+			
+			// aapt resource value: 0x7f0c0056
+			public const int quarter = 2131492950;
 			
 			// aapt resource value: 0x7f0c0033
 			public const int search_menu_title = 2131492915;
 			
-			// aapt resource value: 0x7f0c0058
-			public const int sfchart_close_label = 2131492952;
+			// aapt resource value: 0x7f0c005d
+			public const int sfchart_close_label = 2131492957;
 			
-			// aapt resource value: 0x7f0c005b
-			public const int sfchart_decrease_label = 2131492955;
-			
-			// aapt resource value: 0x7f0c0055
-			public const int sfchart_high_label = 2131492949;
+			// aapt resource value: 0x7f0c0060
+			public const int sfchart_decrease_label = 2131492960;
 			
 			// aapt resource value: 0x7f0c005a
-			public const int sfchart_increase_label = 2131492954;
+			public const int sfchart_high_label = 2131492954;
 			
-			// aapt resource value: 0x7f0c0056
-			public const int sfchart_low_label = 2131492950;
+			// aapt resource value: 0x7f0c005f
+			public const int sfchart_increase_label = 2131492959;
 			
-			// aapt resource value: 0x7f0c0057
-			public const int sfchart_open_label = 2131492951;
-			
-			// aapt resource value: 0x7f0c0059
-			public const int sfchart_others_label = 2131492953;
+			// aapt resource value: 0x7f0c005b
+			public const int sfchart_low_label = 2131492955;
 			
 			// aapt resource value: 0x7f0c005c
-			public const int sfchart_total_label = 2131492956;
+			public const int sfchart_open_label = 2131492956;
+			
+			// aapt resource value: 0x7f0c005e
+			public const int sfchart_others_label = 2131492958;
+			
+			// aapt resource value: 0x7f0c0061
+			public const int sfchart_total_label = 2131492961;
 			
 			// aapt resource value: 0x7f0c004d
 			public const int status_bar_notification_info_overflow = 2131492941;
 			
-			// aapt resource value: 0x7f0c0054
-			public const int w = 2131492948;
+			// aapt resource value: 0x7f0c004f
+			public const int title = 2131492943;
 			
-			// aapt resource value: 0x7f0c0053
-			public const int week = 2131492947;
+			// aapt resource value: 0x7f0c0059
+			public const int w = 2131492953;
+			
+			// aapt resource value: 0x7f0c0058
+			public const int week = 2131492952;
 			
 			static String()
 			{
