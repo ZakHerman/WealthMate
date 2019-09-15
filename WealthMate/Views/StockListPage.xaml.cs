@@ -26,8 +26,8 @@ namespace WealthMate.Views
 
         private async void LoadStocks()
         {
-            Api.Stocks = await Api.GetStocksAsync();
-            StockList.ItemsSource = Api.Stocks;
+            await DataService.FetchStocksAsync();
+            StockList.ItemsSource = DataService.Stocks;
         }
 
         // Event handler for watchlist stock being pressed
@@ -44,7 +44,11 @@ namespace WealthMate.Views
             ((SfListView)sender).SelectedItem = null;
         }
 
-        //search functionality below
+        /// <summary>
+        /// Search bar functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             _searchBar = (sender as SearchBar);
@@ -56,6 +60,11 @@ namespace WealthMate.Views
             }
         }
 
+        /// <summary>
+        /// method for filtering the list view as text changes within the search bar
+        /// </summary>
+        /// <param name="obj"></param> 
+        /// <returns></returns>
         private bool FilterStocks(object obj)
         {
             if (_searchBar?.Text == null)

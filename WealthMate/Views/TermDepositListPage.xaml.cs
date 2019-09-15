@@ -32,7 +32,11 @@ namespace WealthMate.Views
             TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 18, MaxDeposit = 1000, MinDeposit = 1000 });
         }
 
-        //search functionality below
+        /// <summary>
+        /// Search bar functionality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             _searchBar = (sender as SearchBar);
@@ -44,6 +48,11 @@ namespace WealthMate.Views
             }
         }
 
+        /// <summary>
+        /// method for filtering the list view as text changes within the search bar
+        /// </summary>
+        /// <param name="obj"></param> 
+        /// <returns></returns>
         private bool FilterTDeposits(object obj)
         {
             if (_searchBar?.Text == null)

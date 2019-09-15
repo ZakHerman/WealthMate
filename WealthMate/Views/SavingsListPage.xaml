@@ -9,6 +9,7 @@
              Title="Savings">
     <ContentPage.Content>
         <StackLayout>
+            <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder ="Search Savings" TextChanged="OnFilterTextChanged" />
             <syncfusion:SfListView x:Name="SavingsList">
 
