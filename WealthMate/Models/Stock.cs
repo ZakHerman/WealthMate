@@ -49,8 +49,6 @@ namespace WealthMate.Models
         [JsonProperty("52_week_low")]
         public float FiftyTwoWeekLow { get; set; }
 
-        public float DayAverage { get; set; }
-
         [JsonProperty("shares")]
         public long Shares { get; set; }
 
@@ -106,7 +104,6 @@ namespace WealthMate.Models
             this.PriceClose = price;
             this.DayHigh = price;
             this.DayLow = price;
-            this.DayAverage = price;
         }
 
         public Stock(string companyName)
@@ -116,7 +113,6 @@ namespace WealthMate.Models
             PriceOpen = 0.00f;
             PriceClose = 0.00f;
             CurrentPrice = 0.00f;
-            DayAverage = 0.00f;
             DayHigh = 0.00f;
             DayLow = 0.00f;
             FiftyTwoWeekHigh = 0.00f;

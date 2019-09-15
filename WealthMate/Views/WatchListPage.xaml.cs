@@ -45,17 +45,7 @@ namespace WealthMate.Views
         // Default dummy data
         private void GenerateExample()
         {
-            WatchListStocks.Add(new Stock {Symbol = "WBC", CompanyName = "Westpac", CurrentPrice = 1.23f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "SPK", CompanyName = "Spark", CurrentPrice = 2.2f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "AIR", CompanyName = "Air New Zealand", CurrentPrice = 4f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "ANZ", CompanyName = "ANZ", CurrentPrice = 2, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "AIA", CompanyName = "Auckland International Airport", CurrentPrice = 1, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "MCY", CompanyName = "Mercury", CurrentPrice = 0.01f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "TLS", CompanyName = "Telstra", CurrentPrice = 42.2f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "SKT", CompanyName = "Sky Network Television", CurrentPrice = 1.23f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "GNE", CompanyName = "Genesis Energy", CurrentPrice = 0f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "AMP", CompanyName = "AMP", CurrentPrice = 2.52f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
-            WatchListStocks.Add(new Stock {Symbol = "CNU", CompanyName = "Chorus", CurrentPrice = 1.23f, LastTrade = DateTime.Now, PriceOpen = 1.20f, PriceClose = 1.23f, DayHigh = 1.25f, DayLow = 1.18f, FiftyTwoWeekHigh = 1.91f, FiftyTwoWeekLow = 1.01f, Shares = 1500, Volume = 100 });
+           
         }
 
         /// <summary>
