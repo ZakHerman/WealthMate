@@ -9,24 +9,19 @@
 
 
     <NavigationPage.TitleView>                                              <!--Top bar details-->
-        <Grid x:Name="TopView">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="26"/>                                <!--Image size of star-->
             </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />                              <!--Size of stock name column-->
                 <ColumnDefinition Width="37" />                             <!--Size of star image column-->
             </Grid.ColumnDefinitions>
+
             <!--Name of stock being displayed-->
-            <Label x:Name="NavBarTitle"                                         
-                   Text="{Binding Stock.CompanyName}"
-                   HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Start"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   FontSize="20"
-                   Grid.Column="0"
-                   Grid.Row="0"/>
+            <Label x:Name="NavBarTitle" Text="{Binding Stock.CompanyName}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
+                   FontAttributes="Bold" TextColor="White" FontSize="20" Grid.Column="0" Grid.Row="0"/>
             <!--Star image details-->
             <ImageButton Source="starunfilled.png"
                        BackgroundColor="Transparent"
@@ -128,7 +123,6 @@
                     <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='52 Week High: {0:C}'}" Grid.Row="2" Grid.Column="1" />
                     <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N0}'}" Grid.Row="3" Grid.Column="0" />
                     <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N0}'}" Grid.Row="3" Grid.Column="1" />
-                    <Label Text="{Binding Stock.DayAverage, StringFormat='Day Average: {0:C}'}" Grid.Row="4" Grid.Column="0" />
                 </Grid>
             </StackLayout>
         </ScrollView>
