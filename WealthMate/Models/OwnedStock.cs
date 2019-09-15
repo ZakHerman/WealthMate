@@ -69,5 +69,10 @@ namespace WealthMate.Models
             base.TotalReturn = 1;
             base.TotalReturnRate = 1;
         }
+
+        public OwnedStock()
+        {
+
+        }
     }
 }
