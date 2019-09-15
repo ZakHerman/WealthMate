@@ -6,6 +6,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate" 
+            xmlns:views="clr-namespace:WealthMate.Views;assempbly=WealthMate"
             mc:Ignorable="d"
              x:Class="WealthMate.Views.PortfolioPage"
              Title="Portfolio">
@@ -27,6 +28,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
     </NavigationPage.TitleView>
 
     <TabbedPage.Children>
+      
         <ContentPage Title="PieChart">
             <StackLayout>
                 <Grid>
@@ -76,7 +78,8 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                 </chart:SfChart>
             </StackLayout>
         </ContentPage>
+      <views:PortfolioList />
     </TabbedPage.Children>
-</TabbedPage>
 
+</TabbedPage>
 
