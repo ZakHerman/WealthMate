@@ -15,9 +15,13 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd MMMM yyyy}'}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.SharesPurchased, StringFormat='Shares Purchased: {0:F}'}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.PurchasedPrice, StringFormat='Purchased Price: {0:F}'}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.CurrentPrice, StringFormat='Purchased Value: {0:F}'}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:F}'}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.DayReturnToString}" FontSize="Medium" Margin="5,0,0,0"/>
+            <Label Text="{Binding OwnedStock.TotalReturnToString}" FontSize="Medium" Margin="5,0,0,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
