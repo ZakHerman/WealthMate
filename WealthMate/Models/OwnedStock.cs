@@ -12,6 +12,7 @@ namespace WealthMate.Models
         private float _priceClose;
 
         public Stock Stock { get; set; }
+        public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
         public float CurrentPrice

@@ -17,9 +17,9 @@ namespace WealthMate.Views
         public OwnedStockDetailsPage(OwnedStock ownedStock)
         {
             OwnedStock = ownedStock;
-            
-            InitializeComponent();
             BindingContext = this;
+            InitializeComponent();
+            
         }
     }
 }
