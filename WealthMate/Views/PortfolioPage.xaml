@@ -94,7 +94,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
           <ScrollView>
           <syncfusion:SfListView x:Name="List" AutoFitMode="None"
                        ItemsSource="{Binding OwnedAssets, Source={x:Reference Root}}" DragStartMode="OnHold"
-            ItemSize="52">
+            ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
 
             <syncfusion:SfListView.ItemTemplate>
               <DataTemplate>

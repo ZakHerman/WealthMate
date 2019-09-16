@@ -4,6 +4,7 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using Syncfusion.ListView.XForms;
 
 namespace WealthMate.Views
 {
@@ -67,6 +68,23 @@ namespace WealthMate.Views
             pieChart.Add(_bond);
             pieChart.Add(_termD);
             pieChart.Add(_stock);
+        }
+
+        // Event handler for watchlist stock being pressed
+        private async void PortfolioListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selected = (OwnedAsset)e.ItemData;
+
+            if (selected == null)
+                return;
+
+            // Push stockdetailspage on top of stack
+            if(selected is OwnedStock)
+                await Navigation.PushAsync(new OwnedStockDetailsPage(selected));
+            else
+                await Navigation.PushAsync(new OwnedAssetDetailsPage(selected));
+
+            ((SfListView)sender).SelectedItem = null;
         }
     }
 }
