@@ -46,16 +46,20 @@ namespace WealthMate.Views
                 {
                     this._termD.AssetType = "Term Deposits";
                     this._termD.Quantity += asset.CurrentValue;
+                    this._termD.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
                 }
                 if (asset.Type.Equals("Bond"))
                 {
                     this._bond.AssetType = "Bonds";
                     this._bond.Quantity += asset.CurrentValue;
+                    this._bond.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
                 }
                 if (asset is OwnedStock)
                 {
                     this._stock.AssetType = "Stocks";
                     this._stock.Quantity += asset.CurrentValue; //asset.CurrentValue; NOT WORKING CURRENTLY
+                    this._stock.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
+
                 }
                 // insert more code for any other possible types      
             }

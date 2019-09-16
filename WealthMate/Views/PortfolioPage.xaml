@@ -70,7 +70,16 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                         <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
                                         <Label Grid.Column="1" FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding DataPoint.AssetType}" />
                                         <Label Grid.Column="2" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
-                                        <Label Grid.Column="3" FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" />
+
+                                        <!--Changes text to red when the Return Percentage is negative-->
+                                        <Label Grid.Column="3" Text="{Binding DataPoint.ReturnPercentage, StringFormat='{0:F2}%'}" VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="13" TextColor="ForestGreen" LineBreakMode="TailTruncation" >
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType ="Label" Binding="{Binding PositiveTotal}" Value="False">
+                                                    <Setter Property="TextColor" Value="Color.DarkRed" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
                                     </Grid>
                                 </DataTemplate>
                             </chart:ChartLegend.ItemTemplate>
