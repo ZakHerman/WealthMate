@@ -44,6 +44,8 @@ namespace WealthMate.Views
         {
             foreach (OwnedAsset asset in CurrentPortfolio.OwnedAssets)
             {
+                asset.UpdateOwnedAsset();
+
                 if (asset.Type.Equals("Term Deposit"))
                 {
                     this._termD.AssetType = "Term Deposits";
