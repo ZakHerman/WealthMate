@@ -66,6 +66,8 @@ namespace WealthMate.Models
             PriceClose = _priceClose;
             DayReturn = _dayReturn;
             DayReturnRate = _dayReturnRate;
+            base.AssetName = stock.CompanyName;
+            base.Type = "Stock";
             base.TotalReturn = 1;
             base.TotalReturnRate = 1;
         }

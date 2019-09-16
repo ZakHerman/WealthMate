@@ -13,6 +13,7 @@ namespace WealthMate.Models
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string Type { get; set; }
+        public string AssetNameType { get { return AssetName + " " + Type; } }
         public int Length { get; set; }                             //In number of years
         public float InterestRate { get; set; }
         public int CompoundRate { get; set; }

@@ -80,7 +80,7 @@ namespace WealthMate.Views
 
             // Push stockdetailspage on top of stack
             if(selected is OwnedStock)
-                await Navigation.PushAsync(new OwnedStockDetailsPage(selected));
+                await Navigation.PushAsync(new OwnedStockDetailsPage((OwnedStock)selected));
             else
                 await Navigation.PushAsync(new OwnedAssetDetailsPage(selected));
 

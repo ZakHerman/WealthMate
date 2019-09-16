@@ -10,11 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class OwnedStockDetailsPage : ContentPage
     {
-        public OwnedStockDetailsPage(OwnedAsset ownedAsset)
+        public OwnedStock OwnedStock { get; }
+        public OwnedStockDetailsPage(OwnedStock ownedStock)
         {
+            OwnedStock = ownedStock;
+            
             InitializeComponent();
+            BindingContext = this;
         }
     }
 }
