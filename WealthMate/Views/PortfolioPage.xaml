@@ -82,6 +82,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
 
       <!--Portfolio Asset List view Tab:-->
         <ContentPage Title="List">
+          <ScrollView>
           <syncfusion:SfListView x:Name="List" AutoFitMode="None"
                        ItemsSource="{Binding OwnedAssets, Source={x:Reference Root}}" DragStartMode="OnHold"
             ItemSize="52">
@@ -90,15 +91,15 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
               <DataTemplate>
                 <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
                   <Grid.ColumnDefinitions>
-                    <!--4 columns, 0-3-->
+                    <!--4 columns-->
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="55" />
-                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="52" />
+                    <ColumnDefinition Width="46" />
                   </Grid.ColumnDefinitions>
 
                   <Grid.RowDefinitions>
-                    <!--2 rows, 0-1-->
+                    <!--2 rows-->
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                   </Grid.RowDefinitions>
@@ -131,6 +132,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
               </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
           </syncfusion:SfListView>
+          </ScrollView>
         </ContentPage>
     </TabbedPage.Children>
 </TabbedPage>

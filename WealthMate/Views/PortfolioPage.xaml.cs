@@ -1,19 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Collections.ObjectModel;
-using WealthMate.ViewModels;
 using WealthMate.Models;
 using Xamarin.Forms;
-using Syncfusion;
 using System.Collections.Generic;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace WealthMate.Views
 {
-    /**LIST VIEW needs to show:
-    * STOCK or TERM DEPOSIT
-    * CurrentValue (stocks * current price)
-    * Total Return (smaller font)
-    * Total ReturnRate (smaller font - this is a percentage)
-    */
     [DesignTimeVisible(false)]
     public partial class PortfolioPage
     {
