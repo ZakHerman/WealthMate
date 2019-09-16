@@ -124,6 +124,31 @@
                     <Label Text="{Binding Stock.Shares, StringFormat='Shares: {0:N0}'}" Grid.Row="3" Grid.Column="0" />
                     <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N0}'}" Grid.Row="3" Grid.Column="1" />
                 </Grid>
+              
+              <!--Add to portfolio button - should activate a popup to enter details-->
+              <Button Text="Add To Portfolio"  VerticalOptions="End" HorizontalOptions="Start" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
+
+                <!--Popup Box-->
+                <ContentView x:Name="popupView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                      <Entry Margin="20,20,20,10" Placeholder="Enter Number of Shares Purchased"></Entry>
+                      <Entry Margin="20,0,20,0" Placeholder="Enter Purchase Price"></Entry>
+                      <Button Margin="20,0,20,0" Text="Add"></Button>
+                    </StackLayout>
+                  </StackLayout>
+                </ContentView>
+
+              <!--Popup Loading image-->
+                <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="White">
+                      <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                      <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
+                    </StackLayout>
+                  </StackLayout>
+                </ContentView>              
+                            
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

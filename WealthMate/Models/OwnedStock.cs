@@ -12,6 +12,9 @@ namespace WealthMate.Models
         private float _priceClose;
 
         public Stock Stock { get; set; }
+        public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }
+        public string DayReturnToString { get { return "$" + DayReturn + " (" + DayReturnRate + "%)"; } }
+        public string TotalReturnToString { get { return "$" + TotalReturn + " (" + TotalReturnRate + "%)"; } }
         public float PurchasedPrice { get; set; }
         public float SharesPurchased { get; set; }
         public float CurrentPrice
@@ -66,6 +69,9 @@ namespace WealthMate.Models
             PriceClose = _priceClose;
             DayReturn = _dayReturn;
             DayReturnRate = _dayReturnRate;
+            base.AssetName = stock.CompanyName;
+            base.PurchaseDate = purchaseDate;
+            base.Type = "Stock";
             base.TotalReturn = 1;
             base.TotalReturnRate = 1;
         }

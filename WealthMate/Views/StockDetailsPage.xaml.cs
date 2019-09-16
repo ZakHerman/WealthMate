@@ -52,5 +52,17 @@ namespace WealthMate.Views
             }
                
         }
+
+        private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Adds stock to the users portfolio - CURRENTLY IN PROGRESS.
+        {
+            //popupImageView.IsVisible = true;
+            activityIndicator.IsRunning = true;
+
+            float price = 0f;
+            float noOfShares = 0f;
+            OwnedStock newStock = new OwnedStock(Stock,System.DateTime.Now,price,noOfShares);
+            ((App)Application.Current).User.Portfolio.AddAsset(newStock);
+        }
+
     }
 }

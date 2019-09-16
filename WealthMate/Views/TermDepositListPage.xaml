@@ -19,11 +19,9 @@
         <!--Searchbar, placeholder text and on text change functionality-->
         <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
 
+        <!--The list view of the term deposits-->
         <Grid>
-            <!--The swipe functionality to add a term deposit to portfolio-->
             <syncfusion:SfListView x:Name="TDList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
-               
-                <!--The list view of the term deposits-->
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
@@ -50,8 +48,7 @@
                 </syncfusion:SfListView.ItemTemplate>
             </syncfusion:SfListView>
         </Grid>
-    </StackLayout>
-
+     </StackLayout>
 </ContentPage>
 
 <!--<sfPopup:SfPopupLayout x:Name="popupLayout">

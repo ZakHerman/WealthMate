@@ -25,8 +25,8 @@ namespace WealthMate.UnitTests
 
             Assert.AreEqual("WestpacTest", TD1.Provider);
             Assert.AreEqual("AA", TD1.CreditRating);
-            //Assert.AreEqual(10.2, TD1.MinDeposit);
-            //Assert.AreEqual(15.7, TD1.MaxDeposit);
+            Assert.AreEqual(10.2, TD1.MinDeposit);
+            Assert.AreEqual(15.7, TD1.MaxDeposit);
             Assert.AreEqual(12, TD1.LengthInMonths);
             Assert.AreEqual(20.5, TD1.InterestRate);
         }
