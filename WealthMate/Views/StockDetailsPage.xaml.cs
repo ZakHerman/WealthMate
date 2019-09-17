@@ -55,7 +55,7 @@ namespace WealthMate.Views
 
         private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Adds stock to the users portfolio - CURRENTLY IN PROGRESS.
         {
-            //popupImageView.IsVisible = true;
+            popupView.IsVisible = true;
             activityIndicator.IsRunning = true;
 
             float price = 0f;
