@@ -13,6 +13,7 @@ namespace WealthMate.Models
         public float Quantity { get; set; }
         public string AssetType { get; set; }
         public float ReturnPercentage { get; set; }
+        public float PrincipalQuantity { get; set; }
         public bool IsPositive { get; set; }
 
         public void PositiveChecker()

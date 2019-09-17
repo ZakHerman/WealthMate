@@ -46,24 +46,29 @@ namespace WealthMate.Views
 
                 if (asset.Type.Equals("Term Deposit"))
                 {
-                    this._termD.AssetType = "Term Deposits";
-                    this._termD.Quantity += asset.CurrentValue;
-                    this._termD.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
+                    _termD.Quantity += asset.CurrentValue;
+                    _termD.PrincipalQuantity += asset.PrincipalValue;
                 }
                 if (asset.Type.Equals("Bond"))
                 {
-                    this._bond.AssetType = "Bonds";
-                    this._bond.Quantity += asset.CurrentValue;
-                    this._bond.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
+                    _bond.Quantity += asset.CurrentValue;
+                    _bond.PrincipalQuantity += asset.PrincipalValue;
                 }
                 if (asset is OwnedStock)
                 {
-                    this._stock.AssetType = "Stocks";
-                    this._stock.Quantity += asset.CurrentValue;
-                    this._stock.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
+                    _stock.Quantity += asset.CurrentValue;
+                    _stock.PrincipalQuantity += asset.PrincipalValue;
                 }
                 // insert more code for any other possible types      
             }
+            _termD.AssetType = "Term Deposits";
+            _bond.AssetType = "Bonds";
+            _stock.AssetType = "Stocks";
+
+            _termD.ReturnPercentage = ((_termD.Quantity - _termD.PrincipalQuantity) / _termD.PrincipalQuantity) * 100;
+            _bond.ReturnPercentage = ((_bond.Quantity - _bond.PrincipalQuantity) / _bond.PrincipalQuantity) * 100;
+            _stock.ReturnPercentage = ((_stock.Quantity - _stock.PrincipalQuantity) / _stock.PrincipalQuantity) * 100;
+
             _bond.PositiveChecker();            //XAML Flag to see if label should be red or green (negative/positive returns)
             _termD.PositiveChecker();
             _stock.PositiveChecker();
