@@ -8,14 +8,18 @@ namespace WealthMate.UnitTests
     public class PortfolioTest
     {
         private Portfolio testPortfolio;
+        private User user;
         private OwnedAsset testAsset;
         private OwnedAsset testAsset2;
+        private Stock testStock;
 
         public PortfolioTest()
         {
-           testPortfolio = new Portfolio();
-           testAsset = new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0);
-           testAsset2 = new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40);
+            testPortfolio = new Portfolio();
+            testAsset = new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0);
+            testAsset2 = new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40);
+            user = new User();
+            testStock = new Stock();
         }
 
         [TestMethod]
@@ -64,6 +68,14 @@ namespace WealthMate.UnitTests
         public void TestPortfolioDayReturnRate()
         {
             //Zak
+        }
+
+        [TestMethod]
+        public void TestWatchlistRemove()
+        {
+            user.WatchListStocks.Add(testStock);
+            user.WatchListStocks.Remove(testStock);
+            Assert.IsFalse(user.WatchListStocks.Contains(testStock));
         }
     }
 }
