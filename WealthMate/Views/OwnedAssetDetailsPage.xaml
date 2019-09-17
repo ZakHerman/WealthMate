@@ -18,11 +18,18 @@
             <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.PrincipalValue, StringFormat='Amount Invested: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.InterestRateToString, StringFormat='Interest Rate (per annum): {0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Label Text="{Binding OwnedAsset.CompoundRateToString, StringFormat='Interest Reinvested: {0:S}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10"/>
+            <Label Text="{Binding OwnedAsset.CompoundRateToString, StringFormat='Interest Reinvested: {0:S}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}"  Value="0">
                         <Setter Property="Text" Value="Length: Unknown"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                <Label.Triggers>
+                    <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.RegularPayment}"  Value="0">
+                        <Setter Property="Text" Value="Regular Payments: None"/>
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
