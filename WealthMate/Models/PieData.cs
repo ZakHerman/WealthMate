@@ -13,5 +13,14 @@ namespace WealthMate.Models
         public float Quantity { get; set; }
         public string AssetType { get; set; }
         public float ReturnPercentage { get; set; }
+        public bool IsPositive { get; set; }
+
+        public void PositiveChecker()
+        {
+            if (ReturnPercentage > 0)
+                IsPositive = true;
+            else
+                IsPositive = false;
+        }
     }
 }

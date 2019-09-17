@@ -61,10 +61,12 @@ namespace WealthMate.Views
                     this._stock.AssetType = "Stocks";
                     this._stock.Quantity += asset.CurrentValue;
                     this._stock.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
-
                 }
                 // insert more code for any other possible types      
             }
+            _bond.PositiveChecker();            //XAML Flag to see if label should be red or green (negative/positive returns)
+            _termD.PositiveChecker();
+            _stock.PositiveChecker();
 
             pieChart.Add(_bond);
             pieChart.Add(_termD);
