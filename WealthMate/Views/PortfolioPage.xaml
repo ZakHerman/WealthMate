@@ -46,6 +46,10 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                 <!--Default text colour is green, change text to red when total returns are negative-->
                                 <Setter Property="TextColor" Value="Red" />
                             </DataTrigger>
+                            <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.TotalReturn}" Value="0">
+                                <!--Default text colour is green, change text to red when total returns are negative-->
+                                <Setter Property="TextColor" Value="Gray" />
+                            </DataTrigger>
                         </Label.Triggers>
                     </Label>
                     <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large">
@@ -53,6 +57,10 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.PositiveTotal}" Value="False">
                                 <!--Default text colour is green, change text to red when total returns are negative-->
                                 <Setter Property="TextColor" Value="Red" />
+                            </DataTrigger>
+                            <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.TotalReturn}" Value="0">
+                                <!--Default text colour is green, change text to red when total returns are negative-->
+                                <Setter Property="TextColor" Value="Gray" />
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
