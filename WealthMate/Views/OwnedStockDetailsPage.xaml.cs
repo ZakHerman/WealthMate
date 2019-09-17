@@ -23,17 +23,20 @@ namespace WealthMate.Views
             InitializeComponent();
         }
 
+        // Event handler for edit stock button, enables popupview
         private void EditStockClicked(object sender, System.EventArgs e)        
         {
             overlay.IsVisible = true;
             activityIndicator.IsRunning = true;
         }
 
+        // Event handler for cancel editing button
         protected void OnCancelButtonClicked(object sender, EventArgs args)
         {
             overlay.IsVisible = false;
         }
 
+        // Event handler for save editing button
         protected void OnSaveButtonClicked(object sender, EventArgs args)
         {
             int firstVal = Convert.ToInt32(editNumOfShares.Text);
