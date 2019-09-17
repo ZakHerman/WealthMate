@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedStockDetailsPage">
 
-    <NavigationPage.TitleView>
+    <NavigationPage.TitleView> <!--Displays name and that it's a stock, as well as it's bought price in the nav bar-->
         <AbsoluteLayout x:Name="NavBarLayout">
             <Label Text="{Binding OwnedStock.AssetNameTypePurchasedPrice}" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
@@ -14,7 +14,7 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout Margin="0, 10">
+        <StackLayout Margin="0, 10"> <!--Displays basic details of the OwnedStock-->
             <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedStock.SharesPurchased, StringFormat='Shares Purchased: {0:F}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedStock.PurchasedPrice, StringFormat='Purchased Price: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -22,7 +22,7 @@
             <Label Text="{Binding OwnedStock.CurrentPrice, StringFormat='Current Price: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10"/>
 
-            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid HorizontalOptions="Center" VerticalOptions="Center">  <!--Grid to display day returns $ value and % in one line-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -42,6 +42,7 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
@@ -53,6 +54,7 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
@@ -66,6 +68,7 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
@@ -77,38 +80,17 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
             </Grid>
 
-            <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
-            <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"  Clicked="EditStockClicked"/>
+            <!--Buttons below OwnedStock details-->
+            <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/> <!--Will open public view of stock-->
+            <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
-
-            <!--Popup Box-->
-            <ContentView x:Name="overlay" BackgroundColor="White" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="Center" HorizontalOptions="Center">
-                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" Padding="10" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
-                    <!--<StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">-->
-                        <Entry x:Name="editNumOfShares" Margin="20,20,20,10" Placeholder="Edit Number of Shares"></Entry>
-                        <Entry x:Name="editPurchasePrice" Margin="20,0,20,0" Placeholder="Edit Purchase Price"></Entry>
-                        <Button Margin="20,0,20,0" Text="Save" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnSaveButtonClicked"></Button>
-                        <Button Margin="20,0,20,0" Text="Cancel" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelButtonClicked"></Button>
-                    <!--</StackLayout>-->
-                </StackLayout>
-            </ContentView>
-
-            <!--Popup Loading image-->
-            <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
-                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
-                        <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
-                    </StackLayout>
-                </StackLayout>
-            </ContentView>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
