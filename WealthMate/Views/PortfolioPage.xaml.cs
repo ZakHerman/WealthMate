@@ -22,7 +22,7 @@ namespace WealthMate.Views
 
         public PortfolioPage()
         {
-            CurrentPortfolio = (Application.Current as App).User.Portfolio;
+            CurrentPortfolio = (Application.Current as App).User.Portfolio;         //Captures portfolio of current user.
             OwnedAssets = CurrentPortfolio.OwnedAssets;
             pieChart = new ObservableCollection<PieData>();
             SetData();

@@ -61,7 +61,7 @@ namespace WealthMate.Models
             TotalReturn = CurrentValue - PrincipalValue;
             TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
 
-            if (TotalReturn > 0f)
+            if (TotalReturn > 0f)                               //Flag for XAML code (green or red colours)
                 PositiveTotal = true;
             else
                 PositiveTotal = false;
