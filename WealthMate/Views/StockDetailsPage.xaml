@@ -141,7 +141,7 @@
                 <ContentView x:Name="popupView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
                   <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                     <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
-                      <Entry Margin="20,20,20,10" Placeholder="Enter Number of Shares Purchased"></Entry>
+                      <Entry Margin="20,20,20,10" Placeholder="Enter No. of Shares Purchased"></Entry>
                       <Entry Margin="20,0,20,0" Placeholder="Enter Purchase Price"></Entry>
                       <Button Margin="20,0,20,0" Text="Add"></Button>
                     </StackLayout>
