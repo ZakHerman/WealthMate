@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using AndroidPlatform = Xamarin.Forms.PlatformConfiguration.Android;
@@ -18,7 +19,7 @@ namespace WealthMate.Views
             // Disable default scrolling animation for button press
             On<AndroidPlatform>().SetIsSmoothScrollEnabled(false);
 
-            NavBarTitle.BindingContext = new PortfolioPage();
+            NavBarTitle.BindingContext = (Xamarin.Forms.Application.Current as App).User.Portfolio;
         }
     }
 }

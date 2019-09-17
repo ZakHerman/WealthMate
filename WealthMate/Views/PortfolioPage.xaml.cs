@@ -22,7 +22,6 @@ namespace WealthMate.Views
 
         public PortfolioPage()
         {
-            TotalValue = 634635.5623f;
             CurrentPortfolio = (Application.Current as App).User.Portfolio;
             OwnedAssets = CurrentPortfolio.OwnedAssets;
             pieChart = new ObservableCollection<PieData>();
@@ -35,7 +34,6 @@ namespace WealthMate.Views
                 // Center the text of the titleview
                 new Rectangle(0.5, 0.5, 0.9, 1),
                 AbsoluteLayoutFlags.All
-
             );
         }
 
@@ -61,7 +59,7 @@ namespace WealthMate.Views
                 if (asset is OwnedStock)
                 {
                     this._stock.AssetType = "Stocks";
-                    this._stock.Quantity += asset.CurrentValue; //asset.CurrentValue; NOT WORKING CURRENTLY
+                    this._stock.Quantity += asset.CurrentValue;
                     this._stock.ReturnPercentage = asset.CurrentValue / asset.TotalReturn;
 
                 }
@@ -71,8 +69,6 @@ namespace WealthMate.Views
             pieChart.Add(_bond);
             pieChart.Add(_termD);
             pieChart.Add(_stock);
-
-
         }
 
         /// <summary>

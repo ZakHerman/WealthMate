@@ -18,7 +18,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                    HeightRequest="64"
                    WidthRequest="64" />
             <Label x:Name="NavBarTitle"
-                   Text="{Binding TotalValue, StringFormat='{0:C}'}"
+                   Text="{Binding CurrentPortfolio.CurrentTotal, StringFormat='{0:C}'}"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
                    FontAttributes="Bold"
@@ -40,8 +40,8 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='${0:F0}'}" TextColor="ForestGreen" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large"/>
-                    <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F0}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large"/>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='${0:F}'}" TextColor="ForestGreen" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large"/>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large"/>
                 </Grid>
                 <chart:SfChart VerticalOptions="FillAndExpand">
                     <chart:SfChart.Series>
