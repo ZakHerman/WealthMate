@@ -11,8 +11,6 @@ namespace WealthMate.Models
         public float DayReturn { get; set; }
         public float DayReturnRate { get; set; }
         public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }
-        public string DayReturnToString { get { return "$" + DayReturn + " (" + DayReturnRate + "%)"; } }
-        public string TotalReturnToString { get { return "$" + TotalReturn + " (" + TotalReturnRate + "%)"; } }
 
         // Unnecessary use of base class as nothing is being used from it and first parameter is passing companyname for AssetName
         public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased)
