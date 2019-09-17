@@ -40,8 +40,22 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='${0:F}'}" TextColor="ForestGreen" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large"/>
-                    <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large"/>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='{0:C}'}" TextColor="ForestGreen" Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.PositiveTotal}" Value="False">
+                                <!--Default text colour is green, change text to red when total returns are negative-->
+                                <Setter Property="TextColor" Value="Red" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F}%'}" TextColor="ForestGreen" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.PositiveTotal}" Value="False">
+                                <!--Default text colour is green, change text to red when total returns are negative-->
+                                <Setter Property="TextColor" Value="Red" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                 </Grid>
                 <chart:SfChart VerticalOptions="FillAndExpand">
                     <chart:SfChart.Series>

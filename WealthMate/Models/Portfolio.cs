@@ -10,6 +10,7 @@ namespace WealthMate.Models
         public float TotalReturn { get; set; }
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
+        public bool PositiveTotal { get; set; }
 
         //Sprint 2:
         //public float ReturnGoal { get; set; }
@@ -50,6 +51,11 @@ namespace WealthMate.Models
                 TotalReturn += asset.TotalReturn;
             }
             TotalReturnRate = ((CurrentTotal - PrincipalTotal) / PrincipalTotal) * 100;
+
+            if (TotalReturn > 0f)
+                PositiveTotal = true;
+            else
+                PositiveTotal = false;
         }
     
     }
