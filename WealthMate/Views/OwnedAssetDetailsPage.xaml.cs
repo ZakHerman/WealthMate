@@ -12,8 +12,12 @@ namespace WealthMate.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnedAssetDetailsPage : ContentPage
     {
+        public OwnedAsset OwnedAsset { get; }
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)
         {
+            OwnedAsset = ownedAsset;
+            OwnedAsset.UpdateOwnedAsset();
+            BindingContext = this;
             InitializeComponent();
         }
     }
