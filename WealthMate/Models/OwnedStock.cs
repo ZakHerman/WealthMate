@@ -10,6 +10,7 @@ namespace WealthMate.Models
         public float CurrentPrice { get; set; }
         public float DayReturn { get; set; }
         public float DayReturnRate { get; set; }
+        public bool PositiveDayReturns { get; set; }
         public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }
 
         // Unnecessary use of base class as nothing is being used from it and first parameter is passing companyname for AssetName
@@ -35,11 +36,17 @@ namespace WealthMate.Models
         {
             CurrentPrice = Stock.CurrentPrice;
             CurrentValue = CurrentPrice * SharesPurchased;
+
             DayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);
             DayReturnRate = (DayReturn / PrincipalValue) * 100;
+            if (DayReturn > 0)
+                PositiveDayReturns = true;
+            else
+                PositiveDayReturns = false;
+
             TotalReturn = CurrentValue - PrincipalValue;
             TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
-             if (TotalReturn > 0f)
+            if (TotalReturn > 0f)
                 PositiveTotal = true;
             else
                 PositiveTotal = false;
