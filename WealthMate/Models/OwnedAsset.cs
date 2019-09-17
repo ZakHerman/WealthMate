@@ -17,6 +17,8 @@ namespace WealthMate.Models
         public float TotalReturnRate { get; set; }
         public bool PositiveTotal { get; set; }
         public string AssetNameType { get { return AssetName + " " + Type; } }
+        public string CompoundRateToString { get; set; }
+        public string InterestRateToString { get; set; }
 
         // Virtual member in constructor call
         // https://stackoverflow.com/questions/119506/virtual-member-call-in-a-constructor
@@ -65,6 +67,28 @@ namespace WealthMate.Models
                 PositiveTotal = true;
             else
                 PositiveTotal = false;
+
+            switch (CompoundRate)
+            {
+                case 1:
+                    CompoundRateToString = "Annually";
+                    break;
+                case 2:
+                    CompoundRateToString = "Semi-Annually";
+                    break;
+                case 4:
+                    CompoundRateToString = "Quarterly";
+                    break;
+                case 12:
+                    CompoundRateToString = "Monthly";
+                    break;
+                default:
+                    CompoundRateToString = "Never";
+                    break;
+            }
+
+            InterestRateToString = (InterestRate * 100).ToString();
         }
+
     }
 }

@@ -5,14 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedStockDetailsPage">
-    
+
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
             <Label Text="{Binding OwnedStock.AssetNameTypePurchasedPrice}" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
-    
+
     <ContentPage.Content>
         <StackLayout Margin="0, 10">
             <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -21,7 +21,7 @@
             <Label Text="{Binding OwnedStock.PrincipalValue, StringFormat='Purchased Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10"/>
             <Label Text="{Binding OwnedStock.CurrentPrice, StringFormat='Current Price: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10"/>
-            
+
             <Grid HorizontalOptions="Center" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -38,7 +38,7 @@
                 <Label Text="{Binding OwnedStock.DayReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="0" TextColor="Red">
                     <Label.Triggers>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveDayReturns}"  Value="True">
-                        <!--Change text to green when positive return-->
+                            <!--Change text to green when positive return-->
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}"  Value="0">
@@ -57,7 +57,7 @@
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
-                
+
                 <Label Text="Total Return:" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
                 <Label Text="{Binding OwnedStock.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="Red">
                     <Label.Triggers>
@@ -82,7 +82,7 @@
                     </Label.Triggers>
                 </Label>
             </Grid>
-            
+
             <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
             <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
