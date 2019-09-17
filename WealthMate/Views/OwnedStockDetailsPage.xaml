@@ -84,8 +84,31 @@
             </Grid>
 
             <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
-            <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"  Clicked="EditStockClicked"/>
             <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <!--Popup Box-->
+            <ContentView x:Name="overlay" BackgroundColor="White" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" Padding="10" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                    <!--<StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">-->
+                        <Entry x:Name="editNumOfShares" Margin="20,20,20,10" Placeholder="Edit Number of Shares"></Entry>
+                        <Entry x:Name="editPurchasePrice" Margin="20,0,20,0" Placeholder="Edit Purchase Price"></Entry>
+                        <Button Margin="20,0,20,0" Text="Save" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnSaveButtonClicked"></Button>
+                        <Button Margin="20,0,20,0" Text="Cancel" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Clicked="OnCancelButtonClicked"></Button>
+                    <!--</StackLayout>-->
+                </StackLayout>
+            </ContentView>
+
+            <!--Popup Loading image-->
+            <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                        <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -36,6 +36,11 @@ namespace WealthMate.Models
             UpdatePortfolio();
         }
 
+        public void EditAsset(float newPrice, float newNumOfShares, OwnedAsset asset)
+        {
+            // edit current asset details
+        }
+
         public void UpdatePortfolio()
         {
             CurrentTotal = 0;
