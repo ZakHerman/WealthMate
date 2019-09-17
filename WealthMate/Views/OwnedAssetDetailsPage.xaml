@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedAssetDetailsPage">
     
-    <NavigationPage.TitleView>
+    <NavigationPage.TitleView>  <!--Name and Type of Asset in NavBar-->
         <AbsoluteLayout x:Name="NavBarLayout">
             <Label Text="{Binding OwnedAsset.AssetNameType}" HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
@@ -14,7 +14,7 @@
     </NavigationPage.TitleView>
     
     <ContentPage.Content>
-        <StackLayout Margin="0, 10">
+        <StackLayout Margin="0, 10">        <!--Basic details of the OwnedAsset-->
             <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.PrincipalValue, StringFormat='Amount Invested: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.InterestRateToString, StringFormat='Interest Rate (per annum): {0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -22,20 +22,20 @@
             <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}"  Value="0">
-                        <Setter Property="Text" Value="Length: Unknown"/>
+                        <Setter Property="Text" Value="Length: Unknown"/>                                   <!--Changes value from 0 to unknown if length is not provided-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Margin="0, 0, 0, 10">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.RegularPayment}"  Value="0">
-                        <Setter Property="Text" Value="Regular Payments: None"/>
+                        <Setter Property="Text" Value="Regular Payments: None"/>                            <!--Changes value from 0 to None if there are no regular payments-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Label Text="{Binding OwnedAsset.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10"/>
-    
-            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding OwnedAsset.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+            <Grid HorizontalOptions="Center" VerticalOptions="Center"  Margin="0, -10, 0, 0">              <!--Grid to display $ return and % return on one line-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -55,6 +55,7 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
@@ -66,12 +67,14 @@
                             <Setter Property="TextColor" Value="Color.ForestGreen" />
                         </DataTrigger>
                         <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}"  Value="0">
+                            <!--Change text to grey when no return-->
                             <Setter Property="TextColor" Value="Color.Gray" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
             </Grid>
-
+            
+            <!--Buttons below details of OwnedAsset-->
             <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
             <Button Text="Remove Owned Asset" VerticalOptions="Center" HorizontalOptions="Center"/>
         </StackLayout>

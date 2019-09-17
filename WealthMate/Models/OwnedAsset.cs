@@ -68,7 +68,7 @@ namespace WealthMate.Models
             else
                 PositiveTotal = false;
 
-            switch (CompoundRate)
+            switch (CompoundRate)                                   //Converts float value (for calculation purposes) into what it means.
             {
                 case 1:
                     CompoundRateToString = "Annually";
@@ -87,7 +87,7 @@ namespace WealthMate.Models
                     break;
             }
 
-            InterestRateToString = (InterestRate * 100).ToString();
+            InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
         }
 
     }
