@@ -130,7 +130,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
               <DataTemplate>
                 <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
                   <Grid.ColumnDefinitions>
-                    <!--4 columns-->
+                    <!--4 columns per asset-->
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="52" />
@@ -138,7 +138,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                   </Grid.ColumnDefinitions>
 
                   <Grid.RowDefinitions>
-                    <!--2 rows-->
+                    <!--2 rows per asset-->
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                   </Grid.RowDefinitions>
