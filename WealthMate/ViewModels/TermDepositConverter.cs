@@ -15,7 +15,7 @@ namespace WealthMate.ViewModels
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return 0;
+            throw new NotImplementedException();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace WealthMate.Models
 
         }
         
-        public TermDeposit(string provider, int? minDeposit, int? maxDeposit, float length, float interestRate)
+        public TermDeposit(string provider, int? minDeposit, int? maxDeposit, int length, float interestRate)
         {
             Provider = provider;
             MinDeposit = minDeposit;
