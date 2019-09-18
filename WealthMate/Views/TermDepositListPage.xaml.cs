@@ -10,7 +10,6 @@ namespace WealthMate.Views
     public partial class TermDepositListPage
     {
         private SearchBar _searchBar;
-        public ObservableCollection<TermDeposit> TermDeposits { get; } = new ObservableCollection<TermDeposit>();
 
         public TermDepositListPage()
         {
