@@ -21,7 +21,7 @@
 
         <!--The list view of the term deposits-->
         <Grid>
-            <syncfusion:SfListView x:Name="TDList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">

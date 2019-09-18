@@ -13,10 +13,11 @@ namespace WealthMate.Services
         public const string BaseUrl = "https://wealthmate.azurewebsites.net/api/";
 
         public static ObservableCollection<Stock> Stocks { get; private set; }
+        public static ObservableCollection<TermDeposit> TermDeposits { get; private set; }
 
         public static async Task FetchStocksAsync()
         {
-            var res = await Client.GetAsync(BaseUrl + "GetStocksNzx");
+            var res = await Client.GetAsync(BaseUrl + "getstocksnzx");
             var content = await res.Content.ReadAsStringAsync();
             Stocks = JsonConvert.DeserializeObject<ObservableCollection<Stock>>(content);
         }
@@ -24,6 +25,13 @@ namespace WealthMate.Services
         public static async Task<Stock> GetStockAsync(string symbol)
         {
             return await Task.FromResult(Stocks.FirstOrDefault(s => s.Symbol == symbol));
+        }
+
+        public static async Task FetchTermDepositsAsync()
+        {
+            var res = await Client.GetAsync(BaseUrl + "gettermdeposits");
+            var content = await res.Content.ReadAsStringAsync();
+            TermDeposits = JsonConvert.DeserializeObject<ObservableCollection<TermDeposit>>(content);
         }
     }
 }
