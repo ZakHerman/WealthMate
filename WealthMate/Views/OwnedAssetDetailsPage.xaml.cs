@@ -21,31 +21,26 @@ namespace WealthMate.Views
             InitializeComponent();
         }
 
-        // Event handler for edit stock button, enables popupview
+        // Event handler for edit stock button, enables popup
         private void EditAssetClicked(object sender, System.EventArgs e)
         {
-            overlay.IsVisible = true;
-            activityIndicator.IsRunning = true;
-        }
-
-        // Event handler for cancel editing button
-        protected void OnCancelButtonClicked(object sender, EventArgs args)
-        {
-            overlay.IsVisible = false;
+            popupLayout.IsOpen = true;
         }
 
         // Event handler for save editing button
         protected void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            //int firstVal = Convert.ToInt32(editNumOfShares.Text);
-            //double secondVal = Convert.ToDouble(editPurchasePrice.Text);
+            popupLayout.IsOpen = false;
 
-            //float newN = (float)firstVal;
-            //float newP = (float)secondVal;
+            // float newInterestRate = float.Parse(editInterestRate.Value.ToString());
+            // float newRePeriod = float.Parse(editRePeriod.Value.ToString());
+            // float newLength = float.Parse(editLength.Value.ToString());
+            // float newRegPayments = float.Parse(editRegPayments.Value.ToString());
 
-            // OwnedStock editedStock = new OwnedStock(Stock, System.DateTime.Now, newN, newP);
-            // get current stock, replace with editedStock
-            //((App)Application.Current).User.Portfolio.AddAsset(newStock);
+            // 1. Check which asset 
+            // 2. If term deposit, new term deposit + replace
+            // 3. get current owned asset, replace with new owned asset
+            // 4. ((App)Application.Current).User.Portfolio.AddAsset(newAsset);
         }
     }
 }
