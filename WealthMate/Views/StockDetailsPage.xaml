@@ -138,7 +138,7 @@
                 </Grid>
               
               <!--Add to portfolio button-->
-              <Button Text="Add To Portfolio"  VerticalOptions="End" HorizontalOptions="Start" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
+                <Button Text="Add To Portfolio"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
                  
          <!--Add To Portfolio Popup Box-->
               <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
