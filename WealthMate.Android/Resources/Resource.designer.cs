@@ -83,6 +83,132 @@ namespace WealthMate.Droid
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.input_layout_drop_down_icon = global::WealthMate.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::WealthMate.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::WealthMate.Droid.Resource.Drawable.inputlayout_togglevisibleicon;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteBorderColor = global::WealthMate.Droid.Resource.Attribute.autocompleteBorderColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteClearButtonColor = global::WealthMate.Droid.Resource.Attribute.autocompleteClearButtonColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDisplayMemberPath = global::WealthMate.Droid.Resource.Attribute.autocompleteDisplayMemberPath;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownBackgroundColor = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownBackgroundColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownCornerRadius = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownCornerRadius;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownFooterViewHeight = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownFooterViewHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownHeaderViewHeight = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownHeaderViewHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownItemHeight = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownItemHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownOpen = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownOpen;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownTextColor = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteDropDownTextSize = global::WealthMate.Droid.Resource.Attribute.autocompleteDropDownTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteEnableSelectionIndicator = global::WealthMate.Droid.Resource.Attribute.autocompleteEnableSelectionIndicator;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteHighlightedTextColor = global::WealthMate.Droid.Resource.Attribute.autocompleteHighlightedTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIgnoreDiacritic = global::WealthMate.Droid.Resource.Attribute.autocompleteIgnoreDiacritic;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteImageMemberPath = global::WealthMate.Droid.Resource.Attribute.autocompleteImageMemberPath;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIndicatorText = global::WealthMate.Droid.Resource.Attribute.autocompleteIndicatorText;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIndicatorTextColor = global::WealthMate.Droid.Resource.Attribute.autocompleteIndicatorTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIndicatorTextSize = global::WealthMate.Droid.Resource.Attribute.autocompleteIndicatorTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIsFocused = global::WealthMate.Droid.Resource.Attribute.autocompleteIsFocused;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteIsSelectedItemsVisibleInDropDown = global::WealthMate.Droid.Resource.Attribute.autocompleteIsSelectedItemsVisibleInDropDown;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteLoadMoreText = global::WealthMate.Droid.Resource.Attribute.autocompleteLoadMoreText;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteMaximumDropDownHeight = global::WealthMate.Droid.Resource.Attribute.autocompleteMaximumDropDownHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteMaximumSuggestion = global::WealthMate.Droid.Resource.Attribute.autocompleteMaximumSuggestion;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteMinimumPrefixCharacters = global::WealthMate.Droid.Resource.Attribute.autocompleteMinimumPrefixCharacters;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteMode = global::WealthMate.Droid.Resource.Attribute.autocompleteMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteMultiSelectMode = global::WealthMate.Droid.Resource.Attribute.autocompleteMultiSelectMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteNoResultsFoundText = global::WealthMate.Droid.Resource.Attribute.autocompleteNoResultsFoundText;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompletePopUpDelay = global::WealthMate.Droid.Resource.Attribute.autocompletePopUpDelay;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteSelectedIndex = global::WealthMate.Droid.Resource.Attribute.autocompleteSelectedIndex;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteShowBorder = global::WealthMate.Droid.Resource.Attribute.autocompleteShowBorder;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteShowClearButton = global::WealthMate.Droid.Resource.Attribute.autocompleteShowClearButton;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteShowDropDownFooterView = global::WealthMate.Droid.Resource.Attribute.autocompleteShowDropDownFooterView;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteShowDropDownHeaderView = global::WealthMate.Droid.Resource.Attribute.autocompleteShowDropDownHeaderView;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteShowSuggestionsOnFocus = global::WealthMate.Droid.Resource.Attribute.autocompleteShowSuggestionsOnFocus;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteSuggestionBoxPlacement = global::WealthMate.Droid.Resource.Attribute.autocompleteSuggestionBoxPlacement;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteSuggestionMode = global::WealthMate.Droid.Resource.Attribute.autocompleteSuggestionMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteText = global::WealthMate.Droid.Resource.Attribute.autocompleteText;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteTextColor = global::WealthMate.Droid.Resource.Attribute.autocompleteTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteTextSize = global::WealthMate.Droid.Resource.Attribute.autocompleteTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteTokensWrapMode = global::WealthMate.Droid.Resource.Attribute.autocompleteTokensWrapMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteWatermark = global::WealthMate.Droid.Resource.Attribute.autocompleteWatermark;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.autocompleteWatermarkColor = global::WealthMate.Droid.Resource.Attribute.autocompleteWatermarkColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.layoutManager = global::WealthMate.Droid.Resource.Attribute.layoutManager;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.reverseLayout = global::WealthMate.Droid.Resource.Attribute.reverseLayout;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.spanCount = global::WealthMate.Droid.Resource.Attribute.spanCount;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.stackFromEnd = global::WealthMate.Droid.Resource.Attribute.stackFromEnd;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::WealthMate.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::WealthMate.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::WealthMate.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::Com.Syncfusion.Autocomplete.Resource.Drawable.sfclosebutton = global::WealthMate.Droid.Resource.Drawable.sfclosebutton;
+			global::Com.Syncfusion.Autocomplete.Resource.Drawable.styleinfo = global::WealthMate.Droid.Resource.Drawable.styleinfo;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.Itemname = global::WealthMate.Droid.Resource.Id.Itemname;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.append = global::WealthMate.Droid.Resource.Id.append;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.bottom = global::WealthMate.Droid.Resource.Id.bottom;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.contains = global::WealthMate.Droid.Resource.Id.contains;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.containsWithCaseSensitive = global::WealthMate.Droid.Resource.Id.containsWithCaseSensitive;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.custom = global::WealthMate.Droid.Resource.Id.custom;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.delimiter = global::WealthMate.Droid.Resource.Id.delimiter;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.endsWith = global::WealthMate.Droid.Resource.Id.endsWith;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.endsWithCaseSensitive = global::WealthMate.Droid.Resource.Id.endsWithCaseSensitive;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.equals = global::WealthMate.Droid.Resource.Id.equals;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.equalsWithCaseSensitive = global::WealthMate.Droid.Resource.Id.equalsWithCaseSensitive;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.icon = global::WealthMate.Droid.Resource.Id.icon;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.item_touch_helper_previous_elevation = global::WealthMate.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.none = global::WealthMate.Droid.Resource.Id.none;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.startsWith = global::WealthMate.Droid.Resource.Id.startsWith;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.startsWithCaseSensitive = global::WealthMate.Droid.Resource.Id.startsWithCaseSensitive;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.suggest = global::WealthMate.Droid.Resource.Id.suggest;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.suggestAppend = global::WealthMate.Droid.Resource.Id.suggestAppend;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.token = global::WealthMate.Droid.Resource.Id.token;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.top = global::WealthMate.Droid.Resource.Id.top;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.wrap = global::WealthMate.Droid.Resource.Id.wrap;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.CustomizedView = global::WealthMate.Droid.Resource.Layout.CustomizedView;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.CustomizedView1 = global::WealthMate.Droid.Resource.Layout.CustomizedView1;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.sfautocomplete_layout = global::WealthMate.Droid.Resource.Layout.sfautocomplete_layout;
+			global::Com.Syncfusion.Autocomplete.Resource.String.library_name = global::WealthMate.Droid.Resource.String.library_name;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView = global::WealthMate.Droid.Resource.Styleable.RecyclerView;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_android_descendantFocusability = global::WealthMate.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_android_orientation = global::WealthMate.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_layoutManager = global::WealthMate.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_reverseLayout = global::WealthMate.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_spanCount = global::WealthMate.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_stackFromEnd = global::WealthMate.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteBorderColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteBorderColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteClearButtonColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteClearButtonColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDisplayMemberPath = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDisplayMemberPath;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownBackgroundColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownBackgroundColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownCornerRadius = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownCornerRadius;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownFooterViewHeight = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownFooterViewHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownHeaderViewHeight = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownHeaderViewHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownItemHeight = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownItemHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownOpen = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownOpen;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownTextColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteDropDownTextSize = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteDropDownTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteEnableSelectionIndicator = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteEnableSelectionIndicator;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteHighlightedTextColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteHighlightedTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIgnoreDiacritic = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIgnoreDiacritic;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteImageMemberPath = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteImageMemberPath;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIndicatorText = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIndicatorText;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIndicatorTextColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIndicatorTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIndicatorTextSize = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIndicatorTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIsFocused = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIsFocused;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteIsSelectedItemsVisibleInDropDown = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteIsSelectedItemsVisibleInDropDown;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteLoadMoreText = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteLoadMoreText;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteMaximumDropDownHeight = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteMaximumDropDownHeight;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteMaximumSuggestion = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteMaximumSuggestion;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteMinimumPrefixCharacters = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteMinimumPrefixCharacters;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteMode = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteMultiSelectMode = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteMultiSelectMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteNoResultsFoundText = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteNoResultsFoundText;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompletePopUpDelay = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompletePopUpDelay;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteSelectedIndex = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteSelectedIndex;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteShowBorder = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteShowBorder;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteShowClearButton = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteShowClearButton;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteShowDropDownFooterView = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteShowDropDownFooterView;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteShowDropDownHeaderView = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteShowDropDownHeaderView;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteShowSuggestionsOnFocus = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteShowSuggestionsOnFocus;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteSuggestionBoxPlacement = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteSuggestionBoxPlacement;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteSuggestionMode = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteSuggestionMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteText = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteText;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteTextColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteTextColor;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteTextSize = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteTextSize;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteTokensWrapMode = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteTokensWrapMode;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteWatermark = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteWatermark;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.SfAutoComplete_autocompleteWatermarkColor = global::WealthMate.Droid.Resource.Styleable.SfAutoComplete_autocompleteWatermarkColor;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_In = global::WealthMate.Droid.Resource.Animation.SfChart_Fade_In;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Fade_Out = global::WealthMate.Droid.Resource.Animation.SfChart_Fade_Out;
 			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.SfChart_Scale_In = global::WealthMate.Droid.Resource.Animation.SfChart_Scale_In;
@@ -3451,6 +3577,132 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f010052
 			public const int autoSizeTextType = 2130772050;
 			
+			// aapt resource value: 0x7f0101fd
+			public const int autocompleteBorderColor = 2130772477;
+			
+			// aapt resource value: 0x7f010212
+			public const int autocompleteClearButtonColor = 2130772498;
+			
+			// aapt resource value: 0x7f010206
+			public const int autocompleteDisplayMemberPath = 2130772486;
+			
+			// aapt resource value: 0x7f01020b
+			public const int autocompleteDropDownBackgroundColor = 2130772491;
+			
+			// aapt resource value: 0x7f01021b
+			public const int autocompleteDropDownCornerRadius = 2130772507;
+			
+			// aapt resource value: 0x7f01021d
+			public const int autocompleteDropDownFooterViewHeight = 2130772509;
+			
+			// aapt resource value: 0x7f01021c
+			public const int autocompleteDropDownHeaderViewHeight = 2130772508;
+			
+			// aapt resource value: 0x7f01021a
+			public const int autocompleteDropDownItemHeight = 2130772506;
+			
+			// aapt resource value: 0x7f010201
+			public const int autocompleteDropDownOpen = 2130772481;
+			
+			// aapt resource value: 0x7f01020c
+			public const int autocompleteDropDownTextColor = 2130772492;
+			
+			// aapt resource value: 0x7f01020e
+			public const int autocompleteDropDownTextSize = 2130772494;
+			
+			// aapt resource value: 0x7f010207
+			public const int autocompleteEnableSelectionIndicator = 2130772487;
+			
+			// aapt resource value: 0x7f010218
+			public const int autocompleteHighlightedTextColor = 2130772504;
+			
+			// aapt resource value: 0x7f010213
+			public const int autocompleteIgnoreDiacritic = 2130772499;
+			
+			// aapt resource value: 0x7f01020f
+			public const int autocompleteImageMemberPath = 2130772495;
+			
+			// aapt resource value: 0x7f010208
+			public const int autocompleteIndicatorText = 2130772488;
+			
+			// aapt resource value: 0x7f010209
+			public const int autocompleteIndicatorTextColor = 2130772489;
+			
+			// aapt resource value: 0x7f010219
+			public const int autocompleteIndicatorTextSize = 2130772505;
+			
+			// aapt resource value: 0x7f010214
+			public const int autocompleteIsFocused = 2130772500;
+			
+			// aapt resource value: 0x7f010217
+			public const int autocompleteIsSelectedItemsVisibleInDropDown = 2130772503;
+			
+			// aapt resource value: 0x7f010215
+			public const int autocompleteLoadMoreText = 2130772501;
+			
+			// aapt resource value: 0x7f01020d
+			public const int autocompleteMaximumDropDownHeight = 2130772493;
+			
+			// aapt resource value: 0x7f010202
+			public const int autocompleteMaximumSuggestion = 2130772482;
+			
+			// aapt resource value: 0x7f01020a
+			public const int autocompleteMinimumPrefixCharacters = 2130772490;
+			
+			// aapt resource value: 0x7f010222
+			public const int autocompleteMode = 2130772514;
+			
+			// aapt resource value: 0x7f010221
+			public const int autocompleteMultiSelectMode = 2130772513;
+			
+			// aapt resource value: 0x7f010216
+			public const int autocompleteNoResultsFoundText = 2130772502;
+			
+			// aapt resource value: 0x7f010205
+			public const int autocompletePopUpDelay = 2130772485;
+			
+			// aapt resource value: 0x7f010203
+			public const int autocompleteSelectedIndex = 2130772483;
+			
+			// aapt resource value: 0x7f0101f9
+			public const int autocompleteShowBorder = 2130772473;
+			
+			// aapt resource value: 0x7f0101fa
+			public const int autocompleteShowClearButton = 2130772474;
+			
+			// aapt resource value: 0x7f010211
+			public const int autocompleteShowDropDownFooterView = 2130772497;
+			
+			// aapt resource value: 0x7f010210
+			public const int autocompleteShowDropDownHeaderView = 2130772496;
+			
+			// aapt resource value: 0x7f010204
+			public const int autocompleteShowSuggestionsOnFocus = 2130772484;
+			
+			// aapt resource value: 0x7f01021f
+			public const int autocompleteSuggestionBoxPlacement = 2130772511;
+			
+			// aapt resource value: 0x7f01021e
+			public const int autocompleteSuggestionMode = 2130772510;
+			
+			// aapt resource value: 0x7f0101ff
+			public const int autocompleteText = 2130772479;
+			
+			// aapt resource value: 0x7f0101fc
+			public const int autocompleteTextColor = 2130772476;
+			
+			// aapt resource value: 0x7f010200
+			public const int autocompleteTextSize = 2130772480;
+			
+			// aapt resource value: 0x7f010220
+			public const int autocompleteTokensWrapMode = 2130772512;
+			
+			// aapt resource value: 0x7f0101fe
+			public const int autocompleteWatermark = 2130772478;
+			
+			// aapt resource value: 0x7f0101fb
+			public const int autocompleteWatermarkColor = 2130772475;
+			
 			// aapt resource value: 0x7f01002f
 			public const int background = 2130772015;
 			
@@ -3595,8 +3847,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0100c3
 			public const int checkboxStyle = 2130772163;
 			
-			// aapt resource value: 0x7f0101fc
-			public const int @checked = 2130772476;
+			// aapt resource value: 0x7f010226
+			public const int @checked = 2130772518;
 			
 			// aapt resource value: 0x7f010173
 			public const int checkedChip = 2130772339;
@@ -3790,8 +4042,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f010193
 			public const int cornerRadius = 2130772371;
 			
-			// aapt resource value: 0x7f0101fb
-			public const int cornerradius = 2130772475;
+			// aapt resource value: 0x7f010225
+			public const int cornerradius = 2130772517;
 			
 			// aapt resource value: 0x7f0101c2
 			public const int counterEnabled = 2130772418;
@@ -4075,8 +4327,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f010025
 			public const int isLightTheme = 2130772005;
 			
-			// aapt resource value: 0x7f0101fa
-			public const int isthreestate = 2130772474;
+			// aapt resource value: 0x7f010224
+			public const int isthreestate = 2130772516;
 			
 			// aapt resource value: 0x7f010197
 			public const int itemBackground = 2130772375;
@@ -4405,41 +4657,41 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0100ca
 			public const int seekBarStyle = 2130772170;
 			
-			// aapt resource value: 0x7f0101fe
-			public const int segmentBackColor = 2130772478;
+			// aapt resource value: 0x7f010228
+			public const int segmentBackColor = 2130772520;
 			
-			// aapt resource value: 0x7f0101ff
-			public const int segmentBorderColor = 2130772479;
+			// aapt resource value: 0x7f010229
+			public const int segmentBorderColor = 2130772521;
 			
-			// aapt resource value: 0x7f010200
-			public const int segmentBorderThickness = 2130772480;
+			// aapt resource value: 0x7f01022a
+			public const int segmentBorderThickness = 2130772522;
 			
-			// aapt resource value: 0x7f010201
-			public const int segmentColor = 2130772481;
+			// aapt resource value: 0x7f01022b
+			public const int segmentColor = 2130772523;
 			
-			// aapt resource value: 0x7f010206
-			public const int segmentCornerRadius = 2130772486;
+			// aapt resource value: 0x7f010230
+			public const int segmentCornerRadius = 2130772528;
 			
-			// aapt resource value: 0x7f010208
-			public const int segmentDisplayMode = 2130772488;
+			// aapt resource value: 0x7f010232
+			public const int segmentDisplayMode = 2130772530;
 			
-			// aapt resource value: 0x7f010207
-			public const int segmentPosition = 2130772487;
+			// aapt resource value: 0x7f010231
+			public const int segmentPosition = 2130772529;
 			
-			// aapt resource value: 0x7f0101fd
-			public const int segmentSelectedIndex = 2130772477;
+			// aapt resource value: 0x7f010227
+			public const int segmentSelectedIndex = 2130772519;
 			
-			// aapt resource value: 0x7f010205
-			public const int segmentStrokeThickness = 2130772485;
+			// aapt resource value: 0x7f01022f
+			public const int segmentStrokeThickness = 2130772527;
 			
-			// aapt resource value: 0x7f010203
-			public const int segmentedHeight = 2130772483;
+			// aapt resource value: 0x7f01022d
+			public const int segmentedHeight = 2130772525;
 			
-			// aapt resource value: 0x7f010202
-			public const int segmentedPadding = 2130772482;
+			// aapt resource value: 0x7f01022c
+			public const int segmentedPadding = 2130772524;
 			
-			// aapt resource value: 0x7f010204
-			public const int segmentedWidth = 2130772484;
+			// aapt resource value: 0x7f01022e
+			public const int segmentedWidth = 2130772526;
 			
 			// aapt resource value: 0x7f0101f2
 			public const int selectAllOnFocus = 2130772466;
@@ -4510,8 +4762,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f010142
 			public const int state_collapsible = 2130772290;
 			
-			// aapt resource value: 0x7f0101f9
-			public const int state_indeterminate = 2130772473;
+			// aapt resource value: 0x7f010223
+			public const int state_indeterminate = 2130772515;
 			
 			// aapt resource value: 0x7f010144
 			public const int state_liftable = 2130772292;
@@ -6290,26 +6542,26 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
 			
-			// aapt resource value: 0x7f020161
-			public const int avd_hide_password_1 = 2130837857;
-			
-			// aapt resource value: 0x7f020162
-			public const int avd_hide_password_2 = 2130837858;
-			
 			// aapt resource value: 0x7f020163
-			public const int avd_hide_password_3 = 2130837859;
+			public const int avd_hide_password_1 = 2130837859;
+			
+			// aapt resource value: 0x7f020164
+			public const int avd_hide_password_2 = 2130837860;
+			
+			// aapt resource value: 0x7f020165
+			public const int avd_hide_password_3 = 2130837861;
 			
 			// aapt resource value: 0x7f020059
 			public const int avd_show_password = 2130837593;
 			
-			// aapt resource value: 0x7f020164
-			public const int avd_show_password_1 = 2130837860;
-			
-			// aapt resource value: 0x7f020165
-			public const int avd_show_password_2 = 2130837861;
-			
 			// aapt resource value: 0x7f020166
-			public const int avd_show_password_3 = 2130837862;
+			public const int avd_show_password_1 = 2130837862;
+			
+			// aapt resource value: 0x7f020167
+			public const int avd_show_password_2 = 2130837863;
+			
+			// aapt resource value: 0x7f020168
+			public const int avd_show_password_3 = 2130837864;
 			
 			// aapt resource value: 0x7f02005a
 			public const int BFG = 2130837594;
@@ -7037,11 +7289,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f02014b
 			public const int notification_icon_background = 2130837835;
 			
-			// aapt resource value: 0x7f02015f
-			public const int notification_template_icon_bg = 2130837855;
+			// aapt resource value: 0x7f020161
+			public const int notification_template_icon_bg = 2130837857;
 			
-			// aapt resource value: 0x7f020160
-			public const int notification_template_icon_low_bg = 2130837856;
+			// aapt resource value: 0x7f020162
+			public const int notification_template_icon_low_bg = 2130837858;
 			
 			// aapt resource value: 0x7f02014c
 			public const int notification_tile_bg = 2130837836;
@@ -7071,34 +7323,40 @@ namespace WealthMate.Droid
 			public const int settings = 2130837844;
 			
 			// aapt resource value: 0x7f020155
-			public const int SKT = 2130837845;
+			public const int sfclosebutton = 2130837845;
 			
 			// aapt resource value: 0x7f020156
-			public const int SPK = 2130837846;
+			public const int SKT = 2130837846;
 			
 			// aapt resource value: 0x7f020157
-			public const int starfilled = 2130837847;
+			public const int SPK = 2130837847;
 			
 			// aapt resource value: 0x7f020158
-			public const int starunfilled = 2130837848;
+			public const int starfilled = 2130837848;
 			
 			// aapt resource value: 0x7f020159
-			public const int TLS = 2130837849;
+			public const int starunfilled = 2130837849;
 			
 			// aapt resource value: 0x7f02015a
-			public const int tooltip_frame_dark = 2130837850;
+			public const int styleinfo = 2130837850;
 			
 			// aapt resource value: 0x7f02015b
-			public const int tooltip_frame_light = 2130837851;
+			public const int TLS = 2130837851;
 			
 			// aapt resource value: 0x7f02015c
-			public const int uparrow = 2130837852;
+			public const int tooltip_frame_dark = 2130837852;
 			
 			// aapt resource value: 0x7f02015d
-			public const int WBC = 2130837853;
+			public const int tooltip_frame_light = 2130837853;
 			
 			// aapt resource value: 0x7f02015e
-			public const int xamarin_logo = 2130837854;
+			public const int uparrow = 2130837854;
+			
+			// aapt resource value: 0x7f02015f
+			public const int WBC = 2130837855;
+			
+			// aapt resource value: 0x7f020160
+			public const int xamarin_logo = 2130837856;
 			
 			static Drawable()
 			{
@@ -7116,8 +7374,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0039
 			public const int ALT = 2131492921;
 			
-			// aapt resource value: 0x7f0c0121
-			public const int BorderView = 2131493153;
+			// aapt resource value: 0x7f0c012f
+			public const int BorderView = 2131493167;
 			
 			// aapt resource value: 0x7f0c003a
 			public const int CTRL = 2131492922;
@@ -7125,8 +7383,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c003b
 			public const int FUNCTION = 2131492923;
 			
-			// aapt resource value: 0x7f0c00c2
-			public const int Itemname = 2131493058;
+			// aapt resource value: 0x7f0c00d0
+			public const int Itemname = 2131493072;
 			
 			// aapt resource value: 0x7f0c003c
 			public const int META = 2131492924;
@@ -7137,41 +7395,41 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c003e
 			public const int SYM = 2131492926;
 			
-			// aapt resource value: 0x7f0c0103
-			public const int action0 = 2131493123;
+			// aapt resource value: 0x7f0c0111
+			public const int action0 = 2131493137;
 			
-			// aapt resource value: 0x7f0c0098
-			public const int action_bar = 2131493016;
+			// aapt resource value: 0x7f0c00a6
+			public const int action_bar = 2131493030;
 			
 			// aapt resource value: 0x7f0c0001
 			public const int action_bar_activity_content = 2131492865;
 			
-			// aapt resource value: 0x7f0c0097
-			public const int action_bar_container = 2131493015;
+			// aapt resource value: 0x7f0c00a5
+			public const int action_bar_container = 2131493029;
 			
-			// aapt resource value: 0x7f0c0093
-			public const int action_bar_root = 2131493011;
+			// aapt resource value: 0x7f0c00a1
+			public const int action_bar_root = 2131493025;
 			
 			// aapt resource value: 0x7f0c0002
 			public const int action_bar_spinner = 2131492866;
 			
-			// aapt resource value: 0x7f0c0076
-			public const int action_bar_subtitle = 2131492982;
+			// aapt resource value: 0x7f0c0085
+			public const int action_bar_subtitle = 2131492997;
 			
-			// aapt resource value: 0x7f0c0075
-			public const int action_bar_title = 2131492981;
+			// aapt resource value: 0x7f0c0084
+			public const int action_bar_title = 2131492996;
 			
-			// aapt resource value: 0x7f0c0100
-			public const int action_container = 2131493120;
+			// aapt resource value: 0x7f0c010e
+			public const int action_container = 2131493134;
 			
-			// aapt resource value: 0x7f0c0099
-			public const int action_context_bar = 2131493017;
+			// aapt resource value: 0x7f0c00a7
+			public const int action_context_bar = 2131493031;
 			
-			// aapt resource value: 0x7f0c0107
-			public const int action_divider = 2131493127;
+			// aapt resource value: 0x7f0c0115
+			public const int action_divider = 2131493141;
 			
-			// aapt resource value: 0x7f0c0101
-			public const int action_image = 2131493121;
+			// aapt resource value: 0x7f0c010f
+			public const int action_image = 2131493135;
 			
 			// aapt resource value: 0x7f0c0003
 			public const int action_menu_divider = 2131492867;
@@ -7179,29 +7437,29 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0004
 			public const int action_menu_presenter = 2131492868;
 			
-			// aapt resource value: 0x7f0c0095
-			public const int action_mode_bar = 2131493013;
+			// aapt resource value: 0x7f0c00a3
+			public const int action_mode_bar = 2131493027;
 			
-			// aapt resource value: 0x7f0c0094
-			public const int action_mode_bar_stub = 2131493012;
+			// aapt resource value: 0x7f0c00a2
+			public const int action_mode_bar_stub = 2131493026;
 			
-			// aapt resource value: 0x7f0c0077
-			public const int action_mode_close_button = 2131492983;
-			
-			// aapt resource value: 0x7f0c0102
-			public const int action_text = 2131493122;
+			// aapt resource value: 0x7f0c0086
+			public const int action_mode_close_button = 2131492998;
 			
 			// aapt resource value: 0x7f0c0110
-			public const int actions = 2131493136;
+			public const int action_text = 2131493136;
 			
-			// aapt resource value: 0x7f0c0078
-			public const int activity_chooser_view_content = 2131492984;
+			// aapt resource value: 0x7f0c011e
+			public const int actions = 2131493150;
+			
+			// aapt resource value: 0x7f0c0087
+			public const int activity_chooser_view_content = 2131492999;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int add = 2131492910;
 			
-			// aapt resource value: 0x7f0c008a
-			public const int alertTitle = 2131493002;
+			// aapt resource value: 0x7f0c0098
+			public const int alertTitle = 2131493016;
 			
 			// aapt resource value: 0x7f0c0064
 			public const int all = 2131492964;
@@ -7209,8 +7467,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c003f
 			public const int always = 2131492927;
 			
-			// aapt resource value: 0x7f0c00ba
-			public const int annotationLayout = 2131493050;
+			// aapt resource value: 0x7f0c00c8
+			public const int annotationLayout = 2131493064;
+			
+			// aapt resource value: 0x7f0c007b
+			public const int append = 2131492987;
 			
 			// aapt resource value: 0x7f0c0065
 			public const int async = 2131492965;
@@ -7218,8 +7479,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c004d
 			public const int auto = 2131492941;
 			
-			// aapt resource value: 0x7f0c00b7
-			public const int axisLayout = 2131493047;
+			// aapt resource value: 0x7f0c00c5
+			public const int axisLayout = 2131493061;
 			
 			// aapt resource value: 0x7f0c0036
 			public const int beginning = 2131492918;
@@ -7227,41 +7488,41 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0066
 			public const int blocking = 2131492966;
 			
-			// aapt resource value: 0x7f0c0072
-			public const int border = 2131492978;
+			// aapt resource value: 0x7f0c0081
+			public const int border = 2131492993;
 			
 			// aapt resource value: 0x7f0c0044
 			public const int bottom = 2131492932;
 			
-			// aapt resource value: 0x7f0c0114
-			public const int bottom_labels = 2131493140;
+			// aapt resource value: 0x7f0c0122
+			public const int bottom_labels = 2131493154;
 			
-			// aapt resource value: 0x7f0c00a9
-			public const int bottomtab_navarea = 2131493033;
+			// aapt resource value: 0x7f0c00b7
+			public const int bottomtab_navarea = 2131493047;
 			
-			// aapt resource value: 0x7f0c00aa
-			public const int bottomtab_tabbar = 2131493034;
+			// aapt resource value: 0x7f0c00b8
+			public const int bottomtab_tabbar = 2131493048;
 			
-			// aapt resource value: 0x7f0c00ac
-			public const int browser_actions_header_text = 2131493036;
+			// aapt resource value: 0x7f0c00ba
+			public const int browser_actions_header_text = 2131493050;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int browser_actions_menu_item_icon = 2131493038;
+			// aapt resource value: 0x7f0c00bc
+			public const int browser_actions_menu_item_icon = 2131493052;
 			
-			// aapt resource value: 0x7f0c00af
-			public const int browser_actions_menu_item_text = 2131493039;
+			// aapt resource value: 0x7f0c00bd
+			public const int browser_actions_menu_item_text = 2131493053;
 			
-			// aapt resource value: 0x7f0c00ad
-			public const int browser_actions_menu_items = 2131493037;
+			// aapt resource value: 0x7f0c00bb
+			public const int browser_actions_menu_items = 2131493051;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int browser_actions_menu_view = 2131493035;
+			// aapt resource value: 0x7f0c00b9
+			public const int browser_actions_menu_view = 2131493049;
 			
-			// aapt resource value: 0x7f0c007d
-			public const int buttonPanel = 2131492989;
+			// aapt resource value: 0x7f0c008c
+			public const int buttonPanel = 2131493004;
 			
-			// aapt resource value: 0x7f0c0104
-			public const int cancel_action = 2131493124;
+			// aapt resource value: 0x7f0c0112
+			public const int cancel_action = 2131493138;
 			
 			// aapt resource value: 0x7f0c004c
 			public const int center = 2131492940;
@@ -7272,20 +7533,20 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0052
 			public const int center_vertical = 2131492946;
 			
-			// aapt resource value: 0x7f0c00b9
-			public const int chartBehaviorLayout = 2131493049;
+			// aapt resource value: 0x7f0c00c7
+			public const int chartBehaviorLayout = 2131493063;
 			
-			// aapt resource value: 0x7f0c00bd
-			public const int chartLegendScrollView = 2131493053;
+			// aapt resource value: 0x7f0c00cb
+			public const int chartLegendScrollView = 2131493067;
 			
-			// aapt resource value: 0x7f0c0091
-			public const int checkbox = 2131493009;
+			// aapt resource value: 0x7f0c009f
+			public const int checkbox = 2131493023;
 			
-			// aapt resource value: 0x7f0c006f
-			public const int @checked = 2131492975;
+			// aapt resource value: 0x7f0c007e
+			public const int @checked = 2131492990;
 			
-			// aapt resource value: 0x7f0c010c
-			public const int chronometer = 2131493132;
+			// aapt resource value: 0x7f0c011a
+			public const int chronometer = 2131493146;
 			
 			// aapt resource value: 0x7f0c0061
 			public const int clip_horizontal = 2131492961;
@@ -7299,50 +7560,59 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c006b
 			public const int compute = 2131492971;
 			
-			// aapt resource value: 0x7f0c00c5
-			public const int container = 2131493061;
+			// aapt resource value: 0x7f0c00d3
+			public const int container = 2131493075;
 			
-			// aapt resource value: 0x7f0c008d
-			public const int content = 2131493005;
+			// aapt resource value: 0x7f0c006f
+			public const int contains = 2131492975;
 			
-			// aapt resource value: 0x7f0c0080
-			public const int contentPanel = 2131492992;
+			// aapt resource value: 0x7f0c0070
+			public const int containsWithCaseSensitive = 2131492976;
 			
-			// aapt resource value: 0x7f0c00c6
-			public const int coordinator = 2131493062;
+			// aapt resource value: 0x7f0c009b
+			public const int content = 2131493019;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int custom = 2131492999;
+			// aapt resource value: 0x7f0c008f
+			public const int contentPanel = 2131493007;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int customPanel = 2131492998;
+			// aapt resource value: 0x7f0c00d4
+			public const int coordinator = 2131493076;
 			
-			// aapt resource value: 0x7f0c00b5
-			public const int dataMarkerLayout = 2131493045;
+			// aapt resource value: 0x7f0c0071
+			public const int custom = 2131492977;
+			
+			// aapt resource value: 0x7f0c0095
+			public const int customPanel = 2131493013;
+			
+			// aapt resource value: 0x7f0c00c3
+			public const int dataMarkerLayout = 2131493059;
 			
 			// aapt resource value: 0x7f0c0069
 			public const int decimalMode = 2131492969;
 			
-			// aapt resource value: 0x7f0c0096
-			public const int decor_content_parent = 2131493014;
+			// aapt resource value: 0x7f0c00a4
+			public const int decor_content_parent = 2131493028;
 			
-			// aapt resource value: 0x7f0c007a
-			public const int default_activity_button = 2131492986;
+			// aapt resource value: 0x7f0c0089
+			public const int default_activity_button = 2131493001;
 			
-			// aapt resource value: 0x7f0c00c8
-			public const int design_bottom_sheet = 2131493064;
+			// aapt resource value: 0x7f0c0079
+			public const int delimiter = 2131492985;
 			
-			// aapt resource value: 0x7f0c00cd
-			public const int design_menu_item_action_area = 2131493069;
+			// aapt resource value: 0x7f0c00d6
+			public const int design_bottom_sheet = 2131493078;
 			
-			// aapt resource value: 0x7f0c00cc
-			public const int design_menu_item_action_area_stub = 2131493068;
+			// aapt resource value: 0x7f0c00db
+			public const int design_menu_item_action_area = 2131493083;
 			
-			// aapt resource value: 0x7f0c00cb
-			public const int design_menu_item_text = 2131493067;
+			// aapt resource value: 0x7f0c00da
+			public const int design_menu_item_action_area_stub = 2131493082;
 			
-			// aapt resource value: 0x7f0c00ca
-			public const int design_navigation_view = 2131493066;
+			// aapt resource value: 0x7f0c00d9
+			public const int design_menu_item_text = 2131493081;
+			
+			// aapt resource value: 0x7f0c00d8
+			public const int design_navigation_view = 2131493080;
 			
 			// aapt resource value: 0x7f0c0027
 			public const int disableHome = 2131492903;
@@ -7350,14 +7620,20 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c006a
 			public const int doubleMode = 2131492970;
 			
-			// aapt resource value: 0x7f0c009a
-			public const int edit_query = 2131493018;
+			// aapt resource value: 0x7f0c00a8
+			public const int edit_query = 2131493032;
 			
 			// aapt resource value: 0x7f0c0037
 			public const int end = 2131492919;
 			
-			// aapt resource value: 0x7f0c0112
-			public const int end_padder = 2131493138;
+			// aapt resource value: 0x7f0c0120
+			public const int end_padder = 2131493152;
+			
+			// aapt resource value: 0x7f0c0072
+			public const int endsWith = 2131492978;
+			
+			// aapt resource value: 0x7f0c0073
+			public const int endsWithCaseSensitive = 2131492979;
 			
 			// aapt resource value: 0x7f0c0046
 			public const int enterAlways = 2131492934;
@@ -7365,14 +7641,20 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0047
 			public const int enterAlwaysCollapsed = 2131492935;
 			
+			// aapt resource value: 0x7f0c0074
+			public const int equals = 2131492980;
+			
+			// aapt resource value: 0x7f0c0075
+			public const int equalsWithCaseSensitive = 2131492981;
+			
 			// aapt resource value: 0x7f0c0048
 			public const int exitUntilCollapsed = 2131492936;
 			
-			// aapt resource value: 0x7f0c0079
-			public const int expand_activities_button = 2131492985;
+			// aapt resource value: 0x7f0c0088
+			public const int expand_activities_button = 2131493000;
 			
-			// aapt resource value: 0x7f0c0090
-			public const int expanded_menu = 2131493008;
+			// aapt resource value: 0x7f0c009e
+			public const int expanded_menu = 2131493022;
 			
 			// aapt resource value: 0x7f0c005e
 			public const int fill = 2131492958;
@@ -7389,11 +7671,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c005c
 			public const int @fixed = 2131492956;
 			
-			// aapt resource value: 0x7f0c00cf
-			public const int flyoutcontent_appbar = 2131493071;
+			// aapt resource value: 0x7f0c00dd
+			public const int flyoutcontent_appbar = 2131493085;
 			
-			// aapt resource value: 0x7f0c00d0
-			public const int flyoutcontent_recycler = 2131493072;
+			// aapt resource value: 0x7f0c00de
+			public const int flyoutcontent_recycler = 2131493086;
 			
 			// aapt resource value: 0x7f0c0067
 			public const int forever = 2131492967;
@@ -7401,14 +7683,14 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c000a
 			public const int ghost_view = 2131492874;
 			
-			// aapt resource value: 0x7f0c00b2
-			public const int gridLineLayout = 2131493042;
+			// aapt resource value: 0x7f0c00c0
+			public const int gridLineLayout = 2131493056;
 			
-			// aapt resource value: 0x7f0c0115
-			public const int gridLinesLayout = 2131493141;
+			// aapt resource value: 0x7f0c0123
+			public const int gridLinesLayout = 2131493155;
 			
-			// aapt resource value: 0x7f0c008c
-			public const int group_divider = 2131493004;
+			// aapt resource value: 0x7f0c009a
+			public const int group_divider = 2131493018;
 			
 			// aapt resource value: 0x7f0c0005
 			public const int home = 2131492869;
@@ -7416,29 +7698,29 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0028
 			public const int homeAsUp = 2131492904;
 			
-			// aapt resource value: 0x7f0c007c
-			public const int icon = 2131492988;
+			// aapt resource value: 0x7f0c008b
+			public const int icon = 2131493003;
 			
-			// aapt resource value: 0x7f0c00c0
-			public const int iconView = 2131493056;
+			// aapt resource value: 0x7f0c00ce
+			public const int iconView = 2131493070;
 			
-			// aapt resource value: 0x7f0c0111
-			public const int icon_group = 2131493137;
+			// aapt resource value: 0x7f0c011f
+			public const int icon_group = 2131493151;
 			
 			// aapt resource value: 0x7f0c0041
 			public const int ifRoom = 2131492929;
 			
-			// aapt resource value: 0x7f0c0073
-			public const int image = 2131492979;
+			// aapt resource value: 0x7f0c0082
+			public const int image = 2131492994;
 			
-			// aapt resource value: 0x7f0c0074
-			public const int imagewithtext = 2131492980;
+			// aapt resource value: 0x7f0c0083
+			public const int imagewithtext = 2131492995;
 			
-			// aapt resource value: 0x7f0c0070
-			public const int indeterminate = 2131492976;
+			// aapt resource value: 0x7f0c007f
+			public const int indeterminate = 2131492991;
 			
-			// aapt resource value: 0x7f0c010d
-			public const int info = 2131493133;
+			// aapt resource value: 0x7f0c011b
+			public const int info = 2131493147;
 			
 			// aapt resource value: 0x7f0c0068
 			public const int italic = 2131492968;
@@ -7446,32 +7728,32 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0000
 			public const int item_touch_helper_previous_elevation = 2131492864;
 			
-			// aapt resource value: 0x7f0c00c1
-			public const int label = 2131493057;
+			// aapt resource value: 0x7f0c00cf
+			public const int label = 2131493071;
 			
 			// aapt resource value: 0x7f0c004e
 			public const int labeled = 2131492942;
 			
-			// aapt resource value: 0x7f0c00c4
-			public const int largeLabel = 2131493060;
+			// aapt resource value: 0x7f0c00d2
+			public const int largeLabel = 2131493074;
 			
 			// aapt resource value: 0x7f0c0054
 			public const int left = 2131492948;
 			
-			// aapt resource value: 0x7f0c00bc
-			public const int legendHeader = 2131493052;
+			// aapt resource value: 0x7f0c00ca
+			public const int legendHeader = 2131493066;
 			
-			// aapt resource value: 0x7f0c00bf
-			public const int legendItemsLayout = 2131493055;
+			// aapt resource value: 0x7f0c00cd
+			public const int legendItemsLayout = 2131493069;
 			
-			// aapt resource value: 0x7f0c00b8
-			public const int legendLayout = 2131493048;
+			// aapt resource value: 0x7f0c00c6
+			public const int legendLayout = 2131493062;
 			
-			// aapt resource value: 0x7f0c00be
-			public const int legendScrollView = 2131493054;
+			// aapt resource value: 0x7f0c00cc
+			public const int legendScrollView = 2131493068;
 			
-			// aapt resource value: 0x7f0c00bb
-			public const int legendViewGroup = 2131493051;
+			// aapt resource value: 0x7f0c00c9
+			public const int legendViewGroup = 2131493065;
 			
 			// aapt resource value: 0x7f0c001c
 			public const int line1 = 2131492892;
@@ -7482,29 +7764,29 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0024
 			public const int listMode = 2131492900;
 			
-			// aapt resource value: 0x7f0c007b
-			public const int list_item = 2131492987;
+			// aapt resource value: 0x7f0c008a
+			public const int list_item = 2131493002;
 			
-			// aapt resource value: 0x7f0c0117
-			public const int main_appbar = 2131493143;
+			// aapt resource value: 0x7f0c0125
+			public const int main_appbar = 2131493157;
 			
-			// aapt resource value: 0x7f0c0119
-			public const int main_tablayout = 2131493145;
+			// aapt resource value: 0x7f0c0127
+			public const int main_tablayout = 2131493159;
 			
-			// aapt resource value: 0x7f0c0118
-			public const int main_toolbar = 2131493144;
+			// aapt resource value: 0x7f0c0126
+			public const int main_toolbar = 2131493158;
 			
-			// aapt resource value: 0x7f0c011a
-			public const int main_viewpager = 2131493146;
+			// aapt resource value: 0x7f0c0128
+			public const int main_viewpager = 2131493160;
 			
-			// aapt resource value: 0x7f0c0120
-			public const int masked = 2131493152;
+			// aapt resource value: 0x7f0c012e
+			public const int masked = 2131493166;
 			
-			// aapt resource value: 0x7f0c0106
-			public const int media_actions = 2131493126;
+			// aapt resource value: 0x7f0c0114
+			public const int media_actions = 2131493140;
 			
-			// aapt resource value: 0x7f0c00a7
-			public const int message = 2131493031;
+			// aapt resource value: 0x7f0c00b5
+			public const int message = 2131493045;
 			
 			// aapt resource value: 0x7f0c0038
 			public const int middle = 2131492920;
@@ -7512,143 +7794,143 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0059
 			public const int mini = 2131492953;
 			
-			// aapt resource value: 0x7f0c00ed
-			public const int mr_art = 2131493101;
-			
-			// aapt resource value: 0x7f0c00de
-			public const int mr_cast_checkbox = 2131493086;
-			
-			// aapt resource value: 0x7f0c00d7
-			public const int mr_cast_close_button = 2131493079;
-			
-			// aapt resource value: 0x7f0c00d2
-			public const int mr_cast_group_icon = 2131493074;
-			
-			// aapt resource value: 0x7f0c00d3
-			public const int mr_cast_group_name = 2131493075;
-			
-			// aapt resource value: 0x7f0c00d1
-			public const int mr_cast_list = 2131493073;
-			
-			// aapt resource value: 0x7f0c00d6
-			public const int mr_cast_meta = 2131493078;
-			
-			// aapt resource value: 0x7f0c00d8
-			public const int mr_cast_meta_art = 2131493080;
-			
-			// aapt resource value: 0x7f0c00da
-			public const int mr_cast_meta_subtitle = 2131493082;
-			
-			// aapt resource value: 0x7f0c00d9
-			public const int mr_cast_meta_title = 2131493081;
-			
-			// aapt resource value: 0x7f0c00dc
-			public const int mr_cast_route_icon = 2131493084;
-			
-			// aapt resource value: 0x7f0c00dd
-			public const int mr_cast_route_name = 2131493085;
-			
-			// aapt resource value: 0x7f0c00db
-			public const int mr_cast_stop_button = 2131493083;
-			
-			// aapt resource value: 0x7f0c00df
-			public const int mr_cast_volume_layout = 2131493087;
-			
-			// aapt resource value: 0x7f0c00e0
-			public const int mr_cast_volume_slider = 2131493088;
-			
-			// aapt resource value: 0x7f0c00e2
-			public const int mr_chooser_list = 2131493090;
-			
-			// aapt resource value: 0x7f0c00e5
-			public const int mr_chooser_route_desc = 2131493093;
-			
-			// aapt resource value: 0x7f0c00e3
-			public const int mr_chooser_route_icon = 2131493091;
-			
-			// aapt resource value: 0x7f0c00e4
-			public const int mr_chooser_route_name = 2131493092;
-			
-			// aapt resource value: 0x7f0c00e1
-			public const int mr_chooser_title = 2131493089;
-			
-			// aapt resource value: 0x7f0c00ea
-			public const int mr_close = 2131493098;
-			
-			// aapt resource value: 0x7f0c00f0
-			public const int mr_control_divider = 2131493104;
-			
 			// aapt resource value: 0x7f0c00fb
-			public const int mr_control_playback_ctrl = 2131493115;
-			
-			// aapt resource value: 0x7f0c00fe
-			public const int mr_control_subtitle = 2131493118;
-			
-			// aapt resource value: 0x7f0c00fd
-			public const int mr_control_title = 2131493117;
-			
-			// aapt resource value: 0x7f0c00fc
-			public const int mr_control_title_container = 2131493116;
-			
-			// aapt resource value: 0x7f0c00eb
-			public const int mr_custom_control = 2131493099;
+			public const int mr_art = 2131493115;
 			
 			// aapt resource value: 0x7f0c00ec
-			public const int mr_default_control = 2131493100;
+			public const int mr_cast_checkbox = 2131493100;
 			
-			// aapt resource value: 0x7f0c00e7
-			public const int mr_dialog_area = 2131493095;
+			// aapt resource value: 0x7f0c00e5
+			public const int mr_cast_close_button = 2131493093;
 			
-			// aapt resource value: 0x7f0c00f6
-			public const int mr_dialog_header_name = 2131493110;
+			// aapt resource value: 0x7f0c00e0
+			public const int mr_cast_group_icon = 2131493088;
+			
+			// aapt resource value: 0x7f0c00e1
+			public const int mr_cast_group_name = 2131493089;
+			
+			// aapt resource value: 0x7f0c00df
+			public const int mr_cast_list = 2131493087;
+			
+			// aapt resource value: 0x7f0c00e4
+			public const int mr_cast_meta = 2131493092;
 			
 			// aapt resource value: 0x7f0c00e6
-			public const int mr_expandable_area = 2131493094;
-			
-			// aapt resource value: 0x7f0c00ff
-			public const int mr_group_expand_collapse = 2131493119;
-			
-			// aapt resource value: 0x7f0c00d4
-			public const int mr_group_volume_route_name = 2131493076;
-			
-			// aapt resource value: 0x7f0c00d5
-			public const int mr_group_volume_slider = 2131493077;
-			
-			// aapt resource value: 0x7f0c00ee
-			public const int mr_media_main_control = 2131493102;
-			
-			// aapt resource value: 0x7f0c00e9
-			public const int mr_name = 2131493097;
-			
-			// aapt resource value: 0x7f0c00f7
-			public const int mr_picker_close_button = 2131493111;
-			
-			// aapt resource value: 0x7f0c00f8
-			public const int mr_picker_list = 2131493112;
-			
-			// aapt resource value: 0x7f0c00f9
-			public const int mr_picker_route_icon = 2131493113;
-			
-			// aapt resource value: 0x7f0c00fa
-			public const int mr_picker_route_name = 2131493114;
-			
-			// aapt resource value: 0x7f0c00ef
-			public const int mr_playback_control = 2131493103;
+			public const int mr_cast_meta_art = 2131493094;
 			
 			// aapt resource value: 0x7f0c00e8
-			public const int mr_title_bar = 2131493096;
+			public const int mr_cast_meta_subtitle = 2131493096;
+			
+			// aapt resource value: 0x7f0c00e7
+			public const int mr_cast_meta_title = 2131493095;
+			
+			// aapt resource value: 0x7f0c00ea
+			public const int mr_cast_route_icon = 2131493098;
+			
+			// aapt resource value: 0x7f0c00eb
+			public const int mr_cast_route_name = 2131493099;
+			
+			// aapt resource value: 0x7f0c00e9
+			public const int mr_cast_stop_button = 2131493097;
+			
+			// aapt resource value: 0x7f0c00ed
+			public const int mr_cast_volume_layout = 2131493101;
+			
+			// aapt resource value: 0x7f0c00ee
+			public const int mr_cast_volume_slider = 2131493102;
+			
+			// aapt resource value: 0x7f0c00f0
+			public const int mr_chooser_list = 2131493104;
+			
+			// aapt resource value: 0x7f0c00f3
+			public const int mr_chooser_route_desc = 2131493107;
 			
 			// aapt resource value: 0x7f0c00f1
-			public const int mr_volume_control = 2131493105;
+			public const int mr_chooser_route_icon = 2131493105;
 			
 			// aapt resource value: 0x7f0c00f2
-			public const int mr_volume_group_list = 2131493106;
+			public const int mr_chooser_route_name = 2131493106;
 			
-			// aapt resource value: 0x7f0c00f4
-			public const int mr_volume_item_icon = 2131493108;
+			// aapt resource value: 0x7f0c00ef
+			public const int mr_chooser_title = 2131493103;
+			
+			// aapt resource value: 0x7f0c00f8
+			public const int mr_close = 2131493112;
+			
+			// aapt resource value: 0x7f0c00fe
+			public const int mr_control_divider = 2131493118;
+			
+			// aapt resource value: 0x7f0c0109
+			public const int mr_control_playback_ctrl = 2131493129;
+			
+			// aapt resource value: 0x7f0c010c
+			public const int mr_control_subtitle = 2131493132;
+			
+			// aapt resource value: 0x7f0c010b
+			public const int mr_control_title = 2131493131;
+			
+			// aapt resource value: 0x7f0c010a
+			public const int mr_control_title_container = 2131493130;
+			
+			// aapt resource value: 0x7f0c00f9
+			public const int mr_custom_control = 2131493113;
+			
+			// aapt resource value: 0x7f0c00fa
+			public const int mr_default_control = 2131493114;
 			
 			// aapt resource value: 0x7f0c00f5
-			public const int mr_volume_slider = 2131493109;
+			public const int mr_dialog_area = 2131493109;
+			
+			// aapt resource value: 0x7f0c0104
+			public const int mr_dialog_header_name = 2131493124;
+			
+			// aapt resource value: 0x7f0c00f4
+			public const int mr_expandable_area = 2131493108;
+			
+			// aapt resource value: 0x7f0c010d
+			public const int mr_group_expand_collapse = 2131493133;
+			
+			// aapt resource value: 0x7f0c00e2
+			public const int mr_group_volume_route_name = 2131493090;
+			
+			// aapt resource value: 0x7f0c00e3
+			public const int mr_group_volume_slider = 2131493091;
+			
+			// aapt resource value: 0x7f0c00fc
+			public const int mr_media_main_control = 2131493116;
+			
+			// aapt resource value: 0x7f0c00f7
+			public const int mr_name = 2131493111;
+			
+			// aapt resource value: 0x7f0c0105
+			public const int mr_picker_close_button = 2131493125;
+			
+			// aapt resource value: 0x7f0c0106
+			public const int mr_picker_list = 2131493126;
+			
+			// aapt resource value: 0x7f0c0107
+			public const int mr_picker_route_icon = 2131493127;
+			
+			// aapt resource value: 0x7f0c0108
+			public const int mr_picker_route_name = 2131493128;
+			
+			// aapt resource value: 0x7f0c00fd
+			public const int mr_playback_control = 2131493117;
+			
+			// aapt resource value: 0x7f0c00f6
+			public const int mr_title_bar = 2131493110;
+			
+			// aapt resource value: 0x7f0c00ff
+			public const int mr_volume_control = 2131493119;
+			
+			// aapt resource value: 0x7f0c0100
+			public const int mr_volume_group_list = 2131493120;
+			
+			// aapt resource value: 0x7f0c0102
+			public const int mr_volume_item_icon = 2131493122;
+			
+			// aapt resource value: 0x7f0c0103
+			public const int mr_volume_slider = 2131493123;
 			
 			// aapt resource value: 0x7f0c0014
 			public const int mtrl_child_content_container = 2131492884;
@@ -7659,8 +7941,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c002f
 			public const int multiply = 2131492911;
 			
-			// aapt resource value: 0x7f0c00c9
-			public const int navigation_header_container = 2131493065;
+			// aapt resource value: 0x7f0c00d7
+			public const int navigation_header_container = 2131493079;
 			
 			// aapt resource value: 0x7f0c0042
 			public const int never = 2131492930;
@@ -7671,14 +7953,14 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0025
 			public const int normal = 2131492901;
 			
-			// aapt resource value: 0x7f0c010f
-			public const int notification_background = 2131493135;
+			// aapt resource value: 0x7f0c011d
+			public const int notification_background = 2131493149;
 			
-			// aapt resource value: 0x7f0c0109
-			public const int notification_main_column = 2131493129;
+			// aapt resource value: 0x7f0c0117
+			public const int notification_main_column = 2131493143;
 			
-			// aapt resource value: 0x7f0c0108
-			public const int notification_main_column_container = 2131493128;
+			// aapt resource value: 0x7f0c0116
+			public const int notification_main_column_container = 2131493142;
 			
 			// aapt resource value: 0x7f0c006d
 			public const int onKeyFocus = 2131492973;
@@ -7692,8 +7974,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0057
 			public const int parallax = 2131492951;
 			
-			// aapt resource value: 0x7f0c007f
-			public const int parentPanel = 2131492991;
+			// aapt resource value: 0x7f0c008e
+			public const int parentPanel = 2131493006;
 			
 			// aapt resource value: 0x7f0c000b
 			public const int parent_matrix = 2131492875;
@@ -7707,20 +7989,20 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0007
 			public const int progress_horizontal = 2131492871;
 			
-			// aapt resource value: 0x7f0c0092
-			public const int radio = 2131493010;
+			// aapt resource value: 0x7f0c00a0
+			public const int radio = 2131493024;
 			
 			// aapt resource value: 0x7f0c0055
 			public const int right = 2131492949;
 			
-			// aapt resource value: 0x7f0c010e
-			public const int right_icon = 2131493134;
+			// aapt resource value: 0x7f0c011c
+			public const int right_icon = 2131493148;
 			
-			// aapt resource value: 0x7f0c010a
-			public const int right_side = 2131493130;
+			// aapt resource value: 0x7f0c0118
+			public const int right_side = 2131493144;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int rootLayout = 2131493040;
+			// aapt resource value: 0x7f0c00be
+			public const int rootLayout = 2131493054;
 			
 			// aapt resource value: 0x7f0c000c
 			public const int save_image_matrix = 2131492876;
@@ -7737,65 +8019,65 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0049
 			public const int scroll = 2131492937;
 			
-			// aapt resource value: 0x7f0c0085
-			public const int scrollIndicatorDown = 2131492997;
+			// aapt resource value: 0x7f0c0094
+			public const int scrollIndicatorDown = 2131493012;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int scrollIndicatorUp = 2131492993;
+			// aapt resource value: 0x7f0c0090
+			public const int scrollIndicatorUp = 2131493008;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int scrollView = 2131492994;
+			// aapt resource value: 0x7f0c0091
+			public const int scrollView = 2131493009;
 			
 			// aapt resource value: 0x7f0c005d
 			public const int scrollable = 2131492957;
 			
-			// aapt resource value: 0x7f0c009c
-			public const int search_badge = 2131493020;
+			// aapt resource value: 0x7f0c00aa
+			public const int search_badge = 2131493034;
 			
-			// aapt resource value: 0x7f0c009b
-			public const int search_bar = 2131493019;
+			// aapt resource value: 0x7f0c00a9
+			public const int search_bar = 2131493033;
 			
-			// aapt resource value: 0x7f0c009d
-			public const int search_button = 2131493021;
+			// aapt resource value: 0x7f0c00ab
+			public const int search_button = 2131493035;
 			
-			// aapt resource value: 0x7f0c00a2
-			public const int search_close_btn = 2131493026;
+			// aapt resource value: 0x7f0c00b0
+			public const int search_close_btn = 2131493040;
 			
-			// aapt resource value: 0x7f0c009e
-			public const int search_edit_frame = 2131493022;
+			// aapt resource value: 0x7f0c00ac
+			public const int search_edit_frame = 2131493036;
 			
-			// aapt resource value: 0x7f0c00a4
-			public const int search_go_btn = 2131493028;
+			// aapt resource value: 0x7f0c00b2
+			public const int search_go_btn = 2131493042;
 			
-			// aapt resource value: 0x7f0c009f
-			public const int search_mag_icon = 2131493023;
+			// aapt resource value: 0x7f0c00ad
+			public const int search_mag_icon = 2131493037;
 			
-			// aapt resource value: 0x7f0c00a0
-			public const int search_plate = 2131493024;
+			// aapt resource value: 0x7f0c00ae
+			public const int search_plate = 2131493038;
 			
-			// aapt resource value: 0x7f0c00a1
-			public const int search_src_text = 2131493025;
+			// aapt resource value: 0x7f0c00af
+			public const int search_src_text = 2131493039;
 			
-			// aapt resource value: 0x7f0c00a5
-			public const int search_voice_btn = 2131493029;
+			// aapt resource value: 0x7f0c00b3
+			public const int search_voice_btn = 2131493043;
 			
-			// aapt resource value: 0x7f0c00a6
-			public const int select_dialog_listview = 2131493030;
+			// aapt resource value: 0x7f0c00b4
+			public const int select_dialog_listview = 2131493044;
 			
 			// aapt resource value: 0x7f0c004f
 			public const int selected = 2131492943;
 			
-			// aapt resource value: 0x7f0c00b4
-			public const int seriesLayout = 2131493044;
+			// aapt resource value: 0x7f0c00c2
+			public const int seriesLayout = 2131493058;
 			
-			// aapt resource value: 0x7f0c011b
-			public const int shellcontent_appbar = 2131493147;
+			// aapt resource value: 0x7f0c0129
+			public const int shellcontent_appbar = 2131493161;
 			
-			// aapt resource value: 0x7f0c011c
-			public const int shellcontent_toolbar = 2131493148;
+			// aapt resource value: 0x7f0c012a
+			public const int shellcontent_toolbar = 2131493162;
 			
-			// aapt resource value: 0x7f0c008e
-			public const int shortcut = 2131493006;
+			// aapt resource value: 0x7f0c009c
+			public const int shortcut = 2131493020;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int showCustom = 2131492906;
@@ -7806,11 +8088,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c002c
 			public const int showTitle = 2131492908;
 			
-			// aapt resource value: 0x7f0c011d
-			public const int sliding_tabs = 2131493149;
+			// aapt resource value: 0x7f0c012b
+			public const int sliding_tabs = 2131493163;
 			
-			// aapt resource value: 0x7f0c00c3
-			public const int smallLabel = 2131493059;
+			// aapt resource value: 0x7f0c00d1
+			public const int smallLabel = 2131493073;
 			
 			// aapt resource value: 0x7f0c0016
 			public const int snackbar_action = 2131492886;
@@ -7824,8 +8106,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c004b
 			public const int snapMargins = 2131492939;
 			
-			// aapt resource value: 0x7f0c007e
-			public const int spacer = 2131492990;
+			// aapt resource value: 0x7f0c008d
+			public const int spacer = 2131493005;
 			
 			// aapt resource value: 0x7f0c0008
 			public const int split_action_bar = 2131492872;
@@ -7842,20 +8124,32 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0056
 			public const int start = 2131492950;
 			
-			// aapt resource value: 0x7f0c0105
-			public const int status_bar_latest_event_content = 2131493125;
+			// aapt resource value: 0x7f0c0076
+			public const int startsWith = 2131492982;
+			
+			// aapt resource value: 0x7f0c0077
+			public const int startsWithCaseSensitive = 2131492983;
+			
+			// aapt resource value: 0x7f0c0113
+			public const int status_bar_latest_event_content = 2131493139;
 			
 			// aapt resource value: 0x7f0c005b
 			public const int stretch = 2131492955;
 			
-			// aapt resource value: 0x7f0c00b3
-			public const int stripLinesLayout = 2131493043;
+			// aapt resource value: 0x7f0c00c1
+			public const int stripLinesLayout = 2131493057;
 			
-			// aapt resource value: 0x7f0c008f
-			public const int submenuarrow = 2131493007;
+			// aapt resource value: 0x7f0c009d
+			public const int submenuarrow = 2131493021;
 			
-			// aapt resource value: 0x7f0c00a3
-			public const int submit_area = 2131493027;
+			// aapt resource value: 0x7f0c00b1
+			public const int submit_area = 2131493041;
+			
+			// aapt resource value: 0x7f0c007c
+			public const int suggest = 2131492988;
+			
+			// aapt resource value: 0x7f0c007d
+			public const int suggestAppend = 2131492989;
 			
 			// aapt resource value: 0x7f0c0026
 			public const int tabMode = 2131492902;
@@ -7869,8 +8163,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0020
 			public const int tag_unhandled_key_listeners = 2131492896;
 			
-			// aapt resource value: 0x7f0c00b6
-			public const int technicalIndicatorLayout = 2131493046;
+			// aapt resource value: 0x7f0c00c4
+			public const int technicalIndicatorLayout = 2131493060;
 			
 			// aapt resource value: 0x7f0c0021
 			public const int text = 2131492897;
@@ -7878,17 +8172,17 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0022
 			public const int text2 = 2131492898;
 			
-			// aapt resource value: 0x7f0c0084
-			public const int textSpacerNoButtons = 2131492996;
+			// aapt resource value: 0x7f0c0093
+			public const int textSpacerNoButtons = 2131493011;
 			
-			// aapt resource value: 0x7f0c0083
-			public const int textSpacerNoTitle = 2131492995;
+			// aapt resource value: 0x7f0c0092
+			public const int textSpacerNoTitle = 2131493010;
 			
 			// aapt resource value: 0x7f0c005a
 			public const int textStart = 2131492954;
 			
-			// aapt resource value: 0x7f0c00ce
-			public const int text_input_password_toggle = 2131493070;
+			// aapt resource value: 0x7f0c00dc
+			public const int text_input_password_toggle = 2131493084;
 			
 			// aapt resource value: 0x7f0c0018
 			public const int textinput_counter = 2131492888;
@@ -7899,38 +8193,41 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c001a
 			public const int textinput_helper_text = 2131492890;
 			
-			// aapt resource value: 0x7f0c0116
-			public const int thumbLayout = 2131493142;
+			// aapt resource value: 0x7f0c0124
+			public const int thumbLayout = 2131493156;
 			
-			// aapt resource value: 0x7f0c010b
-			public const int time = 2131493131;
+			// aapt resource value: 0x7f0c0119
+			public const int time = 2131493145;
 			
 			// aapt resource value: 0x7f0c0023
 			public const int title = 2131492899;
 			
-			// aapt resource value: 0x7f0c008b
-			public const int titleDividerNoCustom = 2131493003;
+			// aapt resource value: 0x7f0c0099
+			public const int titleDividerNoCustom = 2131493017;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int titleLayout = 2131493041;
+			// aapt resource value: 0x7f0c00bf
+			public const int titleLayout = 2131493055;
 			
-			// aapt resource value: 0x7f0c0089
-			public const int title_template = 2131493001;
+			// aapt resource value: 0x7f0c0097
+			public const int title_template = 2131493015;
 			
-			// aapt resource value: 0x7f0c011e
-			public const int toolbar = 2131493150;
+			// aapt resource value: 0x7f0c007a
+			public const int token = 2131492986;
+			
+			// aapt resource value: 0x7f0c012c
+			public const int toolbar = 2131493164;
 			
 			// aapt resource value: 0x7f0c0045
 			public const int top = 2131492933;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int topPanel = 2131493000;
+			// aapt resource value: 0x7f0c0096
+			public const int topPanel = 2131493014;
 			
-			// aapt resource value: 0x7f0c0113
-			public const int top_labels = 2131493139;
+			// aapt resource value: 0x7f0c0121
+			public const int top_labels = 2131493153;
 			
-			// aapt resource value: 0x7f0c00c7
-			public const int touch_outside = 2131493063;
+			// aapt resource value: 0x7f0c00d5
+			public const int touch_outside = 2131493077;
 			
 			// aapt resource value: 0x7f0c000f
 			public const int transition_current_scene = 2131492879;
@@ -7947,8 +8244,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c0013
 			public const int transition_transform = 2131492883;
 			
-			// aapt resource value: 0x7f0c0071
-			public const int @unchecked = 2131492977;
+			// aapt resource value: 0x7f0c0080
+			public const int @unchecked = 2131492992;
 			
 			// aapt resource value: 0x7f0c0034
 			public const int uniform = 2131492916;
@@ -7968,17 +8265,20 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f0c001b
 			public const int view_offset_helper = 2131492891;
 			
-			// aapt resource value: 0x7f0c011f
-			public const int visible = 2131493151;
+			// aapt resource value: 0x7f0c012d
+			public const int visible = 2131493165;
 			
-			// aapt resource value: 0x7f0c00f3
-			public const int volume_item_container = 2131493107;
+			// aapt resource value: 0x7f0c0101
+			public const int volume_item_container = 2131493121;
 			
-			// aapt resource value: 0x7f0c00a8
-			public const int webview = 2131493032;
+			// aapt resource value: 0x7f0c00b6
+			public const int webview = 2131493046;
 			
 			// aapt resource value: 0x7f0c0043
 			public const int withText = 2131492931;
+			
+			// aapt resource value: 0x7f0c0078
+			public const int wrap = 2131492984;
 			
 			// aapt resource value: 0x7f0c0035
 			public const int wrap_content = 2131492917;
@@ -8224,175 +8524,181 @@ namespace WealthMate.Droid
 			public const int CustomizedView = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_bottom_navigation_item = 2130968613;
+			public const int CustomizedView1 = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_bottom_sheet_dialog = 2130968614;
+			public const int design_bottom_navigation_item = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_layout_snackbar = 2130968615;
+			public const int design_bottom_sheet_dialog = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_layout_snackbar_include = 2130968616;
+			public const int design_layout_snackbar = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_layout_tab_icon = 2130968617;
+			public const int design_layout_snackbar_include = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int design_layout_tab_text = 2130968618;
+			public const int design_layout_tab_icon = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int design_menu_item_action_area = 2130968619;
+			public const int design_layout_tab_text = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int design_navigation_item = 2130968620;
+			public const int design_menu_item_action_area = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int design_navigation_item_header = 2130968621;
+			public const int design_navigation_item = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int design_navigation_item_separator = 2130968622;
+			public const int design_navigation_item_header = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int design_navigation_item_subheader = 2130968623;
+			public const int design_navigation_item_separator = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int design_navigation_menu = 2130968624;
+			public const int design_navigation_item_subheader = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int design_navigation_menu_item = 2130968625;
+			public const int design_navigation_menu = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int design_text_input_password_icon = 2130968626;
+			public const int design_navigation_menu_item = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int FlyoutContent = 2130968627;
+			public const int design_text_input_password_icon = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int mr_cast_dialog = 2130968628;
+			public const int FlyoutContent = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int mr_cast_group_item = 2130968629;
+			public const int mr_cast_dialog = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int mr_cast_group_volume_item = 2130968630;
+			public const int mr_cast_group_item = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int mr_cast_media_metadata = 2130968631;
+			public const int mr_cast_group_volume_item = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int mr_cast_route_item = 2130968632;
+			public const int mr_cast_media_metadata = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int mr_chooser_dialog = 2130968633;
+			public const int mr_cast_route_item = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int mr_chooser_list_item = 2130968634;
+			public const int mr_chooser_dialog = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int mr_controller_material_dialog_b = 2130968635;
+			public const int mr_chooser_list_item = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int mr_controller_volume_item = 2130968636;
+			public const int mr_controller_material_dialog_b = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int mr_dialog_header_item = 2130968637;
+			public const int mr_controller_volume_item = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int mr_picker_dialog = 2130968638;
+			public const int mr_dialog_header_item = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int mr_picker_route_item = 2130968639;
+			public const int mr_picker_dialog = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int mr_playback_control = 2130968640;
+			public const int mr_picker_route_item = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int mr_volume_control = 2130968641;
+			public const int mr_playback_control = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int mtrl_layout_snackbar = 2130968642;
+			public const int mr_volume_control = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int mtrl_layout_snackbar_include = 2130968643;
+			public const int mtrl_layout_snackbar = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_action = 2130968644;
+			public const int mtrl_layout_snackbar_include = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int notification_action_tombstone = 2130968645;
+			public const int notification_action = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int notification_media_action = 2130968646;
+			public const int notification_action_tombstone = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int notification_media_cancel_action = 2130968647;
+			public const int notification_media_action = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int notification_template_big_media = 2130968648;
+			public const int notification_media_cancel_action = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int notification_template_big_media_custom = 2130968649;
+			public const int notification_template_big_media = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int notification_template_big_media_narrow = 2130968650;
+			public const int notification_template_big_media_custom = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int notification_template_big_media_narrow_custom = 2130968651;
+			public const int notification_template_big_media_narrow = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int notification_template_custom_big = 2130968652;
+			public const int notification_template_big_media_narrow_custom = 2130968652;
 			
 			// aapt resource value: 0x7f04004d
-			public const int notification_template_icon_group = 2130968653;
+			public const int notification_template_custom_big = 2130968653;
 			
 			// aapt resource value: 0x7f04004e
-			public const int notification_template_lines_media = 2130968654;
+			public const int notification_template_icon_group = 2130968654;
 			
 			// aapt resource value: 0x7f04004f
-			public const int notification_template_media = 2130968655;
+			public const int notification_template_lines_media = 2130968655;
 			
 			// aapt resource value: 0x7f040050
-			public const int notification_template_media_custom = 2130968656;
+			public const int notification_template_media = 2130968656;
 			
 			// aapt resource value: 0x7f040051
-			public const int notification_template_part_chronometer = 2130968657;
+			public const int notification_template_media_custom = 2130968657;
 			
 			// aapt resource value: 0x7f040052
-			public const int notification_template_part_time = 2130968658;
+			public const int notification_template_part_chronometer = 2130968658;
 			
 			// aapt resource value: 0x7f040053
-			public const int range_navigator_layout = 2130968659;
+			public const int notification_template_part_time = 2130968659;
 			
 			// aapt resource value: 0x7f040054
-			public const int RootLayout = 2130968660;
+			public const int range_navigator_layout = 2130968660;
 			
 			// aapt resource value: 0x7f040055
-			public const int select_dialog_item_material = 2130968661;
+			public const int RootLayout = 2130968661;
 			
 			// aapt resource value: 0x7f040056
-			public const int select_dialog_multichoice_material = 2130968662;
+			public const int select_dialog_item_material = 2130968662;
 			
 			// aapt resource value: 0x7f040057
-			public const int select_dialog_singlechoice_material = 2130968663;
+			public const int select_dialog_multichoice_material = 2130968663;
 			
 			// aapt resource value: 0x7f040058
-			public const int sfcomboBox_layout = 2130968664;
+			public const int select_dialog_singlechoice_material = 2130968664;
 			
 			// aapt resource value: 0x7f040059
-			public const int ShellContent = 2130968665;
+			public const int sfautocomplete_layout = 2130968665;
 			
 			// aapt resource value: 0x7f04005a
-			public const int Spinner_item = 2130968666;
+			public const int sfcomboBox_layout = 2130968666;
 			
 			// aapt resource value: 0x7f04005b
-			public const int support_simple_spinner_dropdown_item = 2130968667;
+			public const int ShellContent = 2130968667;
 			
 			// aapt resource value: 0x7f04005c
-			public const int Tabbar = 2130968668;
+			public const int Spinner_item = 2130968668;
 			
 			// aapt resource value: 0x7f04005d
-			public const int Toolbar = 2130968669;
+			public const int support_simple_spinner_dropdown_item = 2130968669;
+			
+			// aapt resource value: 0x7f04005e
+			public const int Tabbar = 2130968670;
+			
+			// aapt resource value: 0x7f04005f
+			public const int Toolbar = 2130968671;
 			
 			static Layout()
 			{
@@ -11692,7 +11998,7 @@ namespace WealthMate.Droid
 			public const int DesignTheme_bottomSheetStyle = 1;
 			
 			public static int[] DrawableStates = new int[] {
-					2130772473};
+					2130772515};
 			
 			// aapt resource value: 0
 			public const int DrawableStates_state_indeterminate = 0;
@@ -12599,10 +12905,180 @@ namespace WealthMate.Droid
 			// aapt resource value: 12
 			public const int SearchView_voiceIcon = 12;
 			
-			public static int[] SfCheckBox = new int[] {
+			public static int[] SfAutoComplete = new int[] {
+					2130772473,
 					2130772474,
 					2130772475,
-					2130772476};
+					2130772476,
+					2130772477,
+					2130772478,
+					2130772479,
+					2130772480,
+					2130772481,
+					2130772482,
+					2130772483,
+					2130772484,
+					2130772485,
+					2130772486,
+					2130772487,
+					2130772488,
+					2130772489,
+					2130772490,
+					2130772491,
+					2130772492,
+					2130772493,
+					2130772494,
+					2130772495,
+					2130772496,
+					2130772497,
+					2130772498,
+					2130772499,
+					2130772500,
+					2130772501,
+					2130772502,
+					2130772503,
+					2130772504,
+					2130772505,
+					2130772506,
+					2130772507,
+					2130772508,
+					2130772509,
+					2130772510,
+					2130772511,
+					2130772512,
+					2130772513,
+					2130772514};
+			
+			// aapt resource value: 4
+			public const int SfAutoComplete_autocompleteBorderColor = 4;
+			
+			// aapt resource value: 25
+			public const int SfAutoComplete_autocompleteClearButtonColor = 25;
+			
+			// aapt resource value: 13
+			public const int SfAutoComplete_autocompleteDisplayMemberPath = 13;
+			
+			// aapt resource value: 18
+			public const int SfAutoComplete_autocompleteDropDownBackgroundColor = 18;
+			
+			// aapt resource value: 34
+			public const int SfAutoComplete_autocompleteDropDownCornerRadius = 34;
+			
+			// aapt resource value: 36
+			public const int SfAutoComplete_autocompleteDropDownFooterViewHeight = 36;
+			
+			// aapt resource value: 35
+			public const int SfAutoComplete_autocompleteDropDownHeaderViewHeight = 35;
+			
+			// aapt resource value: 33
+			public const int SfAutoComplete_autocompleteDropDownItemHeight = 33;
+			
+			// aapt resource value: 8
+			public const int SfAutoComplete_autocompleteDropDownOpen = 8;
+			
+			// aapt resource value: 19
+			public const int SfAutoComplete_autocompleteDropDownTextColor = 19;
+			
+			// aapt resource value: 21
+			public const int SfAutoComplete_autocompleteDropDownTextSize = 21;
+			
+			// aapt resource value: 14
+			public const int SfAutoComplete_autocompleteEnableSelectionIndicator = 14;
+			
+			// aapt resource value: 31
+			public const int SfAutoComplete_autocompleteHighlightedTextColor = 31;
+			
+			// aapt resource value: 26
+			public const int SfAutoComplete_autocompleteIgnoreDiacritic = 26;
+			
+			// aapt resource value: 22
+			public const int SfAutoComplete_autocompleteImageMemberPath = 22;
+			
+			// aapt resource value: 15
+			public const int SfAutoComplete_autocompleteIndicatorText = 15;
+			
+			// aapt resource value: 16
+			public const int SfAutoComplete_autocompleteIndicatorTextColor = 16;
+			
+			// aapt resource value: 32
+			public const int SfAutoComplete_autocompleteIndicatorTextSize = 32;
+			
+			// aapt resource value: 27
+			public const int SfAutoComplete_autocompleteIsFocused = 27;
+			
+			// aapt resource value: 30
+			public const int SfAutoComplete_autocompleteIsSelectedItemsVisibleInDropDown = 30;
+			
+			// aapt resource value: 28
+			public const int SfAutoComplete_autocompleteLoadMoreText = 28;
+			
+			// aapt resource value: 20
+			public const int SfAutoComplete_autocompleteMaximumDropDownHeight = 20;
+			
+			// aapt resource value: 9
+			public const int SfAutoComplete_autocompleteMaximumSuggestion = 9;
+			
+			// aapt resource value: 17
+			public const int SfAutoComplete_autocompleteMinimumPrefixCharacters = 17;
+			
+			// aapt resource value: 41
+			public const int SfAutoComplete_autocompleteMode = 41;
+			
+			// aapt resource value: 40
+			public const int SfAutoComplete_autocompleteMultiSelectMode = 40;
+			
+			// aapt resource value: 29
+			public const int SfAutoComplete_autocompleteNoResultsFoundText = 29;
+			
+			// aapt resource value: 12
+			public const int SfAutoComplete_autocompletePopUpDelay = 12;
+			
+			// aapt resource value: 10
+			public const int SfAutoComplete_autocompleteSelectedIndex = 10;
+			
+			// aapt resource value: 0
+			public const int SfAutoComplete_autocompleteShowBorder = 0;
+			
+			// aapt resource value: 1
+			public const int SfAutoComplete_autocompleteShowClearButton = 1;
+			
+			// aapt resource value: 24
+			public const int SfAutoComplete_autocompleteShowDropDownFooterView = 24;
+			
+			// aapt resource value: 23
+			public const int SfAutoComplete_autocompleteShowDropDownHeaderView = 23;
+			
+			// aapt resource value: 11
+			public const int SfAutoComplete_autocompleteShowSuggestionsOnFocus = 11;
+			
+			// aapt resource value: 38
+			public const int SfAutoComplete_autocompleteSuggestionBoxPlacement = 38;
+			
+			// aapt resource value: 37
+			public const int SfAutoComplete_autocompleteSuggestionMode = 37;
+			
+			// aapt resource value: 6
+			public const int SfAutoComplete_autocompleteText = 6;
+			
+			// aapt resource value: 3
+			public const int SfAutoComplete_autocompleteTextColor = 3;
+			
+			// aapt resource value: 7
+			public const int SfAutoComplete_autocompleteTextSize = 7;
+			
+			// aapt resource value: 39
+			public const int SfAutoComplete_autocompleteTokensWrapMode = 39;
+			
+			// aapt resource value: 5
+			public const int SfAutoComplete_autocompleteWatermark = 5;
+			
+			// aapt resource value: 2
+			public const int SfAutoComplete_autocompleteWatermarkColor = 2;
+			
+			public static int[] SfCheckBox = new int[] {
+					2130772516,
+					2130772517,
+					2130772518};
 			
 			// aapt resource value: 2
 			public const int SfCheckBox_checked = 2;
@@ -12672,18 +13148,18 @@ namespace WealthMate.Droid
 			public const int SfNumericTextBox_watermarkColor = 11;
 			
 			public static int[] SfSegmentedControl = new int[] {
-					2130772477,
-					2130772478,
-					2130772479,
-					2130772480,
-					2130772481,
-					2130772482,
-					2130772483,
-					2130772484,
-					2130772485,
-					2130772486,
-					2130772487,
-					2130772488};
+					2130772519,
+					2130772520,
+					2130772521,
+					2130772522,
+					2130772523,
+					2130772524,
+					2130772525,
+					2130772526,
+					2130772527,
+					2130772528,
+					2130772529,
+					2130772530};
 			
 			// aapt resource value: 1
 			public const int SfSegmentedControl_segmentBackColor = 1;

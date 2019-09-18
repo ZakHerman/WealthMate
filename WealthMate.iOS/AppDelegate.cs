@@ -1,3 +1,4 @@
+using Syncfusion.SfAutoComplete.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace WealthMate.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 global::Xamarin.Forms.Forms.Init();
+SfAutoCompleteRenderer.Init();
 SfChartRenderer.Init();
             LoadApplication(new App());
 

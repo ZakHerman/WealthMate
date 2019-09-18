@@ -16,7 +16,8 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar" Placeholder ="Search Watchlist" TextChanged="OnFilterTextChanged" />
+            <!--Searchbar, placeholder text and on text change functionality-->
+            <SearchBar x:Name="SearchBar" Placeholder ="Search Watchlist" TextChanged="OnFilterTextChanged"/>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
             <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">

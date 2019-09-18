@@ -63,6 +63,7 @@ namespace WealthMate.Views
                 Watchlist.DataSource.RefreshFilter(); // refreshes the view
             }
         }
+
         /// <summary>
         /// method for filtering the list view as text changes within the search bar
         /// </summary>
