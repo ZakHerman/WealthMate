@@ -51,30 +51,34 @@ namespace WealthMate.Views
         /// <summary>
         /// Search bar functionality
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></param> reference to object sending the data
+        /// <param name="e"></param> event data
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar);
+            _searchBar = (sender as SearchBar); //set sender to SearchBar
 
             if (Watchlist.DataSource != null)
             {
-                Watchlist.DataSource.Filter = FilterWList;
-                Watchlist.DataSource.RefreshFilter();
+                Watchlist.DataSource.Filter = FilterWList; //filters the data source
+                Watchlist.DataSource.RefreshFilter(); // refreshes the view
             }
         }
         /// <summary>
         /// method for filtering the list view as text changes within the search bar
         /// </summary>
-        /// <param name="obj"></param> 
-        /// <returns></returns>
+        /// <param name="obj"></param> object representing a search return
+        /// <returns></returns> boolean value for checking for text in the serach bar
         private bool FilterWList(object obj)
         {
             if (_searchBar?.Text == null)
+            {
                 return true;
-
-            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
-                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
+            else
+            {
+                return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                              || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
         }
     }
 }

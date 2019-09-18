@@ -26,30 +26,34 @@ namespace WealthMate.Views
         /// <summary>
         /// Search bar functionality
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></param> reference to object sending the data
+        /// <param name="e"></param> event data
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar);
+            _searchBar = (sender as SearchBar);//set sender to SearchBar
 
             if (TermDepositList.DataSource != null)
             {
-                TermDepositList.DataSource.Filter = FilterTDeposits;
-                TermDepositList.DataSource.RefreshFilter();
+                TermDepositList.DataSource.Filter = FilterTDeposits;//filters the data source
+                TermDepositList.DataSource.RefreshFilter(); // refreshes the view
             }
         }
 
         /// <summary>
         /// method for filtering the list view as text changes within the search bar
         /// </summary>
-        /// <param name="obj"></param> 
-        /// <returns></returns>
+        /// <param name="obj"></param> object representing a search return
+        /// <returns></returns> boolean value for checking for text in the serach bar
         private bool FilterTDeposits(object obj)
         {
             if (_searchBar?.Text == null)
+            {
                 return true;
-
-            return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
+            else
+            {
+                return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
         }
 
     }

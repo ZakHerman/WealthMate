@@ -81,32 +81,35 @@ namespace WealthMate.Views
         /// <summary>
         /// Search bar functionality
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"></param> reference to object sending the data
+        /// <param name="e"></param> event data
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar);
+            _searchBar = (sender as SearchBar); //set sender to SearchBar
 
             if (List.DataSource != null)
             {
-                List.DataSource.Filter = FilterAssets;
-                List.DataSource.RefreshFilter();
+                List.DataSource.Filter = FilterAssets; //filters the data source
+                List.DataSource.RefreshFilter(); // refreshes the view
             }
         }
 
         /// <summary>
         /// method for filtering the list view as text changes within the search bar
-        /// May need to be updated as the lists display is refined i.e. includes stocks and stock names
         /// </summary>
-        /// <param name="obj"></param> 
-        /// <returns></returns>
+        /// <param name="obj"></param> object representing a search return
+        /// <returns></returns> boolean value for checking for text in the serach bar
         private bool FilterAssets(object obj)
         {
             if (_searchBar?.Text == null)
+            {
                 return true;
-
-            return obj is OwnedAsset asset && (asset.AssetName.ToLower().Contains(_searchBar.Text.ToLower())
-                                          || asset.Type.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
+            else
+            {
+                return obj is OwnedAsset asset && (asset.AssetName.ToLower().Contains(_searchBar.Text.ToLower())
+                              || asset.Type.ToLower().Contains(_searchBar.Text.ToLower()));
+            }
         }
 
         // Event handler for watchlist stock being pressed
