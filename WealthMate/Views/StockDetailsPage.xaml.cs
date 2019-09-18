@@ -41,14 +41,10 @@ namespace WealthMate.Views
             Watched = _watched;
 
             numericTextBox = new SfNumericTextBox();
-            //numericTextBox.ValueChanged += Handle_ValueChanged;
-            numericTextBox.Value = 123.45f;
-            this.Content = numericTextBox;
+            numericTextBox.ValueChanged += Handle_NumSharesChanged;
 
             numericTextBox2 = new SfNumericTextBox();
-            //numericTextBox2.ValueChanged += Handle_ValueChanged;
-            numericTextBox2.Value = 200f;
-            this.Content = numericTextBox2;
+            numericTextBox2.ValueChanged += Handle_PriceChanged;
 
             InitializeComponent();
 
@@ -77,11 +73,27 @@ namespace WealthMate.Views
 
         private void AddInPopupClicked(object sender, System.EventArgs e)        //Adds purchased shares of stock to the users portfolio
         {
-            popupLayout.IsOpen = false;
+            PortfolioPage current = new PortfolioPage();
             float price = float.Parse(numericTextBox2.Value.ToString());
             float noOfShares = float.Parse(numericTextBox.Value.ToString());
             OwnedStock newStock = new OwnedStock(Stock, System.DateTime.Now, price, noOfShares);
             (Application.Current as App).User.Portfolio.OwnedAssets.Add(newStock);
+            current.ListUpdated();
+            popupLayout.IsOpen = false;
+        }
+
+        private void Handle_NumSharesChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
+            numericTextBox.Value = e.Value.ToString();
+
+        }
+
+        private void Handle_PriceChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
+            numericTextBox2.Value = e.Value.ToString();
+
         }
     }
 }

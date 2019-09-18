@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace WealthMate.Models
 {
-    public class OwnedAsset
+    public class OwnedAsset : INotifyPropertyChanged
     {
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -88,6 +89,15 @@ namespace WealthMate.Models
             }
 
             InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+
         }
 
     }

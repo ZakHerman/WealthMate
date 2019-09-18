@@ -83,7 +83,7 @@ namespace WealthMate.Views
         /// </summary>
         /// <param name="sender"></param> reference to object sending the data
         /// <param name="e"></param> event data
-        private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
+        public void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             _searchBar = (sender as SearchBar); //set sender to SearchBar
 
