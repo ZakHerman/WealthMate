@@ -143,7 +143,7 @@
          <!--Add To Portfolio Popup Box-->
               <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
                 <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView ShowHeader="false" ShowFooter="false">
+                    <sfPopup:PopupView HeaderTitle="Add Stock to Portfolio">
                         <sfPopup:PopupView.ContentTemplate>
                             <DataTemplate>
                               <StackLayout>
@@ -151,9 +151,8 @@
                                 <Label Text="Number of shares purchased:" Margin="1" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
                                 <textbox:SfNumericTextBox x:Name="numericTextBox" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
                                 <Label Text="Purchase price:" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                                <textbox:SfNumericTextBox x:Name="numericTextBox2" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
-                                <Button Text="Add"  VerticalOptions="End" HorizontalOptions="Start" FontSize="10" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />
-                                </StackLayout>
+                                 <textbox:SfNumericTextBox x:Name="numericTextBox2" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                              </StackLayout>
                             </DataTemplate>
                         </sfPopup:PopupView.ContentTemplate>
                     </sfPopup:PopupView>
