@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WealthMate.Models;
 
-namespace WealthMate.Auth
+namespace WealthMate.Services
 {
     public static class DataService
     {
