@@ -118,7 +118,10 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
 
       <!--Portfolio Asset List view Tab:-->
         <ContentPage Title="List">
-          <ScrollView>
+            <!--Searchbar, placeholder text and on text change functionality-->
+            <StackLayout>
+            <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
+            <ScrollView>
           <syncfusion:SfListView x:Name="List" AutoFitMode="None"
                        ItemsSource="{Binding OwnedAssets, Source={x:Reference Root}}" DragStartMode="OnHold"
             ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
@@ -169,6 +172,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
             </syncfusion:SfListView.ItemTemplate>
           </syncfusion:SfListView>
           </ScrollView>
+            </StackLayout>
         </ContentPage>
     </TabbedPage.Children>
 </TabbedPage>
