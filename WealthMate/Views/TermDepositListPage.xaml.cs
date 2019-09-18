@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using WealthMate.Models;
+﻿using WealthMate.Models;
 using WealthMate.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
