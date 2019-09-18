@@ -24,7 +24,7 @@ namespace WealthMate.Views
         }
 
         // Event handler for edit stock button, enables popupview
-        private void EditStockClicked(object sender, System.EventArgs e)        
+        private void EditStockClicked(object sender, System.EventArgs e)
         {
             overlay.IsVisible = true;
             activityIndicator.IsRunning = true;

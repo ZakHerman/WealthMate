@@ -5,16 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedAssetDetailsPage">
-    
-    <NavigationPage.TitleView>  <!--Name and Type of Asset in NavBar-->
+
+    <NavigationPage.TitleView>
+        <!--Name and Type of Asset in NavBar-->
         <AbsoluteLayout x:Name="NavBarLayout">
             <Label Text="{Binding OwnedAsset.AssetNameType}" HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
-    
+
     <ContentPage.Content>
-        <StackLayout Margin="0, 10">        <!--Basic details of the OwnedAsset-->
+        <StackLayout Margin="0, 10">
+            <!--Basic details of the OwnedAsset-->
             <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.PrincipalValue, StringFormat='Amount Invested: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             <Label Text="{Binding OwnedAsset.InterestRateToString, StringFormat='Interest Rate (per annum): {0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -22,20 +24,23 @@
             <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}"  Value="0">
-                        <Setter Property="Text" Value="Length: Unknown"/>                                   <!--Changes value from 0 to unknown if length is not provided-->
+                        <Setter Property="Text" Value="Length: Unknown"/>
+                        <!--Changes value from 0 to unknown if length is not provided-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
             <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Margin="0, 0, 0, 10">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.RegularPayment}"  Value="0">
-                        <Setter Property="Text" Value="Regular Payments: None"/>                            <!--Changes value from 0 to None if there are no regular payments-->
+                        <Setter Property="Text" Value="Regular Payments: None"/>
+                        <!--Changes value from 0 to None if there are no regular payments-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
             <Label Text="{Binding OwnedAsset.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Grid HorizontalOptions="Center" VerticalOptions="Center"  Margin="0, -10, 0, 0">              <!--Grid to display $ return and % return on one line-->
+            <Grid HorizontalOptions="Center" VerticalOptions="Center"  Margin="0, -10, 0, 0">
+                <!--Grid to display $ return and % return on one line-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -46,7 +51,7 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-    
+
                 <Label Text="Total Return:" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
                 <Label Text="{Binding OwnedAsset.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="Red">
                     <Label.Triggers>
@@ -73,10 +78,32 @@
                     </Label.Triggers>
                 </Label>
             </Grid>
-            
+
             <!--Buttons below details of OwnedAsset-->
-            <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
+            <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0" Clicked="EditAssetClicked"/>
             <Button Text="Remove Owned Asset" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+            <!--Edit Asset Popup Box-->
+            <ScrollView x:Name="overlay" BackgroundColor="White" Padding="10, 0" IsVisible="False" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" Padding="10" HeightRequest="500" WidthRequest="300" BackgroundColor="White">
+                    <Entry x:Name="editInterestRate" Margin="20,20,20,10" Placeholder="Edit Interest Rate"></Entry>
+                    <Entry x:Name="editRePeriod" Margin="20,20,20,10" Placeholder="Edit Reinvestment Period"></Entry>
+                    <Entry x:Name="editLength" Margin="20,20,20,10" Placeholder="Edit Length"></Entry>
+                    <Entry x:Name="editRegPayments" Margin="20,20,20,10" Placeholder="Edit Regular Payments"></Entry>
+                    <Button Text="Save" Margin="20,10,20,10" Clicked="OnSaveButtonClicked"></Button>
+                    <Button Text="Cancel" Margin="20,10,20,10" Clicked="OnCancelButtonClicked"></Button>
+                </StackLayout>
+            </ScrollView>
+
+            <!--Popup Loading image-->
+            <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                        <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
