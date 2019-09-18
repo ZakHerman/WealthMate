@@ -4,7 +4,6 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using WealthMate.Auth;
-using WealthMate.Auth;
 using Xamarin.Auth;
 
 namespace WealthMate.Droid

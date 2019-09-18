@@ -8,7 +8,13 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="GoogleLogin" Text="Login" Clicked="OnLoginClicked" />
+            <Image x:Name="GoogleLogin" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200" Source="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLoginClicked" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Button x:Name="Logout" Text="Logout" Clicked="OnLoginClicked" IsVisible="False" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

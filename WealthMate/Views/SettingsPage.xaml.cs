@@ -3,7 +3,6 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using WealthMate.Auth;
 using WealthMate.Models;
-using WealthMate.Auth;
 using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -85,7 +84,9 @@ namespace WealthMate.Views
 
                 await SecureStorageAccountStore.SaveAsync(e.Account, Config.AppName);
 
-                GoogleLogin.Text = $"Logout, {user?.Email}";
+                Logout.IsVisible = true;
+                Logout.Text = $"Logout, {user?.Email}";
+                GoogleLogin.IsVisible = false;
             }
 		}
 
