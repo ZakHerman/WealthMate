@@ -20,9 +20,9 @@ namespace WealthMate.Views
             WatchListStocks = ((App) Application.Current).User.WatchListStocks;
             GenerateExample();
 
-            foreach (var s in WatchListStocks)
+            foreach (var stock in WatchListStocks)
             {
-                s.UpdateStock();
+                stock.UpdateStock();
             }
 
             InitializeComponent();

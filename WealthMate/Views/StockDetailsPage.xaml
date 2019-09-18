@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
+             xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockDetailsPage">
 
@@ -59,8 +61,9 @@
      
                     <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="LastTrade" YBindingPath="CurrentPrice"/>
                 </chart:SfChart>
-                
-                <!--Labels underneath graph-->
+
+
+              <!--Labels underneath graph-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="26" />
@@ -134,30 +137,31 @@
                     <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N0}'}" Grid.Row="3" Grid.Column="1" />
                 </Grid>
               
-              <!--Add to portfolio button - should activate a popup to enter details-->
+              <!--Add to portfolio button-->
               <Button Text="Add To Portfolio"  VerticalOptions="End" HorizontalOptions="Start" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
-
-                <!--Popup Box-->
-                <ContentView x:Name="popupView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
-                      <Entry Margin="20,20,20,10" Placeholder="Enter No. of Shares Purchased"></Entry>
-                      <Entry Margin="20,0,20,0" Placeholder="Enter Purchase Price"></Entry>
-                      <Button Margin="20,0,20,0" Text="Add"></Button>
-                    </StackLayout>
-                  </StackLayout>
-                </ContentView>
-
-              <!--Popup Loading image-->
-                <ContentView x:Name="popupLoadingView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                  <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="White">
-                      <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
-                      <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>
-                    </StackLayout>
-                  </StackLayout>
-                </ContentView>              
-                            
+                 
+         <!--Add To Portfolio Popup Box-->
+              <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
+                <sfPopup:SfPopupLayout.PopupView>
+                    <sfPopup:PopupView ShowHeader="false" ShowFooter="false">
+                        <sfPopup:PopupView.ContentTemplate>
+                            <DataTemplate>
+                              <StackLayout>
+                              <!--<Label Text="Add stock to portfolio" HorizontalTextAlignment="Center" Font="Bold" FontSize="16" TextColor="Black"/>-->
+                                <Label Text="Number of shares purchased:" Margin="1" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+                                <textbox:SfNumericTextBox x:Name="numericTextBox" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                <Label Text="Purchase price:" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+                                <textbox:SfNumericTextBox x:Name="numericTextBox2" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                <Button Text="Add"  VerticalOptions="End" HorizontalOptions="Start" FontSize="10" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </sfPopup:PopupView.ContentTemplate>
+                    </sfPopup:PopupView>
+                </sfPopup:SfPopupLayout.PopupView>
+              </sfPopup:SfPopupLayout>
+                
+            
+        
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

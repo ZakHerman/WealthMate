@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
+using Syncfusion.XForms.DataForm;
 using Xamarin.Forms;
+using Syncfusion.SfNumericTextBox.XForms;
 
 namespace WealthMate.Views
 {
@@ -12,6 +14,10 @@ namespace WealthMate.Views
         public StockHistory StockHistory { get; }
         public ObservableCollection<Stock> WatchListStocks { get; set; }
         private bool _watched;                                                      //Flag that indicates if stock is being watched
+
+        public Portfolio CurrentPortfolio;
+        private SfNumericTextBox numericTextBox;
+        private SfNumericTextBox numericTextBox2;
         public bool Watched
         {
             get
@@ -29,9 +35,20 @@ namespace WealthMate.Views
             Stock = stock;
             stock.UpdateStock();
             StockHistory = new StockHistory();
+            CurrentPortfolio = (Application.Current as App).User.Portfolio;
 
             WatchListStocks = ((App) Application.Current).User.WatchListStocks;    //Takes users watched list of stocks
             Watched = _watched;
+
+            numericTextBox = new SfNumericTextBox();
+            //numericTextBox.ValueChanged += Handle_ValueChanged;
+            numericTextBox.Value = 123.45f;
+            this.Content = numericTextBox;
+
+            numericTextBox2 = new SfNumericTextBox();
+            //numericTextBox2.ValueChanged += Handle_ValueChanged;
+            numericTextBox2.Value = 200f;
+            this.Content = numericTextBox2;
 
             InitializeComponent();
 
@@ -40,29 +57,31 @@ namespace WealthMate.Views
 
         private void WatchListStarClicked(object sender, System.EventArgs e)
         {
-            if (((App) Application.Current).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
+            if (((App)Application.Current).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
             {
-                ((App) Application.Current).User.WatchListStocks.Remove(Stock);
+                ((App)Application.Current).User.WatchListStocks.Remove(Stock);
                 ((ImageButton) sender).Source = "starunfilled.png";
             }
             else
             {
-                ((App) Application.Current).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
+                ((App)Application.Current).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
                 ((ImageButton) sender).Source = "starfilled.png";
             }
                
         }
 
-        private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Adds stock to the users portfolio - CURRENTLY IN PROGRESS.
+        private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Asks for details of shares purchased
         {
-            popupView.IsVisible = true;
-            activityIndicator.IsRunning = true;
-
-            float price = 0f;
-            float noOfShares = 0f;
-            OwnedStock newStock = new OwnedStock(Stock,System.DateTime.Now,price,noOfShares);
-            ((App)Application.Current).User.Portfolio.AddAsset(newStock);
+            popupLayout.IsOpen = true;
         }
 
+        private void AddInPopupClicked(object sender, System.EventArgs e)        //Adds purchased shares of stock to the users portfolio
+        {
+            popupLayout.IsOpen = false;
+            float price = float.Parse(numericTextBox2.Value.ToString());
+            float noOfShares = float.Parse(numericTextBox.Value.ToString());
+            OwnedStock newStock = new OwnedStock(Stock, System.DateTime.Now, price, noOfShares);
+            (Application.Current as App).User.Portfolio.OwnedAssets.Add(newStock);
+        }
     }
 }
