@@ -2,7 +2,7 @@
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using WealthMate.Services;
+using WealthMate.Auth;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace WealthMate.Views
@@ -15,11 +15,6 @@ namespace WealthMate.Views
         public StockListPage()
         {
             LoadStocks();
-
-            /*foreach (var s in Api.Stocks)
-            {
-                s.UpdateStock();
-            }*/
 
             InitializeComponent();
         }

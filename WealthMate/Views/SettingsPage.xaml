@@ -6,12 +6,9 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.SettingsPage">
 
-
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Sup. This is the settings page."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="GoogleLogin" Text="Login" Clicked="OnLoginClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

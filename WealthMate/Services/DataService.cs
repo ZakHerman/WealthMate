@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WealthMate.Models;
 
-namespace WealthMate.Services
+namespace WealthMate.Auth
 {
     public static class DataService
     {
@@ -16,9 +16,6 @@ namespace WealthMate.Services
 
         public static async Task FetchStocksAsync()
         {
-            if (Stocks != null)
-                return;
-
             var res = await Client.GetAsync(BaseUrl + "GetStocksNzx");
             var content = await res.Content.ReadAsStringAsync();
             Stocks = JsonConvert.DeserializeObject<ObservableCollection<Stock>>(content);
