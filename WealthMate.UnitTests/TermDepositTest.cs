@@ -6,7 +6,7 @@ namespace WealthMate.UnitTests
     [TestClass]
     public class TermDepositTest
     {
-        TermDeposit TD1 = new TermDeposit("WestpacTest", "AA", 10.2f, 15.7f, 12f, 20.5f);
+        TermDeposit TD1 = new TermDeposit("WestpacTest", 10, 15, 12, 20.5f);
 
 
         [TestMethod]
@@ -24,9 +24,8 @@ namespace WealthMate.UnitTests
              */
 
             Assert.AreEqual("WestpacTest", TD1.Provider);
-            Assert.AreEqual("AA", TD1.CreditRating);
-            Assert.AreEqual(10.2, TD1.MinDeposit);
-            Assert.AreEqual(15.7, TD1.MaxDeposit);
+            Assert.AreEqual(10, TD1.MinDeposit);
+            Assert.AreEqual(15, TD1.MaxDeposit);
             Assert.AreEqual(12, TD1.LengthInMonths);
             Assert.AreEqual(20.5, TD1.InterestRate);
         }

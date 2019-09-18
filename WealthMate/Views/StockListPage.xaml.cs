@@ -16,11 +16,6 @@ namespace WealthMate.Views
         {
             LoadStocks();
 
-            /*foreach (var s in Api.Stocks)
-            {
-                s.UpdateStock();
-            }*/
-
             InitializeComponent();
         }
 

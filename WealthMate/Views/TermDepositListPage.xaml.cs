@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using WealthMate.Models;
+﻿using WealthMate.Models;
+using WealthMate.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,27 +9,18 @@ namespace WealthMate.Views
     public partial class TermDepositListPage
     {
         private SearchBar _searchBar;
-        public ObservableCollection<TermDeposit> TermDeposits { get; } = new ObservableCollection<TermDeposit>();
 
         public TermDepositListPage()
         {
-            InitializeComponent();
+            LoadTermDeposits();
 
-            GenerateExample();
+            InitializeComponent();
         }
 
-        public void GenerateExample()
+        private async void LoadTermDeposits()
         {
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f, LengthInMonths = 6, MaxDeposit = 50000, MinDeposit = 10000 });
-            TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 12, MaxDeposit = 10000, MinDeposit = 1000});
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 3.6f, LengthInMonths = 9, MaxDeposit = 50000, MinDeposit = 10000 });
-            TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 18, MaxDeposit = 15000, MinDeposit = 1000 });
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f, LengthInMonths = 6, MaxDeposit = 8000, MinDeposit = 10000 });
-            TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 3, MaxDeposit = 0, MinDeposit = 1000 });
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f, LengthInMonths = 6, MaxDeposit = 1000000, MinDeposit = 1000 });
-            TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 24, MaxDeposit = 20000, MinDeposit = 1000 });
-            TermDeposits.Add(new TermDeposit {Logo = "WBC", Provider = "Westpac", InterestRate = 12.5f, LengthInMonths = 6, MaxDeposit = 15000, MinDeposit = 10000 });
-            TermDeposits.Add(new TermDeposit {Logo = "ANZ", Provider = "ANZ", InterestRate = 4.5f, LengthInMonths = 18, MaxDeposit = 1000, MinDeposit = 1000 });
+            await DataService.FetchTermDepositsAsync();
+            TermDepositList.ItemsSource = DataService.TermDeposits;
         }
 
         /// <summary>
@@ -41,10 +32,10 @@ namespace WealthMate.Views
         {
             _searchBar = (sender as SearchBar);
 
-            if (TDList.DataSource != null)
+            if (TermDepositList.DataSource != null)
             {
-                TDList.DataSource.Filter = FilterTDeposits;
-                TDList.DataSource.RefreshFilter();
+                TermDepositList.DataSource.Filter = FilterTDeposits;
+                TermDepositList.DataSource.RefreshFilter();
             }
         }
 
