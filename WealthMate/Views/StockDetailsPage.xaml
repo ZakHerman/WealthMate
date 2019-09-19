@@ -159,8 +159,6 @@
                 </sfPopup:SfPopupLayout.PopupView>
               </sfPopup:SfPopupLayout>
                 
-            
-        
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
