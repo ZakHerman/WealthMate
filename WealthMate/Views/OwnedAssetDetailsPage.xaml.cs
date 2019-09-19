@@ -17,7 +17,6 @@ namespace WealthMate.Views
         public OwnedAsset OwnedAsset { get; }
 
         private SfNumericTextBox editInterestRate;
-        private SfNumericTextBox editRePeriod;
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)
@@ -30,10 +29,6 @@ namespace WealthMate.Views
             editInterestRate = new SfNumericTextBox();
             editInterestRate.Value = 0;
             editInterestRate.ValueChanged += Handle_InterestRateChanged;
-
-            editRePeriod = new SfNumericTextBox();
-            editRePeriod.Value = 0;
-            editRePeriod.ValueChanged += Handle_ReinvestmentPeriodChanged;
 
             editLength = new SfNumericTextBox();
             editLength.Value = 0;
@@ -50,20 +45,23 @@ namespace WealthMate.Views
             popupLayout.IsOpen = true;
         }
 
-        // Event handler for save editing button
-        protected void SaveInPopupClicked(object sender, EventArgs args)
+        // Event handler for save editing button, will delete old asset and add new edited one 
+        protected void SaveInPopupClicked(object sender, System.EventArgs args)
         {
             popupLayout.IsOpen = false;
 
             float newInterestRate = float.Parse(editInterestRate.Value.ToString());
-            float newRePeriod = float.Parse(editRePeriod.Value.ToString());
-            float newLength = float.Parse(editLength.Value.ToString());
+            int newLength = int.Parse(editLength.Value.ToString());
             float newRegPayments = float.Parse(editRegPayments.Value.ToString());
 
-            // 1. Check which asset 
-            // 2. If term deposit, new term deposit + replace
-            // 3. get current owned asset, replace with new owned asset
-            // 4. ((App)Application.Current).User.Portfolio.AddAsset(newAsset);
+            int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
+            OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(oldOA);
+
+            OwnedAsset newEditedOA = new OwnedAsset(OwnedAsset.AssetName, OwnedAsset.PurchaseDate, OwnedAsset.Type, OwnedAsset.PrincipalValue, newInterestRate, newLength, OwnedAsset.CompoundRate, newRegPayments);
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Add(newEditedOA);
+
+            OwnedAsset.UpdateOwnedAsset();
         }
 
         private void CancelInPopupClicked(object sender, EventArgs args)
@@ -76,13 +74,7 @@ namespace WealthMate.Views
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editInterestRate.Value = e.Value.ToString();
         }
-
-        private void Handle_ReinvestmentPeriodChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
-            editRePeriod.Value = e.Value.ToString();
-        }
-
+    
         private void Handle_LengthChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());

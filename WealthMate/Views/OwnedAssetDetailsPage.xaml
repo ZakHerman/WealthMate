@@ -94,8 +94,7 @@
                                 <StackLayout WidthRequest="300" HeightRequest="450">
                                     <Label Text="Edit interest rate:" Margin="1" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
                                     <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
-                                    <Label Text="Edit reinvestment period:" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                                    <textbox:SfNumericTextBox x:Name="editRePeriod" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    
                                     <Label Text="Edit length:" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
                                     <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
                                     <Label Text="Edit regular payments:" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
