@@ -45,21 +45,33 @@ namespace WealthMate.Views
             popupLayout.IsOpen = true;
         }
 
-        // Event handler for save editing button, will delete old asset and add new edited one 
+        // Event handler for save editing button, will update current asset
         protected void SaveInPopupClicked(object sender, System.EventArgs args)
         {
             popupLayout.IsOpen = false;
 
             float newInterestRate = float.Parse(editInterestRate.Value.ToString());
+            if(OwnedAsset.InterestRate != newInterestRate)
+            {
+                OwnedAsset.InterestRate = newInterestRate;
+            }
             int newLength = int.Parse(editLength.Value.ToString());
+            if (OwnedAsset.Length != newLength)
+            {
+                OwnedAsset.Length = newLength;
+            }
             float newRegPayments = float.Parse(editRegPayments.Value.ToString());
+            if (OwnedAsset.RegularPayment != newRegPayments)
+            {
+                OwnedAsset.RegularPayment = newRegPayments;
+            }
 
-            int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
-            OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
-            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(oldOA);
+            //int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
+            //OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
+            //((App)Application.Current).User.Portfolio.OwnedAssets.Remove(oldOA);
 
-            OwnedAsset newEditedOA = new OwnedAsset(OwnedAsset.AssetName, OwnedAsset.PurchaseDate, OwnedAsset.Type, OwnedAsset.PrincipalValue, newInterestRate, newLength, OwnedAsset.CompoundRate, newRegPayments);
-            ((App)Application.Current).User.Portfolio.OwnedAssets.Add(newEditedOA);
+            //OwnedAsset newEditedOA = new OwnedAsset(OwnedAsset.AssetName, OwnedAsset.PurchaseDate, OwnedAsset.Type, OwnedAsset.PrincipalValue, newInterestRate, newLength, OwnedAsset.CompoundRate, newRegPayments);
+            //((App)Application.Current).User.Portfolio.OwnedAssets.Add(newEditedOA);
 
             OwnedAsset.UpdateOwnedAsset();
         }

@@ -41,15 +41,21 @@ namespace WealthMate.Views
             popupLayout.IsOpen = true;
         }
 
-        // Event handler for save editing button, should update an edited stock, can't get current stock
+        // Event handler for save editing button, will update current stock
         protected void SaveInPopupClicked(object sender, System.EventArgs e)
         {
             popupLayout.IsOpen = false;
 
             long newNumShares = long.Parse(editNumOfShares.Value.ToString());
+            if(OwnedStock.SharesPurchased != newNumShares)
+            {
+                OwnedStock.SharesPurchased = newNumShares;
+            }
             float newPrice = float.Parse(editPurchasePrice.Value.ToString());
-
-            // get current stock - HOW?
+            if (OwnedStock.PurchasedPrice != newPrice)
+            {
+                OwnedStock.PurchasedPrice = newPrice;
+            }
 
             OwnedStock.UpdateOwnedAsset();
         }
