@@ -41,9 +41,11 @@ namespace WealthMate.Views
             Watched = _watched;
 
             numericTextBox = new SfNumericTextBox();
+            numericTextBox.Value = 0;
             numericTextBox.ValueChanged += Handle_NumSharesChanged;
 
             numericTextBox2 = new SfNumericTextBox();
+            numericTextBox2.Value = 0;
             numericTextBox2.ValueChanged += Handle_PriceChanged;
 
             InitializeComponent();
