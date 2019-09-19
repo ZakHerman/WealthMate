@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:viewmodels="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.WatchlistPage"
@@ -11,7 +11,7 @@
              Title="Watchlist">
 
     <ContentPage.BindingContext>
-        <models:Stock />
+        <viewmodels:WatchListPageVM />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -20,7 +20,7 @@
             <SearchBar x:Name="SearchBar" Placeholder ="Search Watchlist" TextChanged="OnFilterTextChanged"/>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
+            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">

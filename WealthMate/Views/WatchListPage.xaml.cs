@@ -5,6 +5,7 @@ using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using WealthMate.ViewModels;
 
 namespace WealthMate.Views
 {
@@ -12,19 +13,10 @@ namespace WealthMate.Views
     public partial class WatchlistPage
     {
         private SearchBar _searchBar;
-        public ObservableCollection<Stock> WatchListStocks { get; set; }
-
 
         public WatchlistPage()
         {
-            WatchListStocks = ((App) Application.Current).User.WatchListStocks;
-            GenerateExample();
-
-            foreach (var stock in WatchListStocks)
-            {
-                stock.UpdateStock();
-            }
-
+            BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 
@@ -40,12 +32,6 @@ namespace WealthMate.Views
             await Navigation.PushAsync(new StockDetailsPage(selected));
   
             ((SfListView)sender).SelectedItem = null;
-        }
-
-        // Default dummy data
-        private void GenerateExample()
-        {
-           
         }
 
         /// <summary>
