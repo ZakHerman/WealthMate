@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Syncfusion.SfNumericTextBox.XForms;
 
 namespace WealthMate.Views
 {
@@ -15,12 +16,23 @@ namespace WealthMate.Views
     {
         public OwnedStock OwnedStock { get; }
         public Stock Stock { get; }
+
+        private SfNumericTextBox editNumOfShares;
+        private SfNumericTextBox editPurchasePrice;
         public OwnedStockDetailsPage(OwnedStock ownedStock)
         {
             OwnedStock = ownedStock;
             OwnedStock.UpdateOwnedAsset();
             BindingContext = this;
             InitializeComponent();
+
+            editNumOfShares = new SfNumericTextBox();
+            editNumOfShares.Value = 0;
+            editNumOfShares.ValueChanged += Handle_NumSharesChanged;
+
+            editPurchasePrice = new SfNumericTextBox();
+            editPurchasePrice.Value = 0;
+            editPurchasePrice.ValueChanged += Handle_PriceChanged;
         }
 
         // Event handler for edit stock button, enables popup
@@ -30,16 +42,33 @@ namespace WealthMate.Views
         }
 
         // Event handler for save editing button
-        protected void OnSaveButtonClicked(object sender, EventArgs args)
+        protected void SaveInPopupClicked(object sender, EventArgs args)
         {
             popupLayout.IsOpen = false;
 
-           // float newNumShares = float.Parse(editNumOfShares.Value.ToString());
-           // float newPrice = float.Parse(editPurchasePrice.Value.ToString());
+            float newNumShares = float.Parse(editNumOfShares.Value.ToString());
+            float newPrice = float.Parse(editPurchasePrice.Value.ToString());
 
-           // OwnedStock editedStock = new OwnedStock(Stock, System.DateTime.Now, newNumShares, newPrice);
-           // get current stock, replace with editedStock
-           //((App)Application.Current).User.Portfolio.AddAsset(newStock);
+            // OwnedStock editedStock = new OwnedStock(Stock, System.DateTime.Now, newNumShares, newPrice);
+            // get current stock, replace with editedStock
+            //((App)Application.Current).User.Portfolio.AddAsset(newStock);
+        }
+
+        private void CancelInPopupClicked(object sender, EventArgs args)
+        {
+            popupLayout.IsOpen = false;
+        }
+
+        private void Handle_NumSharesChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
+            editNumOfShares.Value = e.Value.ToString();
+        }
+
+        private void Handle_PriceChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
+            editNumOfShares.Value = e.Value.ToString();
         }
     }
 }

@@ -88,7 +88,7 @@
             <!--Edit Stock Popup Box-->
             <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
                 <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView HeaderTitle="Edit Owned Asset Details">
+                    <sfPopup:PopupView HeaderTitle="Edit Owned Asset Details" ShowFooter="false">
                         <sfPopup:PopupView.ContentTemplate>
                             <DataTemplate>
                                 <StackLayout WidthRequest="300" HeightRequest="450">
@@ -100,6 +100,7 @@
                                     <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
                                     <Label Text="Edit regular payments:" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
                                     <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
                             </DataTemplate>
                         </sfPopup:PopupView.ContentTemplate>

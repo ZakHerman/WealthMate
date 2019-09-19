@@ -101,14 +101,15 @@
             <!--Edit Stock Popup Box-->
             <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
                 <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView HeaderTitle="Edit Owned Stock Details">
+                    <sfPopup:PopupView HeaderTitle="Edit Owned Stock Details" ShowFooter="false">
                         <sfPopup:PopupView.ContentTemplate>
                             <DataTemplate>
-                                <StackLayout>
+                                <StackLayout WidthRequest="300" HeightRequest="300">
                                     <Label Text="Edit number of shares:" Margin="1" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                                    <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
                                     <Label Text="Edit purchase price:" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                                    <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+                                    <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
                             </DataTemplate>
                         </sfPopup:PopupView.ContentTemplate>
