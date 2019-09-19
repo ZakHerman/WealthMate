@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace WealthMate.Models
 {
     public class Portfolio
     {
-        public List<OwnedAsset> OwnedAssets { get; }
+        public ObservableCollection<OwnedAsset> OwnedAssets { get; }
         public  float CurrentTotal { get; set; }
         public float TotalReturn { get; set; }
         public float PrincipalTotal { get; set; }
@@ -18,7 +19,7 @@ namespace WealthMate.Models
         //------------------------------------------------------------------------------------------------------------
         public Portfolio()
         {
-            OwnedAssets = new List<OwnedAsset>();
+            OwnedAssets = new ObservableCollection<OwnedAsset>();
             UpdatePortfolio();
         }
 

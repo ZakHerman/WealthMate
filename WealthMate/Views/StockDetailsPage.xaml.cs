@@ -78,7 +78,6 @@ namespace WealthMate.Views
             float noOfShares = float.Parse(numericTextBox.Value.ToString());
             OwnedStock newStock = new OwnedStock(Stock, System.DateTime.Now, price, noOfShares);
             (Application.Current as App).User.Portfolio.OwnedAssets.Add(newStock);
-            current.ListUpdated();
             popupLayout.IsOpen = false;
         }
 

@@ -21,12 +21,11 @@ namespace WealthMate.Models
 
         public string Logo { get; set; }
 
-        public float NoMaxDeposit; 
-        public float NoMinimumDeposit;
+        public bool NoMaxDeposit; 
+        public bool NoMinimumDeposit;
 
         public TermDeposit()
         {
-
         }
         
         public TermDeposit(string provider, int? minDeposit, int? maxDeposit, int length, float interestRate)
@@ -36,8 +35,22 @@ namespace WealthMate.Models
             MaxDeposit = maxDeposit;
             LengthInMonths = length;
             InterestRate = interestRate;
-            NoMaxDeposit = 0;
-            NoMinimumDeposit = 0;
+            if(MinDeposit == 0)
+            {
+                NoMinimumDeposit = true;
+            }
+            else
+            {
+                NoMinimumDeposit = false;
+            }
+            if (MaxDeposit == 0 || MaxDeposit == null)
+            {
+                NoMaxDeposit = true;
+            }
+            else
+            {
+                NoMaxDeposit = false;
+            }
         }
     }
 }
