@@ -21,6 +21,7 @@ namespace WealthMate.Models
             AssetType = type;
         }
 
+        // Checks the return percentage is positive
         public void PositiveChecker()
         {
             if (ReturnPercentage > 0)
@@ -29,12 +30,14 @@ namespace WealthMate.Models
                 IsPositive = false;
         }
 
+        // Updates the values for the pie chart title
         public void UpdateValues(float currentValue, float principalValue)
         {
             Quantity += currentValue;
             PrincipalQuantity += principalValue;
         }
 
+        // Calculates return percentage
         public void CalculateReturnPercentage()
         {
             ReturnPercentage = ((Quantity - PrincipalQuantity) / PrincipalQuantity) * 100;
