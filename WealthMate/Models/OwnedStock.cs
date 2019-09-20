@@ -32,6 +32,7 @@ namespace WealthMate.Models
 
         }
 
+        // Creates up to date values for the Owned Asset
         public override void UpdateOwnedAsset()
         {
             CurrentPrice = Stock.CurrentPrice;
