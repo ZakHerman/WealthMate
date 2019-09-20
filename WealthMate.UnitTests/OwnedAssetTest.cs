@@ -75,6 +75,23 @@ namespace WealthMate.UnitTests
             Assert.AreEqual(expectedVal3, totalRetR3, delta);
         }
 
+        [TestMethod]
+        public void TestEditOwnedAsset()
+        {
+            float newInterestRate = 1.2f;
+            int newLength = 9;
+            float newRegPayments = 3.2f;
+
+            test1.EditAsset(newInterestRate, newLength, newRegPayments, test1);
+
+            OwnedAsset t1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 1.2f, 9, 4, 3.2f);
+
+            Assert.AreEqual(test1.InterestRate, t1.InterestRate);
+            Assert.AreEqual(test1.Length, t1.Length);
+            Assert.AreEqual(test1.RegularPayment, t1.RegularPayment);
+        }
+
+
         //[TestMethod]
         //public void testTotalReturnPercent()
         //{
