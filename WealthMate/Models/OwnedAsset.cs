@@ -1,28 +1,26 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace WealthMate.Models
 {
-    public class OwnedAsset : INotifyPropertyChanged
+    public class OwnedAsset
     {
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; }                                    //The type of OwnedAsset
         public int Length { get; set; }                             //In number of years
         public float InterestRate { get; set; }
-        public int CompoundRate { get; set; }
+        public int CompoundRate { get; set; }                               //The amount of times interest is being compounded during a year
         public float RegularPayment { get; set; }
-        public float PrincipalValue { get; set; }
+        public float PrincipalValue { get; set; }                               //The initial value (first value) of the owned asset
         public float CurrentValue { get; set;  }
         public float TotalReturn { get; set; }
         public float TotalReturnRate { get; set; }
-        public bool PositiveTotal { get; set; }
-        public string AssetNameType { get { return AssetName + " " + Type; } }
-        public string CompoundRateToString { get; set; }
-        public string InterestRateToString { get; set; }
+        public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
+        public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
+        public string CompoundRateToString { get; set; }                        //Converts amount of time interest is being compounded into string
+        public string InterestRateToString { get; set; }                        //Converts interest rate into readable string
 
-        // Virtual member in constructor call
-        // https://stackoverflow.com/questions/119506/virtual-member-call-in-a-constructor
+
         public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
         {
             AssetName = assetName;
@@ -32,8 +30,8 @@ namespace WealthMate.Models
             PrincipalValue = principalValue;
             InterestRate = interestRate;
             Length = length;
-            CompoundRate = compoundRate; //how often per year that interest is calculated/added
-            UpdateOwnedAsset();
+            CompoundRate = compoundRate;
+            UpdateOwnedAsset();                                     //Asset needs to be updated (return values) as soon as it is constructed.
         }
 
         // Virtual member in constructor call
@@ -80,7 +78,7 @@ namespace WealthMate.Models
             }
         }
 
-        private void CalculateReturn()
+        private void CalculateReturn()                                  //Calculates the Total Return of the Owned Asset
         {
             TotalReturn = CurrentValue - PrincipalValue;
             TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
@@ -91,15 +89,15 @@ namespace WealthMate.Models
                 PositiveTotal = false;
         }
 
-        private void CalculateCurrentValue()
+        private void CalculateCurrentValue()                    //Uses financial calculation to calculate today's value of the asset from when it was first acquired.
         {
-            TimeSpan daysBetween = DateTime.Today - PurchaseDate;
+            TimeSpan daysBetween = DateTime.Today - PurchaseDate;       //Calculates days between from when asset was purchased to today
 
-            var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate);
+            var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate);   //Does not take regular payments into account
 
             if (RegularPayment > 0)
                 CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), 
-                    (daysBetween.TotalDays / 365.25) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
+                    (daysBetween.TotalDays / 365.25) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;      //Takes regular payments into account
             else
                 CurrentValue = nonPaymentValue;
         }
@@ -108,29 +106,13 @@ namespace WealthMate.Models
         public void EditAsset(float interestRate, int length, float regularPayment, OwnedAsset ownedAsset)
         {
             if ((ownedAsset.InterestRate != interestRate) && (interestRate != 0))
-            {
                 ownedAsset.InterestRate = interestRate;
-            }
 
             if ((ownedAsset.Length != length) && (length != 0))
-            {
                 ownedAsset.Length = length;
-            }
 
             if ((ownedAsset.RegularPayment != regularPayment) && (regularPayment != 0))
-            {
                 ownedAsset.RegularPayment = regularPayment;
-            }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged(string name)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-
-        }
-
     }
 }
