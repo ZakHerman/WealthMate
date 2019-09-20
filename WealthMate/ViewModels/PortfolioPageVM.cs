@@ -12,9 +12,9 @@ namespace WealthMate.ViewModels
         public Portfolio CurrentPortfolio { get; set; }
         public ObservableCollection<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
-        private PieData _termD = new PieData();
-        private PieData _bond = new PieData();
-        private PieData _stock = new PieData();
+        private PieData _termD = new PieData("Term Deposits");
+        private PieData _bond = new PieData("Bonds");
+        private PieData _stock = new PieData("Stocks");
         public PortfolioPageVM()
         {
             CurrentPortfolio = (Application.Current as App).User.Portfolio;         //Captures portfolio of current user.
@@ -30,29 +30,17 @@ namespace WealthMate.ViewModels
                 asset.UpdateOwnedAsset();
 
                 if (asset.Type.Equals("Term Deposit"))
-                {
-                    _termD.Quantity += asset.CurrentValue;
-                    _termD.PrincipalQuantity += asset.PrincipalValue;
-                }
-                if (asset.Type.Equals("Bond"))
-                {
-                    _bond.Quantity += asset.CurrentValue;
-                    _bond.PrincipalQuantity += asset.PrincipalValue;
-                }
-                if (asset is OwnedStock)
-                {
-                    _stock.Quantity += asset.CurrentValue;
-                    _stock.PrincipalQuantity += asset.PrincipalValue;
-                }
+                    _termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                else if (asset.Type.Equals("Bond"))
+                    _bond.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                else if (asset is OwnedStock)
+                    _stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                 // insert more code for any other possible types      
             }
-            _termD.AssetType = "Term Deposits";
-            _bond.AssetType = "Bonds";
-            _stock.AssetType = "Stocks";
 
-            _termD.ReturnPercentage = ((_termD.Quantity - _termD.PrincipalQuantity) / _termD.PrincipalQuantity) * 100;
-            _bond.ReturnPercentage = ((_bond.Quantity - _bond.PrincipalQuantity) / _bond.PrincipalQuantity) * 100;
-            _stock.ReturnPercentage = ((_stock.Quantity - _stock.PrincipalQuantity) / _stock.PrincipalQuantity) * 100;
+            _termD.CalculateReturnPercentage();
+            _bond.CalculateReturnPercentage();
+            _stock.CalculateReturnPercentage();
 
             _bond.PositiveChecker();            //XAML Flag to see if label should be red or green (negative/positive returns)
             _termD.PositiveChecker();
