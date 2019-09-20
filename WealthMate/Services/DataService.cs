@@ -23,6 +23,9 @@ namespace WealthMate.Services
             var res = await Client.GetAsync(BaseUrl + "getstocksnzx");
             var content = await res.Content.ReadAsStringAsync();
             Stocks = JsonConvert.DeserializeObject<ObservableCollection<Stock>>(content);
+
+            foreach (var stock in Stocks)
+                stock.UpdateStock();
         }
 
         // Get specific stock from stocks list in memory
