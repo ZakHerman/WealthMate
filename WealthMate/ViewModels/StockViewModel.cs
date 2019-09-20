@@ -1,17 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json;
+using WealthMate.Services;
 
-namespace WealthMate.Models
+namespace WealthMate.ViewModels
 {
-    public class Stock : INotifyPropertyChanged
+    public class StockViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private float _currentPrice;
         private DateTime _lastTrade;
 
-        [JsonProperty("price")]
         public float CurrentPrice
         {
             get => _currentPrice;
@@ -25,37 +24,17 @@ namespace WealthMate.Models
             }
         }
 
-        [JsonProperty("symbol")]
         public string Symbol { get; set; }
-
-        [JsonProperty("name")]
         public string CompanyName { get; set; }
-
-        [JsonProperty("price_open")]
         public float PriceOpen { get; set; }
-
-        [JsonProperty("close_yesterday")]
         public float PriceClose { get; set; }
-
-        [JsonProperty("day_high")]
         public float DayHigh { get; set; }
-
-        [JsonProperty("day_low")]
         public float DayLow { get; set; }
-
-        [JsonProperty("52_week_high")]
         public float FiftyTwoWeekHigh { get; set; }
-
-        [JsonProperty("52_week_low")]
         public float FiftyTwoWeekLow { get; set; }
-
-        [JsonProperty("shares")]
         public long Shares { get; set; }
-
-        [JsonProperty("volume")]
         public int Volume { get; set; }
 
-        [JsonProperty("last_trade_time")]
         public DateTime LastTrade
         {
             get => _lastTrade;
@@ -65,15 +44,15 @@ namespace WealthMate.Models
         public float DayReturn { get; set; }
         public float DayReturnRate { get; set; }
         public bool PositiveDayReturns { get; set; }
-        public bool NoDayReturns { get; set; }
 
-        //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
-        public void UpdateStock()
+        public StockViewModel()
         {
-            PositiveDayReturns = CurrentPrice > PriceOpen;
-            NoDayReturns = CurrentPrice == PriceOpen;
-            DayReturn = CurrentPrice - PriceOpen;
-            DayReturnRate = DayReturn / PriceOpen * 100;
+            LoadStocks();
+        }
+
+        public static async void LoadStocks()
+        {
+            await DataService.FetchStocksAsync();
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

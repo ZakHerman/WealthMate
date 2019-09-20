@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
-             xmlns:viewModels="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
+             xmlns:vm="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
@@ -13,12 +12,12 @@
              Title="Term Deposits">
 
     <ContentPage.BindingContext>
-        <models:TermDeposit />
+        <vm:TermDepositViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <viewModels:TermDepositConverter x:Key="ConvertDeposit" />
+            <vm:TermDepositConverter x:Key="ConvertDeposit" />
         </ResourceDictionary>
     </ContentPage.Resources>
 

@@ -5,31 +5,36 @@ using System;
 namespace WealthMate.UnitTests
 {
     [TestClass]
-    class PieDataTest
+    public class PieDataTest
     {
-        private OwnedAsset testAsset;
-        private OwnedAsset testAsset2;
-        private OwnedAsset testAsset3;
-        private User testUser;
-
-        public PieDataTest()
-        {
-            testAsset = new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0);
-            testAsset2 = new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40);
-            testAsset3 = new OwnedAsset("Test3", new DateTime(2018, 2, 14), "Stock", 1000, 0.8f, 4, 3, 20);
-            testUser = new User();
-
-        }
-
         [TestMethod]
-        public void TestPieDataValues()
+        public void TestReturnPercentages()
         {
-            testUser.Portfolio.OwnedAssets.Add(testAsset);
-            testUser.Portfolio.OwnedAssets.Add(testAsset2);
-            testUser.Portfolio.OwnedAssets.Add(testAsset3);
+            PieData _termD = new PieData("Term Deposits");
+            _termD.UpdateValues(100, 30);
+            _termD.UpdateValues(2300, 1000);
+            PieData _bond = new PieData("Bonds");
+            _bond.UpdateValues(1400, 1000);
+            PieData _stock = new PieData("Stocks");
+            _stock.UpdateValues(5000, 3400);
+            _stock.UpdateValues(1000, 6000);
 
-         //   Assert.AreEqual()
+            _termD.CalculateReturnPercentage();
+            _bond.CalculateReturnPercentage();
+            _stock.CalculateReturnPercentage();
 
+            float _termDExpectedVal = 133.01f;
+            float _termDcurrentVal = (float)Math.Round(_termD.ReturnPercentage, 2);
+
+            float _bondExpectedVal = 40.00f;
+            float _bondDcurrentVal = (float)Math.Round(_bond.ReturnPercentage, 2);
+
+            float _stockExpectedVal = -36.17f;
+            float _stockcurrentVal = (float)Math.Round(_stock.ReturnPercentage, 2);
+
+            Assert.AreEqual(_termDExpectedVal, _termDcurrentVal);
+            Assert.AreEqual(_bondExpectedVal, _bondDcurrentVal);
+            Assert.AreEqual(_stockExpectedVal, _stockcurrentVal);
         }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:vm="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockListPage"
@@ -11,7 +11,7 @@
              Title="Stocks">
 
     <ContentPage.BindingContext>
-        <models:Stock />
+        <vm:StockViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -41,8 +41,12 @@
                             <Frame Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
                                 <Frame.Triggers>
                                     <DataTrigger TargetType ="Frame" Binding="{Binding PositiveDayReturns}" Value="False">
-                                        <!--Change text to red when negative return-->
+                                        <!--Change background to red when negative return-->
                                         <Setter Property="BackgroundColor" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType ="Frame" Binding="{Binding NoDayReturns}" Value="True">
+                                        <!--Change background to grey when no return-->
+                                        <Setter Property="BackgroundColor" Value="Gray" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                                 
@@ -51,6 +55,10 @@
                                         <DataTrigger TargetType ="Label" Binding="{Binding PositiveDayReturns}" Value="False">
                                             <!--Change text to red when negative return-->
                                             <Setter Property="TextColor" Value="Color.DarkRed" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType ="Label" Binding="{Binding NoDayReturns}" Value="True">
+                                            <!--Change text to grey when no return-->
+                                            <Setter Property="TextColor" Value="Color.Black" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>

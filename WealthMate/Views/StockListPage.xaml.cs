@@ -15,7 +15,6 @@ namespace WealthMate.Views
         public StockListPage()
         {
             LoadStocks();
-
             InitializeComponent();
         }
 

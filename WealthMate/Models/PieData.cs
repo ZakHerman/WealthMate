@@ -16,12 +16,28 @@ namespace WealthMate.Models
         public float PrincipalQuantity { get; set; }
         public bool IsPositive { get; set; }
 
+        public PieData(string type)
+        {
+            AssetType = type;
+        }
+
         public void PositiveChecker()
         {
             if (ReturnPercentage > 0)
                 IsPositive = true;
             else
                 IsPositive = false;
+        }
+
+        public void UpdateValues(float currentValue, float principalValue)
+        {
+            Quantity += currentValue;
+            PrincipalQuantity += principalValue;
+        }
+
+        public void CalculateReturnPercentage()
+        {
+            ReturnPercentage = ((Quantity - PrincipalQuantity) / PrincipalQuantity) * 100;
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using Syncfusion.SfChart.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using Syncfusion.XForms.DataForm;
 using Xamarin.Forms;
 using Syncfusion.SfNumericTextBox.XForms;
+using WealthMate.Services;
 
 namespace WealthMate.Views
 {
@@ -11,7 +14,7 @@ namespace WealthMate.Views
     public partial class StockDetailsPage
     {
         public Stock Stock { get; }
-        public StockHistory StockHistory { get; }
+        public ObservableCollection<StockHistory> StockHistory{ get; set; }
         public ObservableCollection<Stock> WatchListStocks { get; set; }
         private bool _watched;                                                      //Flag that indicates if stock is being watched
 
@@ -33,8 +36,11 @@ namespace WealthMate.Views
         public StockDetailsPage(Stock stock)            //Displays details of selected stock
         {
             Stock = stock;
+            LoadStockHistory(stock.Symbol);
             stock.UpdateStock();
-            StockHistory = new StockHistory();
+
+            
+
             CurrentPortfolio = (Application.Current as App).User.Portfolio;
 
             WatchListStocks = ((App) Application.Current).User.WatchListStocks;    //Takes users watched list of stocks
@@ -53,6 +59,23 @@ namespace WealthMate.Views
             BindingContext = this;     
         }
 
+        private async void LoadStockHistory(string symbol)
+        {
+            await DataService.FetchStockHistoryAsync(symbol);
+            StockHistory = DataService.StockHistory;
+
+            Chart.Series.Add (new LineSeries {
+	
+                ItemsSource = StockHistory,
+
+                XBindingPath = "Date",
+
+                YBindingPath = "PriceClose"
+
+            });
+            Debug.Write("stocks : " + StockHistory.Count);
+        }
+
         private void WatchListStarClicked(object sender, System.EventArgs e)
         {
             if (((App)Application.Current).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
@@ -65,7 +88,6 @@ namespace WealthMate.Views
                 ((App)Application.Current).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
                 ((ImageButton) sender).Source = "starfilled.png";
             }
-               
         }
 
         private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Asks for details of shares purchased
