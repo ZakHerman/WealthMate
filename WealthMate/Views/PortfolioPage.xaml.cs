@@ -12,7 +12,6 @@ namespace WealthMate.Views
     public partial class PortfolioPage
     {
         private SearchBar _searchBar;
-        public float TotalValue { get; set; }
         public Portfolio CurrentPortfolio { get; set; }
         public ObservableCollection<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
