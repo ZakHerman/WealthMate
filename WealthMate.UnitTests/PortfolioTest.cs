@@ -39,20 +39,72 @@ namespace WealthMate.UnitTests
         [TestMethod]
         public void TestAddAsset()
         {
-            testPortfolio.AddAsset(testAsset);
+            //Assets were added in constructor
             Assert.IsTrue(testPortfolio.OwnedAssets.Contains(testAsset));
+            Assert.IsTrue(testPortfolio2.OwnedAssets.Contains(testAsset3));
+            Assert.IsTrue(testPortfolio3.OwnedAssets.Contains(testAsset5));
+        }
+        [TestMethod]
+        public void TestAddAssetUpdatedPortfolioTotalValue()
+        {
+            testPortfolio.AddAsset(testAsset5);
+            testPortfolio2.AddAsset(testAsset4);
+            testPortfolio3.AddAsset(testAsset);
+
+            float delta = 0.01f;
+
+            float actual = testPortfolio.CurrentTotal;
+            float expected = 6534.77f;
+
+            float actual2 = testPortfolio2.CurrentTotal;
+            float expected2 = 1323.39f;
+
+            float actual3 = testPortfolio3.CurrentTotal;
+            float expected3 = 6534.77f;
+
+            Assert.AreEqual(expected, actual, delta, "Portfolio total value does not match");
+            Assert.AreEqual(expected2, actual2, delta, "Portfolio total value does not match");
+            Assert.AreEqual(expected3, actual3, delta, "Portfolio total value does not match");
         }
 
         [TestMethod]
         public void TestRemoveAsset()
         {
-            testPortfolio.AddAsset(testAsset);
-            testPortfolio.AddAsset(testAsset2);
+            testPortfolio.AddAsset(testAsset3); //First two assets already added in constructor
+
             testPortfolio.RemoveAsset(testAsset);
+            testPortfolio.RemoveAsset(testAsset2);
+            testPortfolio.RemoveAsset(testAsset3);
+
             Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset));
+            Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset2));
+            Assert.IsFalse(testPortfolio.OwnedAssets.Contains(testAsset3));
         }
         [TestMethod]
-        public void testPortfolioTotalValue()
+        public void TestRemoveAssetUpdatedPortfolioTotalValue()
+        {
+            testPortfolio.RemoveAsset(testAsset);
+            testPortfolio2.RemoveAsset(testAsset3);
+            testPortfolio3.RemoveAsset(testAsset4);
+
+            float delta = 0.01f;     
+            
+            float actual = testPortfolio.CurrentTotal;
+            float expected = 1310.75f;
+
+            float actual2 = testPortfolio2.CurrentTotal;
+            float expected2 = 0.00f;
+
+            float actual3 = testPortfolio3.CurrentTotal;
+            float expected3 = 4220.00f;
+
+            Assert.AreEqual(expected, actual, delta, "Portfolio total value does not match");
+            Assert.AreEqual(expected2, actual2, delta, "Portfolio total value does not match");
+            Assert.AreEqual(expected3, actual3, delta, "Portfolio total value does not match");
+        }
+
+        [TestMethod]
+        public void TestPortfolioTotalValue()
         {
             float delta = 0.01f;                                //Note that the value changes everyday, as calculations are adjusted to today's date.
             float actual = testPortfolio.CurrentTotal;
