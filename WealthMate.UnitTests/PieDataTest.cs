@@ -7,6 +7,8 @@ namespace WealthMate.UnitTests
     [TestClass]
     public class PieDataTest
     {
+        //private PieData pieData;
+
         [TestMethod]
         public void TestReturnPercentages()
         {
@@ -35,6 +37,23 @@ namespace WealthMate.UnitTests
             Assert.AreEqual(_termDExpectedVal, _termDcurrentVal);
             Assert.AreEqual(_bondExpectedVal, _bondDcurrentVal);
             Assert.AreEqual(_stockExpectedVal, _stockcurrentVal);
+        }
+
+        [TestMethod]
+        public void TestUpdateValues()
+        {
+            PieData pieData = new PieData("Term Deposit");
+
+            pieData.Quantity = 0.0f;
+            pieData.PrincipalQuantity = 0.0f;
+
+            float newCurrentValue = 250.60f;
+            float newPrincipalValue = 50.23f;
+
+            pieData.UpdateValues(newCurrentValue, newPrincipalValue);
+
+            Assert.AreEqual(pieData.Quantity, newCurrentValue);
+            Assert.AreEqual(pieData.PrincipalQuantity, newPrincipalValue);
         }
     }
 }

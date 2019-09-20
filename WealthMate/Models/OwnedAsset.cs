@@ -104,6 +104,25 @@ namespace WealthMate.Models
                 CurrentValue = nonPaymentValue;
         }
 
+        // Alters the asset the user is editing
+        public void EditAsset(float interestRate, int length, float regularPayment, OwnedAsset ownedAsset)
+        {
+            if ((ownedAsset.InterestRate != interestRate) && (interestRate != 0))
+            {
+                ownedAsset.InterestRate = interestRate;
+            }
+
+            if ((ownedAsset.Length != length) && (length != 0))
+            {
+                ownedAsset.Length = length;
+            }
+
+            if ((ownedAsset.RegularPayment != regularPayment) && (regularPayment != 0))
+            {
+                ownedAsset.RegularPayment = regularPayment;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string name)

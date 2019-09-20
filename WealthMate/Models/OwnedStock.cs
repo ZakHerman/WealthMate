@@ -51,5 +51,19 @@ namespace WealthMate.Models
             else
                 PositiveTotal = false;
         }
+
+        // Alters the asset the owned stock the user is editing
+        public void EditStock(long shares, float price, OwnedStock ownedStock)
+        {
+            if ((ownedStock.SharesPurchased != shares) && (shares != 0))
+            {
+                ownedStock.SharesPurchased = shares;
+            }
+
+            if ((ownedStock.PurchasedPrice != price) && (price != 0))
+            {
+                ownedStock.PurchasedPrice = price;
+            }
+        }
     }
 }
