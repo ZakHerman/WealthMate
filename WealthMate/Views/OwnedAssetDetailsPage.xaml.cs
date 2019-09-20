@@ -51,20 +51,10 @@ namespace WealthMate.Views
             popupLayout.IsOpen = false;
 
             float newInterestRate = float.Parse(editInterestRate.Value.ToString());
-            if(OwnedAsset.InterestRate != newInterestRate)
-            {
-                OwnedAsset.InterestRate = newInterestRate;
-            }
             int newLength = int.Parse(editLength.Value.ToString());
-            if (OwnedAsset.Length != newLength)
-            {
-                OwnedAsset.Length = newLength;
-            }
             float newRegPayments = float.Parse(editRegPayments.Value.ToString());
-            if (OwnedAsset.RegularPayment != newRegPayments)
-            {
-                OwnedAsset.RegularPayment = newRegPayments;
-            }
+
+            OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, OwnedAsset);
 
             //int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
             //OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
@@ -76,23 +66,21 @@ namespace WealthMate.Views
             OwnedAsset.UpdateOwnedAsset();
         }
 
-        private void CancelInPopupClicked(object sender, EventArgs args)
-        {
-            popupLayout.IsOpen = false;
-        }
-
+        // Collects new interest rate value from text box entered by user
         private void Handle_InterestRateChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editInterestRate.Value = e.Value.ToString();
         }
-    
+
+        // Collects new length value from text box entered by user
         private void Handle_LengthChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editLength.Value = e.Value.ToString();
         }
 
+        // Collects new regular payments value from text box entered by user
         private void Handle_RegularPaymentsChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());

@@ -7,6 +7,8 @@ namespace WealthMate.UnitTests
     [TestClass]
     public class StockTest
     {
+       
+
         //private Stock StockA = new Stock("SparkTest",2.5f, new DateTime(2019, 09, 03, 0, 0, 0), 10, 100);
         //private Stock StockB = new Stock("SPCATest",4.9f, new DateTime(2019, 08, 30, 0, 0, 0), 20, 420);
             //public Stock(float price, DateTime priceDate, int shares, int volume)
@@ -39,5 +41,7 @@ namespace WealthMate.UnitTests
 
 
         }
+
+     
     }
 }
