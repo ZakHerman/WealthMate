@@ -19,43 +19,61 @@ namespace WealthMate.UnitTests
         }
 
         [TestMethod]
-        public void TestCurrentValue()
+        public void TestCurrentValue() //Note this changes every day
         {
-            float expectedVal = 10064.59f;
-            float currentVal = (float)Math.Round(test1.CurrentValue, 2);
+            float delta = 0.1f;
 
-            Assert.AreEqual(expectedVal, currentVal);
+            float expectedVal = 10122.35f;
+            float currentVal = test1.CurrentValue;
+
+            float expectedVal2 = 2447.60f;
+            float currentVal2 = test2.CurrentValue;
+
+            float expectedVal3 = 1653.34f;
+            float currentVal3 = test3.CurrentValue;
+
+            Assert.AreEqual(expectedVal, currentVal, delta);
+            Assert.AreEqual(expectedVal2, currentVal2, delta);
+            Assert.AreEqual(expectedVal3, currentVal3, delta);
         }
 
         [TestMethod]
-        public void TestTotalReturn()
+        public void TestTotalReturn() //Note this changes every day
         {
-            float expectedVal = 0.0f;
-            float totalRet = test2.TotalReturn;
+            float delta = 0.1f;
 
-            Assert.AreEqual(expectedVal, totalRet);
+            float expectedVal = 122.35f;
+            float totalRet = test1.TotalReturn;
+
+            float expectedVal2 = 447.61f;
+            float totalRet2 = test2.TotalReturn;
+
+            float expectedVal3 = 653.34f;
+            float totalRet3 = test3.TotalReturn;
+
+            Assert.AreEqual(expectedVal, totalRet, delta);
+            Assert.AreEqual(expectedVal2, totalRet2, delta);
+            Assert.AreEqual(expectedVal3, totalRet3, delta);
         }
 
         [TestMethod]
         public void TestTotalReturnRate()
         {
-            float expectedRate = 0.0f;
-            float totalRetRate = test3.TotalReturnRate;
+            float delta = 0.1f;
 
-            Assert.AreEqual(expectedRate, totalRetRate);
+            float expectedVal = 1.22f;
+            float totalRetR = test1.TotalReturnRate;
+
+            float expectedVal2 = 22.38f;
+            float totalRetR2 = test2.TotalReturnRate;
+
+            float expectedVal3 = 65.33f;
+            float totalRetR3 = test3.TotalReturnRate;
+
+            Assert.AreEqual(expectedVal, totalRetR, delta);
+            Assert.AreEqual(expectedVal2, totalRetR2, delta);
+            Assert.AreEqual(expectedVal3, totalRetR3, delta);
         }
-
-        //[TestMethod]
-        //public void TestDailyReturnPercent()
-        //{
-
-        //}
-        
-        //[TestMethod]
-        //public void TestDailyReturnAbs()
-        //{
-
-        //}
 
         //[TestMethod]
         //public void testTotalReturnPercent()

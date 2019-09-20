@@ -52,23 +52,14 @@ namespace WealthMate.Models
 
         public virtual void UpdateOwnedAsset()
         {
-            TimeSpan daysBetween = DateTime.Today - PurchaseDate;
+            CalculateCurrentValue();
+            CalculateReturn();
+            CompoundRateConvert();
+            InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
+        }
 
-            var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate);
-
-            if (RegularPayment > 0)
-                CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
-            else
-                CurrentValue = nonPaymentValue;
-
-            TotalReturn = CurrentValue - PrincipalValue;
-            TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
-
-            if (TotalReturn > 0f)                               //Flag for XAML code (green or red colours)
-                PositiveTotal = true;
-            else
-                PositiveTotal = false;
-
+        private void CompoundRateConvert()
+        {
             switch (CompoundRate)                                   //Converts float value (for calculation purposes) into what it means.
             {
                 case 1:
@@ -87,8 +78,30 @@ namespace WealthMate.Models
                     CompoundRateToString = "Never";
                     break;
             }
+        }
 
-            InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
+        private void CalculateReturn()
+        {
+            TotalReturn = CurrentValue - PrincipalValue;
+            TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
+
+            if (TotalReturn > 0f)                               //Flag for XAML code (green or red colours)
+                PositiveTotal = true;
+            else
+                PositiveTotal = false;
+        }
+
+        private void CalculateCurrentValue()
+        {
+            TimeSpan daysBetween = DateTime.Today - PurchaseDate;
+
+            var nonPaymentValue = PrincipalValue * (float)Math.Pow((1 + (InterestRate / CompoundRate)), (daysBetween.TotalDays / 365.25) * CompoundRate);
+
+            if (RegularPayment > 0)
+                CurrentValue = (RegularPayment * (((float)Math.Pow((1 + (InterestRate / CompoundRate)), 
+                    (daysBetween.TotalDays / 365.25) * CompoundRate) - 1) / (InterestRate / CompoundRate))) + nonPaymentValue;
+            else
+                CurrentValue = nonPaymentValue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
