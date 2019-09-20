@@ -59,7 +59,7 @@
                         <chart:ChartTrackballBehavior/>
                     </chart:SfChart.ChartBehaviors>
      
-                    <chart:LineSeries ItemsSource="{Binding StockHistory.History}" XBindingPath="LastTrade" YBindingPath="CurrentPrice"/>
+                    <chart:LineSeries />
                 </chart:SfChart>
 
 
