@@ -5,8 +5,8 @@ namespace WealthMate.Models
 {
     public class User
     {
-        public Portfolio Portfolio { get; set; }
-        public ObservableCollection<Stock> WatchListStocks { get; set; }
+        public Portfolio Portfolio { get; set; }                                    //Each user has their own customized portfolio
+        public ObservableCollection<Stock> WatchListStocks { get; set; }            //Each user has their own customized watchlist
 
         [JsonProperty("id")]
         public string Id { get; set; }

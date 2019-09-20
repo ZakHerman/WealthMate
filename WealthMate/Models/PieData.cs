@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WealthMate.Models
+﻿namespace WealthMate.Models
 {
     /// <summary>
     /// Class representing the data used by the piechart 
@@ -10,11 +6,11 @@ namespace WealthMate.Models
     /// </summary>
     public class PieData
     {
-        public float Quantity { get; set; }
-        public string AssetType { get; set; }
-        public float ReturnPercentage { get; set; }
-        public float PrincipalQuantity { get; set; }
-        public bool IsPositive { get; set; }
+        public float Quantity { get; set; }                 //Total current value of PieData category
+        public string AssetType { get; set; }               //Names/categorizes asset type
+        public float ReturnPercentage { get; set; }         //Returns percentage of PieChart asset type category
+        public float PrincipalQuantity { get; set; }        //Total principal value of PieData category
+        public bool IsPositive { get; set; }                //Flag that checks if return is positive for view trigger purposes
 
         public PieData(string type)
         {

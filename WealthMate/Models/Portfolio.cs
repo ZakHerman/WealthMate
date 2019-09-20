@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace WealthMate.Models
 {
@@ -11,27 +9,24 @@ namespace WealthMate.Models
         public float TotalReturn { get; set; }
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
-        public bool PositiveTotal { get; set; }
+        public bool PositiveTotal { get; set; }             //Flag for view trigger purposes
 
         //Sprint 2:
         //public float ReturnGoal { get; set; }
 
-        //------------------------------------------------------------------------------------------------------------
         public Portfolio()
         {
             OwnedAssets = new ObservableCollection<OwnedAsset>();
             UpdatePortfolio();
         }
 
-        //-------------------------------------------------------------------------------------------------------------
-
-        public void AddAsset(OwnedAsset asset)
+        public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
         {
             this.OwnedAssets.Add(asset);
             UpdatePortfolio();
         }
 
-        public void RemoveAsset(OwnedAsset asset)
+        public void RemoveAsset(OwnedAsset asset)                   //removes asset from portfolio and instantly updates its values
         {
             this.OwnedAssets.Remove(asset);
             UpdatePortfolio();
@@ -39,26 +34,35 @@ namespace WealthMate.Models
 
         public void UpdatePortfolio()
         {
-            CurrentTotal = 0;
+            CalculateUpdatedPortfolioTotals();
+            CalculateTotalReturn();
+        }
+
+        private void CalculateTotalReturn()
+        {
+            TotalReturnRate = ((CurrentTotal - PrincipalTotal) / PrincipalTotal) * 100;
+
+            if (TotalReturnRate > 0f)                                       //Flag for XAML code (green or red colours)
+                PositiveTotal = true;
+            else
+                PositiveTotal = false;
+        }
+
+        private void CalculateUpdatedPortfolioTotals()
+        {
+            CurrentTotal = 0;                                   //sets values to zero so totals can be calculated again
             PrincipalTotal = 0;
             TotalReturn = 0;
             TotalReturnRate = 0;
 
             foreach (OwnedAsset asset in OwnedAssets)
             {
-                asset.UpdateOwnedAsset();
+                asset.UpdateOwnedAsset();                       //Iterates through each owned asset and makes sure its updated before calculating
                 CurrentTotal += asset.CurrentValue;
                 PrincipalTotal += asset.PrincipalValue;
                 TotalReturn += asset.TotalReturn;
             }
-            TotalReturnRate = ((CurrentTotal - PrincipalTotal) / PrincipalTotal) * 100;
-
-            if (TotalReturn > 0f)                                       //Flag for XAML code (green or red colours)
-                PositiveTotal = true;
-            else
-                PositiveTotal = false;
         }
-    
     }
 
 }

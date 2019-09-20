@@ -47,7 +47,7 @@ namespace WealthMate.ViewModels
 
         public StockViewModel()
         {
-            LoadStocks();
+            LoadStocks();                       //Loads stock from database
         }
 
         public static async void LoadStocks()

@@ -12,7 +12,7 @@ namespace WealthMate.ViewModels
         public Portfolio CurrentPortfolio { get; set; }
         public ObservableCollection<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
-        private PieData _termD = new PieData("Term Deposits");
+        private PieData _termD = new PieData("Term Deposits");              //Pie data for each section/category of pie chart
         private PieData _bond = new PieData("Bonds");
         private PieData _stock = new PieData("Stocks");
         public PortfolioPageVM()
@@ -50,5 +50,7 @@ namespace WealthMate.ViewModels
             pieChart.Add(_termD);
             pieChart.Add(_stock);
         }
+
+        //Button captures still need to be implemented
     }
 }

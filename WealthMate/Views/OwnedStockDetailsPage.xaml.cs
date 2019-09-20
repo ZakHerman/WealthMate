@@ -17,7 +17,7 @@ namespace WealthMate.Views
         public OwnedStock OwnedStock { get; }
         public Stock Stock { get; }
 
-        private SfNumericTextBox editNumOfShares;
+        private SfNumericTextBox editNumOfShares;               //Textboxes for editing ownedstock details
         private SfNumericTextBox editPurchasePrice;
         public OwnedStockDetailsPage(OwnedStock ownedStock)
         {

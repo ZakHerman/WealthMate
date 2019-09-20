@@ -6,5 +6,6 @@ namespace WealthMate.ViewModels
 {
     class SettingsPageVM
     {
+        //Still needs to be implemented
     }
 }

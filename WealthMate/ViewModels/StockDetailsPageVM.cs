@@ -6,5 +6,6 @@ namespace WealthMate.ViewModels
 {
     class StockDetailsVM
     {
+        //Still needs to be implemented
     }
 }

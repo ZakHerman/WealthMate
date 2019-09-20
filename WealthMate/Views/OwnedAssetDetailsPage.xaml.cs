@@ -16,10 +16,10 @@ namespace WealthMate.Views
     {
         public OwnedAsset OwnedAsset { get; }
 
-        private SfNumericTextBox editInterestRate;
+        private SfNumericTextBox editInterestRate;          //Text box for editing details.
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
-        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)
+        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
             OwnedAsset = ownedAsset;
             OwnedAsset.UpdateOwnedAsset();

@@ -6,5 +6,6 @@ namespace WealthMate.ViewModels
 {
     class OwnedAssetDetailsPageVM
     {
+        //Still needs to be implemented
     }
 }
