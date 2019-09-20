@@ -28,7 +28,7 @@ namespace WealthMate.UnitTests
             testUser.Portfolio.OwnedAssets.Add(testAsset2);
             testUser.Portfolio.OwnedAssets.Add(testAsset3);
 
-            Assert.AreEqual()
+            //Assert.AreEqual();
 
         }
     }

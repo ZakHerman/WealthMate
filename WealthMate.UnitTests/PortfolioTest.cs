@@ -69,13 +69,5 @@ namespace WealthMate.UnitTests
         {
             //Zak
         }
-
-        [TestMethod]
-        public void TestWatchlistRemove()
-        {
-            user.WatchListStocks.Add(testStock);
-            user.WatchListStocks.Remove(testStock);
-            Assert.IsFalse(user.WatchListStocks.Contains(testStock));
-        }
     }
 }
