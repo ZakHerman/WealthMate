@@ -65,11 +65,13 @@ namespace WealthMate.Models
         public float DayReturn { get; set; }
         public float DayReturnRate { get; set; }
         public bool PositiveDayReturns { get; set; }
+        public bool NoDayReturns { get; set; }
 
         //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
         public void UpdateStock()
         {
-            PositiveDayReturns = CurrentPrice >= PriceOpen;
+            PositiveDayReturns = CurrentPrice > PriceOpen;
+            NoDayReturns = CurrentPrice == PriceOpen;
             DayReturn = CurrentPrice - PriceOpen;
             DayReturnRate = DayReturn / PriceOpen * 100;
         }
