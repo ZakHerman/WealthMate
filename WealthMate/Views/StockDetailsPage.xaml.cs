@@ -1,9 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using Syncfusion.SfChart.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
-using Syncfusion.XForms.DataForm;
 using Xamarin.Forms;
 using Syncfusion.SfNumericTextBox.XForms;
 using WealthMate.Services;
@@ -73,7 +71,6 @@ namespace WealthMate.Views
                 YBindingPath = "PriceClose"
 
             });
-            Debug.Write("stocks : " + StockHistory.Count);
         }
 
         private void WatchListStarClicked(object sender, System.EventArgs e)
