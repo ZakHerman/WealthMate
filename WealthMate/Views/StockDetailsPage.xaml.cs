@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using Syncfusion.SfChart.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
@@ -31,18 +30,14 @@ namespace WealthMate.Views
 
             InitializeComponent();
 
-            BindingContext = this;     
+            BindingContext = this;
         }
 
         private async void LoadStockHistory()
         {
             await DataService.FetchStockHistoryAsync(Stock.Symbol);
 
-            StockHistoryGraph.Series.Add (new LineSeries {
-                ItemsSource = DataService.StockHistory,
-                XBindingPath = "Date",
-                YBindingPath = "PriceClose"
-            });
+            StockHistoryGraph.ItemsSource = DataService.StockHistory;
         }
 
         private void WatchListStarClicked(object sender, EventArgs e)

@@ -37,16 +37,34 @@
         </Grid>
     </NavigationPage.TitleView>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TrackballTemplate">
+                <Grid RowSpacing="0" Padding="5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding PriceOpen, StringFormat='Open: {0:C}'}" Grid.Row="1" FontSize="12" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding PriceClose, StringFormat='Close: {0:C}'}" Grid.Row="2" FontSize="12" VerticalTextAlignment="Center"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
                 <Label x:Name="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
                 <!--Stock history price graph-->
-                <chart:SfChart x:Name="StockHistoryGraph" VerticalOptions="FillAndExpand">
+                <chart:SfChart VerticalOptions="FillAndExpand">
                     <!--X axis representing the date of stock history-->
                     <chart:SfChart.PrimaryAxis>
-                        <chart:DateTimeAxis/>
+                        <chart:DateTimeAxis />
                     </chart:SfChart.PrimaryAxis>
      
                     <!--Y axis representing the closing price of stock history-->
@@ -57,8 +75,19 @@
                     <!--Limit zoom to X axis-->
                     <chart:SfChart.ChartBehaviors>
                         <chart:ChartZoomPanBehavior ZoomMode="X"/>
-                        <chart:ChartTrackballBehavior/>
+                        
+                        <chart:ChartTrackballBehavior>
+                            <chart:ChartTrackballBehavior.LabelStyle>
+                                <chart:ChartTrackballLabelStyle BorderColor="#0061A2" BackgroundColor="#d1F9F9F9" BorderThickness="2"/>
+                            </chart:ChartTrackballBehavior.LabelStyle>
+
+                            <chart:ChartTrackballBehavior.MarkerStyle>
+                                <chart:ChartTrackballMarkerStyle Color="Black"/>
+                            </chart:ChartTrackballBehavior.MarkerStyle>
+                        </chart:ChartTrackballBehavior>
                     </chart:SfChart.ChartBehaviors>
+
+                    <chart:LineSeries x:Name="StockHistoryGraph" TrackballLabelTemplate="{StaticResource TrackballTemplate}" XBindingPath="Date" YBindingPath="PriceClose"/>
                 </chart:SfChart>
 
                 <!--Labels underneath graph-->
