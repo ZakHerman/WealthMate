@@ -9,31 +9,28 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.StockDetailsPage">
 
-
-    <NavigationPage.TitleView>                                              <!--Top bar details-->
+    <NavigationPage.TitleView>
         <Grid>
+            <!--Watchlist star height-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="26"/>                                <!--Image size of star-->
+                <RowDefinition Height="26"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />                              <!--Size of stock name column-->
-                <ColumnDefinition Width="37" />                             <!--Size of star image column-->
+                <ColumnDefinition Width="*" /> <!--Stock name width-->
+                <ColumnDefinition Width="37" /> <!--Watchlist star width-->
             </Grid.ColumnDefinitions>
 
             <!--Name of stock being displayed-->
             <Label x:Name="NavBarTitle" Text="{Binding Stock.CompanyName}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"
                    FontAttributes="Bold" TextColor="White" FontSize="20" Grid.Column="0" Grid.Row="0"/>
-            <!--Star image details-->
-            <ImageButton Source="starunfilled.png"
-                       BackgroundColor="Transparent"
-                       Grid.Row="0"
-                       Grid.Column="1"
-                       Margin="0, 0, 15, 0"
-                       Clicked="WatchListStarClicked">
+
+            <!--Watchlist star image details-->
+            <ImageButton Source="starunfilled.png" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" Margin="0, 0, 15, 0" Clicked="WatchListStarClicked">
                 <ImageButton.Triggers>
-                    <DataTrigger TargetType ="ImageButton" Binding="{Binding Watched}" Value="True">
-                        <Setter Property="Source" Value="starfilled.png" />                                 <!--Change to unfilled arrow when stock is not being watched-->
+                    <!--Change to filled arrow when stock is being watched-->
+                    <DataTrigger TargetType="ImageButton" Binding="{Binding Watched}" Value="True">
+                        <Setter Property="Source" Value="starfilled.png" /> 
                     </DataTrigger>
                 </ImageButton.Triggers>
             </ImageButton>
@@ -41,80 +38,95 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <ScrollView>                                                                    <!--Allows for scrolling in page-->
+        <ScrollView>
             <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
-                <Label x:Name ="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="SymbolText" Text="{Binding Stock.Symbol}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
-                <chart:SfChart x:Name="Chart" VerticalOptions="FillAndExpand">          <!--Stock graph details-->
-                    <chart:SfChart.PrimaryAxis>                                         <!--X-Axis is Date/Time-->
+                <!--Stock history price graph-->
+                <chart:SfChart x:Name="StockHistoryGraph" VerticalOptions="FillAndExpand">
+                    <!--X axis representing the date of stock history-->
+                    <chart:SfChart.PrimaryAxis>
                         <chart:DateTimeAxis/>
                     </chart:SfChart.PrimaryAxis>
      
-                    <chart:SfChart.SecondaryAxis>                                       <!--Y-Axis is the price of the stock-->
+                    <!--Y axis representing the closing price of stock history-->
+                    <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis/>
                     </chart:SfChart.SecondaryAxis>
 
-                    <chart:SfChart.ChartBehaviors>                                      <!--Zoom behaviour-->
+                    <!--Limit zoom to X axis-->
+                    <chart:SfChart.ChartBehaviors>
                         <chart:ChartZoomPanBehavior ZoomMode="X"/>
                         <chart:ChartTrackballBehavior/>
                     </chart:SfChart.ChartBehaviors>
-     
-                    <chart:LineSeries />
                 </chart:SfChart>
 
-
-              <!--Labels underneath graph-->
+                <!--Labels underneath graph-->
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="26" />
-                        <!--Image size of arrow-->
+                        <RowDefinition Height="26" /> <!--Image size of price arrow-->
                     </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />           <!--Price column-->
-                        <ColumnDefinition Width="auto" />           <!--Arrow column-->
-                        <ColumnDefinition Width="auto" />           <!--Return column-->
-                        <ColumnDefinition Width="auto" />           <!--Retrun rate column-->
+                        <ColumnDefinition Width="auto" /> <!--Price column-->
+                        <ColumnDefinition Width="auto" /> <!--Arrow column-->
+                        <ColumnDefinition Width="auto" /> <!--Return column-->
+                        <ColumnDefinition Width="auto" /> <!--Return rate column-->
                     </Grid.ColumnDefinitions>
-                    <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" Margin="10, 0, 0, 0" Grid.Row="0" Grid.Column="0"/>
-                    <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Margin="0, 5, 0 , 0">
-                        <Image.Triggers>                                                                                    <!--Change to upward arrow when positive return-->
+
+                    <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" FontSize="Large" Margin="10, 0, 0, 0" Grid.Row="0" Grid.Column="0" />
+
+                    <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Margin="0, 5, 0, 0">
+                        <Image.Triggers>
+                            <!--Change to upward arrow when positive return-->
                             <DataTrigger TargetType ="Image" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
                                 <Setter Property="Source" Value="uparrow.png" />
                             </DataTrigger>
-                            <DataTrigger TargetType ="Image" Binding="{Binding Stock.DayReturn}" Value="0">
+
+                            <!--Change to horizontal bar when no change for return-->
+                            <DataTrigger TargetType="Image" Binding="{Binding Stock.DayReturn}" Value="0">
                                 <Setter Property="Source" Value="horizontalline.png" />
                             </DataTrigger>
                         </Image.Triggers>
                     </Image>
-                    <Label x:Name="DayReturnText" Text="{Binding Stock.DayReturn, StringFormat='({0:C})'}" FontSize ="Large" TextColor="Red" Grid.Row="0" Grid.Column="2">
+
+                    <Label x:Name="DayReturnText" Text="{Binding Stock.DayReturn, StringFormat='({0:C})'}" FontSize="Large" TextColor="Red" Grid.Row="0" Grid.Column="2">
                         <Label.Triggers>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}"  Value="True">    <!--Change text to green when positive return-->
+                            <!--Change text to green when positive return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
                                 <Setter Property="TextColor" Value="Color.Green" />
                             </DataTrigger>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}"  Value="0">
+
+                            <!--Change text to grey when no change for return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
                                 <Setter Property="TextColor" Value="Color.Gray" />
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
-                    <Label x:Name="DayReturnRateText" Text="{Binding Stock.DayReturnRate, StringFormat='({0:N}%)'}" FontSize ="Large" TextColor="Red" Grid.Row="0" Grid.Column="3">
+
+                    <Label x:Name="DayReturnRateText" Text="{Binding Stock.DayReturnRate, StringFormat='({0:N}%)'}" FontSize="Large" TextColor="Red" Grid.Row="0" Grid.Column="3">
                         <Label.Triggers>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}"  Value="True">    <!--Change text to green when positive return-->
+                            <!--Change text to green when positive return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
                                 <Setter Property="TextColor" Value="Color.Green" />
                             </DataTrigger>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}"  Value="0">
+
+                            <!--Change text to grey when no change for return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
                                 <Setter Property="TextColor" Value="Color.Gray" />
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
                 </Grid>
                 
+                <!--Timestamp of last price changing trade -->
                 <Label x:Name ="CurrentPriceTimeStampText" Text="{Binding Stock.LastTrade, StringFormat='Updated at {0:d MMMM yyyy HH:mm:ss}'}" FontSize="Small" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
-                <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0"/>
+                <Label x:Name ="KeyStatisticsLabel" Text="Key Statistics" FontSize="Large" VerticalOptions="Start" HorizontalOptions="Start" Margin="10, 0" />
 
                 <!--Grid of Key Statistics of Stock-->
                 <Grid Margin="10, 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />        <!--Height and Width are the maximum size-->
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -137,28 +149,29 @@
                     <Label Text="{Binding Stock.Volume, StringFormat='Volume: {0:N0}'}" Grid.Row="3" Grid.Column="1" />
                 </Grid>
               
-              <!--Add to portfolio button-->
-                <Button Text="Add To Portfolio"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
+                <!--Add to portfolio button-->
+                <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddToPortfolioClicked" />
                  
-         <!--Add To Portfolio Popup Box-->
-              <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false">
-                <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView HeaderTitle="Add Stock to Portfolio" ShowFooter="false">
-                        <sfPopup:PopupView.ContentTemplate>
-                          <DataTemplate>
-                            <StackLayout Padding="6,1,3,1">
-                              <Label Text="Number of shares purchased:" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                              <textbox:SfNumericTextBox x:Name="numericTextBox" Margin="1,1" ValueChangeMode="OnLostFocus" ValueChanged="Handle_NumSharesChanged" />
-                              <Label Text="Purchase price:" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
-                              <textbox:SfNumericTextBox x:Name="numericTextBox2" Margin="1,1" ValueChangeMode="OnLostFocus" ValueChanged="Handle_PriceChanged" />
-                              <Button Text="Add"  VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />
-                            </StackLayout>
-                          </DataTemplate>
-                        </sfPopup:PopupView.ContentTemplate>
-                    </sfPopup:PopupView>
-                </sfPopup:SfPopupLayout.PopupView>
-              </sfPopup:SfPopupLayout>
-                
+                <!--Add To Portfolio Popup Box-->
+                <sfPopup:SfPopupLayout x:Name="StockPortfolioForm">
+                    <sfPopup:SfPopupLayout.PopupView>
+                        <sfPopup:PopupView HeaderTitle="Add Stock to Portfolio" ShowFooter="false">
+                            <sfPopup:PopupView.ContentTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="6,1,3,1">
+                                        <Label Text="Number of shares purchased:" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
+                                        <textbox:SfNumericTextBox x:Name="numericTextBox" Value="0" FormatString="N0" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_NumSharesChanged" />
+
+                                        <Label Text="Purchase price:" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+                                        <textbox:SfNumericTextBox x:Name="NumericTextBox2" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_PriceChanged" />
+                                        
+                                        <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </sfPopup:PopupView.ContentTemplate>
+                        </sfPopup:PopupView>
+                    </sfPopup:SfPopupLayout.PopupView>
+                </sfPopup:SfPopupLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

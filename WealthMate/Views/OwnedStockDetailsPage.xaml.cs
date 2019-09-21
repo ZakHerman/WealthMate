@@ -46,8 +46,8 @@ namespace WealthMate.Views
         {
             popupLayout.IsOpen = false;
 
-            long newNumShares = long.Parse(editNumOfShares.Value.ToString());
-            float newPrice = float.Parse(editPurchasePrice.Value.ToString());
+            var newNumShares = int.Parse(editNumOfShares.Value.ToString());
+            var newPrice = float.Parse(editPurchasePrice.Value.ToString());
 
             OwnedStock.EditStock(newNumShares, newPrice, OwnedStock);
             OwnedStock.UpdateOwnedAsset();

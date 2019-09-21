@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Syncfusion.SfChart.XForms;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
@@ -12,108 +13,83 @@ namespace WealthMate.Views
     public partial class StockDetailsPage
     {
         public Stock Stock { get; }
-        public ObservableCollection<StockHistory> StockHistory{ get; set; }
         public ObservableCollection<Stock> WatchListStocks { get; set; }
-        private bool _watched;                                                      //Flag that indicates if stock is being watched
+        public OwnedStock OwnedStock { get; set; }
+        public bool Watched { get; set; }
 
-        public Portfolio CurrentPortfolio;
-        private SfNumericTextBox numericTextBox;
-        private SfNumericTextBox numericTextBox2;
-        public bool Watched
-        {
-            get
-            {
-                return _watched;
-            }
-            set
-            {
-                _watched = WatchListStocks.Contains(Stock);                         //Checks if user's watchlist contians the viewing stock
-            }
-        }
-
-        public StockDetailsPage(Stock stock)            //Displays details of selected stock
+        //Displays details of selected stock
+        public StockDetailsPage(Stock stock)
         {
             Stock = stock;
-            LoadStockHistory(stock.Symbol);
+            OwnedStock = new OwnedStock{Stock = stock, PurchaseDate = DateTime.Now, AssetName = stock.CompanyName};
+            LoadStockHistory();
             stock.UpdateStock();
 
-            
-
-            CurrentPortfolio = (Application.Current as App).User.Portfolio;
-
-            WatchListStocks = ((App) Application.Current).User.WatchListStocks;    //Takes users watched list of stocks
-            Watched = _watched;
-
-            numericTextBox = new SfNumericTextBox();
-            numericTextBox.Value = 0;
-            numericTextBox.ValueChanged += Handle_NumSharesChanged;
-
-            numericTextBox2 = new SfNumericTextBox();
-            numericTextBox2.Value = 0;
-            numericTextBox2.ValueChanged += Handle_PriceChanged;
+            //Takes users watched list of stocks
+            WatchListStocks = ((App)Application.Current).User.WatchListStocks;
+            Watched = WatchListStocks.Contains(Stock);
 
             InitializeComponent();
 
             BindingContext = this;     
         }
 
-        private async void LoadStockHistory(string symbol)
+        private async void LoadStockHistory()
         {
-            await DataService.FetchStockHistoryAsync(symbol);
-            StockHistory = DataService.StockHistory;
+            await DataService.FetchStockHistoryAsync(Stock.Symbol);
 
-            Chart.Series.Add (new LineSeries {
-	
-                ItemsSource = StockHistory,
-
+            StockHistoryGraph.Series.Add (new LineSeries {
+                ItemsSource = DataService.StockHistory,
                 XBindingPath = "Date",
-
                 YBindingPath = "PriceClose"
-
             });
         }
 
-        private void WatchListStarClicked(object sender, System.EventArgs e)
+        private void WatchListStarClicked(object sender, EventArgs e)
         {
-            if (((App)Application.Current).User.WatchListStocks.Contains(Stock))      //Removes stock and empties star when user no longer wants to watch
+            Watched = WatchListStocks.Contains(Stock);
+
+            if (Watched)
             {
-                ((App)Application.Current).User.WatchListStocks.Remove(Stock);
-                ((ImageButton) sender).Source = "starunfilled.png";
+                //Removes stock and empties star when user no longer wants to watch
+                WatchListStocks.Remove(Stock);
+                ((ImageButton)sender).Source = "starunfilled.png";
             }
             else
             {
-                ((App)Application.Current).User.WatchListStocks.Add(Stock);           //Adds stock and fills star when user wants to watch stock,
-                ((ImageButton) sender).Source = "starfilled.png";
+                //Adds stock and fills star when user wants to watch stock
+                WatchListStocks.Add(Stock);
+                ((ImageButton)sender).Source = "starfilled.png";
             }
         }
 
-        private void AddToPortfolioClicked(object sender, System.EventArgs e)        //Asks for details of shares purchased
+        //Asks for details of shares purchased
+        private void AddToPortfolioClicked(object sender, EventArgs e)
         {
-            popupLayout.IsOpen = true;
+            StockPortfolioForm.IsOpen = true;
         }
 
-        private void AddInPopupClicked(object sender, System.EventArgs e)        //Adds purchased shares of stock to the users portfolio
+        //Adds purchased shares of stock to the users portfolio
+        private void AddInPopupClicked(object sender, EventArgs e)
         {
-            PortfolioPage current = new PortfolioPage();
-            float price = float.Parse(numericTextBox2.Value.ToString());
-            float noOfShares = float.Parse(numericTextBox.Value.ToString());
-            OwnedStock newStock = new OwnedStock(Stock, System.DateTime.Now, price, noOfShares);
-            (Application.Current as App).User.Portfolio.OwnedAssets.Add(newStock);
-            popupLayout.IsOpen = false;
+            if (OwnedStock.SharesPurchased == 0 || OwnedStock.PurchasedPrice == 0)
+                return;
+
+            OwnedStock.UpdateOwnedAsset();
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedStock);
+            StockPortfolioForm.IsOpen = false;
         }
 
-        private void Handle_NumSharesChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_NumSharesChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
-            numericTextBox.Value = e.Value.ToString();
-
+            int.TryParse(e.Value.ToString(), out var value);
+            OwnedStock.SharesPurchased = value;
         }
 
-        private void Handle_PriceChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_PriceChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
-            numericTextBox2.Value = e.Value.ToString();
-
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedStock.PurchasedPrice = value;
         }
     }
 }

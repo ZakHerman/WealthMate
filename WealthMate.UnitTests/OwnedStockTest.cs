@@ -21,7 +21,7 @@ namespace WealthMate.UnitTests
             test1.SharesPurchased = 30;
             test1.PurchasedPrice = 32.4f;
 
-            long newShares = 60;
+            int newShares = 60;
             float newPrice = 28.5f;
 
             test1.EditStock(newShares, newPrice, test1);
