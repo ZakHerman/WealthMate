@@ -2,13 +2,14 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.FinancialPage"
-            xmlns:local="clr-namespace:WealthMate.Views;assembly=WealthMate">
+            xmlns:local="clr-namespace:WealthMate.Views;assembly=WealthMate"
+            BarBackgroundColor="{DynamicResource NavigationBarColor}">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
             <Image x:Name="NavBarLogo" Source="logo" HeightRequest="64" WidthRequest="64" />
             <Label x:Name="NavBarTitle" Text="{Binding CurrentTotal, StringFormat='{0:C}'}" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
+                   VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource SecondaryTextColor}" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
 

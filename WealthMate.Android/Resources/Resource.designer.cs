@@ -9069,8 +9069,8 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f09016e
 			public const int Animation_Design_BottomSheetDialog = 2131296622;
 			
-			// aapt resource value: 0x7f090202
-			public const int AppCompatDialogStyle = 2131296770;
+			// aapt resource value: 0x7f090203
+			public const int AppCompatDialogStyle = 2131296771;
 			
 			// aapt resource value: 0x7f09009e
 			public const int Base_AlertDialog_AppCompat = 2131296414;
@@ -9645,11 +9645,11 @@ namespace WealthMate.Droid
 			// aapt resource value: 0x7f09000f
 			public const int CardView_Light = 2131296271;
 			
-			// aapt resource value: 0x7f090200
-			public const int MainTheme = 2131296768;
-			
 			// aapt resource value: 0x7f090201
-			public const int MainTheme_Base = 2131296769;
+			public const int MainTheme = 2131296769;
+			
+			// aapt resource value: 0x7f090202
+			public const int MainTheme_Base = 2131296770;
 			
 			// aapt resource value: 0x7f09007f
 			public const int Platform_AppCompat = 2131296383;
@@ -10067,6 +10067,9 @@ namespace WealthMate.Droid
 			
 			// aapt resource value: 0x7f090112
 			public const int Theme_AppCompat_NoActionBar = 2131296530;
+			
+			// aapt resource value: 0x7f090200
+			public const int Theme_Custom = 2131296768;
 			
 			// aapt resource value: 0x7f0901a4
 			public const int Theme_Design = 2131296676;

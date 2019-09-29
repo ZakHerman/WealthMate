@@ -19,7 +19,7 @@
             <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
 
-            <syncfusion:SfListView x:Name="StockList" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
+            <syncfusion:SfListView x:Name="StockList" BackgroundColor="{DynamicResource PageBackgroundColor}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
@@ -35,30 +35,32 @@
                             </Grid.RowDefinitions>
 
                             <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding Symbol}" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding CompanyName}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" VerticalOptions="Start" TextColor="DarkGray" FontSize="12" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding CompanyName}" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" TextColor="{DynamicResource TertiaryTextColor}" VerticalOptions="Start" FontSize="12" />
 
-                            <Frame Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#8133C096" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
+                            <Frame Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{DynamicResource PositiveBackgroundColor}" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
                                 <Frame.Triggers>
-                                    <DataTrigger TargetType ="Frame" Binding="{Binding PositiveDayReturns}" Value="False">
+                                    <DataTrigger TargetType="Frame" Binding="{Binding PositiveDayReturns}" Value="False">
                                         <!--Change background to red when negative return-->
-                                        <Setter Property="BackgroundColor" Value="Red" />
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource NegativeBackgroundColor}" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType ="Frame" Binding="{Binding NoDayReturns}" Value="True">
+
+                                    <DataTrigger TargetType="Frame" Binding="{Binding NoDayReturns}" Value="True">
                                         <!--Change background to grey when no return-->
-                                        <Setter Property="BackgroundColor" Value="Gray" />
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource NeutralBackgroundColor}" />
                                     </DataTrigger>
                                 </Frame.Triggers>
                                 
-                                <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16" TextColor="ForestGreen">
+                                <Label Text="{Binding CurrentPrice, StringFormat='{0:C}'}" TextColor="{DynamicResource PositiveTextColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="16">
                                     <Label.Triggers>
-                                        <DataTrigger TargetType ="Label" Binding="{Binding PositiveDayReturns}" Value="False">
+                                        <DataTrigger TargetType="Label" Binding="{Binding PositiveDayReturns}" Value="False">
                                             <!--Change text to red when negative return-->
-                                            <Setter Property="TextColor" Value="Color.DarkRed" />
+                                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                                         </DataTrigger>
-                                        <DataTrigger TargetType ="Label" Binding="{Binding NoDayReturns}" Value="True">
+
+                                        <DataTrigger TargetType="Label" Binding="{Binding NoDayReturns}" Value="True">
                                             <!--Change text to grey when no return-->
-                                            <Setter Property="TextColor" Value="Color.Black" />
+                                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>

@@ -57,6 +57,11 @@ namespace WealthMate.Views
 			presenter.Login(authenticator);
         }
 
+        private async void OnThemeClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ThemeSelectionPage());
+        }
+
         private async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)
 		{
             if (sender is OAuth2Authenticator authenticator)

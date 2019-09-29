@@ -11,42 +11,56 @@
     <NavigationPage.TitleView>
         <!--Name and Type of Asset in NavBar-->
         <AbsoluteLayout x:Name="NavBarLayout">
-            <Label Text="{Binding OwnedAsset.AssetNameType}" HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" FontSize="20"/>
+            <Label Text="{Binding OwnedAsset.AssetNameType}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   FontAttributes="Bold" TextColor="{DynamicResource SecondaryTextColor}" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout Margin="0, 10">
             <!--Basic details of the OwnedAsset-->
-            <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Label Text="{Binding OwnedAsset.PrincipalValue, StringFormat='Amount Invested: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Label Text="{Binding OwnedAsset.InterestRateToString, StringFormat='Interest Rate (per annum): {0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Label Text="{Binding OwnedAsset.CompoundRateToString, StringFormat='Interest Reinvested: {0:S}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            <Label Text="{Binding OwnedAsset.PrincipalValue, StringFormat='Amount Invested: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            <Label Text="{Binding OwnedAsset.InterestRateToString, StringFormat='Interest Rate (per annum): {0:F}%'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            <Label Text="{Binding OwnedAsset.CompoundRateToString, StringFormat='Interest Reinvested: {0:S}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.Triggers>
-                    <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}"  Value="0">
+                    <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}" Value="0">
                         <Setter Property="Text" Value="Length: Unknown"/>
                         <!--Changes value from 0 to unknown if length is not provided-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Margin="0, 0, 0, 10">
+
+            <Label Text="{Binding OwnedAsset.RegularPayment, StringFormat='Regular Payments: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0, 0, 0, 10">
                 <Label.Triggers>
-                    <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.RegularPayment}"  Value="0">
+                    <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.RegularPayment}" Value="0">
                         <Setter Property="Text" Value="Regular Payments: None"/>
                         <!--Changes value from 0 to None if there are no regular payments-->
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Label Text="{Binding OwnedAsset.CurrentValue, StringFormat='Current Value: {0:C}'}" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Grid HorizontalOptions="Center" VerticalOptions="Center"  Margin="0, -10, 0, 0">
+            <Label Text="{Binding OwnedAsset.CurrentValue, StringFormat='Current Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="0, -10, 0, 0">
                 <!--Grid to display $ return and % return on one line-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="auto" />
@@ -54,51 +68,57 @@
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Total Return:" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
-                <Label Text="{Binding OwnedAsset.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="Red">
+                <Label Text="Total Return:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
+
+                <Label Text="{Binding OwnedAsset.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
                     <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.PositiveTotal}"  Value="True">
+                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.PositiveTotal}" Value="True">
                             <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="Color.ForestGreen" />
+                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
                         </DataTrigger>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}"  Value="0">
+
+                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}" Value="0">
                             <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="Color.Gray" />
+                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
-                <Label Text="{Binding OwnedAsset.TotalReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="1" TextColor="Red">
+
+                <Label Text="{Binding OwnedAsset.TotalReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
                     <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.PositiveTotal}"  Value="True">
+                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.PositiveTotal}" Value="True">
                             <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="Color.ForestGreen" />
+                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
                         </DataTrigger>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}"  Value="0">
+
+                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.TotalReturn}" Value="0">
                             <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="Color.Gray" />
+                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
             </Grid>
 
             <!--Buttons below details of OwnedAsset-->
-            <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 20, 0, 0" Clicked="EditAssetClicked"/>
-            <Button Text="Remove Owned Asset" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" Clicked="EditAssetClicked"/>
+            <Button Text="Remove Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" />
 
             <!--Edit Stock Popup Box-->
-            <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
+            <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false">
                 <sfPopup:SfPopupLayout.PopupView>
                     <sfPopup:PopupView HeaderTitle="Edit Owned Asset Details" ShowFooter="false">
                         <sfPopup:PopupView.ContentTemplate>
                             <DataTemplate>
                                 <StackLayout WidthRequest="300" HeightRequest="450">
-                                    <Label Text="Edit interest rate:" Margin="1" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+                                    <Label Text="Edit interest rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
                                     
-                                    <Label Text="Edit length:" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+                                    <Label Text="Edit length:" TextColor="{DynamicResource PrimaryTextColor}" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
-                                    <Label Text="Edit regular payments:" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" TextColor="Black"/>
+
+                                    <Label Text="Edit regular payments:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+
                                     <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
                             </DataTemplate>
@@ -106,7 +126,6 @@
                     </sfPopup:PopupView>
                 </sfPopup:SfPopupLayout.PopupView>
             </sfPopup:SfPopupLayout>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
