@@ -15,6 +15,8 @@
             </Image>
 
             <Button x:Name="Logout" Text="Logout" Clicked="OnLoginClicked" IsVisible="False" />
+
+            <Button x:Name="Themes" Text="Themes" Clicked="OnThemeClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

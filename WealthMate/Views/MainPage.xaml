@@ -7,7 +7,7 @@
             xmlns:views="clr-namespace:WealthMate.Views"
             x:Class="WealthMate.Views.MainPage"
             xmlns:effects="clr-namespace:WealthMate.Effects;assembly=WealthMate"
-            BarBackgroundColor="#2196F3"
+            BarBackgroundColor="{DynamicResource NavigationBarColor}"
             UnselectedTabColor="#66FFFFFF"
             SelectedTabColor="White">
 
@@ -27,12 +27,6 @@
                 <views:PortfolioPage />
             </x:Arguments>
         </NavigationPage>
-
-        <!--<NavigationPage IconImageSource="search.png">
-            <x:Arguments>
-                <views:PortfolioPage />
-            </x:Arguments>
-        </NavigationPage>-->
 
         <NavigationPage IconImageSource="settings.png">
             <x:Arguments>

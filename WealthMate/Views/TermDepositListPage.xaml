@@ -44,13 +44,26 @@
                             </Grid.RowDefinitions>
 
                             <Image Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" Source="{Binding Logo} "/>
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Provider}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0} months'}" VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" TextColor="DarkGray"/>
-                            <Label Grid.Column="2" Grid.Row="0" Text="Min:" TextColor="DarkGray" VerticalOptions="End" HorizontalTextAlignment="Start" FontSize="12" />
-                            <Label Grid.Column="2" Grid.Row="0" Text="{Binding MinDeposit, StringFormat='{0:C0}'}" TextColor="DarkGray" VerticalOptions="End" HorizontalTextAlignment="End" FontSize="12" />
-                            <Label Grid.Column="2" Grid.Row="1" Text="Max:" TextColor="DarkGray" VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
-                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding MaxDeposit, Converter={StaticResource ConvertDeposit}}" TextColor="DarkGray" VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="12" />
-                            <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="18" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Provider}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
+
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0} months'}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
+
+                            <Label Grid.Column="2" Grid.Row="0" Text="Min:" TextColor="{DynamicResource TertiaryTextColor}"
+                                   VerticalOptions="End" HorizontalTextAlignment="Start" FontSize="12" />
+
+                            <Label Grid.Column="2" Grid.Row="0" Text="{Binding MinDeposit, StringFormat='{0:C0}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="End" HorizontalTextAlignment="End" FontSize="12" />
+
+                            <Label Grid.Column="2" Grid.Row="1" Text="Max:" TextColor="{DynamicResource TertiaryTextColor}"
+                                   VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
+
+                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding MaxDeposit, Converter={StaticResource ConvertDeposit}}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="12" />
+
+                            <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="18" />
                         </Grid>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
