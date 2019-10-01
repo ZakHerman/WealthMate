@@ -69,5 +69,17 @@ namespace WealthMate.Views
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editNumOfShares.Value = e.Value.ToString();
         }
+
+        //Remove Stock from portfolio
+        private void RemoveStockClicked(object sender, EventArgs e)
+        {
+            RemoveStockConfirmationBox.IsOpen = true;
+        }
+
+        private void PopupAcceptRemoveClicked(object sender, EventArgs e)
+        {
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedStock);
+            RemoveStockConfirmationBox.IsOpen = false;
+        }
     }
 }

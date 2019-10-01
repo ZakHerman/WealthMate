@@ -20,11 +20,11 @@ namespace WealthMate.Models
             UpdatePortfolio();
         }
 
-        public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
-        {
-            this.OwnedAssets.Add(asset);
-            UpdatePortfolio();
-        }
+        //public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
+        //{
+        //    this.OwnedAssets.Add(asset);
+        //    UpdatePortfolio();
+        //}
 
         public void RemoveAsset(OwnedAsset asset)                   //removes asset from portfolio and instantly updates its values
         {
