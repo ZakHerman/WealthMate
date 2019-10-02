@@ -15,13 +15,15 @@ namespace WealthMate.Models
         public float CurrentValue { get; set;  }
         public float TotalReturn { get; set; }
         public float TotalReturnRate { get; set; }
+        public float ReturnGoal { get; set; }
+        public float ReturnGoalProgress { get; set; }
         public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
         public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
         public string CompoundRateToString { get; set; }                        //Converts amount of time interest is being compounded into string
         public string InterestRateToString { get; set; }                        //Converts interest rate into readable string
 
 
-        public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment)
+        public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment, float returnGoal)
         {
             AssetName = assetName;
             PurchaseDate = purchaseDate;
@@ -31,6 +33,7 @@ namespace WealthMate.Models
             InterestRate = interestRate;
             Length = length;
             CompoundRate = compoundRate;
+            ReturnGoal = returnGoal;
             UpdateOwnedAsset();                                     //Asset needs to be updated (return values) as soon as it is constructed.
         }
 
@@ -53,6 +56,7 @@ namespace WealthMate.Models
             CalculateCurrentValue();
             CalculateReturn();
             CompoundRateConvert();
+            ReturnGoalProgress = ReturnGoal / CurrentValue * 100;       //Updates how close the value is to reaching its goal
             InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
         }
 

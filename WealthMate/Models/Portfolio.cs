@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace WealthMate.Models
 {
@@ -9,10 +10,11 @@ namespace WealthMate.Models
         public float TotalReturn { get; set; }
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
+        public float ReturnGoal { get; set; }
+        public float ReturnGoalPercentage { get; set; }
+        public float ReturnGoalCurrentRate { get; set; }
+        public bool ReturnGoalComplete { get; set; }
         public bool PositiveTotal { get; set; }             //Flag for view trigger purposes
-
-        //Sprint 2:
-        //public float ReturnGoal { get; set; }
 
         public Portfolio()
         {
@@ -20,11 +22,11 @@ namespace WealthMate.Models
             UpdatePortfolio();
         }
 
-        //public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
-        //{
-        //    this.OwnedAssets.Add(asset);
-        //    UpdatePortfolio();
-        //}
+        public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
+        {
+            this.OwnedAssets.Add(asset);
+            UpdatePortfolio();
+        }
 
         public void RemoveAsset(OwnedAsset asset)                   //removes asset from portfolio and instantly updates its values
         {
@@ -36,6 +38,12 @@ namespace WealthMate.Models
         {
             CalculateUpdatedPortfolioTotals();
             CalculateTotalReturn();
+            UpdateReturnGoal();
+        }
+
+        private void UpdateReturnGoal()
+        {
+            //Iterate through each asset in portfolio's return goal
         }
 
         private void CalculateTotalReturn()

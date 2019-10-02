@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedAssetDetailsPage">
 
@@ -98,6 +99,8 @@
                     </Label.Triggers>
                 </Label>
             </Grid>
+
+            <progressBar:SfLinearProgressBar Progress="75"/>
 
             <!--Buttons below details of OwnedAsset-->
             <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" Clicked="EditAssetClicked"/>

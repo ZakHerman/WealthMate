@@ -13,7 +13,7 @@ namespace WealthMate.Models
         public bool PositiveDayReturns { get; set; }            //Flag for view page trigger to determine colour and image to display
         public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } } //OwnedStock details page header display
 
-        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, int sharesPurchased)
+        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, int sharesPurchased, float returnGoal)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
@@ -23,6 +23,7 @@ namespace WealthMate.Models
             AssetName = stock.CompanyName;                     //Transfers base class values
             PurchaseDate = purchaseDate;
             Type = "Stock";
+            ReturnGoal = returnGoal;
             UpdateOwnedAsset();
         }
 
