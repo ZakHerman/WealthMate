@@ -45,16 +45,6 @@ namespace WealthMate.ViewModels
         public float DayReturnRate { get; set; }
         public bool PositiveDayReturns { get; set; }
 
-        public StockViewModel()
-        {
-            LoadStocks();                       //Loads stock from database
-        }
-
-        public static async void LoadStocks()
-        {
-            await DataService.FetchStocksAsync();
-        }
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
