@@ -56,7 +56,7 @@ namespace WealthMate.Models
             CalculateCurrentValue();
             CalculateReturn();
             CompoundRateConvert();
-            ReturnGoalProgress = ReturnGoal / CurrentValue * 100;       //Updates how close the value is to reaching its goal
+            ReturnGoalProgress = CurrentValue / ReturnGoal * 100;       //Updates how close the value is to reaching its goal
             InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
         }
 
