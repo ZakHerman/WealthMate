@@ -79,7 +79,13 @@ namespace WealthMate.Views
         private void PopupAcceptRemoveClicked(object sender, EventArgs e)
         {
             ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedStock);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
             RemoveStockConfirmationBox.IsOpen = false;
+
+            // Push portfoliopage on top of stack
+            Navigation.PushAsync(new PortfolioPage());
         }
+
+        
     }
 }

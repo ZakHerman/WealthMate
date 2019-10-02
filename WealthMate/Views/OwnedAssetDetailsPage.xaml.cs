@@ -86,5 +86,22 @@ namespace WealthMate.Views
             System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editRegPayments.Value = e.Value.ToString();
         }
+
+        //Remove Asset from portfolio
+        private void RemoveAssetClicked(object sender, EventArgs e)
+        {
+            RemoveAssetConfirmationBox.IsOpen = true;
+        }
+
+        private void PopupAcceptRemoveClicked(object sender, EventArgs e)
+        {
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+            RemoveAssetConfirmationBox.IsOpen = false;
+
+            // Push portfoliopage on top of stack
+            Navigation.PushAsync(new PortfolioPage());
+        }
+
     }
 }
