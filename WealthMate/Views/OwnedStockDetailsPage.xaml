@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.OwnedStockDetailsPage">
 
@@ -17,144 +18,177 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout Margin="0, 10">
-            <!--Displays basic details of the OwnedStock-->
-            <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <ScrollView>
+            <StackLayout Margin="0, 10">
+                <!--Displays basic details of the OwnedStock-->
+                <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Label Text="{Binding OwnedStock.SharesPurchased, StringFormat='Shares Purchased: {0:F}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding OwnedStock.SharesPurchased, StringFormat='Shares Purchased: {0:F}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Label Text="{Binding OwnedStock.PurchasedPrice, StringFormat='Purchased Price: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding OwnedStock.PurchasedPrice, StringFormat='Purchased Price: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Label Text="{Binding OwnedStock.PrincipalValue, StringFormat='Purchased Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,0,10"/>
+                <Label Text="{Binding OwnedStock.PrincipalValue, StringFormat='Purchased Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,0,10"/>
 
-            <Label Text="{Binding OwnedStock.CurrentPrice, StringFormat='Current Price: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding OwnedStock.CurrentPrice, StringFormat='Current Price: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                   FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,0,10"/>
+                <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,0,10"/>
 
-            <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                <!--Grid to display day returns $ value and % in one line-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
+                <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0, 10">
+                    <!--Grid to display day returns $ value and % in one line-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Label Text="Day Return:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="Day Return:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="0"/>
 
-                <Label Text="{Binding OwnedStock.DayReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="0" TextColor="{DynamicResource NegativeTextColor}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveDayReturns}" Value="True">
-                            <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label Text="{Binding OwnedStock.DayReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="0" TextColor="{DynamicResource NegativeTextColor}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveDayReturns}" Value="True">
+                                <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}" Value="0">
-                            <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}" Value="0">
+                                <!--Change text to grey when no return-->
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
 
-                <Label Text="{Binding OwnedStock.DayReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="0" TextColor="{DynamicResource NegativeTextColor}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveDayReturns}" Value="True">
-                            <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label Text="{Binding OwnedStock.DayReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="0" TextColor="{DynamicResource NegativeTextColor}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveDayReturns}" Value="True">
+                                <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}" Value="0">
-                            <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.DayReturn}" Value="0">
+                                <!--Change text to grey when no return-->
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
 
-                <Label Text="Total Return:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
+                    <Label Text="Total Return:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" HorizontalTextAlignment="End" VerticalTextAlignment="End" Grid.Column="0" Grid.Row="1"/>
 
-                <Label Text="{Binding OwnedStock.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveTotal}" Value="True">
-                            <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label Text="{Binding OwnedStock.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveTotal}" Value="True">
+                                <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}" Value="0">
-                            <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.TotalReturn}" Value="0">
+                                <!--Change text to grey when no return-->
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
 
-                <Label Text="{Binding OwnedStock.TotalReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
-                    <Label.Triggers>
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveTotal}" Value="True">
-                            <!--Change text to green when positive return-->
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label Text="{Binding OwnedStock.TotalReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveTotal}" Value="True">
+                                <!--Change text to green when positive return-->
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}" Value="0">
-                            <!--Change text to grey when no return-->
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-            </Grid>
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.TotalReturn}" Value="0">
+                                <!--Change text to grey when no return-->
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
 
-            <!--Buttons below OwnedStock details-->
-            <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"/>
-            <!--Will open public view of stock-->
-            <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="EditStockClicked"/>
-            <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="RemoveStockClicked" />
+                <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30, 0, 0, 0"/>
+                
+                <!--Grid in order to stack progress label on top of progress ba -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-          <!--Remove Stock Popup Box-->
-          <sfPopup:SfPopupLayout x:Name="RemoveStockConfirmationBox">
-            <sfPopup:SfPopupLayout.PopupView>
-              <sfPopup:PopupView HeaderTitle="Remove Stock?" ShowFooter="false">
-                <sfPopup:PopupView.ContentTemplate>
-                  <DataTemplate>
-                    <StackLayout Padding="6,1,3,1"
-                                 VerticalOptions="CenterAndExpand" >
-                      <Label Text="All shares and price details will be removed from your portfolio." HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
-                      <Button Text="Accept" VerticalOptions="EndAndExpand" HorizontalOptions="End" FontSize="14" TextColor="DarkRed" FontAttributes="Bold" Clicked="PopupAcceptRemoveClicked" />
-                    </StackLayout>
-                  </DataTemplate>
-                </sfPopup:PopupView.ContentTemplate>
-              </sfPopup:PopupView>
-            </sfPopup:SfPopupLayout.PopupView>
-          </sfPopup:SfPopupLayout>
-          
-            <!--Edit Stock Popup Box-->
-            <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
-                <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView HeaderTitle="Edit Owned Stock Details" ShowFooter="false">
-                        <sfPopup:PopupView.ContentTemplate>
-                            <DataTemplate>
-                                <StackLayout WidthRequest="300" HeightRequest="300">
-                                    <Label Text="Edit number of shares:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
 
-                                    <Label Text="Edit purchase price:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double"/>
+                    <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedStock.TotalReturn}" Maximum="{Binding OwnedStock.ReturnGoal}" Margin="30, 0"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding OwnedStock.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
+                </Grid>
+                 
+                <!--Grid that adds the minimum value and maximum value labels to the progress bar-->
+                <Grid Margin="30, 0, 30, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                                    <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </sfPopup:PopupView.ContentTemplate>
-                    </sfPopup:PopupView>
-                </sfPopup:SfPopupLayout.PopupView>
-            </sfPopup:SfPopupLayout>
-        </StackLayout>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="$0.00" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding OwnedStock.ReturnGoal, StringFormat='{0:C}'}" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="End"/>
+                </Grid>
+
+                <!--Buttons below OwnedStock details-->
+                <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"/>
+                <!--Will open public view of stock-->
+                <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="EditStockClicked"/>
+                <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="RemoveStockClicked" />
+
+                <!--Remove Stock Popup Box-->
+                <sfPopup:SfPopupLayout x:Name="RemoveStockConfirmationBox">
+                    <sfPopup:SfPopupLayout.PopupView>
+                        <sfPopup:PopupView HeaderTitle="Remove Stock?" ShowFooter="false">
+                            <sfPopup:PopupView.ContentTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="6,1,3,1"
+                                     VerticalOptions="CenterAndExpand" >
+                                        <Label Text="All shares and price details will be removed from your portfolio." HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
+                                        <Button Text="Accept" VerticalOptions="EndAndExpand" HorizontalOptions="End" FontSize="14" TextColor="DarkRed" FontAttributes="Bold" Clicked="PopupAcceptRemoveClicked" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </sfPopup:PopupView.ContentTemplate>
+                        </sfPopup:PopupView>
+                    </sfPopup:SfPopupLayout.PopupView>
+                </sfPopup:SfPopupLayout>
+
+                <!--Edit Stock Popup Box-->
+                <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
+                    <sfPopup:SfPopupLayout.PopupView>
+                        <sfPopup:PopupView HeaderTitle="Edit Owned Stock Details" ShowFooter="false">
+                            <sfPopup:PopupView.ContentTemplate>
+                                <DataTemplate>
+                                    <StackLayout WidthRequest="300" HeightRequest="300">
+                                        <Label Text="Edit number of shares:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
+                                        <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+
+                                        <Label Text="Edit purchase price:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
+                                        <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+
+                                        <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </sfPopup:PopupView.ContentTemplate>
+                        </sfPopup:PopupView>
+                    </sfPopup:SfPopupLayout.PopupView>
+                </sfPopup:SfPopupLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
