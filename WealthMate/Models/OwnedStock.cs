@@ -39,6 +39,7 @@ namespace WealthMate.Models
             UpdateCurrentDetails();
             UpdateDayReturnDetails();
             UpdateTotalReturnDetails();
+            ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;
         }
 
         private void UpdateTotalReturnDetails()
