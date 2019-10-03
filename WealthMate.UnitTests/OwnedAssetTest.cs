@@ -13,9 +13,28 @@ namespace WealthMate.UnitTests
 
         public OwnedAssetTest()
         {
-            test1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 0.27f, 12, 4, 0);
-            test2 = new OwnedAsset("ASB Bank", new DateTime(2019, 1, 8), "Term Deposit", 2000, 0.30f, 6, 4, 0);
-            test3 = new OwnedAsset("TSB Bank", new DateTime(2017, 2, 21), "Term Deposit", 1000, 0.20f, 3, 4, 0);
+            test1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 0.27f, 12, 4, 0, 2000f);
+            test2 = new OwnedAsset("ASB Bank", new DateTime(2019, 1, 8), "Term Deposit", 2000, 0.30f, 6, 4, 0, 500f);
+            test3 = new OwnedAsset("TSB Bank", new DateTime(2017, 2, 21), "Term Deposit", 1000, 0.20f, 3, 4, 0, 120f);
+        }
+
+        [TestMethod]
+        public void TestReturnGoalProgress() //Note this changes every day
+        {
+            float delta = 0.1f;
+
+            float expectedVal = 11.22f;
+            float returnGoalProgress = test1.ReturnGoalProgress;
+
+            float expectedVal2 = 94.98f;
+            float returnGoalProgress2 = test2.ReturnGoalProgress;
+
+            float expectedVal3 = 554.79f;
+            float returnGoalProgress3 = test3.ReturnGoalProgress;
+
+            Assert.AreEqual(expectedVal, returnGoalProgress, delta);
+            Assert.AreEqual(expectedVal2, returnGoalProgress2, delta);
+            Assert.AreEqual(expectedVal3, returnGoalProgress3, delta);
         }
 
         [TestMethod]
@@ -84,7 +103,7 @@ namespace WealthMate.UnitTests
 
             test1.EditAsset(newInterestRate, newLength, newRegPayments, test1);
 
-            OwnedAsset t1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 1.2f, 9, 4, 3.2f);
+            OwnedAsset t1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 1.2f, 9, 4, 3.2f, 0);
 
             Assert.AreEqual(test1.InterestRate, t1.InterestRate);
             Assert.AreEqual(test1.Length, t1.Length);
