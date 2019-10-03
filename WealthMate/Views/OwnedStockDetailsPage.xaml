@@ -115,7 +115,8 @@
                 </Grid>
 
                 <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30, 0, 0, 0"/>
-
+                
+                <!--Grid in order to stack progress label on top of progress ba -->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -128,7 +129,8 @@
                     <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedStock.TotalReturn}" Maximum="{Binding OwnedStock.ReturnGoal}" Margin="30, 0"/>
                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding OwnedStock.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
                 </Grid>
-
+                 
+                <!--Grid that adds the minimum value and maximum value labels to the progress bar-->
                 <Grid Margin="30, 0, 30, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />

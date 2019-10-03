@@ -15,8 +15,8 @@ namespace WealthMate.Models
         public float CurrentValue { get; set;  }
         public float TotalReturn { get; set; }
         public float TotalReturnRate { get; set; }
-        public float ReturnGoal { get; set; }
-        public float ReturnGoalProgress { get; set; }
+        public float ReturnGoal { get; set; }                                        //The amount of returns that the user wants to achieve with this asset
+        public float ReturnGoalProgress { get; set; }                                //The percentage amount it is to its desired goal
         public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
         public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
         public string CompoundRateToString { get; set; }                        //Converts amount of time interest is being compounded into string
@@ -56,7 +56,7 @@ namespace WealthMate.Models
             CalculateCurrentValue();
             CalculateReturn();
             CompoundRateConvert();
-            ReturnGoalProgress = (TotalReturn / ReturnGoal)  * 100;       //Updates how close the value is to reaching its goal
+            ReturnGoalProgress = (TotalReturn / ReturnGoal)  * 100;       //Updates how close the return value is to reaching its return goal
             InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
         }
 
