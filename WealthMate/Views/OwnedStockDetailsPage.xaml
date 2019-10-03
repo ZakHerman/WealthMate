@@ -87,12 +87,12 @@
 
                     <Label Text="{Binding OwnedStock.TotalReturn, StringFormat='{0:C}'}" FontSize="Medium" Grid.Column="1" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
                         <Label.Triggers>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveTotal}" Value="True">
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveTotal}" Value="True">
                                 <!--Change text to green when positive return-->
                                 <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
                             </DataTrigger>
 
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}" Value="0">
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.TotalReturn}" Value="0">
                                 <!--Change text to grey when no return-->
                                 <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                             </DataTrigger>
@@ -101,12 +101,12 @@
 
                     <Label Text="{Binding OwnedStock.TotalReturnRate, StringFormat='({0:F}%)'}" FontSize="Medium" Grid.Column="2" Grid.Row="1" TextColor="{DynamicResource NegativeTextColor}">
                         <Label.Triggers>
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveTotal}" Value="True">
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.PositiveTotal}" Value="True">
                                 <!--Change text to green when positive return-->
                                 <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
                             </DataTrigger>
 
-                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.TotalReturn}" Value="0">
+                            <DataTrigger TargetType ="Label" Binding="{Binding OwnedStock.TotalReturn}" Value="0">
                                 <!--Change text to grey when no return-->
                                 <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
                             </DataTrigger>
