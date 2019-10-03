@@ -145,10 +145,10 @@
                                     <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
                                     
                                     <Label Text="Edit length:" TextColor="{DynamicResource PrimaryTextColor}" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
 
                                     <Label Text="Edit regular payments:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
 
                                     <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
