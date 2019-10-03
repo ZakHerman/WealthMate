@@ -66,8 +66,17 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
-                </Grid>
 
+                    <Picker Title="Chart Picker" x:Name="PieChartChanger" HorizontalOptions="End" Grid.Column="1" Grid.Row="0" FontSize="Medium">
+                        <Picker.Items>
+                            <x:String>All Assets</x:String>
+                            <x:String>Term Deposit</x:String>
+                            <x:String>Stocks</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    
+                </Grid>
+                
                 <chart:SfChart VerticalOptions="FillAndExpand">
                     <chart:SfChart.Series>
                         <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
