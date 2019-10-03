@@ -101,12 +101,17 @@
                 </Label>
             </Grid>
 
+            <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30, 0, 0, 0"/>
+
             <Grid>
-                <progressBar:SfLinearProgressBar TrackHeight="25" HeightRequest="25"  Minimum="{Binding OwnedAsset.PrincipalValue}" Progress="{Binding OwnedAsset.CurrentValue}" Maximum="{Binding OwnedAsset.ReturnGoal}" Margin="20, 0"/>
-                <Label Text="23%" FontSize="Medium" HorizontalTextAlignment="Center"/>
+                <progressBar:SfLinearProgressBar TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedAsset.TotalReturn}" Maximum="{Binding OwnedAsset.ReturnGoal}" Margin="30, 0"/>
+                <Label Text="{Binding OwnedAsset.ReturnGoalProgress, StringFormat='{0:F}'}" FontSize="Medium" HorizontalTextAlignment="Center"/>
             </Grid>
 
-            
+            <Grid Margin="30, 0, 30, 0">
+                <Label Text="$0.00" FontSize="Medium" TextColor="{DynamicResource NegativeTextColor}" HorizontalTextAlignment="Start"/>
+                <Label Text="{Binding OwnedAsset.ReturnGoal, StringFormat='{0:C}'}" FontSize="Medium" TextColor="{DynamicResource NegativeTextColor}" HorizontalTextAlignment="End"/>
+            </Grid>
 
             <!--Buttons below details of OwnedAsset-->
             <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" Clicked="EditAssetClicked"/>
