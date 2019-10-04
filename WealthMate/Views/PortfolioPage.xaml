@@ -66,11 +66,11 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
-
-                    <Picker Title="Chart Picker" x:Name="PieChartChanger" HorizontalOptions="End" Grid.Column="1" Grid.Row="0" FontSize="Medium">
+                    <!--Picker-->
+                    <Picker Title="Chart Picker" x:Name="PieChartChanger" HorizontalOptions="End" Grid.Column="1" Grid.Row="0" FontSize="Medium" SelectedItem="{Binding MySelectedItem}" SelectedIndexChanged="PieChartChanger_SelectedIndexChanged">
                         <Picker.Items>
                             <x:String>All Assets</x:String>
-                            <x:String>Term Deposit</x:String>
+                            <x:String>Term Deposits</x:String>
                             <x:String>Stocks</x:String>
                         </Picker.Items>
                     </Picker>
