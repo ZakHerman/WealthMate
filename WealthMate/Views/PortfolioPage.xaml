@@ -72,13 +72,6 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                 <!--Picker for selecting type of pie chart to view-->
                 <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center"  FontSize="Medium" WidthRequest="130"
                             SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}">
-                    <!--<Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>All Assets</x:String>
-                                <x:String>Term Deposits</x:String>
-                                <x:String>Stocks</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>-->
                 </Picker>
 
                 <chart:SfChart VerticalOptions="FillAndExpand">

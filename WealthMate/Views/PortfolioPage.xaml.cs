@@ -78,11 +78,5 @@ namespace WealthMate.Views
 
             ((SfListView)sender).SelectedItem = null;
         }
-        
-        private void PieChartChanger_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
-
     }
 }
