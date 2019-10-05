@@ -66,17 +66,21 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
-                    <!--Picker-->
-                    <Picker Title="Chart Picker" x:Name="PieChartChanger" HorizontalOptions="End" Grid.Column="1" Grid.Row="0" FontSize="Medium" SelectedItem="{Binding MySelectedItem}" SelectedIndexChanged="PieChartChanger_SelectedIndexChanged">
-                        <Picker.Items>
-                            <x:String>All Assets</x:String>
-                            <x:String>Term Deposits</x:String>
-                            <x:String>Stocks</x:String>
-                        </Picker.Items>
-                    </Picker>
                     
                 </Grid>
-                
+
+                <!--Picker for selecting type of pie chart to view-->
+                <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center"  FontSize="Medium" WidthRequest="130"
+                            SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}">
+                    <!--<Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>All Assets</x:String>
+                                <x:String>Term Deposits</x:String>
+                                <x:String>Stocks</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>-->
+                </Picker>
+
                 <chart:SfChart VerticalOptions="FillAndExpand">
                     <chart:SfChart.Series>
                         <chart:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">

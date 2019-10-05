@@ -83,5 +83,6 @@ namespace WealthMate.Views
         {
           
         }
+
     }
 }
