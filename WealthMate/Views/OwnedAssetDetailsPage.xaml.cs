@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
-using System.Collections.ObjectModel;
 
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OwnedAssetDetailsPage : ContentPage
+    public partial class OwnedAssetDetailsPage
     {
         public OwnedAsset OwnedAsset { get; }
 
         private SfNumericTextBox editInterestRate;          //Text box for editing details.
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
+
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
             OwnedAsset = ownedAsset;
@@ -26,33 +22,30 @@ namespace WealthMate.Views
             BindingContext = this;
             InitializeComponent();
 
-            editInterestRate = new SfNumericTextBox();
-            editInterestRate.Value = 0;
+            editInterestRate = new SfNumericTextBox {Value = 0};
             editInterestRate.ValueChanged += Handle_InterestRateChanged;
 
-            editLength = new SfNumericTextBox();
-            editLength.Value = 0;
+            editLength = new SfNumericTextBox {Value = 0};
             editLength.ValueChanged += Handle_LengthChanged;
 
-            editRegPayments = new SfNumericTextBox();
-            editRegPayments.Value = 0;
+            editRegPayments = new SfNumericTextBox {Value = 0};
             editRegPayments.ValueChanged += Handle_RegularPaymentsChanged;
         }
 
         // Event handler for edit stock button, enables popup
-        private void EditAssetClicked(object sender, System.EventArgs e)
+        private void EditAssetClicked(object sender, EventArgs e)
         {
             popupLayout.IsOpen = true;
         }
 
         // Event handler for save editing button, will update current asset
-        protected void SaveInPopupClicked(object sender, System.EventArgs args)
+        protected void SaveInPopupClicked(object sender, EventArgs args)
         {
             popupLayout.IsOpen = false;
 
-            float newInterestRate = float.Parse(editInterestRate.Value.ToString());
-            int newLength = int.Parse(editLength.Value.ToString());
-            float newRegPayments = float.Parse(editRegPayments.Value.ToString());
+            var newInterestRate = float.Parse(editInterestRate.Value.ToString());
+            var newLength = int.Parse(editLength.Value.ToString());
+            var newRegPayments = float.Parse(editRegPayments.Value.ToString());
 
             OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, OwnedAsset);
 
@@ -67,23 +60,20 @@ namespace WealthMate.Views
         }
 
         // Collects new interest rate value from text box entered by user
-        private void Handle_InterestRateChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_InterestRateChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editInterestRate.Value = e.Value.ToString();
         }
 
         // Collects new length value from text box entered by user
-        private void Handle_LengthChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_LengthChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editLength.Value = e.Value.ToString();
         }
 
         // Collects new regular payments value from text box entered by user
-        private void Handle_RegularPaymentsChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_RegularPaymentsChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editRegPayments.Value = e.Value.ToString();
         }
 
@@ -93,14 +83,14 @@ namespace WealthMate.Views
             RemoveAssetConfirmationBox.IsOpen = true;
         }
 
-        private void PopupAcceptRemoveClicked(object sender, EventArgs e)
+        private async void PopupAcceptRemoveClicked(object sender, EventArgs e)
         {
             ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
             RemoveAssetConfirmationBox.IsOpen = false;
 
-            // Push portfoliopage on top of stack
-            Navigation.PushAsync(new PortfolioPage());
+            // Pop owned asset details page off the stack
+            await Navigation.PopAsync();
         }
 
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using Syncfusion.ListView.XForms;
 using WealthMate.ViewModels;
+using System;
 
 namespace WealthMate.Views
 {
@@ -26,8 +27,6 @@ namespace WealthMate.Views
                 AbsoluteLayoutFlags.All
             );
         }
-
-       
 
         /// <summary>
         /// Search bar functionality

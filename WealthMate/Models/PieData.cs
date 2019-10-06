@@ -11,10 +11,16 @@
         public float ReturnPercentage { get; set; }         //Returns percentage of PieChart asset type category
         public float PrincipalQuantity { get; set; }        //Total principal value of PieData category
         public bool IsPositive { get; set; }                //Flag that checks if return is positive for view trigger purposes
+        public int Key { get; set; }
+        public string Value { get; set; }
 
         public PieData(string type)
         {
             AssetType = type;
+        }
+
+        public PieData()
+        {
         }
 
         // Checks the return percentage is positive

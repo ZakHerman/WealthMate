@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,14 +7,14 @@ using Syncfusion.SfNumericTextBox.XForms;
 namespace WealthMate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
-    public partial class OwnedStockDetailsPage : ContentPage
+    public partial class OwnedStockDetailsPage
     {
         public OwnedStock OwnedStock { get; }
         public Stock Stock { get; }
 
         private SfNumericTextBox editNumOfShares;               //Textboxes for editing ownedstock details
         private SfNumericTextBox editPurchasePrice;
+
         public OwnedStockDetailsPage(OwnedStock ownedStock)
         {
             OwnedStock = ownedStock;
@@ -26,23 +22,21 @@ namespace WealthMate.Views
             BindingContext = this;
             InitializeComponent();
 
-            editNumOfShares = new SfNumericTextBox();
-            editNumOfShares.Value = 0;
+            editNumOfShares = new SfNumericTextBox {Value = 0};
             editNumOfShares.ValueChanged += Handle_NumSharesChanged;
 
-            editPurchasePrice = new SfNumericTextBox();
-            editPurchasePrice.Value = 0;
+            editPurchasePrice = new SfNumericTextBox {Value = 0};
             editPurchasePrice.ValueChanged += Handle_PriceChanged;
         }
 
         // Event handler for edit stock button, enables popup
-        private void EditStockClicked(object sender, System.EventArgs e)       
+        private void EditStockClicked(object sender, EventArgs e)       
         {
             popupLayout.IsOpen = true;
         }
 
         // Event handler for save editing button, will update current stock
-        protected void SaveInPopupClicked(object sender, System.EventArgs e)
+        protected void SaveInPopupClicked(object sender, EventArgs e)
         {
             popupLayout.IsOpen = false;
 
@@ -53,20 +47,13 @@ namespace WealthMate.Views
             OwnedStock.UpdateOwnedAsset();
         }
 
-        private void CancelInPopupClicked(object sender, EventArgs args)
+        private void Handle_NumSharesChanged(object sender, ValueEventArgs e)
         {
-            popupLayout.IsOpen = false;
-        }
-
-        private void Handle_NumSharesChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editNumOfShares.Value = e.Value.ToString();
         }
 
-        private void Handle_PriceChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_PriceChanged(object sender, ValueEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(e.Value.ToString());
             editNumOfShares.Value = e.Value.ToString();
         }
 
@@ -76,16 +63,14 @@ namespace WealthMate.Views
             RemoveStockConfirmationBox.IsOpen = true;
         }
 
-        private void PopupAcceptRemoveClicked(object sender, EventArgs e)
+        private async void PopupAcceptRemoveClicked(object sender, EventArgs e)
         {
             ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedStock);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
             RemoveStockConfirmationBox.IsOpen = false;
 
-            // Push portfoliopage on top of stack
-            Navigation.PushAsync(new PortfolioPage());
+            // Pop owned stock details page off the stack
+            await Navigation.PopAsync();
         }
-
-        
     }
 }

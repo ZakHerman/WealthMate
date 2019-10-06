@@ -17,7 +17,7 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">
             <Image x:Name="NavBarLogo" Source="logo.png" HeightRequest="64" WidthRequest="64" />
-            <Label x:Name="NavBarTitle" Text="{Binding CurrentPortfolio.CurrentTotal, StringFormat='{0:C}'}" HorizontalTextAlignment="Center"
+            <Label x:Name="NavBarTitle" Text="{Binding CurrentPortfolio.CurrentTotal, StringFormat='{0:C}', Mode=OneWay}" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource SecondaryTextColor}" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
@@ -66,7 +66,13 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
+                    
                 </Grid>
+
+                <!--Picker for selecting type of pie chart to view-->
+                <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center"  FontSize="Medium" WidthRequest="130"
+                            SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}">
+                </Picker>
 
                 <chart:SfChart VerticalOptions="FillAndExpand">
                     <chart:SfChart.Series>
