@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using Syncfusion.SfNumericTextBox.XForms;
 using WealthMate.Services;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Markets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StockDetailsPage

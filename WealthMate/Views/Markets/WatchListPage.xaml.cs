@@ -1,31 +1,25 @@
 ﻿using Syncfusion.ListView.XForms;
 using WealthMate.Models;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using WealthMate.Services;
+using Xamarin.Forms;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using WealthMate.ViewModels;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Markets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StockListPage
+    public partial class WatchlistPage
     {
         private SearchBar _searchBar;
 
-        public StockListPage()
+        public WatchlistPage()
         {
-            LoadStocks();
+            BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 
-        private async void LoadStocks()
-        {
-            await DataService.FetchStocksAsync();
-            StockList.ItemsSource = DataService.Stocks;
-        }
-
         // Event handler for watchlist stock being pressed
-        private async void StockListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selected = (Stock)e.ItemData;
 
@@ -47,10 +41,10 @@ namespace WealthMate.Views
         {
             _searchBar = (sender as SearchBar); //set sender to SearchBar
 
-            if (StockList.DataSource != null)
+            if (Watchlist.DataSource != null)
             {
-                StockList.DataSource.Filter = FilterStocks; //filters the data source
-                StockList.DataSource.RefreshFilter(); // refreshes the view
+                Watchlist.DataSource.Filter = FilterWList; //filters the data source
+                Watchlist.DataSource.RefreshFilter(); // refreshes the view
             }
         }
 
@@ -59,17 +53,15 @@ namespace WealthMate.Views
         /// </summary>
         /// <param name="obj"></param> object representing a search return
         /// <returns></returns> boolean value for checking for text in the serach bar
-        private bool FilterStocks(object obj)
+        private bool FilterWList(object obj)
         {
             if (_searchBar?.Text == null)
             {
                 return true;
             }
-            else
-            {
-                return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
-                              || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
-            }
+
+            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

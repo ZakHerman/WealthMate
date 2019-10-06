@@ -38,16 +38,16 @@
     <Compile Update="Themes\DarkTheme.xaml.cs">
       <DependentUpon>DarkTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\FinancialPage.xaml.cs">
-      <DependentUpon>FinancialPage.xaml</DependentUpon>
+    <Compile Update="Views\Markets\MarketPage.xaml.cs">
+      <DependentUpon>MarketPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PortfolioPage.xaml.cs">
+    <Compile Update="Views\Portfolio\PortfolioPage.xaml.cs">
       <DependentUpon>PortfolioPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\TermDepositListPage.xaml.cs">
+    <Compile Update="Views\Markets\TermDepositListPage.xaml.cs">
       <DependentUpon>TermDepositListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\WatchListPage.xaml.cs">
+    <Compile Update="Views\Markets\WatchListPage.xaml.cs">
       <DependentUpon>WatchlistPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -59,31 +59,37 @@
     <EmbeddedResource Update="ViewModels\AssetList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\FinancialPage.xaml">
+    <EmbeddedResource Update="Views\Markets\MarketPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\OwnedAssetDetailsPage.xaml">
+    <EmbeddedResource Update="Views\Portfolio\OwnedAssetDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\OwnedStockDetailsPage.xaml">
+    <EmbeddedResource Update="Views\Portfolio\OwnedStockDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
+    <EmbeddedResource Update="Views\Portfolio\PortfolioChartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StockDetailsPage.xaml">
+    <EmbeddedResource Update="Views\Portfolio\PortfolioListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StockListPage.xaml">
+    <EmbeddedResource Update="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ThemeSelectionPage.xaml">
+    <EmbeddedResource Update="Views\Markets\StockDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\WatchlistPage.xaml">
+    <EmbeddedResource Update="Views\Markets\StockListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TermDepositListPage.xaml">
+    <EmbeddedResource Update="Views\Settings\ThemeSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Markets\WatchListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Markets\TermDepositListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

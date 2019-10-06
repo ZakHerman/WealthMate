@@ -7,7 +7,7 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.StockDetailsPage">
+             x:Class="WealthMate.Views.Markets.StockDetailsPage">
 
     <NavigationPage.TitleView>
         <Grid>
@@ -56,12 +56,12 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="{DynamicResource PageBackgroundColor}">
+        <ScrollView BackgroundColor="{DynamicResource SecondaryColor}">
             <StackLayout Spacing="10" Padding="5" Orientation = "Vertical">
                 <Label x:Name="SymbolText" Text="{Binding Stock.Symbol}" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Large" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
 
                 <!--Stock history price graph-->
-                <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource PageBackgroundColor}">
+                <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
                     <!--X axis representing the date of stock history-->
                     <chart:SfChart.PrimaryAxis>
                         <chart:DateTimeAxis />
@@ -87,7 +87,8 @@
                         </chart:ChartTrackballBehavior>
                     </chart:SfChart.ChartBehaviors>
 
-                    <chart:LineSeries x:Name="StockHistoryGraph" TrackballLabelTemplate="{StaticResource TrackballTemplate}" XBindingPath="Date" YBindingPath="PriceClose"/>
+                    <chart:LineSeries x:Name="StockHistoryGraph" Color="{DynamicResource TertiaryColor}" TrackballLabelTemplate="{StaticResource TrackballTemplate}"
+                                      XBindingPath="Date" YBindingPath="PriceClose"/>
                 </chart:SfChart>
 
                 <!--Labels underneath graph-->
@@ -210,7 +211,7 @@
 
               <!--Add To Portfolio - Error popup-->
               <sfPopup:SfPopupLayout x:Name="NullValueErrorPopup">
-                <sfPopup:SfPopupLayout.PopupView HeightRequest ="200">
+                <sfPopup:SfPopupLayout.PopupView>
                   <sfPopup:PopupView ShowHeader="false">
                     <sfPopup:PopupView.ContentTemplate>
                       <DataTemplate>

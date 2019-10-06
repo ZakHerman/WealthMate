@@ -7,7 +7,7 @@ using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage

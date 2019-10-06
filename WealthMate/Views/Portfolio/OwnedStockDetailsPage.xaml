@@ -7,7 +7,7 @@
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.OwnedStockDetailsPage">
+             x:Class="WealthMate.Views.Portfolio.OwnedStockDetailsPage">
 
     <NavigationPage.TitleView>
         <!--Displays name and that it's a stock, as well as it's bought price in the nav bar-->

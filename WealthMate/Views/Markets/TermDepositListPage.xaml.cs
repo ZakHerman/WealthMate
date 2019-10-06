@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Markets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermDepositListPage
@@ -53,10 +53,8 @@ namespace WealthMate.Views
             {
                 return true;
             }
-            else
-            {
-                return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
-            }
+
+            return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
         }
 
         ////Handles a term deposit being clicked from the term deposit page

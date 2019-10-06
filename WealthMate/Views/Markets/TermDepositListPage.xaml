@@ -8,7 +8,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.TermDepositListPage"
+             x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
              Title="Term Deposits">
 
@@ -28,7 +28,8 @@
 
         <!--The list view of the term deposits-->
         <Grid>
-            <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
+            <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" BackgroundColor="{DynamicResource SecondaryColor}"
+                                   AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">

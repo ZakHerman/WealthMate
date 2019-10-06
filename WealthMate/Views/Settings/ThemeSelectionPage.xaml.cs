@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using WealthMate.Themes;
 using Xamarin.Forms;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Settings
 {
     public partial class ThemeSelectionPage
     {

@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Portfolio
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnedAssetDetailsPage

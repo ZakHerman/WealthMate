@@ -1,31 +1,21 @@
-﻿using System.ComponentModel;
-using System.Collections.ObjectModel;
+﻿using Syncfusion.ListView.XForms;
 using WealthMate.Models;
-using Xamarin.Forms;
-using System.Collections.Generic;
-using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
-using Syncfusion.ListView.XForms;
 using WealthMate.ViewModels;
-using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Portfolio
 {
-    [DesignTimeVisible(false)]
-    public partial class PortfolioPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PortfolioListPage
     {
         private SearchBar _searchBar;
 
-        public PortfolioPage()
+        public PortfolioListPage()
         {
-            BindingContext = new PortfolioPageVM();
             InitializeComponent();
-
-            NavBarLayout.Children.Add(
-                NavBarTitle,
-                // Center the text of the titleview
-                new Rectangle(0.5, 0.5, 0.9, 1),
-                AbsoluteLayoutFlags.All
-            );
+            BindingContext = new PortfolioPageVM();
         }
 
         /// <summary>
@@ -55,11 +45,9 @@ namespace WealthMate.Views
             {
                 return true;
             }
-            else
-            {
-                return obj is OwnedAsset asset && (asset.AssetName.ToLower().Contains(_searchBar.Text.ToLower())
-                              || asset.Type.ToLower().Contains(_searchBar.Text.ToLower()));
-            }
+
+            return obj is OwnedAsset asset && (asset.AssetName.ToLower().Contains(_searchBar.Text.ToLower())
+                                               || asset.Type.ToLower().Contains(_searchBar.Text.ToLower()));
         }
 
         // Event handler for watchlist stock being pressed

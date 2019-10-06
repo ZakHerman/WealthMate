@@ -1,34 +1,38 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using Syncfusion.ListView.XForms;
+﻿using Syncfusion.ListView.XForms;
 using WealthMate.Models;
-using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using WealthMate.Services;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
-using WealthMate.ViewModels;
 
-namespace WealthMate.Views
+namespace WealthMate.Views.Markets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WatchlistPage
+    public partial class StockListPage
     {
         private SearchBar _searchBar;
 
-        public WatchlistPage()
+        public StockListPage()
         {
-            BindingContext = new WatchListPageVM();
+            LoadStocks();
             InitializeComponent();
         }
 
+        private async void LoadStocks()
+        {
+            await DataService.FetchStocksAsync();
+            StockList.ItemsSource = DataService.Stocks;
+        }
+
         // Event handler for watchlist stock being pressed
-        private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void StockListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selected = (Stock)e.ItemData;
 
             if (selected == null)
                 return;
 
-            // Push stockdetailspage on top of stack
+            // Push stock details page on top of stack
             await Navigation.PushAsync(new StockDetailsPage(selected));
   
             ((SfListView)sender).SelectedItem = null;
@@ -43,10 +47,10 @@ namespace WealthMate.Views
         {
             _searchBar = (sender as SearchBar); //set sender to SearchBar
 
-            if (Watchlist.DataSource != null)
+            if (StockList.DataSource != null)
             {
-                Watchlist.DataSource.Filter = FilterWList; //filters the data source
-                Watchlist.DataSource.RefreshFilter(); // refreshes the view
+                StockList.DataSource.Filter = FilterStocks; //filters the data source
+                StockList.DataSource.RefreshFilter(); // refreshes the view
             }
         }
 
@@ -55,17 +59,15 @@ namespace WealthMate.Views
         /// </summary>
         /// <param name="obj"></param> object representing a search return
         /// <returns></returns> boolean value for checking for text in the serach bar
-        private bool FilterWList(object obj)
+        private bool FilterStocks(object obj)
         {
             if (_searchBar?.Text == null)
             {
                 return true;
             }
-            else
-            {
-                return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
-                                              || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
-            }
+
+            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
+                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }

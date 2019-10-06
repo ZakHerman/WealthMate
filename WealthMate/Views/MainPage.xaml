@@ -4,10 +4,12 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
-            xmlns:views="clr-namespace:WealthMate.Views"
             x:Class="WealthMate.Views.MainPage"
             xmlns:effects="clr-namespace:WealthMate.Effects;assembly=WealthMate"
-            BarBackgroundColor="{DynamicResource NavigationBarColor}"
+            xmlns:markets="clr-namespace:WealthMate.Views.Markets;assembly=WealthMate"
+            xmlns:portfolio="clr-namespace:WealthMate.Views.Portfolio;assembly=WealthMate"
+            xmlns:settings="clr-namespace:WealthMate.Views.Settings;assembly=WealthMate"
+            BarBackgroundColor="{DynamicResource PrimaryColor}"
             UnselectedTabColor="#66FFFFFF"
             SelectedTabColor="White">
 
@@ -16,21 +18,21 @@
     </TabbedPage.Effects>
 
     <TabbedPage.Children>
-        <NavigationPage IconImageSource="financials.png">
+        <NavigationPage IconImageSource="market.png">
             <x:Arguments>
-                <views:FinancialPage />
+                <markets:MarketPage />
             </x:Arguments>
         </NavigationPage>
 
         <NavigationPage IconImageSource="portfolio.png">
             <x:Arguments>
-                <views:PortfolioPage />
+                <portfolio:PortfolioPage />
             </x:Arguments>
         </NavigationPage>
 
         <NavigationPage IconImageSource="settings.png">
             <x:Arguments>
-                <views:SettingsPage />
+                <settings:SettingsPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

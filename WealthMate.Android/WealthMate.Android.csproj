@@ -125,7 +125,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\financials.png" />
+    <AndroidResource Include="Resources\drawable\market.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\portfolio.jpg" />
