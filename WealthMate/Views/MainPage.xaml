@@ -10,8 +10,8 @@
             xmlns:portfolio="clr-namespace:WealthMate.Views.Portfolio;assembly=WealthMate"
             xmlns:settings="clr-namespace:WealthMate.Views.Settings;assembly=WealthMate"
             BarBackgroundColor="{DynamicResource PrimaryColor}"
-            UnselectedTabColor="#66FFFFFF"
-            SelectedTabColor="White">
+            UnselectedTabColor="{DynamicResource UnselectedColor}"
+            SelectedTabColor="{DynamicResource SelectedColor}">
 
     <TabbedPage.Effects>
         <effects:DisableShift />

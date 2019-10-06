@@ -12,14 +12,14 @@
     <NavigationPage.TitleView>
         <!--Displays name and that it's a stock, as well as it's bought price in the nav bar-->
         <AbsoluteLayout x:Name="NavBarLayout">
-            <Label Text="{Binding OwnedStock.AssetNameTypePurchasedPrice}" TextColor="{DynamicResource SecondaryTextColor}"
+            <Label Text="{Binding OwnedStock.AssetNameTypePurchasedPrice}" TextColor="{DynamicResource TertiaryTextColor}"
                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
         </AbsoluteLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="0, 10">
+        <ScrollView BackgroundColor="{DynamicResource SecondaryColor}">
+            <StackLayout Padding="0,10">
                 <!--Displays basic details of the OwnedStock-->
                 <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"
                        FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -39,7 +39,7 @@
                 <Label Text="{Binding OwnedStock.CurrentValue, StringFormat='Current Value: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
                        FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,0,0,10"/>
 
-                <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0, 10">
+                <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,10">
                     <!--Grid to display day returns $ value and % in one line-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -114,7 +114,7 @@
                     </Label>
                 </Grid>
 
-                <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30, 0, 0, 0"/>
+                <Label Text="Return Goal:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
                 
                 <!--Grid in order to stack progress label on top of progress ba -->
                 <Grid>
@@ -157,8 +157,7 @@
                         <sfPopup:PopupView HeaderTitle="Remove Stock?" ShowFooter="false">
                             <sfPopup:PopupView.ContentTemplate>
                                 <DataTemplate>
-                                    <StackLayout Padding="6,1,3,1"
-                                     VerticalOptions="CenterAndExpand" >
+                                    <StackLayout Padding="6,1,3,1" VerticalOptions="CenterAndExpand">
                                         <Label Text="All shares and price details will be removed from your portfolio." HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
                                         <Button Text="Accept" VerticalOptions="EndAndExpand" HorizontalOptions="End" FontSize="14" TextColor="DarkRed" FontAttributes="Bold" Clicked="PopupAcceptRemoveClicked" />
                                     </StackLayout>

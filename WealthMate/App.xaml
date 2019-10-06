@@ -7,11 +7,11 @@
              x:Class="WealthMate.App">
 
     <Application.Resources>
-        <ResourceDictionary Source="Themes/LightTheme.xaml" />
+        <ResourceDictionary Source="Themes/AndroidTheme.xaml" />
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="{DynamicResource PrimaryColor}" />
-            <Setter Property="BarTextColor" Value="{DynamicResource SecondaryTextColor}" />
+            <Setter Property="BarTextColor" Value="{DynamicResource TertiaryTextColor}" />
         </Style>
     </Application.Resources>
 </Application>

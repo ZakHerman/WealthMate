@@ -9,7 +9,7 @@
         <AbsoluteLayout x:Name="NavBarLayout">
             <Image x:Name="NavBarLogo" Source="logo.png" HeightRequest="64" WidthRequest="64" />
             <Label x:Name="NavBarTitle" Text="{Binding CurrentPortfolio.CurrentTotal, StringFormat='{0:C}'}" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource SecondaryTextColor}" FontSize="20"/>
+                   VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource TertiaryTextColor}" FontSize="20" />
         </AbsoluteLayout>
     </NavigationPage.TitleView>
 

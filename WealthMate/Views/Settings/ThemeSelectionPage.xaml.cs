@@ -27,12 +27,14 @@ namespace WealthMate.Views.Settings
 
             switch (theme)
             {
+                case Theme.Light:
+                    mergedDictionaries.Add(new LightTheme());
+                    break;
                 case Theme.Dark:
                     mergedDictionaries.Add(new DarkTheme());
                     break;
-                case Theme.Light:
                 default:
-                    mergedDictionaries.Add(new LightTheme());
+                    mergedDictionaries.Add(new AndroidTheme());
                     break;
             }
             StatusLabel.Text = $"{theme.ToString()} theme loaded.";

@@ -27,51 +27,49 @@
         <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
 
         <!--The list view of the term deposits-->
-        <Grid>
-            <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" BackgroundColor="{DynamicResource SecondaryColor}"
+        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" BackgroundColor="{DynamicResource TertiaryColor}"
                                    AutoFitMode="None" ItemSize="52" DragStartMode="OnHold">
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="32" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" /> 
-                                <ColumnDefinition Width="65" />
-                            </Grid.ColumnDefinitions>
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SecondaryColor}" Padding="12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" /> 
+                            <ColumnDefinition Width="65" />
+                        </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                            <Image Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" Source="{Binding Logo} "/>
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Provider}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
+                        <Image Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" Source="{Binding Logo} "/>
+                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding Provider}" TextColor="{DynamicResource PrimaryTextColor}"
+                               VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
 
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0} months'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding LengthInMonths, StringFormat='{0} months'}" TextColor="{DynamicResource PrimaryTextColor}"
+                               VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
 
-                            <Label Grid.Column="2" Grid.Row="0" Text="Min:" TextColor="{DynamicResource TertiaryTextColor}"
-                                   VerticalOptions="End" HorizontalTextAlignment="Start" FontSize="12" />
+                        <Label Grid.Column="2" Grid.Row="0" Text="Min:" TextColor="{DynamicResource SecondaryTextColor}"
+                               VerticalOptions="End" HorizontalTextAlignment="Start" FontSize="12" />
 
-                            <Label Grid.Column="2" Grid.Row="0" Text="{Binding MinDeposit, StringFormat='{0:C0}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="End" HorizontalTextAlignment="End" FontSize="12" />
+                        <Label Grid.Column="2" Grid.Row="0" Text="{Binding MinDeposit, StringFormat='{0:C0}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                               VerticalOptions="End" HorizontalTextAlignment="End" FontSize="12" />
 
-                            <Label Grid.Column="2" Grid.Row="1" Text="Max:" TextColor="{DynamicResource TertiaryTextColor}"
-                                   VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
+                        <Label Grid.Column="2" Grid.Row="1" Text="Max:" TextColor="{DynamicResource SecondaryTextColor}"
+                               VerticalOptions="Start" HorizontalTextAlignment="Start" FontSize="12" />
 
-                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding MaxDeposit, Converter={StaticResource ConvertDeposit}}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="12" />
+                        <Label Grid.Column="2" Grid.Row="1" Text="{Binding MaxDeposit, Converter={StaticResource ConvertDeposit}}" TextColor="{DynamicResource PrimaryTextColor}"
+                               VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="12" />
 
-                            <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="18" />
-                        </Grid>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
-        </Grid>
-     </StackLayout>
+                        <Label Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Text="{Binding InterestRate, StringFormat='{0:F2}%'}" TextColor="{DynamicResource PrimaryTextColor}"
+                               VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="18" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+   </StackLayout>
 
 
 <!--Term Deposit Clicked--><!--

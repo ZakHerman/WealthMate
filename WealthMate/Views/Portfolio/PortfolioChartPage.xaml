@@ -53,7 +53,7 @@
             </Grid>
 
             <!--Picker for selecting type of pie chart to view-->
-            <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130"
+            <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
                         SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
 
             <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">

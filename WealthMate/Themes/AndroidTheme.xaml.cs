@@ -1,8 +1,8 @@
 ﻿namespace WealthMate.Themes
 {
-    public partial class DarkTheme
+    public partial class AndroidTheme
     {
-        public DarkTheme()
+        public AndroidTheme()
         {
             InitializeComponent();
         }
