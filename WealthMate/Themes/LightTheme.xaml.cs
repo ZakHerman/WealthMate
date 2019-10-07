@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace WealthMate.Themes
+﻿namespace WealthMate.Themes
 {
-    public partial class LightTheme : ResourceDictionary
+    public partial class LightTheme
     {
         public LightTheme()
         {

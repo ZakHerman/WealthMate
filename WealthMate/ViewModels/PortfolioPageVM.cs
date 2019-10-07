@@ -44,7 +44,7 @@ namespace WealthMate.ViewModels
         }
 
         // to get the selected pie from the picker menu in the view
-        private PieData _selectedPie { get; set; }
+        private PieData _selectedPie;
         public PieData SelectedPie
         {
             get { return _selectedPie; }

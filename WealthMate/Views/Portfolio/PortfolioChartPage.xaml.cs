@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using Syncfusion.SfChart.XForms;
+using WealthMate.ViewModels;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -8,6 +11,10 @@ namespace WealthMate.Views.Portfolio
         public PortfolioChartPage()
         {
             InitializeComponent();
+            BindingContext = new PortfolioPageVM();
+            picker.SelectedIndex = 0;
         }
+
+        
     }
 }

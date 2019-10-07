@@ -38,6 +38,9 @@
     <Compile Update="Themes\DarkTheme.xaml.cs">
       <DependentUpon>DarkTheme.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Themes\AndroidTheme.xaml.cs">
+      <DependentUpon>AndroidTheme.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Markets\MarketPage.xaml.cs">
       <DependentUpon>MarketPage.xaml</DependentUpon>
     </Compile>

@@ -7,7 +7,6 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.WatchlistPage"
-             x:Name="Root"
              Title="Watchlist">
 
     <ContentPage.BindingContext>
@@ -20,11 +19,11 @@
             <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" BackgroundColor="{DynamicResource SecondaryColor}" AutoFitMode="None"
+            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" BackgroundColor="{DynamicResource TertiaryColor}" AutoFitMode="None"
                                    ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="10">
+                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SecondaryColor}" Padding="12,0">
                             <Grid.ColumnDefinitions>
                                 <!-- Company image size -->
                                 <ColumnDefinition Width="32" />

@@ -70,6 +70,8 @@ namespace WealthMate.Models
 
             if (ownedStock.PurchasedPrice != price && price != 0)
                 ownedStock.PurchasedPrice = price;
+
+            this.UpdateOwnedAsset();
         }
     }
 }
