@@ -7,6 +7,7 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
@@ -18,7 +19,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <vm:TermDepositConverter x:Key="ConvertDeposit" />
+            <valueConverter:TermDepositConverter x:Key="ConvertDeposit" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
