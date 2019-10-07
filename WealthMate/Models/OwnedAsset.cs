@@ -117,6 +117,8 @@ namespace WealthMate.Models
 
             if ((ownedAsset.RegularPayment != regularPayment) && (regularPayment != 0))
                 ownedAsset.RegularPayment = regularPayment;
+
+            UpdateOwnedAsset();
         }
     }
 }
