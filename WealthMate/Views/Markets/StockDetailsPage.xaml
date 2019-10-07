@@ -212,7 +212,7 @@
               <!--Add To Portfolio - Error popup-->
               <sfPopup:SfPopupLayout x:Name="NullValueErrorPopup">
                 <sfPopup:SfPopupLayout.PopupView>
-                  <sfPopup:PopupView ShowHeader="false">
+                  <sfPopup:PopupView ShowHeader="false" HeightRequest="100">
                     <sfPopup:PopupView.ContentTemplate>
                       <DataTemplate>
                         <StackLayout Padding="6,1,3,1">

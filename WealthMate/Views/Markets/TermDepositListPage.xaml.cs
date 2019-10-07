@@ -57,33 +57,41 @@ namespace WealthMate.Views.Markets
             return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
         }
 
-        ////Handles a term deposit being clicked from the term deposit page
-        //private void TermDepositClicked(object sender, ItemTappedEventArgs e)
-        //{
-        //    TermDeposit = (TermDeposit)e.ItemData;
-        //    AddTDForm.IsOpen = true;
+        //Handles a term deposit being clicked from the term deposit page
+        private void TermDepositClicked(object sender, ItemTappedEventArgs e)
+        {
+            TermDeposit = (TermDeposit)e.ItemData;
+            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);
+            AddTDForm.IsOpen = true;
 
-        //}
+        }
 
-        ////Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
-        //private void AddInPopupClicked(object sender, System.EventArgs e)
-        //{
-        //    OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);
+        //Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
+        private void AddInPopupClicked(object sender, System.EventArgs e)
+        {
+            if (OwnedAsset.PrincipalValue == 0)
+            {
+                NullValueErrorPopup.IsOpen = true;
+            }
+            else
+            {
+                OwnedAsset.UpdateOwnedAsset();
+                ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedAsset);
+                AddTDForm.IsOpen = false;
+            }
+        }
 
-        //    if (OwnedAsset.PrincipalValue == 0)
-        //    {
-        //        NullValueErrorPopup.IsOpen = true;
-        //    }
-        //    OwnedAsset.UpdateOwnedAsset();
-        //    ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedAsset);
-        //    AddTDForm.IsOpen = false;
-        //}
+        //Handles the "Amount Purchased" field in the term deposit popup being changed by the user
+        private void Handle_InvestAmountChanged(object sender, ValueEventArgs e)
+        {
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedAsset.PrincipalValue = value;
+        }
 
-        ////Handles the "Amount Purchased" field in the term deposit popup being changed by the user
-        //private void Handle_AmountChanged(object sender, ValueEventArgs e)
-        //{
-        //    float.TryParse(e.Value.ToString(), out var value);
-        //    OwnedAsset.PrincipalValue = value;
-        //}
+        private void Handle_GoalAmountChanged(object sender, ValueEventArgs e)
+        {
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedAsset.ReturnGoal = value;
+        }
     }
 }
