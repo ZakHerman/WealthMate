@@ -58,12 +58,15 @@
 
             <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
                 <syncfusion:SfChart.Series>
-                    <syncfusion:PieSeries EnableAnimation="True" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
+                    <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
                         <syncfusion:PieSeries.ColorModel>
                             <syncfusion:ChartColorModel Palette="Natural" />
                         </syncfusion:PieSeries.ColorModel>
                     </syncfusion:PieSeries>
                 </syncfusion:SfChart.Series>
+                <syncfusion:SfChart.ChartBehaviors>
+                    <syncfusion:ChartZoomPanBehavior EnableZooming="True" ZoomMode="X"></syncfusion:ChartZoomPanBehavior>
+                </syncfusion:SfChart.ChartBehaviors>
 
                 <!--The pie chart legends of categories and returns-->
                 <syncfusion:SfChart.Legend>
@@ -85,7 +88,7 @@
 
                                     <Label Grid.Column="2" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" TextColor="{DynamicResource PrimaryTextColor}"
                                            FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
-                                    
+
                                     <Label Grid.Column="3" Text="{Binding DataPoint.ReturnPercentage, StringFormat='{0:F2}%'}" TextColor="{DynamicResource PositiveTextColor}"
                                            VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="13" LineBreakMode="TailTruncation">
                                         <Label.Triggers>
@@ -107,5 +110,6 @@
                 </syncfusion:SfChart.Legend>
             </syncfusion:SfChart>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
