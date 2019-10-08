@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
+using SQLite;
 
 namespace WealthMate.Models
 {
@@ -9,7 +10,7 @@ namespace WealthMate.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private float _currentPrice;
-        private DateTime _lastTrade;                //Captures DateTime of the last trade that took place
+        private DateTime _lastTrade;
 
         [JsonProperty("price")]
         public float CurrentPrice
@@ -25,7 +26,7 @@ namespace WealthMate.Models
             }
         }
 
-        [JsonProperty("symbol")]                    //Stocks NZX symbol
+        [JsonProperty("symbol"), PrimaryKey]                    //Stocks NZX symbol
         public string Symbol { get; set; }
 
         [JsonProperty("name")]
@@ -62,9 +63,16 @@ namespace WealthMate.Models
             set => _lastTrade = value.ToLocalTime();
         }
 
+        [Ignore]
         public float DayReturn { get; set; }
+
+        [Ignore]
         public float DayReturnRate { get; set; }
+
+        [Ignore]
         public bool PositiveDayReturns { get; set; }                        //Flag indicators for view trigger purposes
+        
+        [Ignore]
         public bool NoDayReturns { get; set; }
 
         //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}

@@ -2,6 +2,8 @@
 using WealthMate.Views;
 using WealthMate.Models;
 using System;
+using System.IO;
+using WealthMate.Services;
 
 namespace WealthMate
 {
@@ -9,10 +11,16 @@ namespace WealthMate
     {
         public User User { get; }
 
+        private static LocalDatabase _database;
+
+        public static LocalDatabase Database =>
+            _database ?? (_database = new LocalDatabase(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WealthMate.db3")));
+
         public App()
         {
             User = new User();
-            InitializeDummyUserPortfolio();                 //Temporary while we can't add Assets yet
+            InitializeDummyUserPortfolio();
 
             SyncfusionLicenseProvider.RegisterLicense("MTUzNzM5QDMxMzcyZTMzMmUzMEhGM29ILzZFaUc3MGppQUdzMUlEZDJIamhjNStBUGJldmhBUlNYODRySEE9");
             InitializeComponent();
