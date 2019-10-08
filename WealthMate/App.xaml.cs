@@ -14,7 +14,7 @@ namespace WealthMate
             User = new User();
             InitializeDummyUserPortfolio();                 //Temporary while we can't add Assets yet
 
-            SyncfusionLicenseProvider.RegisterLicense("MTM5ODg3QDMxMzcyZTMyMmUzME9aQWh6eUtsMTNNdUlRd3VZVDFyNHovZ0hyY0RVQ29IY0FUQkE1Y0hZbjg9");
+            SyncfusionLicenseProvider.RegisterLicense("MTUzNzM5QDMxMzcyZTMzMmUzMEhGM29ILzZFaUc3MGppQUdzMUlEZDJIamhjNStBUGJldmhBUlNYODRySEE9");
             InitializeComponent();
 
             MainPage = new MainPage();
