@@ -10,7 +10,7 @@
              Title="Watchlist">
 
     <ContentPage.BindingContext>
-        <viewmodels:WatchListPageVM />
+        <viewmodels:WatchListViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
