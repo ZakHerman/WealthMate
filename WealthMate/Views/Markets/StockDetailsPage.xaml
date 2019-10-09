@@ -27,14 +27,7 @@
                    VerticalTextAlignment="Start" FontAttributes="Bold" FontSize="20" Grid.Column="0" Grid.Row="0" />
 
             <!--Watchlist star image details-->
-            <ImageButton Source="starunfilled.png" BackgroundColor="{DynamicResource TransparentColor}" Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" Clicked="WatchListStarClicked">
-                <ImageButton.Triggers>
-                    <!--Change to filled arrow when stock is being watched-->
-                    <DataTrigger TargetType="ImageButton" Binding="{Binding Watched}" Value="True">
-                        <Setter Property="Source" Value="starfilled.png" /> 
-                    </DataTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+            <ImageButton Source="{Binding WatchListImage}" BackgroundColor="{DynamicResource TransparentColor}" Grid.Row="0" Grid.Column="1" Margin="0,0,15,0" Command="{Binding WatchListCommand}" />
         </Grid>
     </NavigationPage.TitleView>
 
@@ -150,8 +143,8 @@
                         </chart:ChartTrackballBehavior>
                     </chart:SfChart.ChartBehaviors>
 
-                    <chart:LineSeries x:Name="StockHistoryGraph" Color="{DynamicResource AccentColor}" TrackballLabelTemplate="{StaticResource TrackballTemplate}"
-                                      XBindingPath="Date" YBindingPath="PriceClose"/>
+                    <chart:LineSeries ItemsSource="{Binding StockHistory}" Color="{DynamicResource AccentColor}" TrackballLabelTemplate="{StaticResource TrackballTemplate}"
+                                      XBindingPath="Date" YBindingPath="PriceClose" />
                 </chart:SfChart>
 
                 <!--Grid of Key Statistics of Stock-->

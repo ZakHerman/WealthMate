@@ -9,6 +9,7 @@ namespace WealthMate.Models
     public class Stock : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         private float _currentPrice;
         private DateTime _lastTrade;
 
