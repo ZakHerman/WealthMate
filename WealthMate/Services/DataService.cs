@@ -24,7 +24,10 @@ namespace WealthMate.Services
             Stocks = JsonConvert.DeserializeObject<ObservableCollection<Stock>>(content);
 
             foreach (var stock in Stocks)
+            {
                 stock.UpdateStock();
+                await App.Database.SaveStockAsync(stock);
+            }
         }
 
         // Get specific stock from stocks list in memory

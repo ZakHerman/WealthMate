@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using WealthMate.Models;
@@ -16,7 +19,7 @@ namespace WealthMate.ViewModels
 
         public Stock Stock { get; }
         public ObservableCollection<StockHistory> StockHistory { get; set; }
-        public ObservableCollection<Stock> WatchListStocks { get; set; } = ((App)Application.Current).User.WatchListStocks;
+        public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList; //= ((App)Application.Current).User.WatchListStocks;
         public bool Watched { get; set; }
         public ICommand WatchListCommand { get; }
         public string WatchListImage
@@ -35,7 +38,7 @@ namespace WealthMate.ViewModels
             stock.UpdateStock();
             LoadStockHistory();
 
-            Watched = WatchListStocks.Contains(stock);
+            Watched = WatchListStocks.Any(s => s.Symbol == Stock.Symbol);
             WatchListCommand = new Command(AddToWatchList);
             WatchListImage = Watched ? "starfilled.png" : "starunfilled.png";
         }
@@ -47,7 +50,7 @@ namespace WealthMate.ViewModels
             OnPropertyChanged(nameof(StockHistory));
         }
 
-        public void AddToWatchList()
+        public async void AddToWatchList()
         {
             Watched = !Watched;
 
@@ -55,11 +58,19 @@ namespace WealthMate.ViewModels
             {
                 WatchListImage = "starfilled.png";
                 WatchListStocks.Add(Stock);
+                await App.Database.SaveWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
             }
             else
             {
                 WatchListImage = "starunfilled.png";
-                WatchListStocks.Remove(Stock);
+                var temp = WatchListStocks.Where(s => s.Symbol == Stock.Symbol).ToList();
+
+                foreach (var remove in temp)
+                {
+                    WatchListStocks.Remove(remove);
+                }
+
+                await App.Database.DeleteWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
             }
         }
 

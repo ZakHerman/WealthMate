@@ -2,6 +2,7 @@
 using WealthMate.Views;
 using WealthMate.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using WealthMate.Services;
 
@@ -10,12 +11,12 @@ namespace WealthMate
     public partial class App
     {
         public User User { get; }
+        public static ObservableCollection<Stock> WatchList { get; set; } = new ObservableCollection<Stock>();
 
         private static LocalDatabase _database;
 
         public static LocalDatabase Database =>
-            _database ?? (_database = new LocalDatabase(Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WealthMate.db3")));
+            _database ?? (_database = new LocalDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WealthMate.db3")));
 
         public App()
         {
@@ -39,9 +40,14 @@ namespace WealthMate
             User.Portfolio.UpdatePortfolio();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
-            // Handle when your app starts
+            var watchedStocks = await Database.GetWatchListAsync();
+
+            foreach (var watchedStock in watchedStocks)
+            {
+                WatchList.Add(await Database.GetStockAsync(watchedStock.Symbol));
+            }
         }
 
         protected override void OnSleep()

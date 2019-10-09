@@ -14,7 +14,7 @@ namespace WealthMate.Views.Markets
 
         public WatchlistPage()
         {
-            BindingContext = new WatchListPageVM();
+            //BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 
