@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
 using WealthMate.Models;
@@ -9,12 +12,30 @@ namespace WealthMate.Services
     {
         private readonly SQLiteAsyncConnection _database;
 
+        public DateTime PreviousTradingDate { get; }
+
         public LocalDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Stock>().Wait();
+            _database.CreateTableAsync<StockHistory>().Wait();
             _database.CreateTableAsync<WatchedStock>().Wait();
+            PreviousTradingDate = GetPreviousTradingDate();
         }
+
+        private static DateTime GetPreviousTradingDate()
+        {
+            var previousDate = DateTime.Now;
+
+            do
+            {
+                previousDate = previousDate.AddDays(-1);
+            } while (previousDate.DayOfWeek == DayOfWeek.Saturday || previousDate.DayOfWeek == DayOfWeek.Sunday);
+
+            return previousDate.Date;
+        }
+
+        #region Stocks
 
         public Task<List<Stock>> GetStocksAsync()
         {
@@ -23,7 +44,7 @@ namespace WealthMate.Services
 
         public Task<Stock> GetStockAsync(string symbol)
         {
-            return _database.Table<Stock>().Where(i => i.Symbol == symbol).FirstOrDefaultAsync();
+            return _database.Table<Stock>().Where(s => s.Symbol == symbol).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveStockAsync(Stock stock)
@@ -35,6 +56,10 @@ namespace WealthMate.Services
         {
             return _database.DeleteAsync(stock);
         }
+
+        #endregion
+
+        #region WatchList
 
         public Task<List<WatchedStock>> GetWatchListAsync()
         {
@@ -50,5 +75,40 @@ namespace WealthMate.Services
         {
             return _database.DeleteAsync(watchStock);
         }
+
+        #endregion
+
+        #region Stock History
+
+        public async Task<List<StockHistory>> GetStockHistoryAsync(string symbol)
+        {
+            var stockHistory = _database.Table<StockHistory>().Where(s => s.Symbol == symbol).ToListAsync();
+
+            // Fetch stock history from remote database if local stock history table is empty
+            if (stockHistory.Result.Count == 0)
+                return await DataService.FetchStockHistoryAsync(symbol);
+
+            var lastUpdate = stockHistory.Result.Max(s => s.Date);
+
+            // Get latest stock history additions
+            if (lastUpdate < PreviousTradingDate)
+                await DataService.FetchStockHistoryAsync(symbol, lastUpdate);
+
+            Debug.WriteLine($"Local database ({symbol}). Results: {stockHistory.Result.Count}, last updated at: {lastUpdate:yyyy-MM-dd}, date to check: {PreviousTradingDate:yyyy-MM-dd}");
+
+            return await stockHistory;
+        }
+
+        public Task<int> SaveStockHistoryAsync(IEnumerable<StockHistory> stockHistory)
+        {
+            return _database.InsertAllAsync(stockHistory, typeof(StockHistory));
+        }
+
+        public Task<int> DeleteStockHistoryAsync(StockHistory stockHistory)
+        {
+            return _database.DeleteAsync(stockHistory);
+        }
+
+        #endregion
     }
 }

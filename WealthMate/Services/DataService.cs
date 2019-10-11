@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -9,8 +12,8 @@ namespace WealthMate.Services
 {
     public static class DataService
     {
-        public static readonly HttpClient Client = new HttpClient();
-        public const string BaseUrl = "https://wealthmate.azurewebsites.net/api/";
+        private static readonly HttpClient Client = new HttpClient();
+        private const string BaseUrl = "https://wealthmate.azurewebsites.net/api/";
 
         public static ObservableCollection<Stock> Stocks { get; private set; }
         public static ObservableCollection<TermDeposit> TermDeposits { get; private set; }
@@ -45,11 +48,17 @@ namespace WealthMate.Services
         }
 
         // Get request for stock history data webservice
-        public static async Task FetchStockHistoryAsync(string symbol)
+        public static async Task<List<StockHistory>> FetchStockHistoryAsync(string symbol, DateTime dateFrom = new DateTime())
         {
-            var res = await Client.GetAsync(BaseUrl + "getstockhistory" + "?stock=" + symbol);
+            var res = await Client.GetAsync($"{BaseUrl}getstockhistory?stock={symbol}&date_from={dateFrom:yyyy-MM-dd}");
             var content = await res.Content.ReadAsStringAsync();
-            StockHistory = JsonConvert.DeserializeObject<ObservableCollection<StockHistory>>(content);
+
+            var stockHistory = JsonConvert.DeserializeObject<List<StockHistory>>(content);
+            await App.Database.SaveStockHistoryAsync(stockHistory);
+
+            Debug.WriteLine($"Remote database ({symbol}). Results: {stockHistory.Count}, date to check: {App.Database.PreviousTradingDate:yyyy-MM-dd}");
+
+            return stockHistory;
         }
     }
 }

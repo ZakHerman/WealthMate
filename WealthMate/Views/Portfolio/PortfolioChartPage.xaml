@@ -70,7 +70,7 @@
                 <syncfusion:SfChart.Legend>
                     <syncfusion:ChartLegend OverflowMode="Wrap" ItemMargin="20,0">
                         <syncfusion:ChartLegend.LabelStyle>
-                            <syncfusion:ChartLegendLabelStyle TextColor="{DynamicResource PrimaryTextColor}" FontSize="14"/>
+                            <syncfusion:ChartLegendLabelStyle TextColor="{DynamicResource PrimaryTextColor}" FontSize="14" />
                         </syncfusion:ChartLegend.LabelStyle>
                     </syncfusion:ChartLegend>
                 </syncfusion:SfChart.Legend>
