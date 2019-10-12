@@ -41,9 +41,10 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                    <Label Text="{Binding PriceOpen, StringFormat='Open: {0:C}'}" Grid.Row="1" FontSize="12" VerticalTextAlignment="Center" />
-                    <Label Text="{Binding PriceClose, StringFormat='Close: {0:C}'}" Grid.Row="2" FontSize="12" VerticalTextAlignment="Center" />
+                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" FontSize="12" FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Label Text="{Binding PriceOpen, StringFormat='Open: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" FontSize="12" VerticalTextAlignment="Center" />
+                    <Label Text="{Binding PriceClose, StringFormat='Close: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" FontSize="12" VerticalTextAlignment="Center" />
                 </Grid>
             </DataTemplate>
 
@@ -150,12 +151,16 @@
                         
                         <chart:ChartTrackballBehavior>
                             <chart:ChartTrackballBehavior.LabelStyle>
-                                <chart:ChartTrackballLabelStyle BorderColor="{DynamicResource AccentColor}" BackgroundColor="#d1F9F9F9" BorderThickness="2"/>
+                                <chart:ChartTrackballLabelStyle BorderColor="{DynamicResource AccentColor}" BackgroundColor="{DynamicResource TrackBallLabelBackgroundColor}" BorderThickness="2" />
                             </chart:ChartTrackballBehavior.LabelStyle>
 
                             <chart:ChartTrackballBehavior.MarkerStyle>
-                                <chart:ChartTrackballMarkerStyle Color="Black"/>
+                                <chart:ChartTrackballMarkerStyle Color="{DynamicResource AccentColor}" BorderColor="Black" Width="8" Height="8" />
                             </chart:ChartTrackballBehavior.MarkerStyle>
+
+                            <chart:ChartTrackballBehavior.LineStyle>
+                                <chart:ChartLineStyle StrokeColor="{DynamicResource TrackBallColor}" StrokeWidth="2" />
+                            </chart:ChartTrackballBehavior.LineStyle>
                         </chart:ChartTrackballBehavior>
                     </chart:SfChart.ChartBehaviors>
 
