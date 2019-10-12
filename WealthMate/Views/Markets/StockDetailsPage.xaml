@@ -120,12 +120,28 @@
                 <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
                     <!--X axis representing the date of stock history-->
                     <chart:SfChart.PrimaryAxis>
-                        <chart:DateTimeAxis />
+                        <chart:DateTimeAxis>
+                            <chart:DateTimeAxis.Title>
+                                <chart:ChartAxisTitle Text="Date" TextColor="{DynamicResource PrimaryTextColor}" Margin="0,6,0,0" FontAttributes="Bold" />
+                            </chart:DateTimeAxis.Title>
+
+                            <chart:DateTimeAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
+                            </chart:DateTimeAxis.LabelStyle>
+                        </chart:DateTimeAxis>
                     </chart:SfChart.PrimaryAxis>
      
                     <!--Y axis representing the closing price of stock history-->
                     <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis/>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="Closing Price" TextColor="{DynamicResource PrimaryTextColor}" Margin="2" FontAttributes="Bold" />
+                            </chart:NumericalAxis.Title>
+
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
+                            </chart:NumericalAxis.LabelStyle>
+                        </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
 
                     <chart:SfChart.ChartBehaviors>
@@ -134,7 +150,7 @@
                         
                         <chart:ChartTrackballBehavior>
                             <chart:ChartTrackballBehavior.LabelStyle>
-                                <chart:ChartTrackballLabelStyle BorderColor="#0061A2" BackgroundColor="#d1F9F9F9" BorderThickness="2"/>
+                                <chart:ChartTrackballLabelStyle BorderColor="{DynamicResource AccentColor}" BackgroundColor="#d1F9F9F9" BorderThickness="2"/>
                             </chart:ChartTrackballBehavior.LabelStyle>
 
                             <chart:ChartTrackballBehavior.MarkerStyle>
@@ -148,7 +164,7 @@
                 </chart:SfChart>
 
                 <!--Grid of Key Statistics of Stock-->
-                <Grid Margin="25, 0" ColumnSpacing="15" RowSpacing="0">
+                <Grid Margin="15,0" ColumnSpacing="0" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -157,6 +173,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
+                    <!--Using a 2:1 ratio for stock statistic label title and value-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30*" />
                         <ColumnDefinition Width="20*" />
@@ -171,19 +188,19 @@
 
                     <!--Stock Statistic Details-->
                     <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                     <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Start" />
                     <Label Text="{Binding Stock.PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="3" HorizontalTextAlignment="End" />
                     <Label Text="Day Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                     <Label Text="Day High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Start" />
                     <Label Text="{Binding Stock.DayHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="3" HorizontalTextAlignment="End" />
                     <Label Text="52 Week Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                     <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
                     <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
                     <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" />
+                    <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                     <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
                     <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
                 </Grid>

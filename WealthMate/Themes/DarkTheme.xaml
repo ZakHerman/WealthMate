@@ -4,7 +4,7 @@
                     x:Class="WealthMate.Themes.DarkTheme">
 
     <Color x:Key="PrimaryColor">#201f24</Color> <!--Navigation bar colour-->
-    <Color x:Key="SecondaryColor">#2b2a2f</Color> <!--Grid background colour-->
+    <Color x:Key="SecondaryColor">#2b2a2f</Color> <!--List view item background colour-->
     <Color x:Key="TertiaryColor">#201f24</Color> <!--List view background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
     <Color x:Key="PrimaryTextColor">White</Color> <!--Data text colour-->

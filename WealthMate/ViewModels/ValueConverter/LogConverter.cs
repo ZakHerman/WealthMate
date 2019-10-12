@@ -10,10 +10,14 @@ namespace WealthMate.ViewModels.ValueConverter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             long.TryParse(value.ToString(), out var val);
+
+            // If unable to parse value return 0
+            if (val <= 0)
+                return 0.ToString("N2");
+
             var mag = (long)(Math.Floor(Math.Log10(val)) / 3);
             var divisor = Math.Pow(10, mag * 3);
             var shortNumber = val / divisor;
-
             string suffix;
 
             switch(mag)
@@ -42,7 +46,5 @@ namespace WealthMate.ViewModels.ValueConverter
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
