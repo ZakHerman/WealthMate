@@ -31,4 +31,7 @@
     <!--Line graph trackball colour-->
     <Color x:Key="TrackBallColor">Black</Color>
     <Color x:Key="TrackBallLabelBackgroundColor">#d1F9F9F9</Color>
+
+    <!--Toast notification colour-->
+    <Color x:Key="ToastNotificationBackgroundColor">LightGray</Color>
 </ResourceDictionary>

@@ -23,6 +23,7 @@ namespace WealthMate.Services
             PreviousTradingDate = GetPreviousTradingDate();
         }
 
+        // TODO: Handle different timezones
         private static DateTime GetPreviousTradingDate()
         {
             var previousDate = DateTime.Now;
@@ -88,7 +89,7 @@ namespace WealthMate.Services
             if (stockHistory.Result.Count == 0)
                 return await DataService.FetchStockHistoryAsync(symbol);
 
-            var lastUpdate = stockHistory.Result.Max(s => s.Date);
+            var lastUpdate = stockHistory.Result.Max(s => s.Date).ToLocalTime();
 
             // Get latest stock history additions
             if (lastUpdate < PreviousTradingDate)

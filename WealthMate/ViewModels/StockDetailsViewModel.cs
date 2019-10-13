@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.Toast;
 using WealthMate.Models;
 using Xamarin.Forms;
 
@@ -55,6 +57,14 @@ namespace WealthMate.ViewModels
                 WatchListImage = "starfilled.png";
                 WatchListStocks.Add(Stock);
                 await App.Database.SaveWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
+
+                Application.Current.Resources.TryGetValue("ToastNotificationBackgroundColor", out var bgColor);
+                Application.Current.Resources.TryGetValue("PrimaryTextColor", out var textColor);
+
+                if (bgColor != null && textColor != null)
+                    CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", ((Color)bgColor).ToHex(), ((Color)textColor).ToHex());
+                else
+                    CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", "#CC212121", "#FFFFFF");
             }
             else
             {

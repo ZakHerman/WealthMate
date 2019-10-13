@@ -11,12 +11,12 @@
     <ContentPage.Content>
         <StackLayout>
             <!--Searchbar, placeholder text and on text change functionality-->
-            <SearchBar x:Name="SearchBar" Placeholder ="Search Stocks" TextChanged="OnFilterTextChanged" />
+            <SearchBar x:Name="SearchBar" Placeholder="Search Stocks" TextChanged="OnFilterTextChanged" />
 
             <syncfusion:SfListView x:Name="StockList" BackgroundColor="{DynamicResource TertiaryColor}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SecondaryColor}" Padding="12,0">
+                        <Grid BackgroundColor="{DynamicResource SecondaryColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="32" />
                                 <ColumnDefinition Width="*" />
@@ -24,8 +24,8 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="6*" />
+                                <RowDefinition Height="4*" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding Symbol}" />

@@ -11,7 +11,6 @@ namespace WealthMate.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         private float _currentPrice;
-        private DateTime _lastTrade;
 
         [JsonProperty("price")]
         public float CurrentPrice
@@ -58,11 +57,7 @@ namespace WealthMate.Models
         public int Volume { get; set; }
 
         [JsonProperty("last_trade_time")]
-        public DateTime LastTrade                                   //DateTime of last trade transaction
-        {
-            get => _lastTrade;
-            set => _lastTrade = value.ToLocalTime();
-        }
+        public DateTime LastTrade { get; set; }
 
         [Ignore]
         public float DayReturn { get; set; }
