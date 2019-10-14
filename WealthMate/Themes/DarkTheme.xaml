@@ -33,5 +33,6 @@
     <Color x:Key="TrackBallLabelBackgroundColor">#D1373737</Color>
 
     <!--Toast notification colour-->
-    <Color x:Key="ToastNotificationBackgroundColor">LightGray</Color>
+    <Color x:Key="ToastNotificationBackgroundColor">#B3AAAAAA</Color>
+    <Color x:Key="ToastNotificationTextColor">Black</Color>
 </ResourceDictionary>

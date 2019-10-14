@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -42,6 +41,7 @@ namespace WealthMate.ViewModels
             WatchListImage = Watched ? "starfilled.png" : "starunfilled.png";
         }
 
+        // TODO: Store stock history in a dictionary to prevent multiple database lookups
         private async void LoadStockHistory()
         {
             StockHistory = new ObservableCollection<StockHistory>(await App.Database.GetStockHistoryAsync(Stock.Symbol));
@@ -59,7 +59,7 @@ namespace WealthMate.ViewModels
                 await App.Database.SaveWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
 
                 Application.Current.Resources.TryGetValue("ToastNotificationBackgroundColor", out var bgColor);
-                Application.Current.Resources.TryGetValue("PrimaryTextColor", out var textColor);
+                Application.Current.Resources.TryGetValue("ToastNotificationTextColor", out var textColor);
 
                 if (bgColor != null && textColor != null)
                     CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", ((Color)bgColor).ToHex(), ((Color)textColor).ToHex());
