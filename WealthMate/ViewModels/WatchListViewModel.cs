@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using WealthMate.Models;
-using Xamarin.Forms;
 
 namespace WealthMate.ViewModels
 {
     public class WatchListViewModel
     {
-        public ObservableCollection<Stock> WatchListStocks { get; set; }
+        public ObservableCollection<Stock> WatchListStocks { get; }
         public List<string> criteria { get; set; }
 
         public WatchListViewModel()
         {
-            WatchListStocks = new ObservableCollection<Stock>();
-            setList("Company Name");
             WatchListStocks = App.WatchList;
 
             foreach (var stock in WatchListStocks)

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,9 +15,10 @@ namespace WealthMate.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _watchListImage;
+        private static readonly Dictionary<string, List<StockHistory>> StockHistoryDictionary = new Dictionary<string, List<StockHistory>>();
 
         public Stock Stock { get; }
-        public ObservableCollection<StockHistory> StockHistory { get; set; }
+        public List<StockHistory> StockHistory { get; set; }
         public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList;
         public bool Watched { get; set; }
         public ICommand WatchListCommand { get; }
@@ -41,10 +43,20 @@ namespace WealthMate.ViewModels
             WatchListImage = Watched ? "starfilled.png" : "starunfilled.png";
         }
 
-        // TODO: Store stock history in a dictionary to prevent multiple database lookups
+        // Check if stock history is stored in memory first otherwise check database
         private async void LoadStockHistory()
         {
-            StockHistory = new ObservableCollection<StockHistory>(await App.Database.GetStockHistoryAsync(Stock.Symbol));
+            if (StockHistoryDictionary.TryGetValue(Stock.Symbol, out var history))
+            {
+                StockHistory = history;
+            }
+            else
+            {
+                history = await App.Database.GetStockHistoryAsync(Stock.Symbol);
+                StockHistoryDictionary.Add(Stock.Symbol, history);
+                StockHistory = history;
+            }
+
             OnPropertyChanged(nameof(StockHistory));
         }
 
@@ -58,13 +70,7 @@ namespace WealthMate.ViewModels
                 WatchListStocks.Add(Stock);
                 await App.Database.SaveWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
 
-                Application.Current.Resources.TryGetValue("ToastNotificationBackgroundColor", out var bgColor);
-                Application.Current.Resources.TryGetValue("ToastNotificationTextColor", out var textColor);
-
-                if (bgColor != null && textColor != null)
-                    CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", ((Color)bgColor).ToHex(), ((Color)textColor).ToHex());
-                else
-                    CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", "#CC212121", "#FFFFFF");
+                DisplayNotification();
             }
             else
             {
@@ -78,6 +84,18 @@ namespace WealthMate.ViewModels
 
                 await App.Database.DeleteWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
             }
+        }
+
+        // Display toast notification when stock added to watchlist
+        private void DisplayNotification()
+        {
+            Application.Current.Resources.TryGetValue("ToastNotificationBackgroundColor", out var backgroundResource);
+            Application.Current.Resources.TryGetValue("ToastNotificationTextColor", out var textResource);
+
+            var backgroundColor = backgroundResource != null ? ((Color)backgroundResource).ToHex() : Color.FromHex("#CC212121").ToString();
+            var textColor = textResource != null ? ((Color)textResource).ToHex() : Color.FromHex("#FFFFFF").ToString();
+
+            CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", backgroundColor, textColor);
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

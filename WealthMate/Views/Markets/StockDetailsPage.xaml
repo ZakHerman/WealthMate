@@ -48,7 +48,7 @@
                 </Grid>
             </DataTemplate>
 
-            <valueConverter:LogConverter x:Key="ConvertLargeNumber" />
+            <valueConverter:NumberAbbreviationConverter x:Key="ConvertLargeNumber" />
             <valueConverter:UtcToLocalDateTimeConverter x:Key="ConvertToLocalTime" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -178,7 +178,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <!--Using a 2:1 ratio for stock statistic label title and value-->
+                <!--Using a 3:2 ratio for stock statistic label title width and value width-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="20*" />
@@ -205,9 +205,11 @@
                 <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
                 <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
                 <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
+                <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Int'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                 <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
+                <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Float'}" TextColor="{DynamicResource PrimaryTextColor}"
+                       Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
             </Grid>
           
             <!--Add to portfolio button-->
