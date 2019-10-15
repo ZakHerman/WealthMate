@@ -18,8 +18,8 @@
             <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
 
-            <!--Picker for selecting type of pie chart to view-->
-            <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="140" TextColor="{DynamicResource PrimaryTextColor}"
+            <!--Picker for selecting attribute to sort list by-->
+            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="140" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedCriteria}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

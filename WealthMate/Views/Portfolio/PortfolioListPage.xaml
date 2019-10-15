@@ -13,7 +13,20 @@
             <!--Searchbar, placeholder text and on text change functionality-->
                 <SearchBar x:Name="SearchBar" Placeholder ="Search Portfolio" TextChanged="OnFilterTextChanged" />
 
-                <syncfusion:SfListView x:Name="List" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" BackgroundColor="{DynamicResource TertiaryColor}"
+            <!--Picker for selecting attribute to sort list by-->
+            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="150" TextColor="{DynamicResource PrimaryTextColor}"
+                    SelectedItem="{Binding SelectedCriteria}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Company Name</x:String>
+                        <x:String>Day Return Rate</x:String>
+                        <x:String>Current Value</x:String>
+                        <x:String>Purchase Date</x:String>
+                        <x:String>Total Return Rate</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <syncfusion:SfListView x:Name="List" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" BackgroundColor="{DynamicResource TertiaryColor}"
                                        DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>

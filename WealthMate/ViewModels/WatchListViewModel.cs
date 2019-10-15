@@ -10,28 +10,18 @@ namespace WealthMate.ViewModels
     public class WatchListViewModel
     {
         public ObservableCollection<Stock> WatchListStocks { get; set; }
-        public List<string> criteria { get; set; }
 
         public WatchListViewModel()
         {
             WatchListStocks = new ObservableCollection<Stock>();
-            setList("Company Name");
             WatchListStocks = App.WatchList;
 
             foreach (var stock in WatchListStocks)
                 stock.UpdateStock();
         }
 
-        public List<string> getSortCriteria()
-        {
-            var criteria = new List<string>()
-            {
-                "Company Name", "Current Price", "Day Return Rate"
-            };
-
-            return criteria;
-        }
-
+        //attribute for observing the selected item in the picker
+        //calls SetList() which sorts list according to picker value
         private string _selectedCriteria;
         public string SelectedCriteria
         {
@@ -47,9 +37,9 @@ namespace WealthMate.ViewModels
             }
         }
 
+        // sorts WatchListStocks list according to picker value
         private void setList(string picker)
         {
-            //can clear and make new list if need be
              switch (picker)
             {
                 case "Company Name":
@@ -59,11 +49,14 @@ namespace WealthMate.ViewModels
                     sortList(WatchListStocks.OrderByDescending(stock => stock.CurrentPrice));
                     break;
                 case "Day Return Rate":
-                    sortList(WatchListStocks.OrderByDescending(t => t.DayReturnRate));
+                    sortList(WatchListStocks.OrderByDescending(stock => stock.DayReturnRate));
                     break;
             }
         }
 
+
+        //clears WatchListStocks list and re-adds assets to collection
+        //this is required due to the return type of OrderBy and OrderByDescending methods
         private void sortList(IOrderedEnumerable<Stock> linqResults)
         {
             var observableC = new ObservableCollection<Stock>(linqResults);
