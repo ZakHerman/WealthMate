@@ -53,5 +53,11 @@ namespace WealthMate.Views.Markets
             float.TryParse(e.Value.ToString(), out var value);
             OwnedStock.PurchasedPrice = value;
         }
+
+        public void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
+        {
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedStock.ReturnGoal = value;
+        }
     }
 }

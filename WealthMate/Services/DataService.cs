@@ -17,7 +17,6 @@ namespace WealthMate.Services
 
         public static ObservableCollection<Stock> Stocks { get; private set; }
         public static ObservableCollection<TermDeposit> TermDeposits { get; private set; }
-        public static ObservableCollection<StockHistory> StockHistory { get; private set; }
 
         // Get request to stocks data webservice
         public static async Task FetchStocksAsync()

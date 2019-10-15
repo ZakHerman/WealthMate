@@ -157,6 +157,7 @@
                     <sfPopup:PopupView HeaderTitle="Edit Owned Asset Details" ShowFooter="false">
                         <sfPopup:PopupView.ContentTemplate>
                             <DataTemplate>
+                                <ScrollView>
                                 <StackLayout WidthRequest="300" HeightRequest="450">
                                     <Label Text="Edit interest rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
@@ -167,8 +168,12 @@
                                     <Label Text="Edit regular payments:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
 
+                                    <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
+                                    <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
+
                                     <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
+                                </ScrollView>
                             </DataTemplate>
                         </sfPopup:PopupView.ContentTemplate>
                     </sfPopup:PopupView>
