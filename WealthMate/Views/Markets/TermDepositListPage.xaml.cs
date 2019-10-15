@@ -84,7 +84,7 @@ namespace WealthMate.Views.Markets
             else
             {
                 OwnedAsset.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedAsset);
+                ((App)Application.Current).User.Portfolio.AddAsset(OwnedAsset);
                 AddTDForm.IsOpen = false;
             }
         }
@@ -123,7 +123,6 @@ namespace WealthMate.Views.Markets
                 default:
                     OwnedAsset.CompoundRate = 0;
                     break;
-
             }
         }
 
