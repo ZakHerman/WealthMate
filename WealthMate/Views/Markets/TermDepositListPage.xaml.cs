@@ -13,8 +13,6 @@ namespace WealthMate.Views.Markets
     public partial class TermDepositListPage
     {
         private SearchBar _searchBar;
-
-        private List<string> compoundRates { get; set; }
         private OwnedAsset OwnedAsset { get; set; }
         private TermDeposit TermDeposit { get; set; }
 
@@ -24,12 +22,8 @@ namespace WealthMate.Views.Markets
         {
             LoadTermDeposits();
             InitializeComponent();
-            compoundRates = new List<string>();
-            compoundRates.Add("Annually");
-            compoundRates.Add("Semi-Annually");
-            compoundRates.Add("Quarterly");
-            compoundRates.Add("Monthly");
-            compoundRates.Add("Never");
+            
+            
         }
 
         private async void LoadTermDeposits()
@@ -73,12 +67,8 @@ namespace WealthMate.Views.Markets
         private void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
             TermDeposit = (TermDeposit)e.ItemData;
-            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);
-            var picker = new Picker { Title = "Compound RateA: ", TitleColor = Color.Red };
-            //picker.ItemsSource = compoundRates;
-            
+            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);  
             comboBox = new SfComboBox();
-            comboBox.ComboBoxSource = compoundRates;
 
             AddTDForm.IsOpen = true;
 
