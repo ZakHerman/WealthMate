@@ -1,61 +1,24 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using Syncfusion.SfNumericTextBox.XForms;
-using WealthMate.Services;
+using WealthMate.ViewModels;
 
 namespace WealthMate.Views.Markets
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StockDetailsPage
     {
-        public Stock Stock { get; }
-        public ObservableCollection<Stock> WatchListStocks { get; set; }
         public OwnedStock OwnedStock { get; set; }
-        public bool Watched { get; set; }
 
-        //Displays details of selected stock
         public StockDetailsPage(Stock stock)
         {
-            Stock = stock;
             OwnedStock = new OwnedStock{Stock = stock, PurchaseDate = DateTime.Now, AssetName = stock.CompanyName};
-            LoadStockHistory();
-            stock.UpdateStock();
 
-            //Takes users watched list of stocks
-            WatchListStocks = ((App)Application.Current).User.WatchListStocks;
-            Watched = WatchListStocks.Contains(Stock);
+            BindingContext = new StockDetailsViewModel(stock);
 
             InitializeComponent();
-
-            BindingContext = this;
-        }
-
-        private async void LoadStockHistory()
-        {
-            await DataService.FetchStockHistoryAsync(Stock.Symbol);
-
-            StockHistoryGraph.ItemsSource = DataService.StockHistory;
-        }
-
-        private void WatchListStarClicked(object sender, EventArgs e)
-        {
-            Watched = WatchListStocks.Contains(Stock);
-
-            if (Watched)
-            {
-                //Removes stock and empties star when user no longer wants to watch
-                WatchListStocks.Remove(Stock);
-                ((ImageButton)sender).Source = "starunfilled.png";
-            }
-            else
-            {
-                //Adds stock and fills star when user wants to watch stock
-                WatchListStocks.Add(Stock);
-                ((ImageButton)sender).Source = "starfilled.png";
-            }
         }
 
         //Asks for details of shares purchased
@@ -89,6 +52,12 @@ namespace WealthMate.Views.Markets
         {
             float.TryParse(e.Value.ToString(), out var value);
             OwnedStock.PurchasedPrice = value;
+        }
+
+        public void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
+        {
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedStock.ReturnGoal = value;
         }
     }
 }

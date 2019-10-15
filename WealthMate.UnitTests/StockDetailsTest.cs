@@ -28,8 +28,7 @@ namespace WealthMate.UnitTests
         {
             Assert.IsNull(_testCollection);
 
-            await DataService.FetchStockHistoryAsync("AIA.NZ");
-            _testCollection = DataService.StockHistory;
+            _testCollection = new ObservableCollection<StockHistory>(await App.Database.GetStockHistoryAsync("AIA.NZ"));
 
             Assert.IsNotNull(_testCollection);
 

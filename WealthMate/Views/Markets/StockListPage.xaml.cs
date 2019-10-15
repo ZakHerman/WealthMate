@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WealthMate.Services;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WealthMate.Views.Markets
 {
@@ -11,9 +13,11 @@ namespace WealthMate.Views.Markets
     public partial class StockListPage
     {
         private SearchBar _searchBar;
+        public ObservableCollection<Stock> StockList { get; set; }
 
         public StockListPage()
         {
+            StockList = new ObservableCollection<Stock>();
             LoadStocks();
             InitializeComponent();
         }
@@ -21,7 +25,9 @@ namespace WealthMate.Views.Markets
         private async void LoadStocks()
         {
             await DataService.FetchStocksAsync();
-            StockList.ItemsSource = DataService.Stocks;
+            StockList = DataService.Stocks;
+            StockListView.ItemsSource = StockList;
+            //           StockList.ItemsSource = DataService.Stocks;
         }
 
         // Event handler for watchlist stock being pressed
@@ -34,7 +40,7 @@ namespace WealthMate.Views.Markets
 
             // Push stock details page on top of stack
             await Navigation.PushAsync(new StockDetailsPage(selected));
-  
+
             ((SfListView)sender).SelectedItem = null;
         }
 
@@ -47,10 +53,10 @@ namespace WealthMate.Views.Markets
         {
             _searchBar = (sender as SearchBar); //set sender to SearchBar
 
-            if (StockList.DataSource != null)
+            if (StockListView.DataSource != null)
             {
-                StockList.DataSource.Filter = FilterStocks; //filters the data source
-                StockList.DataSource.RefreshFilter(); // refreshes the view
+                StockListView.DataSource.Filter = FilterStocks; //filters the data source
+                StockListView.DataSource.RefreshFilter(); // refreshes the view
             }
         }
 
@@ -68,6 +74,36 @@ namespace WealthMate.Views.Markets
 
             return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
                                           || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
+        }
+
+        //clears StockList list and re-adds assets to collection
+        //this is required due to the return type of OrderBy and OrderByDescending methods
+        private void sortList(IOrderedEnumerable<Stock> linqResults)
+        {
+            var observableC = new ObservableCollection<Stock>(linqResults);
+            StockList.Clear();
+            foreach (Stock stock in observableC)
+            {
+                StockList.Add(stock);
+            }
+        }
+
+        // sorts StockList list according to picker value upon picker index value changing
+        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            var picker = sender as Picker;
+            if (picker.SelectedIndex == 0)
+            {
+                sortList(StockList.OrderBy(stock => stock.CompanyName));
+            }
+            else if (picker.SelectedIndex == 1)
+            {
+                sortList(StockList.OrderByDescending(stock => stock.CurrentPrice));
+            }
+            else if (picker.SelectedIndex == 2)
+            {
+                sortList(StockList.OrderByDescending(stock => stock.DayReturnRate));
+            }
         }
     }
 }

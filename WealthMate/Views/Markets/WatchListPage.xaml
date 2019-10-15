@@ -10,13 +10,25 @@
              Title="Watchlist">
 
     <ContentPage.BindingContext>
-        <viewmodels:WatchListPageVM />
+        <viewmodels:WatchListViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <StackLayout>
             <!--Searchbar, placeholder text and on text change functionality-->
             <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
+
+            <!--Picker for selecting attribute to sort list by-->
+            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="140" TextColor="{DynamicResource PrimaryTextColor}"
+                    SelectedItem="{Binding SelectedCriteria}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Company Name</x:String>
+                        <x:String>Day Return Rate</x:String>
+                        <x:String>Current Price</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
             <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" BackgroundColor="{DynamicResource TertiaryColor}" AutoFitMode="None"

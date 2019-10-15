@@ -3,20 +3,36 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="WealthMate.Themes.AndroidTheme">
 
+    <!--Layout colour-->
     <Color x:Key="PrimaryColor">#2196F3</Color>
     <Color x:Key="SecondaryColor">White</Color>
     <Color x:Key="TertiaryColor">White</Color>
     <Color x:Key="AccentColor">#2e95b9</Color>
+
+    <!--Text colour-->
     <Color x:Key="PrimaryTextColor">Black</Color>
     <Color x:Key="SecondaryTextColor">Gray</Color>
     <Color x:Key="TertiaryTextColor">White</Color>
+
+    <!--Price indicator colour-->
     <Color x:Key="PositiveTextColor">ForestGreen</Color>
     <Color x:Key="PositiveBackgroundColor">#8133C096</Color>
     <Color x:Key="NegativeTextColor">Red</Color>
     <Color x:Key="NegativeBackgroundColor">Red</Color>
     <Color x:Key="NeutralTextColor">Black</Color>
     <Color x:Key="NeutralBackgroundColor">Gray</Color>
+
+    <!--Tabbed paged colour-->
     <Color x:Key="SelectedColor">White</Color>
     <Color x:Key="UnselectedColor">#66FFFFFF</Color>
+
     <Color x:Key="TransparentColor">Transparent</Color>
+
+    <!--Line graph trackball colour-->
+    <Color x:Key="TrackBallColor">Black</Color>
+    <Color x:Key="TrackBallLabelBackgroundColor">#d1F9F9F9</Color>
+
+    <!--Toast notification colour-->
+    <Color x:Key="ToastNotificationBackgroundColor">#CC212121</Color>
+    <Color x:Key="ToastNotificationTextColor">White</Color>
 </ResourceDictionary>
