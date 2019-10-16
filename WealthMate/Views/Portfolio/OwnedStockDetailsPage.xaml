@@ -116,7 +116,7 @@
 
                 <Label Text="Return Goal:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
                 
-                <!--Grid in order to stack progress label on top of progress ba -->
+                <!--Grid in order to stack progress label on top of progress bar -->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />

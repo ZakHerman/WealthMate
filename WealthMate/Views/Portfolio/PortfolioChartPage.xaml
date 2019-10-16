@@ -4,13 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioChartPage"
              Title="Pie Chart"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -56,7 +58,7 @@
             <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
 
-            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
+            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}" WidthRequest="500" HeightRequest="400">
                 <syncfusion:SfChart.Series>
                     <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
                                           EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">
@@ -75,6 +77,38 @@
                     </syncfusion:ChartLegend>
                 </syncfusion:SfChart.Legend>
             </syncfusion:SfChart>
+
+            <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
+
+            <!--Grid in order to stack progress label on top of progress bar -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedStock.TotalReturn}" Maximum="{Binding OwnedStock.ReturnGoal}" Margin="30, 0"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding CurrentPortfolio.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
+            </Grid>
+
+            <!--Grid that adds the minimum value and maximum value labels to the progress bar-->
+            <Grid Margin="30, 0, 30, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="$0.00" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding CurrentPortfolio.ReturnGoal, StringFormat='{0:C}'}" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="End"/>
+            </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

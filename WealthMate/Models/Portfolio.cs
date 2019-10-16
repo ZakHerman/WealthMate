@@ -11,14 +11,20 @@ namespace WealthMate.Models
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
         public float ReturnGoal { get; set; }
-        public float ReturnGoalPercentage { get; set; }
-        public float ReturnGoalCurrentRate { get; set; }
-        public bool ReturnGoalComplete { get; set; }
+        public float ReturnGoalProgress { get; set; }
         public bool PositiveTotal { get; set; }             //Flag for view trigger purposes
 
         public Portfolio()
         {
             OwnedAssets = new ObservableCollection<OwnedAsset>();
+            ReturnGoal = 0;
+            UpdatePortfolio();
+        }
+
+        public Portfolio(float returnGoal)
+        {
+            OwnedAssets = new ObservableCollection<OwnedAsset>();
+            ReturnGoal = returnGoal;
             UpdatePortfolio();
         }
 
@@ -38,12 +44,9 @@ namespace WealthMate.Models
         {
             CalculateUpdatedPortfolioTotals();
             CalculateTotalReturn();
-            UpdateReturnGoal();
-        }
 
-        private void UpdateReturnGoal()
-        {
-            //Iterate through each asset in portfolio's return goal
+            if(ReturnGoal != 0)
+                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;       //Updates how close the return value is to reaching its return goal
         }
 
         private void CalculateTotalReturn()
