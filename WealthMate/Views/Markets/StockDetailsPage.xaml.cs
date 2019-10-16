@@ -37,7 +37,7 @@ namespace WealthMate.Views.Markets
             else
             {
                 OwnedStock.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedStock);
+                ((App)Application.Current).User.Portfolio.AddAsset(OwnedStock);
                 StockPortfolioForm.IsOpen = false;
             }
         }
