@@ -18,15 +18,17 @@ namespace WealthMate
         public static LocalDatabase Database =>
             _database ?? (_database = new LocalDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WealthMate.db3")));
 
-        public App()
+        public readonly IThemeChanger ThemeChanger;
+
+        public App(IThemeChanger themeChanger)
         {
             User = new User();
-            InitializeDummyUserPortfolio();
-            InitializeDummyUserPortfolio();
+            //InitializeDummyUserPortfolio();
 
             SyncfusionLicenseProvider.RegisterLicense("MTUzNzM5QDMxMzcyZTMzMmUzMEhGM29ILzZFaUc3MGppQUdzMUlEZDJIamhjNStBUGJldmhBUlNYODRySEE9");
             InitializeComponent();
 
+            ThemeChanger = themeChanger;
             MainPage = new MainPage();
         }
 
