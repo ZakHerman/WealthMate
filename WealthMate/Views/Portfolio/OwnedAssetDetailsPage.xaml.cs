@@ -14,6 +14,7 @@ namespace WealthMate.Views.Portfolio
         private SfNumericTextBox editInterestRate;          //Text box for editing details.
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
+        private SfNumericTextBox editReturnGoal;
 
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
@@ -30,6 +31,9 @@ namespace WealthMate.Views.Portfolio
 
             editRegPayments = new SfNumericTextBox {Value = 0};
             editRegPayments.ValueChanged += Handle_RegularPaymentsChanged;
+
+            editReturnGoal = new SfNumericTextBox { Value = 0 };
+            editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
         // Event handler for edit stock button, enables popup
@@ -75,6 +79,11 @@ namespace WealthMate.Views.Portfolio
         private void Handle_RegularPaymentsChanged(object sender, ValueEventArgs e)
         {
             editRegPayments.Value = e.Value.ToString();
+        }
+
+        private void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
+        {
+            editReturnGoal.Value = e.Value.ToString();
         }
 
         //Remove Asset from portfolio

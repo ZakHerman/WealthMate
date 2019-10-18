@@ -29,15 +29,17 @@ namespace WealthMate.Views.Settings
             {
                 case Theme.Light:
                     mergedDictionaries.Add(new LightTheme());
+                    ((App)Application.Current).ThemeChanger.ApplyTheme(Theme.Light);
                     break;
                 case Theme.Dark:
                     mergedDictionaries.Add(new DarkTheme());
+                    ((App)Application.Current).ThemeChanger.ApplyTheme(Theme.Dark);
                     break;
                 default:
                     mergedDictionaries.Add(new AndroidTheme());
+                    ((App)Application.Current).ThemeChanger.ApplyTheme(Theme.Light);
                     break;
             }
-            StatusLabel.Text = $"{theme.ToString()} theme loaded.";
         }
 
         public async Task Dismiss()

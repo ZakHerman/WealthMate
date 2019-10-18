@@ -125,7 +125,61 @@ namespace WealthMate.ViewModels
                     break;
             }
         }
+
+        //attribute for observing the selected item in the picker
+        //calls SetList() which sorts list according to picker value
+        private string _selectedCriteria;
+        public string SelectedCriteria
+        {
+            get { return _selectedCriteria; }
+            set
+            {
+                if (_selectedCriteria != value)
+                {
+                    _selectedCriteria = value;
+
+                    SetList(_selectedCriteria);
+                }
+            }
+        }
+
+        // sorts OwnedAssets list according to picker value
+        private void SetList(string picker)
+        {
+            switch (picker)
+            {
+                case "Company Name":
+                    sortList(OwnedAssets.OrderBy(asset => asset.AssetName));
+                    break;
+                case "Current Value":
+                    sortList(OwnedAssets.OrderByDescending(asset => asset.CurrentValue));
+                    break;
+                case "Day Return Rate":
+                    sortList(OwnedAssets.OrderByDescending(asset => asset.TotalReturn));
+                    break;
+                case "Purchase Date":
+                    sortList(OwnedAssets.OrderByDescending(asset => asset.Length));
+                    break;
+                case "Total Return Rate":
+                    sortList(OwnedAssets.OrderByDescending(asset => asset.TotalReturnRate));
+                    break;
+            }
+        }
+
+        //clears OwnedAssets list and re-adds assets to collection
+        //this is required due to the return type of OrderBy and OrderByDescending methods
+        private void sortList(IOrderedEnumerable<OwnedAsset> linqResults)
+        {
+            var observableC = new ObservableCollection<OwnedAsset>(linqResults);
+            OwnedAssets.Clear();
+            foreach (OwnedAsset asset in observableC)
+            {
+                OwnedAssets.Add(asset);
+            }
+        }
     }
-    //Button captures still need to be implemented
 }
+    
+    //Button captures still need to be implemented
+
 

@@ -30,14 +30,14 @@ namespace WealthMate.Views.Markets
         //Adds purchased shares of stock to the users portfolio
         private void AddInPopupClicked(object sender, EventArgs e)
         {
-            if (OwnedStock.PurchasedPrice == 0)
+            if (OwnedStock.PurchasedPrice <= 0)
             {
-                NullValueErrorPopup.IsOpen = true;
+                DisplayAlert (null, "Please enter purchase price!", "OK");
             }
             else
             {
                 OwnedStock.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedStock);
+                ((App)Application.Current).User.Portfolio.AddAsset(OwnedStock);
                 StockPortfolioForm.IsOpen = false;
             }
         }
@@ -52,6 +52,12 @@ namespace WealthMate.Views.Markets
         {
             float.TryParse(e.Value.ToString(), out var value);
             OwnedStock.PurchasedPrice = value;
+        }
+
+        public void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
+        {
+            float.TryParse(e.Value.ToString(), out var value);
+            OwnedStock.ReturnGoal = value;
         }
     }
 }

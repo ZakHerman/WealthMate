@@ -15,6 +15,7 @@ namespace WealthMate.Views.Portfolio
 
         private SfNumericTextBox editNumOfShares;               //Textboxes for editing ownedstock details
         private SfNumericTextBox editPurchasePrice;
+        private SfNumericTextBox editReturnGoal;
 
         public OwnedStockDetailsPage(OwnedStock ownedStock)
         {
@@ -28,8 +29,12 @@ namespace WealthMate.Views.Portfolio
 
             editPurchasePrice = new SfNumericTextBox {Value = 0};
             editPurchasePrice.ValueChanged += Handle_PriceChanged;
+
+            editReturnGoal = new SfNumericTextBox { Value = 0 };
+            editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
+    
         // Event handler for edit stock button, enables popup
         private void EditStockClicked(object sender, EventArgs e)       
         {
@@ -55,7 +60,12 @@ namespace WealthMate.Views.Portfolio
 
         private void Handle_PriceChanged(object sender, ValueEventArgs e)
         {
-            editNumOfShares.Value = e.Value.ToString();
+            editPurchasePrice.Value = e.Value.ToString();
+        }
+
+        private void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
+        {
+            editReturnGoal.Value = e.Value.ToString();
         }
 
         //Remove Stock from portfolio

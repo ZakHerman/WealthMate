@@ -13,7 +13,6 @@
     <ContentPage.Content>
         <StackLayout Margin="20" VerticalOptions="CenterAndExpand">
             <controls:EnumPicker iOsSpecific:Picker.UpdateMode="WhenFinished" EnumType="{x:Type wealthMate:Theme}" Title="Select Theme" SelectedIndexChanged="OnPickerSelectionChanged" />
-            <Label x:Name="StatusLabel" HorizontalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

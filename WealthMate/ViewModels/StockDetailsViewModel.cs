@@ -1,9 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Plugin.Toast;
 using WealthMate.Models;
-using WealthMate.Services;
 using Xamarin.Forms;
 
 namespace WealthMate.ViewModels
@@ -13,10 +15,11 @@ namespace WealthMate.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _watchListImage;
+        private static readonly Dictionary<string, List<StockHistory>> StockHistoryDictionary = new Dictionary<string, List<StockHistory>>();
 
         public Stock Stock { get; }
-        public ObservableCollection<StockHistory> StockHistory { get; set; }
-        public ObservableCollection<Stock> WatchListStocks { get; set; } = ((App)Application.Current).User.WatchListStocks;
+        public List<StockHistory> StockHistory { get; set; }
+        public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList;
         public bool Watched { get; set; }
         public ICommand WatchListCommand { get; }
         public string WatchListImage
@@ -35,19 +38,29 @@ namespace WealthMate.ViewModels
             stock.UpdateStock();
             LoadStockHistory();
 
-            Watched = WatchListStocks.Contains(stock);
+            Watched = WatchListStocks.Any(s => s.Symbol == Stock.Symbol);
             WatchListCommand = new Command(AddToWatchList);
             WatchListImage = Watched ? "starfilled.png" : "starunfilled.png";
         }
 
+        // Check if stock history is stored in memory first otherwise check database
         private async void LoadStockHistory()
         {
-            await DataService.FetchStockHistoryAsync(Stock.Symbol);
-            StockHistory = DataService.StockHistory;
+            if (StockHistoryDictionary.TryGetValue(Stock.Symbol, out var history))
+            {
+                StockHistory = history;
+            }
+            else
+            {
+                history = await App.Database.GetStockHistoryAsync(Stock.Symbol);
+                StockHistoryDictionary.Add(Stock.Symbol, history);
+                StockHistory = history;
+            }
+
             OnPropertyChanged(nameof(StockHistory));
         }
 
-        public void AddToWatchList()
+        public async void AddToWatchList()
         {
             Watched = !Watched;
 
@@ -55,12 +68,34 @@ namespace WealthMate.ViewModels
             {
                 WatchListImage = "starfilled.png";
                 WatchListStocks.Add(Stock);
+                await App.Database.SaveWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
+
+                DisplayNotification();
             }
             else
             {
                 WatchListImage = "starunfilled.png";
-                WatchListStocks.Remove(Stock);
+                var temp = WatchListStocks.Where(s => s.Symbol == Stock.Symbol).ToList();
+
+                foreach (var remove in temp)
+                {
+                    WatchListStocks.Remove(remove);
+                }
+
+                await App.Database.DeleteWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
             }
+        }
+
+        // Display toast notification when stock added to watchlist
+        private void DisplayNotification()
+        {
+            Application.Current.Resources.TryGetValue("ToastNotificationBackgroundColor", out var backgroundResource);
+            Application.Current.Resources.TryGetValue("ToastNotificationTextColor", out var textResource);
+
+            var backgroundColor = backgroundResource != null ? ((Color)backgroundResource).ToHex() : Color.FromHex("#CC212121").ToString();
+            var textColor = textResource != null ? ((Color)textResource).ToHex() : Color.FromHex("#FFFFFF").ToString();
+
+            CrossToastPopUp.Current.ShowCustomToast("Added to watchlist", backgroundColor, textColor);
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

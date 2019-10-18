@@ -1,8 +1,10 @@
 ﻿using Syncfusion.SfNumericTextBox.XForms;
+using System.Collections.Generic;
 using WealthMate.Models;
 using WealthMate.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Syncfusion.XForms.ComboBox;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace WealthMate.Views.Markets
@@ -11,13 +13,17 @@ namespace WealthMate.Views.Markets
     public partial class TermDepositListPage
     {
         private SearchBar _searchBar;
-        public OwnedAsset OwnedAsset { get; set; }
-        public TermDeposit TermDeposit { get; set; }
+        private OwnedAsset OwnedAsset { get; set; }
+        private TermDeposit TermDeposit { get; set; }
+
+        SfComboBox comboBox;
 
         public TermDepositListPage()
         {
             LoadTermDeposits();
             InitializeComponent();
+            
+            
         }
 
         private async void LoadTermDeposits()
@@ -61,7 +67,9 @@ namespace WealthMate.Views.Markets
         private void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
             TermDeposit = (TermDeposit)e.ItemData;
-            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);
+            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);  
+            comboBox = new SfComboBox();
+
             AddTDForm.IsOpen = true;
 
         }
@@ -76,7 +84,7 @@ namespace WealthMate.Views.Markets
             else
             {
                 OwnedAsset.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.OwnedAssets.Add(OwnedAsset);
+                ((App)Application.Current).User.Portfolio.AddAsset(OwnedAsset);
                 AddTDForm.IsOpen = false;
             }
         }
@@ -93,5 +101,32 @@ namespace WealthMate.Views.Markets
             float.TryParse(e.Value.ToString(), out var value);
             OwnedAsset.ReturnGoal = value;
         }
+
+        private void Handle_dropdownSelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
+        {
+            //DisplayAlert("Selection Changed", "SelectedIndex: " + comboBox.SelectedIndex, "OK");
+
+            switch(comboBox.SelectedIndex)
+            {
+                case 1:
+                    OwnedAsset.CompoundRate = 1;
+                    break;
+                case 2:
+                    OwnedAsset.CompoundRate = 2;
+                    break;
+                case 3:
+                    OwnedAsset.CompoundRate = 4;
+                    break;
+                case 4:
+                    OwnedAsset.CompoundRate = 12;
+                    break;
+                default:
+                    OwnedAsset.CompoundRate = 0;
+                    break;
+            }
+        }
+
+
+
     }
 }

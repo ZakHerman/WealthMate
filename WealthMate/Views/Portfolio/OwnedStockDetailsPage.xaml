@@ -116,7 +116,7 @@
 
                 <Label Text="Return Goal:" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
                 
-                <!--Grid in order to stack progress label on top of progress ba -->
+                <!--Grid in order to stack progress label on top of progress bar -->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -173,6 +173,7 @@
                         <sfPopup:PopupView HeaderTitle="Edit Owned Stock Details" ShowFooter="false">
                             <sfPopup:PopupView.ContentTemplate>
                                 <DataTemplate>
+                                    <ScrollView>
                                     <StackLayout WidthRequest="300" HeightRequest="300">
                                         <Label Text="Edit number of shares:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
                                         <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
@@ -180,8 +181,12 @@
                                         <Label Text="Edit purchase price:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
                                         <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
 
+                                        <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
+                                        <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+
                                         <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                     </StackLayout>
+                                    </ScrollView>
                                 </DataTemplate>
                             </sfPopup:PopupView.ContentTemplate>
                         </sfPopup:PopupView>

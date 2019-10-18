@@ -3,7 +3,6 @@ using WealthMate.Models;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
-using WealthMate.ViewModels;
 
 namespace WealthMate.Views.Markets
 {
@@ -14,7 +13,7 @@ namespace WealthMate.Views.Markets
 
         public WatchlistPage()
         {
-            BindingContext = new WatchListPageVM();
+            //BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 

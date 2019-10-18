@@ -4,13 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioChartPage"
              Title="Pie Chart"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView Orientation="Vertical" VerticalOptions="Fill">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -22,7 +24,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='{0:C}'}" TextColor="{DynamicResource PositiveTextColor}"
-                       Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large">
+                   Grid.Column="0" Grid.Row="0" HorizontalOptions="End" FontSize="Large">
                     <Label.Triggers>
                         <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.PositiveTotal}" Value="False">
                             <!--Default text colour is green, change text to red when total returns are negative-->
@@ -37,7 +39,7 @@
                 </Label>
 
                 <Label Text="{Binding CurrentPortfolio.TotalReturnRate, StringFormat='{0:F}%'}" TextColor="{DynamicResource PositiveTextColor}"
-                       Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large">
+                   Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" FontSize="Large">
                     <Label.Triggers>
                         <DataTrigger TargetType ="Label" Binding="{Binding CurrentPortfolio.PositiveTotal}" Value="False">
                             <!--Default text colour is green, change text to red when total returns are negative-->
@@ -54,62 +56,59 @@
 
             <!--Picker for selecting type of pie chart to view-->
             <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
-                        SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
+                    SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
 
-            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
+            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}" WidthRequest="500" HeightRequest="400">
                 <syncfusion:SfChart.Series>
-                    <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity" EnableTooltip="True" ExplodeOnTouch="True">
+                    <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
+                                          EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">
                         <syncfusion:PieSeries.ColorModel>
                             <syncfusion:ChartColorModel Palette="Natural" />
                         </syncfusion:PieSeries.ColorModel>
                     </syncfusion:PieSeries>
                 </syncfusion:SfChart.Series>
-                <syncfusion:SfChart.ChartBehaviors>
-                    <syncfusion:ChartZoomPanBehavior EnableZooming="True" ZoomMode="X"></syncfusion:ChartZoomPanBehavior>
-                </syncfusion:SfChart.ChartBehaviors>
 
                 <!--The pie chart legends of categories and returns-->
                 <syncfusion:SfChart.Legend>
-                    <syncfusion:ChartLegend x:Name="Legend" DockPosition="Bottom" OverflowMode="Scroll" Orientation="Vertical">
-                        <syncfusion:ChartLegend.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="12,0,12,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="24" />
-                                        <ColumnDefinition Width="130" />
-                                        <ColumnDefinition Width="90" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <BoxView Grid.Column="0" Color="{Binding IconColor}" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="13" WidthRequest="13" />
-
-                                    <Label Grid.Column="1" Text="{Binding DataPoint.AssetType}" TextColor="{DynamicResource PrimaryTextColor}"
-                                           FontSize="13" VerticalTextAlignment="Center" HorizontalOptions="Start" />
-
-                                    <Label Grid.Column="2" Text="{Binding DataPoint.Quantity, StringFormat='${0:F2}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                           FontSize="13" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
-
-                                    <Label Grid.Column="3" Text="{Binding DataPoint.ReturnPercentage, StringFormat='{0:F2}%'}" TextColor="{DynamicResource PositiveTextColor}"
-                                           VerticalOptions="Start" HorizontalTextAlignment="End" FontSize="13" LineBreakMode="TailTruncation">
-                                        <Label.Triggers>
-                                            <!--Changes text to red when the Return Percentage is negative-->
-                                            <DataTrigger TargetType ="Label" Binding="{Binding DataPoint.IsPositive}" Value="False">
-                                                <Setter Property="TextColor" Value="{DynamicResource NegativeTextColor}" />
-                                            </DataTrigger>
-
-                                            <!--Changes text to grey when the Return Percentage hasn't changed-->
-                                            <DataTrigger TargetType ="Label" Binding="{Binding DataPoint.ReturnPercentage}" Value="0">
-                                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </Grid>
-                            </DataTemplate>
-                        </syncfusion:ChartLegend.ItemTemplate>
+                    <syncfusion:ChartLegend OverflowMode="Wrap" ItemMargin="20,0">
+                        <syncfusion:ChartLegend.LabelStyle>
+                            <syncfusion:ChartLegendLabelStyle TextColor="{DynamicResource PrimaryTextColor}" FontSize="14" />
+                        </syncfusion:ChartLegend.LabelStyle>
                     </syncfusion:ChartLegend>
                 </syncfusion:SfChart.Legend>
             </syncfusion:SfChart>
-        </StackLayout>
 
+            <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
+
+            <!--Grid in order to stack progress label on top of progress bar -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedStock.TotalReturn}" Maximum="{Binding OwnedStock.ReturnGoal}" Margin="30, 0"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding CurrentPortfolio.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
+            </Grid>
+
+            <!--Grid that adds the minimum value and maximum value labels to the progress bar-->
+            <Grid Margin="30, 0, 30, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="$0.00" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding CurrentPortfolio.ReturnGoal, StringFormat='{0:C}'}" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="End"/>
+            </Grid>
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
