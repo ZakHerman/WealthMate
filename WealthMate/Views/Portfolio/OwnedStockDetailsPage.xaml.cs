@@ -3,6 +3,7 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
+using System.Diagnostics;
 
 namespace WealthMate.Views.Portfolio
 {
