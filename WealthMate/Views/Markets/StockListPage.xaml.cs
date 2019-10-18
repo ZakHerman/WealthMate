@@ -102,6 +102,10 @@ namespace WealthMate.Views.Markets
             }
             else if (picker.SelectedIndex == 2)
             {
+                sortList(StockList.OrderBy(stock => stock.CurrentPrice));
+            }
+            else if (picker.SelectedIndex == 3)
+            {
                 sortList(StockList.OrderByDescending(stock => stock.DayReturnRate));
             }
         }

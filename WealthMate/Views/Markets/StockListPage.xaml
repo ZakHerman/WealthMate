@@ -16,12 +16,13 @@
             <SearchBar x:Name="SearchBar" Placeholder="Search Stocks" TextChanged="OnFilterTextChanged" />
 
             <!--Picker for selecting attribute to sort list by-->
-            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="140" TextColor="{DynamicResource PrimaryTextColor}"
+            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedIndexChanged="Picker_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Company Name</x:String>
-                        <x:String>Current Price</x:String>
+                        <x:String>Current Price (high-low)</x:String>
+                        <x:String>Current Price (low-high)</x:String>
                         <x:String>Day Return Rate</x:String>
                     </x:Array>
                 </Picker.ItemsSource>

@@ -151,13 +151,16 @@ namespace WealthMate.ViewModels
                 case "Company Name":
                     sortList(OwnedAssets.OrderBy(asset => asset.AssetName));
                     break;
-                case "Current Value":
+                case "Current Value (high-low)":
                     sortList(OwnedAssets.OrderByDescending(asset => asset.CurrentValue));
+                    break;
+                case "Current Value (low-high)":
+                    sortList(OwnedAssets.OrderBy(asset => asset.CurrentValue));
                     break;
                 case "Day Return Rate":
                     sortList(OwnedAssets.OrderByDescending(asset => asset.TotalReturn));
                     break;
-                case "Purchase Date":
+                case "Purchase Date (group by type)":
                     sortList(OwnedAssets.OrderByDescending(asset => asset.Length));
                     break;
                 case "Total Return Rate":

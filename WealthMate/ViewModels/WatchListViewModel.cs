@@ -45,8 +45,11 @@ namespace WealthMate.ViewModels
                 case "Company Name":
                     sortList(WatchListStocks.OrderBy(stock => stock.CompanyName));           
                     break;
-                case "Current Price":
+                case "Current Price (high-low)":
                     sortList(WatchListStocks.OrderByDescending(stock => stock.CurrentPrice));
+                    break;
+                case "Current Price (low-high)":
+                    sortList(WatchListStocks.OrderBy(stock => stock.CurrentPrice));
                     break;
                 case "Day Return Rate":
                     sortList(WatchListStocks.OrderByDescending(stock => stock.DayReturnRate));
