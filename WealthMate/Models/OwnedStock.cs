@@ -67,12 +67,19 @@ namespace WealthMate.Models
         public void EditStock(int shares, float price, OwnedStock ownedStock)
         {
             if (ownedStock.SharesPurchased != shares && shares != 0)
+            {
                 ownedStock.SharesPurchased = shares;
+            }
 
             if (ownedStock.PurchasedPrice != price && price != 0)
+            {
                 ownedStock.PurchasedPrice = price;
+            }
 
-            this.UpdateOwnedAsset();
+            ownedStock.UpdateOwnedAsset();
+
+            //this.UpdateOwnedAsset();
         }
+
     }
 }

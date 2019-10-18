@@ -116,7 +116,7 @@ namespace WealthMate.Models
                 ownedAsset.Length = length;
 
             if ((ownedAsset.RegularPayment != regularPayment) && (regularPayment != 0))
-                ownedAsset.RegularPayment = regularPayment;
+                ownedAsset.RegularPayment = regularPayment; 
 
             UpdateOwnedAsset();
         }
