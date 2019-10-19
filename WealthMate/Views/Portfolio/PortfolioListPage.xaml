@@ -15,8 +15,8 @@
 
             <!--Picker for selecting attribute to sort list by-->
 
-            <Picker Title="         --Sort by--" x:Name="picker" HorizontalOptions="Start"  FontSize="Medium" WidthRequest="250" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedItem="{Binding SelectedCriteria}">
+            <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start"  FontSize="Medium" WidthRequest="250" TextColor="{DynamicResource PrimaryTextColor}"
+                    SelectedItem="{Binding SelectedCriteria}"  Margin="52,0,0,0">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Company Name</x:String>

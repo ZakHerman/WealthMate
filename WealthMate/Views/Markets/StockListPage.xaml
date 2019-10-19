@@ -16,8 +16,8 @@
             <SearchBar x:Name="SearchBar" Placeholder="Search Stocks" TextChanged="OnFilterTextChanged" />
 
             <!--Picker for selecting attribute to sort list by-->
-            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+            <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged" Margin="52,0,0,0">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Company Name</x:String>
