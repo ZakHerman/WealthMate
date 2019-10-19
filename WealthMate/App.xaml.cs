@@ -23,7 +23,7 @@ namespace WealthMate
         public App(IThemeChanger themeChanger)
         {
             User = new User();
-            //InitializeDummyUserPortfolio();
+            InitializeDummyUserPortfolio();
 
             SyncfusionLicenseProvider.RegisterLicense("MTUzNzM5QDMxMzcyZTMzMmUzMEhGM29ILzZFaUc3MGppQUdzMUlEZDJIamhjNStBUGJldmhBUlNYODRySEE9");
             InitializeComponent();

@@ -28,6 +28,19 @@
    <StackLayout>
         <!--Searchbar, placeholder text and on text change functionality-->
         <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
+      
+       <!--Picker for selecting attribute to sort TD list by-->
+        <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
+                    SelectedIndexChanged="Picker_SelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Provider</x:String>
+                    <x:String>Interest Rate (high-low)</x:String>
+                    <x:String>Minimum Deposit</x:String>
+                    <x:String>Term (low-high)</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
 
         <!--The list view of the term deposits-->
         <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" BackgroundColor="{DynamicResource TertiaryColor}"

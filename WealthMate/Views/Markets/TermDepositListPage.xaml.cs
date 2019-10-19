@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.XForms.ComboBox;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WealthMate.Views.Markets
 {
@@ -15,21 +17,56 @@ namespace WealthMate.Views.Markets
         private SearchBar _searchBar;
         private OwnedAsset OwnedAsset { get; set; }
         private TermDeposit TermDeposit { get; set; }
+        public ObservableCollection<TermDeposit> TDList { get; set; }
 
         SfComboBox comboBox;
 
         public TermDepositListPage()
         {
+            TDList = new ObservableCollection<TermDeposit>();
             LoadTermDeposits();
-            InitializeComponent();
-            
-            
+            InitializeComponent();          
         }
 
         private async void LoadTermDeposits()
         {
             await DataService.FetchTermDepositsAsync();
-            TermDepositList.ItemsSource = DataService.TermDeposits;
+            TDList = DataService.TermDeposits;
+            TermDepositList.ItemsSource = TDList;
+        }
+
+        //clears TDList list and re-adds assets to collection
+        //this is required due to the return type of OrderBy and OrderByDescending methods
+        private void sortList(IOrderedEnumerable<TermDeposit> linqResults)
+        {
+            var observableC = new ObservableCollection<TermDeposit>(linqResults);
+            TDList.Clear();
+            foreach (TermDeposit termD in observableC)
+            {
+                TDList.Add(termD);
+            }
+        }
+
+        // sorts StockList list according to picker value upon picker index value changing
+        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            var picker = sender as Picker;
+            if (picker.SelectedIndex == 0)
+            {
+                sortList(TDList.OrderBy(termD => termD.Provider));
+            }
+            else if (picker.SelectedIndex == 1)
+            {
+                sortList(TDList.OrderByDescending(termD => termD.InterestRate));
+            }
+            else if (picker.SelectedIndex == 2)
+            {
+                sortList(TDList.OrderBy(termD => termD.MinDeposit));
+            }
+            else if (picker.SelectedIndex == 3)
+            {
+                sortList(TDList.OrderBy(termD => termD.LengthInMonths));
+            }
         }
 
         /// <summary>

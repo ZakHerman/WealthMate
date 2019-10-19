@@ -11,17 +11,19 @@
     <ContentPage.Content>
         <StackLayout>
             <!--Searchbar, placeholder text and on text change functionality-->
-                <SearchBar x:Name="SearchBar" Placeholder ="Search Portfolio" TextChanged="OnFilterTextChanged" />
+                <SearchBar x:Name="SearchBar" Placeholder ="Search Portfolio" TextChanged="OnFilterTextChanged"/>
 
             <!--Picker for selecting attribute to sort list by-->
-            <Picker Title="--Sort by--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="150" TextColor="{DynamicResource PrimaryTextColor}"
+
+            <Picker Title="         --Sort by--" x:Name="picker" HorizontalOptions="Start"  FontSize="Medium" WidthRequest="250" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedCriteria}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Company Name</x:String>
                         <x:String>Day Return Rate</x:String>
-                        <x:String>Current Value</x:String>
-                        <x:String>Purchase Date</x:String>
+                        <x:String>Current Value (high-low)</x:String>
+                        <x:String>Current Value (low-high)</x:String>
+                        <x:String>Purchase Date (group by type)</x:String>
                         <x:String>Total Return Rate</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
