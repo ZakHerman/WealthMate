@@ -9,6 +9,7 @@
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
+             xmlns:class="WealthMate.Views.Markets.StockDetailsPage"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockDetailsPage">
   
@@ -218,7 +219,13 @@
             <!--Add to portfolio button-->
             <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" BackgroundColor="{DynamicResource PrimaryColor}"
                     TextColor="{DynamicResource TertiaryTextColor}" Clicked="AddToPortfolioClicked" HeightRequest="40" />
-             
+
+          <Grid>
+            <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+                                                           VerticalOptions="Center" />
+          </Grid>
+          
+          
             <!--Add To Portfolio Popup Box-->
             <sfPopup:SfPopupLayout x:Name="StockPortfolioForm">
                 <sfPopup:SfPopupLayout.PopupView>
@@ -237,9 +244,7 @@
                                     <textbox:SfNumericTextBox x:Name="NumericTextBox3" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_ReturnGoalChanged" />
 
                                   <Grid>
-                                    <Button Text="Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
-                                    <pickerClass:CustomDatePicker x:Name="CustDate" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
-                                                            VerticalOptions="Center" />
+                                    <Button Text="Change Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
                                   </Grid>
                                   
                                     <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />

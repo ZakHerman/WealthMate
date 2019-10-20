@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using Syncfusion.SfPicker.XForms;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using System.Globalization;
+using System.Collections;
+using Xamarin.Forms;
 
 namespace WealthMate.Services
 {
@@ -50,9 +51,12 @@ namespace WealthMate.Services
 
             Headers = new ObservableCollection<string>();
 
+            updateDatePicker();
+
             PopulateDateCollection();
 
             this.ItemsSource = Date;
+            this.SelectionChanged += CustomDatePicker_Changed;
 
         }
 
@@ -101,13 +105,95 @@ namespace WealthMate.Services
                     Day.Add(i.ToString());
 
             }
-
             Date.Add(Month);
 
             Date.Add(Day);
 
             Date.Add(Year);
 
+        }
+
+
+        private void updateDatePicker()
+        {
+            
+            this.Headers.Add("Month");
+            this.Headers.Add("Day");
+            this.Headers.Add("Year");
+            this.HeaderText = "Date Picker";
+            this.ColumnHeaderText = Headers;
+            this.ShowHeader = true;
+            this.ShowColumnHeader = true;
+            this.ShowFooter = true;
+        }
+
+        private void CustomDatePicker_Changed(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            UpdateDays(Date, e);
+        }
+
+        public void UpdateDays(ObservableCollection<object> Date, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+
+        {
+
+            Device.BeginInvokeOnMainThread(() =>
+
+            {
+
+                if (Date.Count == 3)
+                {
+                    bool flag = false;
+                    if (e.OldValue != null && e.NewValue != null && (e.OldValue as ObservableCollection<object>).Count == 3 && (e.NewValue as ObservableCollection<object>).Count == 3)
+                    {
+                        if (!object.Equals((e.OldValue as IList)[0], (e.NewValue as IList)[0]))
+                        {
+                            flag = true;
+                        }
+                        if (!object.Equals((e.OldValue as IList)[2], (e.NewValue as IList)[2]))
+                        {
+                            flag = true;
+                        }
+                    }
+
+                    if (flag)
+                    {
+
+                        ObservableCollection<object> days = new ObservableCollection<object>();
+                        int month = DateTime.ParseExact(Months[(e.NewValue as IList)[0].ToString()], "MMMM", CultureInfo.InvariantCulture).Month;
+                        int year = int.Parse((e.NewValue as IList)[2].ToString());
+                        for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
+                        {
+                            if (j < 10)
+                            {
+                                days.Add("0" + j);
+                            }
+                            else
+                                days.Add(j.ToString());
+                        }
+                        ObservableCollection<object> PreviousValue = new ObservableCollection<object>();
+
+                        foreach (var item in e.NewValue as IList)
+                        {
+                            PreviousValue.Add(item);
+                        }
+                        if (days.Count > 0)
+                        {
+                            Date.RemoveAt(1);
+                            Date.Insert(1, days);
+                        }
+
+                        if ((Date[1] as IList).Contains(PreviousValue[1]))
+                        {
+                            this.SelectedItem = PreviousValue;
+                        }
+                        else
+                        {
+                            PreviousValue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
+                            this.SelectedItem = PreviousValue;
+                        }
+                    }
+                }
+            });
         }
     }
 }

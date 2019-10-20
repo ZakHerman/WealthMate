@@ -32,20 +32,20 @@ namespace WealthMate.Views.Markets
             picker.Headers.Add("Day");
             picker.Headers.Add("Year");
             picker.HeaderText = "Date Picker";
-            picker.ColumnHeaderText = CustDate.Headers;
+            picker.ColumnHeaderText = picker.Headers;
             picker.ShowHeader = true;
             picker.ShowColumnHeader = true;
         }
-        private void DatePicker_Changed (object sender, SelectionChangedEventArgs e)
-        {
-            UpdateDays(CustDate.Date, e);
-        }
+        //private void DatePicker_Changed(object sender, SelectionChangedEventArgs e)
+        //{
+        //    UpdateDays(CustDate, e);
+        //}
 
         private void DatePicker_Clicked(object sender, EventArgs e)
 
         {
 
-            CustDate.IsOpen = !CustDate.IsOpen;
+            Date.IsOpen = !Date.IsOpen;
 
         }
 
