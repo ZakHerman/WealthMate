@@ -30,6 +30,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfDataForm" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="17.3.0.14" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="17.3.0.17" />
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.3.0.14" />
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="17.3.0.14" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />  

@@ -32,6 +32,10 @@ namespace WealthMate
             MainPage = new MainPage();
         }
 
+        public App()
+        {
+        }
+
         public void InitializeDummyUserPortfolio()
         {
             User.Portfolio.OwnedAssets.Add(new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0, 100f));

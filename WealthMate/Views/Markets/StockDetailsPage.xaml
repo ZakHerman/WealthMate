@@ -7,10 +7,13 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockDetailsPage">
+  
 
-    <NavigationPage.TitleView>
+  <NavigationPage.TitleView>
         <Grid>
             <!--Watchlist star height-->
             <Grid.RowDefinitions>
@@ -233,6 +236,12 @@
                                     <Label Text="Return Goal (optional):" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="12"/>
                                     <textbox:SfNumericTextBox x:Name="NumericTextBox3" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_ReturnGoalChanged" />
 
+                                  <Grid>
+                                    <Button Text="Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
+                                    <pickerClass:CustomDatePicker x:Name="CustDate" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+                                                            VerticalOptions="Center" />
+                                  </Grid>
+                                  
                                     <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" />
                                 </StackLayout>
                                 </ScrollView>
