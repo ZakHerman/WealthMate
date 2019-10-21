@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using WealthMate.Services;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 namespace WealthMate.Droid
 {
@@ -30,10 +32,20 @@ namespace WealthMate.Droid
 
         public void ApplyTheme(Theme theme)
         {
+            Xamarin.Forms.Application.Current.Resources.TryGetValue("AndroidMenuColor", out var backgroundResource);
+            var backgroundColor = (Color?) backgroundResource ?? Color.FromHex("#CC212121");
+
+            SetStatusBarColor(backgroundColor);
+
             SetTheme(theme == WealthMate.Theme.Dark
                 ? Resource.Style.Base_Theme_AppCompat
                 : Resource.Style.Base_Theme_AppCompat_Light);
         }
 
+        private void SetStatusBarColor(Color color)
+        {
+            Window.SetStatusBarColor(color.ToAndroid());
+            Window.SetNavigationBarColor(color.ToAndroid());
+        }
     }
 }

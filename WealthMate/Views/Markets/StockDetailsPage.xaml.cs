@@ -63,12 +63,12 @@ namespace WealthMate.Views.Markets
                     {
                         if (!object.Equals((e.PreviousSelection as IList)[0], (e.CurrentSelection as IList)[0]))
                         //if (!object.Equals((e.OldValue as IList)[0], (e.NewValue as IList)[0]))
-                            {
+                        {
                             flag = true;
                         }
                         if (!object.Equals((e.PreviousSelection as IList)[2], (e.CurrentSelection as IList)[2]))
-                        //if (!object.Equals((e.OldValue as IList)[2], (e.NewValue as IList)[2]))
-                            {
+                            //if (!object.Equals((e.OldValue as IList)[2], (e.NewValue as IList)[2]))
+                        {
                             flag = true;
                         }
                     }

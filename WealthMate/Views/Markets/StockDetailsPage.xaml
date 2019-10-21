@@ -9,7 +9,8 @@
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.Markets.StockDetailsPage">
+             x:Class="WealthMate.Views.Markets.StockDetailsPage"
+             Title="Settings">
   
 
   <NavigationPage.TitleView>
@@ -212,10 +213,10 @@
                     <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
                     <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
                     <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Int'}" TextColor="{DynamicResource PrimaryTextColor}"
+                    <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}"
                            Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
                     <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Float'}" TextColor="{DynamicResource PrimaryTextColor}"
+                    <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}"
                            Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
                 </Grid>
             </Frame>

@@ -8,6 +8,7 @@
     <Color x:Key="MenuColor">#1FFFFFFF</Color> <!--Navigation bar colour-->
     <Color x:Key="SurfaceColor">#11FFFFFF</Color> <!--List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
+    <Color x:Key="AndroidMenuColor">#E0121212</Color> <!--Android Status bar / navigation bar colour-->
 
     <Color x:Key="ButtonColor">#11FFFFFF</Color>
     <Color x:Key="ButtonTextColor">#2e95b9</Color>

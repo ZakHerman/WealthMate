@@ -19,8 +19,9 @@ namespace WealthMate.ViewModels.ValueConverter
             var divisor = Math.Pow(10, mag * 3);
             var shortNumber = val / divisor;
             var suffix = string.Empty;
+            string format;
 
-            switch(mag)
+            switch (mag)
             {
                 case 0:
                     break;
@@ -35,7 +36,20 @@ namespace WealthMate.ViewModels.ValueConverter
                     break;
             }
 
-            var format = parameter.ToString() == "Int" && mag <= 1 ? "N0" : "N2";
+            // Check number length to keep format to 3 digits long
+            switch ((int)Math.Floor(Math.Log10(shortNumber)) + 1)
+            {
+                case 1:
+                    format = "N2";
+                    break;
+                case 2:
+                    format = "N1";
+                    break;
+                default:
+                    format = "N0";
+                    break;
+            }
+
             return shortNumber.ToString(format) + suffix;
         }
 
