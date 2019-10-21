@@ -1,13 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WealthMate.Models;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace WealthMate.UnitTests
 {
     [TestClass]
     public class PieDataTest
     {
-        //private PieData pieData;
+        private PieData pieData1;
+        private PieData pieData2;
+        private PieData pieData3;
+        private ObservableCollection<PieData> pieChartTest;
 
         [TestMethod]
         public void TestReturnPercentages()
@@ -54,6 +59,35 @@ namespace WealthMate.UnitTests
 
             Assert.AreEqual(pieData.Quantity, newCurrentValue);
             Assert.AreEqual(pieData.PrincipalQuantity, newPrincipalValue);
+        }
+
+        // mimicked from the the PortfolioPageVM 
+        [TestMethod]
+        public void TestPieChanger()
+        {
+            pieChartTest = new ObservableCollection<PieData>();
+            pieData1 = new PieData() { Key = 1, Value = "All Assets" };
+            pieData2 = new PieData() { Key = 2, Value = "Term Deposit" };
+            pieData3 = new PieData() { Key = 3, Value = "Stock" };
+
+            Random rand = new Random();
+            int userSelectsFromPicker = rand.Next(1, 3);
+
+            switch(userSelectsFromPicker)
+            {
+                case 1:
+                    pieChartTest.Add(pieData1);
+                    Assert.IsTrue(pieChartTest.Contains(pieData1));
+                    break;
+                case 2:
+                    pieChartTest.Add(pieData2);
+                    Assert.IsTrue(pieChartTest.Contains(pieData2));
+                    break;
+                case 3:
+                    pieChartTest.Add(pieData3);
+                    Assert.IsTrue(pieChartTest.Contains(pieData3));
+                    break;
+            }
         }
     }
 }

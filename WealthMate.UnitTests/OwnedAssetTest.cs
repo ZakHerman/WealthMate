@@ -101,7 +101,7 @@ namespace WealthMate.UnitTests
             int newLength = 9;
             float newRegPayments = 3.2f;
 
-            test1.EditAsset(newInterestRate, newLength, newRegPayments, test1);
+         //   test1.EditAsset(newInterestRate, newLength, newRegPayments, test1);
 
             OwnedAsset t1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 1.2f, 9, 4, 3.2f, 0);
 
