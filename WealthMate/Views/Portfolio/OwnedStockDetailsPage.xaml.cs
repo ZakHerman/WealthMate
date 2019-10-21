@@ -47,7 +47,7 @@ namespace WealthMate.Views.Portfolio
             var newNumShares = int.Parse(editNumOfShares.Value.ToString());
             var newPrice = float.Parse(editPurchasePrice.Value.ToString());
 
-            OwnedStock.EditStock(newNumShares, newPrice, OwnedStock);
+            OwnedStock.EditStock(newNumShares, newPrice);
             OwnedStock.UpdateOwnedAsset();
         }
 

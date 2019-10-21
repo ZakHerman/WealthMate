@@ -64,21 +64,15 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the owned stock the user is editing
-        public void EditStock(int shares, float price, OwnedStock ownedStock)
+        public void EditStock(int shares, float price)
         {
-            if (ownedStock.SharesPurchased != shares && shares != 0)
-            {
-                ownedStock.SharesPurchased = shares;
-            }
+            if (SharesPurchased != shares && shares != 0)
+                SharesPurchased = shares;
 
-            if (ownedStock.PurchasedPrice != price && price != 0)
-            {
-                ownedStock.PurchasedPrice = price;
-            }
+            if (PurchasedPrice != price && price != 0)
+                PurchasedPrice = price;
 
-            ownedStock.UpdateOwnedAsset();
-
-            //this.UpdateOwnedAsset();
+            UpdateOwnedAsset();
         }
 
     }

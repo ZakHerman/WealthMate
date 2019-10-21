@@ -3,6 +3,7 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
+using Syncfusion.XForms.ComboBox;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -15,6 +16,8 @@ namespace WealthMate.Views.Portfolio
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
         private SfNumericTextBox editReturnGoal;
+        private SfNumericTextBox editPrincipalValue;
+        private SfComboBox comboBox;
 
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
@@ -22,6 +25,9 @@ namespace WealthMate.Views.Portfolio
             OwnedAsset.UpdateOwnedAsset();
             BindingContext = this;
             InitializeComponent();
+
+            editPrincipalValue = new SfNumericTextBox { Value = 0 };
+            editPrincipalValue.ValueChanged += Handle_PrincipalValueChanged;
 
             editInterestRate = new SfNumericTextBox {Value = 0};
             editInterestRate.ValueChanged += Handle_InterestRateChanged;
@@ -36,6 +42,7 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
+       
         // Event handler for edit stock button, enables popup
         private void EditAssetClicked(object sender, EventArgs e)
         {
@@ -47,21 +54,22 @@ namespace WealthMate.Views.Portfolio
         {
             popupLayout.IsOpen = false;
 
-            var newInterestRate = float.Parse(editInterestRate.Value.ToString());
+            //var newPurchaseDate;
+            //var newCompoundRate;
+            var newPrincipalValue = int.Parse(editPrincipalValue.Value.ToString());
+            var newInterestRate = float.Parse(editInterestRate.Value.ToString()) / 100;
             var newLength = int.Parse(editLength.Value.ToString());
-            var newRegPayments = float.Parse(editRegPayments.Value.ToString());
+            var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
-            OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, OwnedAsset);
-
-            //int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
-            //OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
-            //((App)Application.Current).User.Portfolio.OwnedAssets.Remove(oldOA);
-
-            //OwnedAsset newEditedOA = new OwnedAsset(OwnedAsset.AssetName, OwnedAsset.PurchaseDate, OwnedAsset.Type, OwnedAsset.PrincipalValue, newInterestRate, newLength, OwnedAsset.CompoundRate, newRegPayments);
-            //((App)Application.Current).User.Portfolio.OwnedAssets.Add(newEditedOA);
-
-            OwnedAsset.UpdateOwnedAsset();
+            OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newLength, newReturnGoal);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
+        private void Handle_PrincipalValueChanged(object sender, ValueEventArgs e)
+        {
+            editPrincipalValue.Value = e.Value.ToString();
+        }
+
+
 
         // Collects new interest rate value from text box entered by user
         private void Handle_InterestRateChanged(object sender, ValueEventArgs e)
@@ -84,6 +92,11 @@ namespace WealthMate.Views.Portfolio
         private void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
         {
             editReturnGoal.Value = e.Value.ToString();
+        }
+
+        private void CompoundRate_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
+        {
+            OwnedAsset.CompoundRate = comboBox.SelectedIndex;
         }
 
         //Remove Asset from portfolio
