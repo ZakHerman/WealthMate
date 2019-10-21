@@ -37,17 +37,24 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="TrackballTemplate">
-                <Grid RowSpacing="0" Padding="5,0">
+                <Grid RowSpacing="0" ColumnSpacing="0" Padding="5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
                     <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" FontSize="12" FontAttributes="Bold"
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                    <Label Text="{Binding PriceOpen, StringFormat='Open: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" FontSize="12" VerticalTextAlignment="Center" />
-                    <Label Text="{Binding PriceClose, StringFormat='Close: {0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" FontSize="12" VerticalTextAlignment="Center" />
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="2" />
+                    <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                    <Label Text="{Binding PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="End" />
+                    <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                    <Label Text="{Binding PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="End" />
                 </Grid>
             </DataTemplate>
 
@@ -220,15 +227,16 @@
                            Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
                 </Grid>
             </Frame>
-          
-            <!--Add to portfolio button-->
-            <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" HeightRequest="40" Margin="8,2" CornerRadius="8" FontAttributes="Bold"
-                    BackgroundColor="{DynamicResource ButtonColor}" TextColor="{DynamicResource ButtonTextColor}" Clicked="AddToPortfolioClicked" />
 
-          <Grid>
-            <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+            <Frame BackgroundColor="{DynamicResource ButtonColor}" Margin="8,2" CornerRadius="8" Padding="0">
+                <!--Add to portfolio button-->
+                <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" HeightRequest="40" FontAttributes="Bold"
+                        BackgroundColor="{DynamicResource TransparentColor}" TextColor="{DynamicResource ButtonTextColor}" Clicked="AddToPortfolioClicked" />
+            </Frame>
+            <Grid>
+                <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
                                                            VerticalOptions="Center" />
-          </Grid>
+            </Grid>
           
           
             <!--Add To Portfolio Popup Box-->

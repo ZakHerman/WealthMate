@@ -32,7 +32,7 @@ namespace WealthMate.Droid
 
         public void ApplyTheme(Theme theme)
         {
-            Xamarin.Forms.Application.Current.Resources.TryGetValue("AndroidMenuColor", out var backgroundResource);
+            Xamarin.Forms.Application.Current.Resources.TryGetValue("AndroidPrimaryColor", out var backgroundResource);
             var backgroundColor = (Color?) backgroundResource ?? Color.FromHex("#CC212121");
 
             SetStatusBarColor(backgroundColor);

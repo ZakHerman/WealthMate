@@ -15,28 +15,38 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <!--Searchbar, placeholder text and on text change functionality-->
-            <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
+            <Grid ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Margin="12,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
 
-            <!--Picker for selecting attribute to sort list by-->
-            <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedItem="{Binding SelectedCriteria}" Margin="52,0,0,0">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Company Name</x:String>
-                        <x:String>Day Return Rate</x:String>
-                        <x:String>Current Price (high-low)</x:String>
-                        <x:String>Current Price (low-high)</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--Searchbar, placeholder text and on text change functionality-->
+                <SearchBar x:Name="SearchBar" Grid.Column="0" HorizontalOptions="Start" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
+
+                <!--Picker for selecting attribute to sort list by-->
+                <Picker Title="Sort" x:Name="picker" Grid.Column="1" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}" SelectedItem="{Binding SelectedCriteria}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Company Name</x:String>
+                            <x:String>Day Return Rate</x:String>
+                            <x:String>Current Price (high-low)</x:String>
+                            <x:String>Current Price (low-high)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None"
-                                   ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
+            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold"
+                                   ItemTapped="WatchlistView_ItemTapped" ItemDragging="Watchlist_OnItemDragging">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">
+                        <Grid x:Name="WatchListItem" RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">
                             <Grid.ColumnDefinitions>
                                 <!-- Company image size -->
                                 <ColumnDefinition Width="32" />
