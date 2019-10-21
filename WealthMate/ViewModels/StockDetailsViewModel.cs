@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using WealthMate.Helpers;
 using WealthMate.Models;
 using Xamarin.Forms;
 

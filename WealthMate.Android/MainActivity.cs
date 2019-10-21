@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using WealthMate.Helpers;
 using WealthMate.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -37,7 +38,7 @@ namespace WealthMate.Droid
 
             SetStatusBarColor(backgroundColor);
 
-            SetTheme(theme == WealthMate.Theme.Dark
+            SetTheme(theme == Helpers.Theme.Dark
                 ? Resource.Style.Base_Theme_AppCompat
                 : Resource.Style.Base_Theme_AppCompat_Light);
         }
