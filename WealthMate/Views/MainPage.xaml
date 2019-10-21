@@ -10,7 +10,7 @@
             xmlns:portfolio="clr-namespace:WealthMate.Views.Portfolio;assembly=WealthMate"
             xmlns:settings="clr-namespace:WealthMate.Views.Settings;assembly=WealthMate"
             BackgroundColor="{DynamicResource BackgroundColor}"
-            BarBackgroundColor="{DynamicResource MenuColor}"
+            BarBackgroundColor="{DynamicResource PrimaryColor}"
             UnselectedTabColor="{DynamicResource UnselectedColor}"
             SelectedTabColor="{DynamicResource SelectedColor}">
 
