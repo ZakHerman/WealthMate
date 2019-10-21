@@ -9,12 +9,29 @@ namespace WealthMate.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         private float _currentTotal;
-
+        private float _totalReturn;
+        private float _returnGoal;
         public ObservableCollection<OwnedAsset> OwnedAssets { get; }
-        public float TotalReturn { get; set; }
+        public float TotalReturn
+        {
+            get => _totalReturn;
+            set
+            {
+                _totalReturn = value;
+                OnPropertyChanged();
+            }
+        }
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
-        public float ReturnGoal { get; set; }
+        public float ReturnGoal
+        {
+            get => _returnGoal;
+            set
+            {
+                _returnGoal = value;
+                OnPropertyChanged();
+            }
+        }
         public float ReturnGoalProgress { get; set; }
         public bool PositiveTotal { get; set; }
         public  float CurrentTotal {
