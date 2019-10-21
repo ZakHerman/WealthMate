@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -60,7 +61,9 @@ namespace WealthMate.ViewModels
 
             // Used to override area chart minimum Y-axis value
             Minimum = history.Any() ? (int)history.Min(s => s.PriceClose) : 0;
+ 
             OnPropertyChanged(nameof(StockHistory));
+            OnPropertyChanged(nameof(Minimum));
         }
 
         public async void AddToWatchList()

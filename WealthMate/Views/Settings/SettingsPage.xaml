@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Settings.SettingsPage">
 
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="Themes" Text="Themes" Clicked="OnThemeClicked" />
+            <comboBox:SfComboBox x:Name="Themes" HeightRequest="40" TextColor="gray" Text="Theme" SelectionChanged="OnThemeClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
