@@ -3,12 +3,9 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
-using System.Diagnostics;
-using PropertyChanged;
 
 namespace WealthMate.Views.Portfolio
 {
-    [AddINotifyPropertyChangedInterface]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnedStockDetailsPage
     {
@@ -52,14 +49,6 @@ namespace WealthMate.Views.Portfolio
 
             OwnedStock.EditStock(newNumShares, newPrice, OwnedStock);
             OwnedStock.UpdateOwnedAsset();
-        }
-
-        private void SaveInPopupPropertyEvent(object sender, PropertyChangingEventArgs e)
-        {
-            popupLayout.IsOpen = false;
-            string propToChange = e.PropertyName;
-
-            OnPropertyChanged(propToChange = editNumOfShares.Value.ToString());
         }
 
         private void Handle_NumSharesChanged(object sender, ValueEventArgs e)

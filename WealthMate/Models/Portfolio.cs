@@ -1,18 +1,31 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace WealthMate.Models
 {
-    public class Portfolio
+    public class Portfolio : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private float _currentTotal;
+
         public ObservableCollection<OwnedAsset> OwnedAssets { get; }
-        public  float CurrentTotal { get; set; }
         public float TotalReturn { get; set; }
         public float PrincipalTotal { get; set; }
         public float TotalReturnRate { get; set; }
         public float ReturnGoal { get; set; }
         public float ReturnGoalProgress { get; set; }
-        public bool PositiveTotal { get; set; }             //Flag for view trigger purposes
+        public bool PositiveTotal { get; set; }
+        public  float CurrentTotal {
+            get => _currentTotal;
+            set
+            {
+                _currentTotal = value;
+                OnPropertyChanged();
+            }
+
+        }
 
         public Portfolio()
         {
@@ -30,13 +43,13 @@ namespace WealthMate.Models
 
         public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
         {
-            this.OwnedAssets.Add(asset);
+            OwnedAssets.Add(asset);
             UpdatePortfolio();
         }
 
         public void RemoveAsset(OwnedAsset asset)                   //removes asset from portfolio and instantly updates its values
         {
-            this.OwnedAssets.Remove(asset);
+            OwnedAssets.Remove(asset);
             UpdatePortfolio();
         }
 
@@ -45,7 +58,7 @@ namespace WealthMate.Models
             CalculateUpdatedPortfolioTotals();
             CalculateTotalReturn();
 
-            if(ReturnGoal != 0)
+            if (ReturnGoal != 0)
                 ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;       //Updates how close the return value is to reaching its return goal
         }
 
@@ -53,10 +66,7 @@ namespace WealthMate.Models
         {
             TotalReturnRate = ((CurrentTotal - PrincipalTotal) / PrincipalTotal) * 100;
 
-            if (TotalReturnRate > 0f)                                       //Flag for XAML code (green or red colours)
-                PositiveTotal = true;
-            else
-                PositiveTotal = false;
+            PositiveTotal = TotalReturnRate > 0f;
         }
 
         private void CalculateUpdatedPortfolioTotals()
@@ -66,7 +76,7 @@ namespace WealthMate.Models
             TotalReturn = 0;
             TotalReturnRate = 0;
 
-            foreach (OwnedAsset asset in OwnedAssets)
+            foreach (var asset in OwnedAssets)
             {
                 asset.UpdateOwnedAsset();                       //Iterates through each owned asset and makes sure its updated before calculating
                 CurrentTotal += asset.CurrentValue;
@@ -74,6 +84,10 @@ namespace WealthMate.Models
                 TotalReturn += asset.TotalReturn;
             }
         }
-    }
 
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }
