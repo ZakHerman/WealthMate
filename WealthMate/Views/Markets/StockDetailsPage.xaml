@@ -229,11 +229,13 @@
             </Frame>
 
             <Frame BackgroundColor="{DynamicResource ButtonColor}" Margin="8,2" CornerRadius="8" Padding="0">
-                <!--Add to portfolio button-->
+                
+              <!--Add to portfolio button-->
                 <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" HeightRequest="40" FontAttributes="Bold"
                         BackgroundColor="{DynamicResource TransparentColor}" TextColor="{DynamicResource ButtonTextColor}" Clicked="AddToPortfolioClicked" />
             </Frame>
-            <Grid>
+            
+          <Grid>
                 <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
                                                            VerticalOptions="Center" />
             </Grid>

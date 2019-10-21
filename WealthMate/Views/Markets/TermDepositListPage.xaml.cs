@@ -8,6 +8,7 @@ using Syncfusion.XForms.ComboBox;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System;
 
 namespace WealthMate.Views.Markets
 {
@@ -45,6 +46,67 @@ namespace WealthMate.Views.Markets
             {
                 TDList.Add(termD);
             }
+        }
+
+        private void DatePicker_Clicked(object sender, EventArgs e)
+        {
+            Date.IsOpen = !Date.IsOpen;
+        }
+
+        public void UpdatePurchaseDate()
+        {
+            var selectedItem = Date.SelectedItem as ObservableCollection<object>;
+
+            string month = selectedItem[0].ToString();
+            int monthInt = 0;
+
+            switch (month)
+            {
+                case "Jan":
+                    monthInt = 1;
+                    break;
+                case "Feb":
+                    monthInt = 2;
+                    break;
+                case "Mar":
+                    monthInt = 3;
+                    break;
+                case "Apr":
+                    monthInt = 4;
+                    break;
+                case "May":
+                    monthInt = 5;
+                    break;
+                case "Jun":
+                    monthInt = 6;
+                    break;
+                case "Jul":
+                    monthInt = 7;
+                    break;
+                case "Aug":
+                    monthInt = 8;
+                    break;
+                case "Sep":
+                    monthInt = 9;
+                    break;
+                case "Oct":
+                    monthInt = 10;
+                    break;
+                case "Nov":
+                    monthInt = 11;
+                    break;
+                case "Dec":
+                    monthInt = 12;
+                    break;
+            }
+
+            string day = selectedItem[1].ToString();
+            int dayInt = Int32.Parse(day);
+
+            string year = selectedItem[2].ToString();
+            int yearInt = Int32.Parse(year);
+
+            OwnedAsset.PurchaseDate = new System.DateTime(yearInt, monthInt, dayInt);
         }
 
         // sorts StockList list according to picker value upon picker index value changing
@@ -120,6 +182,7 @@ namespace WealthMate.Views.Markets
             }
             else
             {
+                UpdatePurchaseDate();
                 OwnedAsset.UpdateOwnedAsset();
                 ((App)Application.Current).User.Portfolio.AddAsset(OwnedAsset);
                 AddTDForm.IsOpen = false;
