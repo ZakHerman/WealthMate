@@ -162,24 +162,26 @@
                                 <ScrollView>
                                 <StackLayout WidthRequest="300" HeightRequest="450">
                                     <Label Text="Edit principal value:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editPrincipalValue" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" ValueChanged="Handle_PrincipalValueChanged" />
+                                        <textbox:SfNumericTextBox x:Name="editPrincipalValue" Margin="3,3" Watermark="{Binding OwnedAsset.PrincipalValue}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Double" ValueChanged="Handle_PrincipalValueChanged" />
                                     
                                     <Label Text="Edit length:" TextColor="{DynamicResource PrimaryTextColor}" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double"  ValueChanged="Handle_LengthChanged"/>
 
-                                     <combobox:SfComboBox HeightRequest="40" x:Name="comboBox" SelectionChanged="CompoundRate_SelectionChanged">
-                                         <combobox:SfComboBox.ComboBoxSource>
-                                             <ListCollection:List x:TypeArguments="x:String">
-                                                 <x:String>Annual</x:String>
-                                                 <x:String>Semi-Annual</x:String>
-                                                 <x:String>Quarterly</x:String>
-                                                 <x:String>Monthly</x:String>
-                                                 <x:String>Never</x:String>
-                                             </ListCollection:List>
-                                         </combobox:SfComboBox.ComboBoxSource>
-                                     </combobox:SfComboBox>
+                                    <Picker x:Name="picker"
+                                            Title="Edit Compound Rate"
+                                            SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Annual</x:String>
+                                                <x:String>Semi-Annual</x:String>
+                                                <x:String>Quarterly</x:String>
+                                                <x:String>Monthly</x:String>
+                                                <x:String>Never</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
 
-                                        <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
+                                    <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
                                     <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" ValueChangeMode="OnKeyFocus" ParserMode="Double" ValueChanged="Handle_ReturnGoalChanged" />
 
                                     <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>

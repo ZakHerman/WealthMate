@@ -166,10 +166,21 @@ namespace WealthMate.Models
 
         public virtual void UpdateOwnedAsset()
         {
-            CalculateCurrentValue();
-            CalculateReturn();
+            if (CompoundRate == 0)
+            {
+                CurrentValue = PrincipalValue;
+                TotalReturn = 0.0f;
+                TotalReturnRate = 0.0f;
+                ReturnGoalProgress = 0.0f;
+            }
+            else
+            {
+                CalculateCurrentValue();
+                CalculateReturn();
+                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;      //Updates how close the return value is to reaching its return goal
+            }
+
             CompoundRateConvert();
-            ReturnGoalProgress = (TotalReturn / ReturnGoal)  * 100;       //Updates how close the return value is to reaching its return goal
             InterestRateToString = (InterestRate * 100).ToString();     //Changes float value (for calculation purposes) to readable percentage value
         }
 
@@ -220,13 +231,16 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the user is editing
-        public void EditAsset(float principalValue, float interestRate, int length, float returnGoal)
+        public void EditAsset(float principalValue, float interestRate, int compoundRate, int length, float returnGoal)
         {
             if ((PrincipalValue != principalValue) && (principalValue != 0))
                 PrincipalValue = principalValue;
 
             if ((InterestRate != interestRate) && (interestRate != 0))
                 InterestRate = interestRate;
+
+            if ((CompoundRate != compoundRate) && (compoundRate != -1))
+                CompoundRate = compoundRate;
 
             if ((Length != length) && (length != 0))
                 Length = length;
