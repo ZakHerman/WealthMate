@@ -17,7 +17,7 @@ namespace WealthMate.Views.Portfolio
         private SfNumericTextBox editRegPayments;
         private SfNumericTextBox editReturnGoal;
         private SfNumericTextBox editPrincipalValue;
-        private SfComboBox comboBox;
+        private int editCompoundRate = -1;
 
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
@@ -55,21 +55,19 @@ namespace WealthMate.Views.Portfolio
             popupLayout.IsOpen = false;
 
             //var newPurchaseDate;
-            //var newCompoundRate;
-            var newPrincipalValue = int.Parse(editPrincipalValue.Value.ToString());
+            var newCompoundRate = editCompoundRate;
+            var newPrincipalValue = float.Parse(editPrincipalValue.Value.ToString());
             var newInterestRate = float.Parse(editInterestRate.Value.ToString()) / 100;
             var newLength = int.Parse(editLength.Value.ToString());
             var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
-            OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newLength, newReturnGoal);
+            OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newCompoundRate, newLength, newReturnGoal);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
         private void Handle_PrincipalValueChanged(object sender, ValueEventArgs e)
         {
             editPrincipalValue.Value = e.Value.ToString();
         }
-
-
 
         // Collects new interest rate value from text box entered by user
         private void Handle_InterestRateChanged(object sender, ValueEventArgs e)
@@ -94,11 +92,6 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.Value = e.Value.ToString();
         }
 
-        private void CompoundRate_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
-        {
-            OwnedAsset.CompoundRate = comboBox.SelectedIndex;
-        }
-
         //Remove Asset from portfolio
         private void RemoveAssetClicked(object sender, EventArgs e)
         {
@@ -115,5 +108,32 @@ namespace WealthMate.Views.Portfolio
             await Navigation.PopAsync();
         }
 
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                switch (selectedIndex)
+                {
+                    case 0:
+                        editCompoundRate = 1;
+                        break;
+                    case 1:
+                        editCompoundRate = 2;
+                        break;
+                    case 2:
+                        editCompoundRate = 4;
+                        break;
+                    case 3:
+                        editCompoundRate = 12;
+                        break;
+                    default:
+                        editCompoundRate = 0;
+                        break;
+                }
+            }
+        }
     }
 }
