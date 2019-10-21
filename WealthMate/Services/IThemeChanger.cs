@@ -1,4 +1,6 @@
-﻿namespace WealthMate.Services
+﻿using WealthMate.Helpers;
+
+namespace WealthMate.Services
 {
     public interface IThemeChanger
     {

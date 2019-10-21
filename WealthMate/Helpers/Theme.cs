@@ -1,4 +1,4 @@
-﻿namespace WealthMate
+﻿namespace WealthMate.Helpers
 {
     public enum Theme
     {
