@@ -4,12 +4,57 @@ namespace WealthMate.Models
 {
     public class OwnedStock : OwnedAsset
     {
+        private float _purchasedPrice;
+        private float _sharesPurchased;
+        private float _currentPrice;
+        private float _dayReturn;
+        private float _dayReturnRate;
         public Stock Stock { get; set; }                        //Takes public stock into constructor to access it's updating variables (i.e. current price of stock).
-        public float PurchasedPrice { get; set; }               //Price ownedstock was purchased at
-        public int SharesPurchased { get; set; }                //Amount of shares the ownedstock owns
-        public float CurrentPrice { get; set; }                 //Current price of OwnedStcok
-        public float DayReturn { get; set; }                    //Returns made in a day
-        public float DayReturnRate { get; set; }                //Percentage returns made in a day
+        public float PurchasedPrice               //Price ownedstock was purchased at
+        {
+            get => _purchasedPrice;
+            set
+            {
+                _purchasedPrice = value;
+                OnPropertyChanged();
+            }
+        }
+        public float SharesPurchased             //Amount of shares the ownedstock owns
+        {
+            get => _sharesPurchased;
+            set
+            {
+                _sharesPurchased = value;
+                OnPropertyChanged();
+            }
+        }
+        public float CurrentPrice                 //Current price of OwnedStcok
+        {
+            get => _currentPrice;
+            set
+            {
+                _currentPrice = value;
+                OnPropertyChanged();
+            }
+        }
+        public float DayReturn                  //Returns made in a day
+        {
+            get => _dayReturn;
+            set
+            {
+                _dayReturn = value;
+                OnPropertyChanged();
+            }
+        }
+        public float DayReturnRate           //Percentage returns made in a day
+        {
+            get => _dayReturnRate;
+            set
+            {
+                _dayReturnRate = value;
+                OnPropertyChanged();
+            }
+        }
         public bool PositiveDayReturns { get; set; }            //Flag for xamarin view page that determines the text colour (green/red) to display
         public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }     //Xamarin details page header displayed
 
@@ -64,14 +109,18 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the owned stock the user is editing
-        public void EditStock(int shares, float price)
+        public void EditStock(float shares, float price, float returnGoal)
         {
-            if (SharesPurchased != shares && shares != 0)
+            if ((SharesPurchased != shares) && (shares != 0))
                 SharesPurchased = shares;
 
-            if (PurchasedPrice != price && price != 0)
+            if ((PurchasedPrice != price) && (price != 0))
                 PurchasedPrice = price;
 
+            if ((ReturnGoal != returnGoal) && (returnGoal != 0))
+                ReturnGoal = returnGoal;
+
+            PrincipalValue = SharesPurchased * PurchasedPrice;
             UpdateOwnedAsset();
         }
 
