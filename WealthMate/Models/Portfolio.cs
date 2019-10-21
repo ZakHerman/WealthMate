@@ -74,6 +74,15 @@ namespace WealthMate.Models
                 TotalReturn += asset.TotalReturn;
             }
         }
+
+        public void EditPortfolioGoal(float portfolioGoal)
+        {
+            if((portfolioGoal != 0) && (portfolioGoal != ReturnGoal))
+            {
+                ReturnGoal = portfolioGoal;
+                UpdatePortfolio();
+            }
+        }
     }
 
 }
