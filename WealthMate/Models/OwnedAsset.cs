@@ -7,6 +7,7 @@ namespace WealthMate.Models
     public class OwnedAsset : INotifyPropertyChanged
     {
         private float _returnGoal;
+        private float _returnGoalProgress;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,7 +31,15 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float ReturnGoalProgress { get; set; }                                //The percentage amount it is to its desired goal
+        public float ReturnGoalProgress                               //The percentage amount it is to its desired goal
+        {
+            get => _returnGoalProgress;
+            set
+            {
+                _returnGoalProgress = value;
+                OnPropertyChanged();
+            }
+        }
         public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
         public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
         public string CompoundRateToString { get; set; }                        //Converts amount of time interest is being compounded into string

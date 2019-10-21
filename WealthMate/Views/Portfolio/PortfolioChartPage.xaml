@@ -90,7 +90,7 @@
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
-                <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding OwnedStock.TotalReturn}" Maximum="{Binding OwnedStock.ReturnGoal}" Margin="30, 0"/>
+                <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding CurrentPortfolio.TotalReturn}" Maximum="{Binding CurrentPortfolio.ReturnGoal}" Margin="30, 0"/>
                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding CurrentPortfolio.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
             </Grid>
 
