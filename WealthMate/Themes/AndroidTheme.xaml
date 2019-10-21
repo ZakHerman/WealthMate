@@ -4,10 +4,13 @@
                     x:Class="WealthMate.Themes.AndroidTheme">
 
     <!--Layout colour-->
-    <Color x:Key="PrimaryColor">#2196F3</Color>
-    <Color x:Key="SecondaryColor">White</Color>
-    <Color x:Key="TertiaryColor">White</Color>
+    <Color x:Key="BackgroundColor">White</Color>
+    <Color x:Key="MenuColor">#2196F3</Color>
+    <Color x:Key="SurfaceColor">White</Color>
     <Color x:Key="AccentColor">#2e95b9</Color>
+
+    <Color x:Key="ButtonColor">#2196F3</Color>
+    <Color x:Key="ButtonTextColor">White</Color>
 
     <!--Text colour-->
     <Color x:Key="PrimaryTextColor">Black</Color>
@@ -28,7 +31,8 @@
 
     <Color x:Key="TransparentColor">Transparent</Color>
 
-    <!--Line graph trackball colour-->
+    <!--Area chart colour-->
+    <Color x:Key="AreaColor">#272E95B9</Color>
     <Color x:Key="TrackBallColor">Black</Color>
     <Color x:Key="TrackBallLabelBackgroundColor">#d1F9F9F9</Color>
 

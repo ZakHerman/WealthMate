@@ -62,19 +62,19 @@
       <Version>1.6.292</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>17.3.0.14</Version>
+      <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>17.3.0.14</Version>
+      <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox">
-      <Version>17.3.0.14</Version>
+      <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout">
-      <Version>17.3.0.14</Version>
+      <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
-      <Version>17.3.0.14</Version>
+      <Version>17.3.0.17</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Auth">
       <Version>1.7.0</Version>

@@ -4,15 +4,19 @@
                     x:Class="WealthMate.Themes.DarkTheme">
 
     <!--Layout colour-->
-    <Color x:Key="PrimaryColor">#201f24</Color> <!--Navigation bar colour-->
-    <Color x:Key="SecondaryColor">#2b2a2f</Color> <!--List view item background colour-->
-    <Color x:Key="TertiaryColor">#201f24</Color> <!--List view background colour-->
+    <Color x:Key="BackgroundColor">#121212</Color> <!--Page background colour-->
+    <Color x:Key="MenuColor">#1FFFFFFF</Color> <!--Navigation bar colour-->
+    <Color x:Key="SurfaceColor">#11FFFFFF</Color> <!--List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
 
+    <Color x:Key="ButtonColor">#11FFFFFF</Color>
+    <Color x:Key="ButtonTextColor">#2e95b9</Color>
+
     <!--Text colour-->
-    <Color x:Key="PrimaryTextColor">White</Color> <!--Label data text colour-->
-    <Color x:Key="SecondaryTextColor">DarkGray</Color> <!--Label name text colour-->
+    <Color x:Key="PrimaryTextColor">#DEFFFFFF</Color> <!--Label data text colour-->
+    <Color x:Key="SecondaryTextColor">#AAFFFFFF</Color> <!--Label name text colour-->
     <Color x:Key="TertiaryTextColor">White</Color> <!--Title text colour-->
+    <Color x:Key="DisabledTextColor">#62FFFFFF</Color> <!--Label name text colour-->
 
     <!--Price indicator colour-->
     <Color x:Key="PositiveTextColor">#44f674</Color>
@@ -28,7 +32,8 @@
 
     <Color x:Key="TransparentColor">Transparent</Color>
 
-    <!--Line graph trackball colour-->
+    <!--Area chart colour-->
+    <Color x:Key="AreaColor">#272E95B9</Color>
     <Color x:Key="TrackBallColor">LightGray</Color>
     <Color x:Key="TrackBallLabelBackgroundColor">#D1373737</Color>
 

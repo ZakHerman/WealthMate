@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioChartPage"
              Title="Pie Chart"
-             BackgroundColor="{DynamicResource SecondaryColor}">
+             BackgroundColor="{DynamicResource SurfaceColor}">
 
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" VerticalOptions="Fill">
@@ -58,7 +58,7 @@
             <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
 
-            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}" WidthRequest="500" HeightRequest="400">
+            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}" WidthRequest="500" HeightRequest="400">
                 <syncfusion:SfChart.Series>
                     <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
                                           EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">

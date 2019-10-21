@@ -13,7 +13,8 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
-             Title="Term Deposits">
+             Title="Term Deposits"
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.BindingContext>
         <vm:TermDepositViewModel />
@@ -43,11 +44,11 @@
         </Picker>
 
         <!--The list view of the term deposits-->
-        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" BackgroundColor="{DynamicResource TertiaryColor}"
+        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}"
                                AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="TermDepositClicked">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid BackgroundColor="{DynamicResource SecondaryColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
+                    <Grid BackgroundColor="{DynamicResource SurfaceColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="32" />
                             <ColumnDefinition Width="*" />

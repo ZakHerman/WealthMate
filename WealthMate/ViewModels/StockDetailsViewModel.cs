@@ -17,6 +17,7 @@ namespace WealthMate.ViewModels
         private string _watchListImage;
         private static readonly Dictionary<string, List<StockHistory>> StockHistoryDictionary = new Dictionary<string, List<StockHistory>>();
 
+        public int Minimum { get; set; }
         public Stock Stock { get; }
         public List<StockHistory> StockHistory { get; set; }
         public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList;
@@ -57,6 +58,8 @@ namespace WealthMate.ViewModels
                 StockHistory = history;
             }
 
+            // Used to override area chart minimum Y-axis value
+            Minimum = history.Any() ? (int)history.Min(s => s.PriceClose) : 0;
             OnPropertyChanged(nameof(StockHistory));
         }
 

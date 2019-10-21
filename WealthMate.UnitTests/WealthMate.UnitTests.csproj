@@ -13,9 +13,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Plugin.Toast" Version="2.1.2" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.3.0.14" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.3.0.14" />
-    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="17.3.0.14" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.3.0.17" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.3.0.17" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="17.3.0.17" />
   </ItemGroup>
 
   <ItemGroup>

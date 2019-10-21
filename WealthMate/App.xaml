@@ -10,7 +10,7 @@
         <ResourceDictionary Source="Themes/AndroidTheme.xaml" />
 
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="BarBackgroundColor" Value="{DynamicResource MenuColor}" />
             <Setter Property="BarTextColor" Value="{DynamicResource TertiaryTextColor}" />
         </Style>
     </Application.Resources>

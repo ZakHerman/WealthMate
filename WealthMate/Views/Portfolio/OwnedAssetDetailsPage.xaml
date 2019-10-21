@@ -18,7 +18,7 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout Padding="0,10" BackgroundColor="{DynamicResource SecondaryColor}">
+        <StackLayout Padding="0,10" BackgroundColor="{DynamicResource SurfaceColor}">
             <!--Basic details of the OwnedAsset-->
             <Label Text="{Binding OwnedAsset.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"
                    FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />

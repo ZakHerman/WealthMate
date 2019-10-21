@@ -6,7 +6,7 @@
     <!--Layout colour-->
     <Color x:Key="PrimaryColor">LightSlateGray</Color>
     <Color x:Key="SecondaryColor">White</Color>
-    <Color x:Key="TertiaryColor">LightSlateGray</Color>
+    <Color x:Key="BackgroundColor">LightSlateGray</Color>
     <Color x:Key="AccentColor">#2e95b9</Color>
 
     <!--Text colour-->

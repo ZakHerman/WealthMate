@@ -7,7 +7,8 @@
              xmlns:views="clr-namespace:WealthMate.Views.Markets;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockListPage"
-             Title="Stocks">
+             Title="Stocks"
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     
     <ContentPage.Content>
@@ -28,10 +29,10 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <syncfusion:SfListView x:Name="StockListView" ItemsSource ="{Binding StockList}"  BackgroundColor="{DynamicResource TertiaryColor}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
+            <syncfusion:SfListView x:Name="StockListView" ItemsSource="{Binding StockList}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid BackgroundColor="{DynamicResource SecondaryColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
+                        <Grid BackgroundColor="{DynamicResource SurfaceColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="32" />
                                 <ColumnDefinition Width="*" />

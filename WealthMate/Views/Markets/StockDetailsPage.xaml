@@ -7,9 +7,7 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
-             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
-             xmlns:class="WealthMate.Views.Markets.StockDetailsPage"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockDetailsPage">
   
@@ -23,7 +21,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" /> <!--Stock name width-->
-                <ColumnDefinition Width="37" /> <!--Watchlist star width-->
+                <ColumnDefinition Width="36" /> <!--Watchlist star width-->
             </Grid.ColumnDefinitions>
 
             <!--Name of stock being displayed-->
@@ -58,167 +56,173 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{DynamicResource SecondaryColor}" Spacing="10" Padding="5" Orientation="Vertical">
+        <StackLayout Spacing="10" Padding="5" Orientation="Vertical">
             <Label Text="{Binding Stock.CompanyName}" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Large" HorizontalTextAlignment="Center" />
 
-            <Grid RowSpacing="0" HorizontalOptions="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" /> <!--Image size of price arrow-->
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Frame BackgroundColor="{DynamicResource SurfaceColor}" Margin="8,2" Padding="6" CornerRadius="8">
+                <Grid RowSpacing="0" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" /> <!--Image size of price arrow-->
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" /> <!--Price column-->
-                    <ColumnDefinition Width="auto" /> <!--Arrow column-->
-                    <ColumnDefinition Width="auto" /> <!--Return column-->
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" /> <!--Price column-->
+                        <ColumnDefinition Width="auto" /> <!--Arrow column-->
+                        <ColumnDefinition Width="auto" /> <!--Return column-->
+                    </Grid.ColumnDefinitions>
 
-                <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                       FontSize="28" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                    <Label x:Name ="CurrentPriceText" Text="{Binding Stock.CurrentPrice, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                           FontSize="22" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
-                <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HeightRequest="26">
-                    <Image.Triggers>
-                        <!--Change to upward arrow when positive return-->
-                        <DataTrigger TargetType ="Image" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
-                            <Setter Property="Source" Value="uparrow.png" />
-                        </DataTrigger>
+                    <Image Source="downarrow.png" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HeightRequest="26" VerticalOptions="Center">
+                        <Image.Triggers>
+                            <!--Change to upward arrow when positive return-->
+                            <DataTrigger TargetType ="Image" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
+                                <Setter Property="Source" Value="uparrow.png" />
+                            </DataTrigger>
 
-                        <!--Change to horizontal bar when no change for return-->
-                        <DataTrigger TargetType="Image" Binding="{Binding Stock.DayReturn}" Value="0">
-                            <Setter Property="Source" Value="horizontalline.png" />
-                        </DataTrigger>
-                    </Image.Triggers>
-                </Image>
+                            <!--Change to horizontal bar when no change for return-->
+                            <DataTrigger TargetType="Image" Binding="{Binding Stock.DayReturn}" Value="0">
+                                <Setter Property="Source" Value="horizontalline.png" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
 
-                <Label x:Name="DayReturnText" Text="{Binding Stock.DayReturn, StringFormat='{0:C}'}" TextColor="{DynamicResource NegativeTextColor}"
-                       FontSize="12" Grid.Row="0" Grid.Column="2">
-                    <Label.Triggers>
-                        <!--Change text to green when positive return-->
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label x:Name="DayReturnText" Text="{Binding Stock.DayReturn, StringFormat='{0:C}'}" TextColor="{DynamicResource NegativeTextColor}"
+                           FontSize="12" Grid.Row="0" Grid.Column="2">
+                        <Label.Triggers>
+                            <!--Change text to green when positive return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <!--Change text to grey when no change for return-->
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
+                            <!--Change text to grey when no change for return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
 
-                <Label x:Name="DayReturnRateText" Text="{Binding Stock.DayReturnRate, StringFormat='{0:N}%'}" TextColor="{DynamicResource NegativeTextColor}"
-                       FontSize="12" Grid.Row="1" Grid.Column="2">
-                    <Label.Triggers>
-                        <!--Change text to green when positive return-->
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
-                            <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
-                        </DataTrigger>
+                    <Label x:Name="DayReturnRateText" Text="{Binding Stock.DayReturnRate, StringFormat='{0:N}%'}" TextColor="{DynamicResource NegativeTextColor}"
+                           FontSize="12" Grid.Row="1" Grid.Column="2">
+                        <Label.Triggers>
+                            <!--Change text to green when positive return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.PositiveDayReturns}" Value="True">
+                                <Setter Property="TextColor" Value="{DynamicResource PositiveTextColor}" />
+                            </DataTrigger>
 
-                        <!--Change text to grey when no change for return-->
-                        <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
-                            <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
-            </Grid>
+                            <!--Change text to grey when no change for return-->
+                            <DataTrigger TargetType ="Label" Binding="{Binding Stock.DayReturn}" Value="0">
+                                <Setter Property="TextColor" Value="{DynamicResource NeutralTextColor}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </Grid>
+            </Frame>
 
-            <!--Stock history price graph-->
-            <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SecondaryColor}">
-                <!--X axis representing the date of stock history-->
-                <chart:SfChart.PrimaryAxis>
-                    <chart:DateTimeAxis>
-                        <chart:DateTimeAxis.Title>
-                            <chart:ChartAxisTitle Text="Date" TextColor="{DynamicResource PrimaryTextColor}" Margin="0,6,0,0" FontAttributes="Bold" />
-                        </chart:DateTimeAxis.Title>
+            <Frame BackgroundColor="{DynamicResource SurfaceColor}" VerticalOptions="FillAndExpand" Margin="8,2" Padding="2,6" CornerRadius="8">
+                <!--Stock history price graph-->
+                <chart:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource TransparentColor}">
+                    <!--X axis representing the date of stock history-->
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:DateTimeAxis>
+                            <chart:DateTimeAxis.Title>
+                                <chart:ChartAxisTitle Text="Date" TextColor="{DynamicResource PrimaryTextColor}" Margin="0,6,0,0" FontAttributes="Bold" />
+                            </chart:DateTimeAxis.Title>
 
-                        <chart:DateTimeAxis.LabelStyle>
-                            <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
-                        </chart:DateTimeAxis.LabelStyle>
-                    </chart:DateTimeAxis>
-                </chart:SfChart.PrimaryAxis>
- 
-                <!--Y axis representing the closing price of stock history-->
-                <chart:SfChart.SecondaryAxis>
-                    <chart:NumericalAxis>
-                        <chart:NumericalAxis.Title>
-                            <chart:ChartAxisTitle Text="Closing Price" TextColor="{DynamicResource PrimaryTextColor}" Margin="2" FontAttributes="Bold" />
-                        </chart:NumericalAxis.Title>
+                            <chart:DateTimeAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
+                            </chart:DateTimeAxis.LabelStyle>
+                        </chart:DateTimeAxis>
+                    </chart:SfChart.PrimaryAxis>
+     
+                    <!--Y axis representing the closing price of stock history-->
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis Minimum="{Binding Minimum}">
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="Closing Price" TextColor="{DynamicResource PrimaryTextColor}" Margin="2" FontAttributes="Bold" />
+                            </chart:NumericalAxis.Title>
 
-                        <chart:NumericalAxis.LabelStyle>
-                            <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
-                        </chart:NumericalAxis.LabelStyle>
-                    </chart:NumericalAxis>
-                </chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="{DynamicResource PrimaryTextColor}" />
+                            </chart:NumericalAxis.LabelStyle>
+                        </chart:NumericalAxis>
+                    </chart:SfChart.SecondaryAxis>
 
-                <chart:SfChart.ChartBehaviors>
-                    <!--Limit zoom to X axis-->
-                    <chart:ChartZoomPanBehavior ZoomMode="X"/>
-                    
-                    <chart:ChartTrackballBehavior>
-                        <chart:ChartTrackballBehavior.LabelStyle>
-                            <chart:ChartTrackballLabelStyle BorderColor="{DynamicResource AccentColor}" BackgroundColor="{DynamicResource TrackBallLabelBackgroundColor}" BorderThickness="2" />
-                        </chart:ChartTrackballBehavior.LabelStyle>
+                    <chart:SfChart.ChartBehaviors>
+                        <!--Limit zoom to X axis-->
+                        <chart:ChartZoomPanBehavior ZoomMode="X"/>
+                        
+                        <chart:ChartTrackballBehavior>
+                            <chart:ChartTrackballBehavior.LabelStyle>
+                                <chart:ChartTrackballLabelStyle BorderColor="{DynamicResource AccentColor}" BackgroundColor="{DynamicResource TrackBallLabelBackgroundColor}" BorderThickness="2" />
+                            </chart:ChartTrackballBehavior.LabelStyle>
 
-                        <chart:ChartTrackballBehavior.MarkerStyle>
-                            <chart:ChartTrackballMarkerStyle Color="{DynamicResource AccentColor}" BorderColor="Black" Width="8" Height="8" />
-                        </chart:ChartTrackballBehavior.MarkerStyle>
+                            <chart:ChartTrackballBehavior.MarkerStyle>
+                                <chart:ChartTrackballMarkerStyle Color="{DynamicResource AccentColor}" BorderColor="Black" Width="8" Height="8" />
+                            </chart:ChartTrackballBehavior.MarkerStyle>
 
-                        <chart:ChartTrackballBehavior.LineStyle>
-                            <chart:ChartLineStyle StrokeColor="{DynamicResource TrackBallColor}" StrokeWidth="2" />
-                        </chart:ChartTrackballBehavior.LineStyle>
-                    </chart:ChartTrackballBehavior>
-                </chart:SfChart.ChartBehaviors>
+                            <chart:ChartTrackballBehavior.LineStyle>
+                                <chart:ChartLineStyle StrokeColor="{DynamicResource TrackBallColor}" StrokeWidth="2" />
+                            </chart:ChartTrackballBehavior.LineStyle>
+                        </chart:ChartTrackballBehavior>
+                    </chart:SfChart.ChartBehaviors>
 
-                <chart:LineSeries ItemsSource="{Binding StockHistory}" Color="{DynamicResource AccentColor}" TrackballLabelTemplate="{StaticResource TrackballTemplate}"
-                                  XBindingPath="Date" YBindingPath="PriceClose" />
-            </chart:SfChart>
+                    <chart:AreaSeries ItemsSource="{Binding StockHistory}" TrackballLabelTemplate="{StaticResource TrackballTemplate}" Color="{DynamicResource AreaColor}" StrokeWidth="2"
+                                      StrokeColor="{DynamicResource AccentColor}" XBindingPath="Date" YBindingPath="PriceClose" EnableAnimation="True" />
+                </chart:SfChart>
+            </Frame>
 
-            <!--Grid of Key Statistics of Stock-->
-            <Grid Margin="15,0" ColumnSpacing="0" RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Frame BackgroundColor="{DynamicResource SurfaceColor}" Margin="8,2" CornerRadius="8">
+                <!--Grid of Key Statistics of Stock-->
+                <Grid ColumnSpacing="0" RowSpacing="1" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <!--Using a 3:2 ratio for stock statistic label title width and value width-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="20*" />
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="20*" />
-                </Grid.ColumnDefinitions>
+                    <!--Using a 3:2 ratio for stock statistic label title width and value width-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
 
-                <!--Timestamp of last price changing trade -->
-                <Label Text="Last Traded:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.LastTrade, Converter={StaticResource ConvertToLocalTime}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" Grid.Column="2" 
-                       Grid.ColumnSpan="2" HorizontalTextAlignment="End" />
+                    <!--Timestamp of last price changing trade -->
+                    <Label Text="Last Traded:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.LastTrade, Converter={StaticResource ConvertToLocalTime}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" Grid.Column="2" 
+                           Grid.ColumnSpan="2" HorizontalTextAlignment="End" />
 
-                <!--Stock Statistic Details-->
-                <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="3" HorizontalTextAlignment="End" />
-                <Label Text="Day Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                <Label Text="Day High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.DayHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="3" HorizontalTextAlignment="End" />
-                <Label Text="52 Week Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
-                <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Int'}" TextColor="{DynamicResource PrimaryTextColor}"
-                       Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
-                <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Float'}" TextColor="{DynamicResource PrimaryTextColor}"
-                       Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
-            </Grid>
+                    <!--Stock Statistic Details-->
+                    <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
+                    <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="3" HorizontalTextAlignment="End" />
+                    <Label Text="Day Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
+                    <Label Text="Day High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.DayHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="3" HorizontalTextAlignment="End" />
+                    <Label Text="52 Week Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
+                    <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
+                    <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Int'}" TextColor="{DynamicResource PrimaryTextColor}"
+                           Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
+                    <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
+                    <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}, ConverterParameter='Float'}" TextColor="{DynamicResource PrimaryTextColor}"
+                           Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
+                </Grid>
+            </Frame>
           
             <!--Add to portfolio button-->
-            <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" BackgroundColor="{DynamicResource PrimaryColor}"
-                    TextColor="{DynamicResource TertiaryTextColor}" Clicked="AddToPortfolioClicked" HeightRequest="40" />
+            <Button Text="Add To Portfolio" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="14" HeightRequest="40" Margin="8,2" CornerRadius="8" FontAttributes="Bold"
+                    BackgroundColor="{DynamicResource ButtonColor}" TextColor="{DynamicResource ButtonTextColor}" Clicked="AddToPortfolioClicked" />
 
           <Grid>
             <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"

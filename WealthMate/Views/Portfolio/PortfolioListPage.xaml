@@ -28,11 +28,10 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <syncfusion:SfListView x:Name="List" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" BackgroundColor="{DynamicResource TertiaryColor}"
-                                       DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
+            <syncfusion:SfListView x:Name="List" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SecondaryColor}" Padding="12,0">
+                            <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">
                                 <Grid.ColumnDefinitions>
                                     <!--4 columns per asset-->
                                     <ColumnDefinition Width="*" />

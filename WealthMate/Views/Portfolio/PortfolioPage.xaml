@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="WealthMate.Views.Portfolio.PortfolioPage"
             xmlns:local="clr-namespace:WealthMate.Views.Portfolio;assembly=WealthMate"
-            BarBackgroundColor="{DynamicResource PrimaryColor}">
+            BarBackgroundColor="{DynamicResource MenuColor}">
 
     <NavigationPage.TitleView>
         <AbsoluteLayout x:Name="NavBarLayout">

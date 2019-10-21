@@ -18,7 +18,7 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="{DynamicResource SecondaryColor}">
+        <ScrollView BackgroundColor="{DynamicResource SurfaceColor}">
             <StackLayout Padding="0,10">
                 <!--Displays basic details of the OwnedStock-->
                 <Label Text="{Binding OwnedStock.PurchaseDate, StringFormat='Date Purchased: {0:dd/MM/yy}'}" TextColor="{DynamicResource PrimaryTextColor}"

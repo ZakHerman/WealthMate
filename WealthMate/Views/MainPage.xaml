@@ -9,7 +9,8 @@
             xmlns:markets="clr-namespace:WealthMate.Views.Markets;assembly=WealthMate"
             xmlns:portfolio="clr-namespace:WealthMate.Views.Portfolio;assembly=WealthMate"
             xmlns:settings="clr-namespace:WealthMate.Views.Settings;assembly=WealthMate"
-            BarBackgroundColor="{DynamicResource PrimaryColor}"
+            BackgroundColor="{DynamicResource BackgroundColor}"
+            BarBackgroundColor="{DynamicResource MenuColor}"
             UnselectedTabColor="{DynamicResource UnselectedColor}"
             SelectedTabColor="{DynamicResource SelectedColor}">
 

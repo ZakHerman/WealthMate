@@ -32,11 +32,11 @@
             </Picker>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" BackgroundColor="{DynamicResource TertiaryColor}" AutoFitMode="None"
+            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None"
                                    ItemSize="52" DragStartMode="OnHold" ItemTapped="WatchlistView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SecondaryColor}" Padding="12,0">
+                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">
                             <Grid.ColumnDefinitions>
                                 <!-- Company image size -->
                                 <ColumnDefinition Width="32" />
