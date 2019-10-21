@@ -50,8 +50,10 @@ namespace WealthMate.Views.Portfolio
             var newInterestRate = float.Parse(editInterestRate.Value.ToString());
             var newLength = int.Parse(editLength.Value.ToString());
             var newRegPayments = float.Parse(editRegPayments.Value.ToString());
+            var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
-            OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, OwnedAsset);
+            OwnedAsset.ReturnGoal = newReturnGoal;
+            //OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, newReturnGoal);
 
             //int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
             //OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);

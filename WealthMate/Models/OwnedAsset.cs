@@ -1,9 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace WealthMate.Models
 {
-    public class OwnedAsset
+    public class OwnedAsset : INotifyPropertyChanged
     {
+        private float _returnGoal;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string AssetName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string Type { get; set; }                                    //The type of OwnedAsset
@@ -15,7 +21,15 @@ namespace WealthMate.Models
         public float CurrentValue { get; set;  }
         public float TotalReturn { get; set; }
         public float TotalReturnRate { get; set; }
-        public float ReturnGoal { get; set; }                                        //The amount of returns that the user wants to achieve with this asset
+        public float ReturnGoal                                       //The amount of returns that the user wants to achieve with this asset
+        {
+            get => _returnGoal;
+            set
+            {
+                _returnGoal = value;
+                OnPropertyChanged();
+            }
+        }
         public float ReturnGoalProgress { get; set; }                                //The percentage amount it is to its desired goal
         public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
         public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
@@ -107,18 +121,26 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the user is editing
-        public void EditAsset(float interestRate, int length, float regularPayment, OwnedAsset ownedAsset)
+        public void EditAsset(float interestRate, int length, float regularPayment, float returnGoal)
         {
-            if ((ownedAsset.InterestRate != interestRate) && (interestRate != 0))
-                ownedAsset.InterestRate = interestRate;
+            if ((InterestRate != interestRate) && (interestRate != 0))
+                InterestRate = interestRate;
 
-            if ((ownedAsset.Length != length) && (length != 0))
-                ownedAsset.Length = length;
+            if ((Length != length) && (length != 0))
+                Length = length;
 
-            if ((ownedAsset.RegularPayment != regularPayment) && (regularPayment != 0))
-                ownedAsset.RegularPayment = regularPayment; 
+            if ((RegularPayment != regularPayment) && (regularPayment != 0))
+                RegularPayment = regularPayment;
+
+            if ((ReturnGoal != regularPayment) && (returnGoal != 0))
+                ReturnGoal = returnGoal;
 
             UpdateOwnedAsset();
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

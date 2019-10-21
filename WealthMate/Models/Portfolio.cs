@@ -10,7 +10,9 @@ namespace WealthMate.Models
 
         private float _currentTotal;
         private float _totalReturn;
+        private float _totalReturnRate;
         private float _returnGoal;
+        private float _returnGoalProgress;
         public ObservableCollection<OwnedAsset> OwnedAssets { get; }
         public float TotalReturn
         {
@@ -22,7 +24,15 @@ namespace WealthMate.Models
             }
         }
         public float PrincipalTotal { get; set; }
-        public float TotalReturnRate { get; set; }
+        public float TotalReturnRate
+        {
+            get => _totalReturnRate;
+            set
+            {
+                _totalReturnRate = value;
+                OnPropertyChanged();
+            }
+        }
         public float ReturnGoal
         {
             get => _returnGoal;
@@ -32,7 +42,15 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float ReturnGoalProgress { get; set; }
+        public float ReturnGoalProgress
+        {
+            get => _returnGoalProgress;
+            set
+            {
+                _returnGoalProgress = value;
+                OnPropertyChanged();
+            }
+        }
         public bool PositiveTotal { get; set; }
         public  float CurrentTotal {
             get => _currentTotal;

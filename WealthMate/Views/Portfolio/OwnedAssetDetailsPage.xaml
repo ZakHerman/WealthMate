@@ -160,16 +160,16 @@
                                 <ScrollView>
                                 <StackLayout WidthRequest="300" HeightRequest="450">
                                     <Label Text="Edit interest rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" />
+                                    <textbox:SfNumericTextBox x:Name="editInterestRate" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_InterestRateChanged"/>
                                     
                                     <Label Text="Edit length:" TextColor="{DynamicResource PrimaryTextColor}" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
+                                    <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double"  ValueChanged="Handle_LengthChanged"/>
 
                                     <Label Text="Edit regular payments:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
+                                    <textbox:SfNumericTextBox x:Name="editRegPayments" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" ValueChanged="Handle_RegularPaymentsChanged" />
 
                                     <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" ValueChangeMode="OnLostFocus" ParserMode="Double" />
+                                    <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" ValueChangeMode="OnKeyFocus" ParserMode="Double" ValueChanged="Handle_ReturnGoalChanged" />
 
                                     <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
