@@ -3,6 +3,7 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
+using Syncfusion.XForms.ComboBox;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -15,6 +16,8 @@ namespace WealthMate.Views.Portfolio
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
         private SfNumericTextBox editReturnGoal;
+        private SfNumericTextBox editPrincipalValue;
+        private int editCompoundRate = -1;
 
         public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
         {
@@ -22,6 +25,9 @@ namespace WealthMate.Views.Portfolio
             OwnedAsset.UpdateOwnedAsset();
             BindingContext = this;
             InitializeComponent();
+
+            editPrincipalValue = new SfNumericTextBox { Value = 0 };
+            editPrincipalValue.ValueChanged += Handle_PrincipalValueChanged;
 
             editInterestRate = new SfNumericTextBox {Value = 0};
             editInterestRate.ValueChanged += Handle_InterestRateChanged;
@@ -36,6 +42,7 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
+       
         // Event handler for edit stock button, enables popup
         private void EditAssetClicked(object sender, EventArgs e)
         {
@@ -47,22 +54,19 @@ namespace WealthMate.Views.Portfolio
         {
             popupLayout.IsOpen = false;
 
-            var newInterestRate = float.Parse(editInterestRate.Value.ToString());
+            //var newPurchaseDate;
+            var newCompoundRate = editCompoundRate;
+            var newPrincipalValue = float.Parse(editPrincipalValue.Value.ToString());
+            var newInterestRate = float.Parse(editInterestRate.Value.ToString()) / 100;
             var newLength = int.Parse(editLength.Value.ToString());
-            var newRegPayments = float.Parse(editRegPayments.Value.ToString());
             var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
-            OwnedAsset.ReturnGoal = newReturnGoal;
-            //OwnedAsset.EditAsset(newInterestRate, newLength, newRegPayments, newReturnGoal);
-
-            //int index = ((App)Application.Current).User.Portfolio.OwnedAssets.IndexOf(OwnedAsset);
-            //OwnedAsset oldOA = ((App)Application.Current).User.Portfolio.OwnedAssets.ElementAt(index);
-            //((App)Application.Current).User.Portfolio.OwnedAssets.Remove(oldOA);
-
-            //OwnedAsset newEditedOA = new OwnedAsset(OwnedAsset.AssetName, OwnedAsset.PurchaseDate, OwnedAsset.Type, OwnedAsset.PrincipalValue, newInterestRate, newLength, OwnedAsset.CompoundRate, newRegPayments);
-            //((App)Application.Current).User.Portfolio.OwnedAssets.Add(newEditedOA);
-
-            OwnedAsset.UpdateOwnedAsset();
+            OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newCompoundRate, newLength, newReturnGoal);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+        }
+        private void Handle_PrincipalValueChanged(object sender, ValueEventArgs e)
+        {
+            editPrincipalValue.Value = e.Value.ToString();
         }
 
         // Collects new interest rate value from text box entered by user
@@ -104,5 +108,32 @@ namespace WealthMate.Views.Portfolio
             await Navigation.PopAsync();
         }
 
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                switch (selectedIndex)
+                {
+                    case 0:
+                        editCompoundRate = 1;
+                        break;
+                    case 1:
+                        editCompoundRate = 2;
+                        break;
+                    case 2:
+                        editCompoundRate = 4;
+                        break;
+                    case 3:
+                        editCompoundRate = 12;
+                        break;
+                    default:
+                        editCompoundRate = 0;
+                        break;
+                }
+            }
+        }
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using WealthMate.Models;
-using Xamarin.Forms;
 
 namespace WealthMate.ViewModels
 {
@@ -13,7 +11,6 @@ namespace WealthMate.ViewModels
 
         public WatchListViewModel()
         {
-            WatchListStocks = new ObservableCollection<Stock>();
             WatchListStocks = App.WatchList;
 
             foreach (var stock in WatchListStocks)
@@ -25,7 +22,7 @@ namespace WealthMate.ViewModels
         private string _selectedCriteria;
         public string SelectedCriteria
         {
-            get { return _selectedCriteria; }
+            get => _selectedCriteria;
             set
             {
                 if (_selectedCriteria != value)
@@ -40,7 +37,7 @@ namespace WealthMate.ViewModels
         // sorts WatchListStocks list according to picker value
         private void setList(string picker)
         {
-             switch (picker)
+            switch (picker)
             {
                 case "Company Name":
                     sortList(WatchListStocks.OrderBy(stock => stock.CompanyName));           
@@ -60,11 +57,11 @@ namespace WealthMate.ViewModels
 
         //clears WatchListStocks list and re-adds assets to collection
         //this is required due to the return type of OrderBy and OrderByDescending methods
-        private void sortList(IOrderedEnumerable<Stock> linqResults)
+        private void sortList(IEnumerable<Stock> linqResults)
         {
             var observableC = new ObservableCollection<Stock>(linqResults);
             WatchListStocks.Clear();
-            foreach (Stock stock in observableC)
+            foreach (var stock in observableC)
             {
                 WatchListStocks.Add(stock);
             }

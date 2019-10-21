@@ -1,5 +1,7 @@
-﻿using Syncfusion.ListView.XForms;
+﻿using System.Linq;
+using Syncfusion.ListView.XForms;
 using WealthMate.Models;
+using WealthMate.ViewModels;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -9,8 +11,6 @@ namespace WealthMate.Views.Markets
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WatchlistPage
     {
-        private SearchBar _searchBar;
-
         public WatchlistPage()
         {
             //BindingContext = new WatchListPageVM();
@@ -25,7 +25,7 @@ namespace WealthMate.Views.Markets
             if (selected == null)
                 return;
 
-            // Push stockdetailspage on top of stack
+            // Push stock details page on top of stack
             await Navigation.PushAsync(new StockDetailsPage(selected));
   
             ((SfListView)sender).SelectedItem = null;
@@ -38,29 +38,21 @@ namespace WealthMate.Views.Markets
         /// <param name="e"></param> event data
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar); //set sender to SearchBar
+            var vm = BindingContext as WatchListViewModel;
 
-            if (Watchlist.DataSource != null)
-            {
-                Watchlist.DataSource.Filter = FilterWList; //filters the data source
-                Watchlist.DataSource.RefreshFilter(); // refreshes the view
-            }
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+                Watchlist.ItemsSource = vm?.WatchListStocks;
+            else
+                Watchlist.ItemsSource = vm?.WatchListStocks.Where(stock => stock.CompanyName.ToLower().Contains(e.NewTextValue.ToLower()) 
+                                                                          || stock.Symbol.ToLower().Contains(e.NewTextValue.ToLower()));
         }
 
-        /// <summary>
-        /// method for filtering the list view as text changes within the search bar
-        /// </summary>
-        /// <param name="obj"></param> object representing a search return
-        /// <returns></returns> boolean value for checking for text in the serach bar
-        private bool FilterWList(object obj)
+        private void Watchlist_OnItemDragging(object sender, ItemDraggingEventArgs e)
         {
-            if (_searchBar?.Text == null)
+            if (e.Action == DragAction.Start)  
             {
-                return true;
+                //Watchlist.SelectedItem = Color.Aqua;
             }
-
-            return obj is Stock stock && (stock.CompanyName.ToLower().Contains(_searchBar.Text.ToLower())
-                                          || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
     }
 }
