@@ -8,20 +8,94 @@ namespace WealthMate.Models
     {
         private float _returnGoal;
         private float _returnGoalProgress;
+        private DateTime _purchaseDate;
+        private int _length;
+        private int _compoundRate;
+        private float _regularPayment;
+        private float _principalValue;
+        private float _currentValue;
+        private float _totalReturn;
+        private float _totalReturnRate;
+        private string _compoundRateToString;
+        private string _interestRateToString;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string AssetName { get; set; }
-        public DateTime PurchaseDate { get; set; }
+        public DateTime PurchaseDate
+        {
+            get => _purchaseDate;
+            set
+            {
+                _purchaseDate = value;
+                OnPropertyChanged();
+            }
+        }
         public string Type { get; set; }                                    //The type of OwnedAsset
-        public int Length { get; set; }                             //In number of years
+        public int Length                             //In number of years
+        {
+            get => _length;
+            set
+            {
+                _length = value;
+                OnPropertyChanged();
+            }
+        }
         public float InterestRate { get; set; }
-        public int CompoundRate { get; set; }                               //The amount of times interest is being compounded during a year
-        public float RegularPayment { get; set; }
-        public float PrincipalValue { get; set; }                               //The initial value (first value) of the owned asset
-        public float CurrentValue { get; set;  }
-        public float TotalReturn { get; set; }
-        public float TotalReturnRate { get; set; }
+        public int CompoundRate                              //The amount of times interest is being compounded during a year
+        {
+            get => _compoundRate;
+            set
+            {
+                _compoundRate = value;
+                OnPropertyChanged();
+            }
+        }
+        public float RegularPayment
+        {
+            get => _regularPayment;
+            set
+            {
+                _regularPayment = value;
+                OnPropertyChanged();
+            }
+        }
+        public float PrincipalValue                              //The initial value (first value) of the owned asset
+        {
+            get => _principalValue;
+            set
+            {
+                _principalValue = value;
+                OnPropertyChanged();
+            }
+        }
+        public float CurrentValue
+        {
+            get => _currentValue;
+            set
+            {
+                _currentValue = value;
+                OnPropertyChanged();
+            }
+        }
+        public float TotalReturn
+        {
+            get => _totalReturn;
+            set
+            {
+                _totalReturn = value;
+                OnPropertyChanged();
+            }
+        }
+        public float TotalReturnRate
+        {
+            get => _totalReturnRate;
+            set
+            {
+                _totalReturnRate = value;
+                OnPropertyChanged();
+            }
+        }
         public float ReturnGoal                                       //The amount of returns that the user wants to achieve with this asset
         {
             get => _returnGoal;
@@ -42,8 +116,24 @@ namespace WealthMate.Models
         }
         public bool PositiveTotal { get; set; }                                     //Boolean for View page trigger.
         public string AssetNameType { get { return AssetName + " " + Type; } }  //To String for NavBar Title when selecting an OwnedAsset
-        public string CompoundRateToString { get; set; }                        //Converts amount of time interest is being compounded into string
-        public string InterestRateToString { get; set; }                        //Converts interest rate into readable string
+        public string CompoundRateToString                         //Converts amount of time interest is being compounded into string
+        {
+            get => _compoundRateToString;
+            set
+            {
+                _compoundRateToString = value;
+                OnPropertyChanged();
+            }
+        }
+        public string InterestRateToString                   //Converts interest rate into readable string
+        {
+            get => _interestRateToString;
+            set
+            {
+                _interestRateToString = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment, float returnGoal)
@@ -130,18 +220,18 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the user is editing
-        public void EditAsset(float interestRate, int length, float regularPayment, float returnGoal)
+        public void EditAsset(float principalValue, float interestRate, int length, float returnGoal)
         {
+            if ((PrincipalValue != principalValue) && (principalValue != 0))
+                PrincipalValue = principalValue;
+
             if ((InterestRate != interestRate) && (interestRate != 0))
                 InterestRate = interestRate;
 
             if ((Length != length) && (length != 0))
                 Length = length;
 
-            if ((RegularPayment != regularPayment) && (regularPayment != 0))
-                RegularPayment = regularPayment;
-
-            if ((ReturnGoal != regularPayment) && (returnGoal != 0))
+            if ((ReturnGoal != returnGoal) && (returnGoal != 0))
                 ReturnGoal = returnGoal;
 
             UpdateOwnedAsset();
