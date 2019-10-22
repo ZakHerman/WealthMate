@@ -15,12 +15,17 @@ namespace WealthMate.Views.Markets
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermDepositListPage
     {
+        private int _compoundRate;
+        private string _assetName;
+        private DateTime _purchaseDate;
+        private float _principalValue;
+        private float _interestRate;
+        private float _length;
+        private float _returnGoal; 
+
         private SearchBar _searchBar;
-        private OwnedAsset OwnedAsset { get; set; }
         private TermDeposit TermDeposit { get; set; }
         public ObservableCollection<TermDeposit> TDList { get; set; }
-
-        SfComboBox comboBox;
 
         public TermDepositListPage()
         {
@@ -106,7 +111,7 @@ namespace WealthMate.Views.Markets
             string year = selectedItem[2].ToString();
             int yearInt = Int32.Parse(year);
 
-            OwnedAsset.PurchaseDate = new System.DateTime(yearInt, monthInt, dayInt);
+            _purchaseDate = new System.DateTime(yearInt, monthInt, dayInt);
         }
 
         // sorts StockList list according to picker value upon picker index value changing
@@ -166,25 +171,23 @@ namespace WealthMate.Views.Markets
         private void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
             TermDeposit = (TermDeposit)e.ItemData;
-            OwnedAsset = new OwnedAsset(TermDeposit.Provider, System.DateTime.Now, "Term Deposit", 0f, TermDeposit.InterestRate, TermDeposit.LengthInMonths, 0, 0f, 0f);  
-            comboBox = new SfComboBox();
+            _assetName = TermDeposit.Provider;
+            _interestRate = TermDeposit.InterestRate / 100;
+            _length = (float)(TermDeposit.LengthInMonths / 0.5);
 
             AddTDForm.IsOpen = true;
-
         }
 
         //Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
         private void AddInPopupClicked(object sender, System.EventArgs e)
         {
-            if (OwnedAsset.PrincipalValue == 0)
-            {
-                NullValueErrorPopup.IsOpen = true;
-            }
+            if (_principalValue <= 0.0f)
+                DisplayAlert(null, "Please enter purchase price!", "OK");
             else
             {
                 UpdatePurchaseDate();
-                OwnedAsset.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.AddAsset(OwnedAsset);
+                OwnedAsset oa = new OwnedAsset(_assetName, _purchaseDate, "Term Deposit", _principalValue, _interestRate, _length, _compoundRate, 0, _returnGoal);
+                ((App)Application.Current).User.Portfolio.AddAsset(oa);
                 AddTDForm.IsOpen = false;
             }
         }
@@ -193,39 +196,42 @@ namespace WealthMate.Views.Markets
         private void Handle_InvestAmountChanged(object sender, ValueEventArgs e)
         {
             float.TryParse(e.Value.ToString(), out var value);
-            OwnedAsset.PrincipalValue = value;
+            _principalValue = value;
         }
 
         private void Handle_GoalAmountChanged(object sender, ValueEventArgs e)
         {
             float.TryParse(e.Value.ToString(), out var value);
-            OwnedAsset.ReturnGoal = value;
+            _returnGoal = value;
         }
 
-        private void Handle_dropdownSelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
+        private void Picker_CompoundRateChanged(object sender, EventArgs e)
         {
-            //DisplayAlert("Selection Changed", "SelectedIndex: " + comboBox.SelectedIndex, "OK");
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
 
-            switch(comboBox.SelectedIndex)
+            if (selectedIndex != -1)
             {
-                case 1:
-                    OwnedAsset.CompoundRate = 1;
-                    break;
-                case 2:
-                    OwnedAsset.CompoundRate = 2;
-                    break;
-                case 3:
-                    OwnedAsset.CompoundRate = 4;
-                    break;
-                case 4:
-                    OwnedAsset.CompoundRate = 12;
-                    break;
-                default:
-                    OwnedAsset.CompoundRate = 0;
-                    break;
+                switch (selectedIndex)
+                {
+                    case 0:
+                        _compoundRate = 1;
+                        break;
+                    case 1:
+                        _compoundRate = 2;
+                        break;
+                    case 2:
+                        _compoundRate = 4;
+                        break;
+                    case 3:
+                        _compoundRate = 12;
+                        break;
+                    default:
+                        _compoundRate = 0;
+                        break;
+                }
             }
         }
-
 
 
     }

@@ -59,7 +59,7 @@ namespace WealthMate.Models
         public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }     //Xamarin details page header displayed
 
         //OwnedStock Constructor
-        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, int sharesPurchased, float returnGoal)
+        public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased, float returnGoal)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;

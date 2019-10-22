@@ -106,7 +106,10 @@ namespace WealthMate.Models
 
         private void CalculateTotalReturn()
         {
-            TotalReturnRate = ((CurrentTotal - PrincipalTotal) / PrincipalTotal) * 100;
+            if (PrincipalTotal == 0.0f)
+                TotalReturnRate = 0.0f;
+            else
+                TotalReturnRate = (TotalReturn / PrincipalTotal) * 100;
 
             PositiveTotal = TotalReturnRate > 0f;
         }
@@ -116,7 +119,6 @@ namespace WealthMate.Models
             CurrentTotal = 0;                                   //sets values to zero so totals can be calculated again
             PrincipalTotal = 0;
             TotalReturn = 0;
-            TotalReturnRate = 0;
 
             foreach (var asset in OwnedAssets)
             {
