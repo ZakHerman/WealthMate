@@ -11,10 +11,16 @@ namespace WealthMate.Views.Markets
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StockDetailsPage
     {
+        private float _sharesPurchased;
+        private float _purchasedPrice;
+        private DateTime _purchasedDate;
+        private float _returnGoal;
+        public Stock PublicStock { get; set; }
         public OwnedStock OwnedStock { get; set; }
         public StockDetailsPage(Stock stock)
         {
-            OwnedStock = new OwnedStock{Stock = stock, PurchaseDate = DateTime.Now, AssetName = stock.CompanyName};
+            PublicStock = stock;
+           
             BindingContext = new StockDetailsViewModel(stock);
             InitializeComponent();
         }
@@ -23,7 +29,6 @@ namespace WealthMate.Views.Markets
         {
             Date.IsOpen = !Date.IsOpen;
         }
-
 
         public void UpdatePurchaseDate()
         {
@@ -78,7 +83,7 @@ namespace WealthMate.Views.Markets
             string year = selectedItem[2].ToString();
             int yearInt = Int32.Parse(year);
 
-            OwnedStock.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
+            _purchasedDate = new DateTime(yearInt, monthInt, dayInt);
         }
 
         //Asks for details of shares purchased
@@ -90,15 +95,15 @@ namespace WealthMate.Views.Markets
         //Adds purchased shares of stock to the users portfolio
         private void AddInPopupClicked(object sender, EventArgs e)
         {
-            if (OwnedStock.PurchasedPrice <= 0)
-            {
+            if (_purchasedPrice <= 0)
                 DisplayAlert (null, "Please enter purchase price!", "OK");
-            }
+            else if(_sharesPurchased <= 0)
+                DisplayAlert(null, "Please enter number of shares purchased!", "OK");
             else
             {
                 UpdatePurchaseDate();
-                OwnedStock.UpdateOwnedAsset();
-                ((App)Application.Current).User.Portfolio.AddAsset(OwnedStock);
+                OwnedStock os = new OwnedStock(PublicStock, _purchasedDate, _purchasedPrice, _sharesPurchased, _returnGoal);
+                ((App)Application.Current).User.Portfolio.AddAsset(os);
                 StockPortfolioForm.IsOpen = false;
             }
         }
@@ -106,19 +111,19 @@ namespace WealthMate.Views.Markets
         private void Handle_NumSharesChanged(object sender, ValueEventArgs e)
         {
             int.TryParse(e.Value.ToString(), out var value);
-            OwnedStock.SharesPurchased = value;
+            _sharesPurchased = value;
         }
 
         private void Handle_PriceChanged(object sender, ValueEventArgs e)
         {
             float.TryParse(e.Value.ToString(), out var value);
-            OwnedStock.PurchasedPrice = value;
+            _purchasedPrice = value;
         }
 
         public void Handle_ReturnGoalChanged(object sender, ValueEventArgs e)
         {
             float.TryParse(e.Value.ToString(), out var value);
-            OwnedStock.ReturnGoal = value;
+            _returnGoal = value;
         }
     }
 }
