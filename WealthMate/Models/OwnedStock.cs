@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite;
 
 namespace WealthMate.Models
 {
@@ -9,7 +10,10 @@ namespace WealthMate.Models
         private float _currentPrice;
         private float _dayReturn;
         private float _dayReturnRate;
+
+        [Ignore]
         public Stock Stock { get; set; }                        //Takes public stock into constructor to access it's updating variables (i.e. current price of stock).
+        public string Symbol { get; set; }
         public float PurchasedPrice               //Price ownedstock was purchased at
         {
             get => _purchasedPrice;
@@ -70,6 +74,7 @@ namespace WealthMate.Models
             PurchaseDate = purchaseDate;
             Type = "Stock";
             ReturnGoal = returnGoal;
+            Symbol = stock.Symbol;
             UpdateOwnedAsset();                                                 //Calculates all required values when constructed
         }
 
@@ -95,15 +100,21 @@ namespace WealthMate.Models
             PositiveTotal = TotalReturn > 0;                                            //Updates xamarin view flag
         }
 
-        private void UpdateDayReturnDetails()
+        private async void UpdateDayReturnDetails()
         {
+            if (Stock == null)
+                Stock = await App.Database.GetStockAsync(Symbol);
+
             DayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);            //Current value less how much stock was worth at the start of the day
             DayReturnRate = (DayReturn / PrincipalValue) * 100;                         //Converts day return into a percentage
             PositiveDayReturns = DayReturn > 0;                                         //Updates xamarin view flag
         }
 
-        private void UpdateCurrentDetails()                                             //Updates price of stock before calculated how much it is currently worth
+        private async void UpdateCurrentDetails()                                             //Updates price of stock before calculated how much it is currently worth
         {
+            if (Stock == null)
+                Stock = await App.Database.GetStockAsync(Symbol);
+
             CurrentPrice = Stock.CurrentPrice;                                      
             CurrentValue = CurrentPrice * SharesPurchased;
         }

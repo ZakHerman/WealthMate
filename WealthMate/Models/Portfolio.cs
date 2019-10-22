@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace WealthMate.Models
@@ -13,6 +14,7 @@ namespace WealthMate.Models
         private float _totalReturnRate;
         private float _returnGoal;
         private float _returnGoalProgress;
+
         public ObservableCollection<OwnedAsset> OwnedAssets { get; }
         public float TotalReturn
         {
@@ -24,6 +26,7 @@ namespace WealthMate.Models
             }
         }
         public float PrincipalTotal { get; set; }
+        public bool PositiveTotal { get; set; }
         public float TotalReturnRate
         {
             get => _totalReturnRate;
@@ -51,7 +54,6 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public bool PositiveTotal { get; set; }
         public  float CurrentTotal {
             get => _currentTotal;
             set
@@ -76,13 +78,25 @@ namespace WealthMate.Models
             UpdatePortfolio();
         }
 
-        public void AddAsset(OwnedAsset asset)                      //adds asset to portfolio and instantly updates its values
+        // Adds asset to portfolio and instantly updates its values
+        public async void AddAsset(OwnedAsset asset)
         {
             OwnedAssets.Add(asset);
+
+            if (asset.GetType() == typeof(OwnedStock))
+                await App.Database.SaveOwnedStockAsync((OwnedStock)asset);
+            else
+            {
+                await App.Database.SaveOwnedAssetAsync(asset);
+                var test = await App.Database.GetOwnedAssetsAsync();
+                Debug.WriteLine("Number: " + test.Count);
+            }
+
             UpdatePortfolio();
         }
 
-        public void RemoveAsset(OwnedAsset asset)                   //removes asset from portfolio and instantly updates its values
+        // Removes asset from portfolio and instantly updates its values
+        public void RemoveAsset(OwnedAsset asset)
         {
             OwnedAssets.Remove(asset);
             UpdatePortfolio();
@@ -93,9 +107,10 @@ namespace WealthMate.Models
             CalculateUpdatedPortfolioTotals();
             CalculateTotalReturn();
 
+            // Updates how close the return value is to reaching its return goal
             if (ReturnGoal != 0)
             {
-                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;       //Updates how close the return value is to reaching its return goal
+                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;
 
                 if (ReturnGoalProgress <= 0)
                     ReturnGoalProgress = 0.0f;
@@ -116,13 +131,15 @@ namespace WealthMate.Models
 
         private void CalculateUpdatedPortfolioTotals()
         {
-            CurrentTotal = 0;                                   //sets values to zero so totals can be calculated again
+            // Sets values to zero so totals can be calculated again
+            CurrentTotal = 0;
             PrincipalTotal = 0;
             TotalReturn = 0;
 
+            // Iterates through each owned asset and makes sure its updated before calculating
             foreach (var asset in OwnedAssets)
             {
-                asset.UpdateOwnedAsset();                       //Iterates through each owned asset and makes sure its updated before calculating
+                asset.UpdateOwnedAsset();
                 CurrentTotal += asset.CurrentValue;
                 PrincipalTotal += asset.PrincipalValue;
                 TotalReturn += asset.TotalReturn;
