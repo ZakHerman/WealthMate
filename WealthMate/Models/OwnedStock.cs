@@ -73,6 +73,11 @@ namespace WealthMate.Models
             UpdateOwnedAsset();                                                 //Calculates all required values when constructed
         }
 
+        public OwnedStock()
+        {
+
+        }
+
         // Creates up to date values for the Owned Asset
         public override void UpdateOwnedAsset()
         {
