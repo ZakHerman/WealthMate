@@ -1,13 +1,10 @@
 ﻿using System;
 using WealthMate.Models;
-using WealthMate.Services;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using Syncfusion.SfNumericTextBox.XForms;
 using WealthMate.ViewModels;
 using System.Collections.ObjectModel;
-using System.Collections;
-using System.Globalization;
 
 namespace WealthMate.Views.Markets
 {
@@ -26,6 +23,7 @@ namespace WealthMate.Views.Markets
         {
             Date.IsOpen = !Date.IsOpen;
         }
+
 
         public void UpdatePurchaseDate()
         {

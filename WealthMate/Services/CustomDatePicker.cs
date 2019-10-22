@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Syncfusion.SfPicker.XForms;
 using System.Collections.ObjectModel;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using System.Globalization;
 using System.Collections;
 using Xamarin.Forms;
@@ -13,17 +12,7 @@ namespace WealthMate.Services
     {
         #region Public Properties
 
-        // Months API is used to modify the Day collection as per change in Month
-
         internal Dictionary<string, string> Months { get; set; }
-
-        /// <summary>
-
-        /// Date is the actual DataSource for SfPicker control which will holds the collection of Day ,Month and Year
-
-        /// </summary>
-
-        /// <value>The date.</value>
 
         public ObservableCollection<object> Date { get; set; }
 
