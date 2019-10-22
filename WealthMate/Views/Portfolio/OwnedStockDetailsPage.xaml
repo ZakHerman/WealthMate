@@ -6,6 +6,7 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.OwnedStockDetailsPage">
 
@@ -167,6 +168,11 @@
                     </sfPopup:SfPopupLayout.PopupView>
                 </sfPopup:SfPopupLayout>
 
+                <Grid>
+                    <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+                                                           VerticalOptions="Center" />
+                </Grid>
+
                 <!--Edit Stock Popup Box-->
                 <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false" >
                     <sfPopup:SfPopupLayout.PopupView>
@@ -174,7 +180,7 @@
                             <sfPopup:PopupView.ContentTemplate>
                                 <DataTemplate>
                                     <ScrollView>
-                                    <StackLayout WidthRequest="300" HeightRequest="300">
+                                    <StackLayout WidthRequest="300" HeightRequest="450">
                                         <Label Text="Edit purchase price:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
                                         <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.PurchasedPrice, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_PriceChanged"/>
                                         
@@ -184,7 +190,11 @@
                                         <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
                                         <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.ReturnGoal, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_ReturnGoalChanged"/>
 
-                                        <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
+                                        <Grid>
+                                            <Button Text="Edit Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
+                                        </Grid>
+
+                                            <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                     </StackLayout>
                                     </ScrollView>
                                 </DataTemplate>

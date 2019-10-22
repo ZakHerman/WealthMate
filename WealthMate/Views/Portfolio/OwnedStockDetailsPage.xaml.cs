@@ -3,6 +3,8 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
+using WealthMate.Services;
+using System.Collections.ObjectModel;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -11,6 +13,7 @@ namespace WealthMate.Views.Portfolio
     {
         public OwnedStock OwnedStock { get; }
         public Stock Stock { get; }
+        public CustomDatePicker CustDate { get; set; }
 
         private SfNumericTextBox editNumOfShares;               //Textboxes for editing ownedstock details
         private SfNumericTextBox editPurchasePrice;
@@ -33,6 +36,11 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
+        private void DatePicker_Clicked(object sender, EventArgs e)
+        {
+            Date.IsOpen = !Date.IsOpen;
+        }
+
         // Event handler for edit stock button, enables popup
         private void EditStockClicked(object sender, EventArgs e)       
         {
@@ -48,6 +56,7 @@ namespace WealthMate.Views.Portfolio
             var newPrice = float.Parse(editPurchasePrice.Value.ToString());
             var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
+            UpdatePurchaseDate();
             OwnedStock.EditStock(newNumShares, newPrice, newReturnGoal);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
@@ -81,6 +90,62 @@ namespace WealthMate.Views.Portfolio
 
             // Pop owned stock details page off the stack
             await Navigation.PopAsync();
+        }
+
+        public void UpdatePurchaseDate()
+        {
+            var selectedItem = Date.SelectedItem as ObservableCollection<object>;
+
+            string month = selectedItem[0].ToString();
+            int monthInt = 0;
+
+            switch (month)
+            {
+                case "Jan":
+                    monthInt = 1;
+                    break;
+                case "Feb":
+                    monthInt = 2;
+                    break;
+                case "Mar":
+                    monthInt = 3;
+                    break;
+                case "Apr":
+                    monthInt = 4;
+                    break;
+                case "May":
+                    monthInt = 5;
+                    break;
+                case "Jun":
+                    monthInt = 6;
+                    break;
+                case "Jul":
+                    monthInt = 7;
+                    break;
+                case "Aug":
+                    monthInt = 8;
+                    break;
+                case "Sep":
+                    monthInt = 9;
+                    break;
+                case "Oct":
+                    monthInt = 10;
+                    break;
+                case "Nov":
+                    monthInt = 11;
+                    break;
+                case "Dec":
+                    monthInt = 12;
+                    break;
+            }
+
+            string day = selectedItem[1].ToString();
+            int dayInt = Int32.Parse(day);
+
+            string year = selectedItem[2].ToString();
+            int yearInt = Int32.Parse(year);
+
+            OwnedStock.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
         }
     }
 }

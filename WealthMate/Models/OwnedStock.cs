@@ -124,5 +124,24 @@ namespace WealthMate.Models
             UpdateOwnedAsset();
         }
 
+        // Alters the asset the owned stock the user is editing
+        //public void EditStock(float shares, float price, float returnGoal, int year, int month, int day)
+        //{
+        //    if ((SharesPurchased != shares) && (shares != 0))
+        //        SharesPurchased = shares;
+
+        //    if ((PurchasedPrice != price) && (price != 0))
+        //        PurchasedPrice = price;
+
+        //    if ((ReturnGoal != returnGoal) && (returnGoal != 0))
+        //        ReturnGoal = returnGoal;
+
+        //    if (PurchaseDate.Year != year || PurchaseDate.Day != day || PurchaseDate.Month != month)
+        //        PurchaseDate = new DateTime(year, month, day);
+
+        //    PrincipalValue = SharesPurchased * PurchasedPrice;
+        //    UpdateOwnedAsset();
+        //}
+
     }
 }

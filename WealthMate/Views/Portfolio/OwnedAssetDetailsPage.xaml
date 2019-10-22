@@ -8,6 +8,7 @@
              xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.OwnedAssetDetailsPage">
 
@@ -151,8 +152,13 @@
                 </sfPopup:PopupView.ContentTemplate>
               </sfPopup:PopupView>
             </sfPopup:SfPopupLayout.PopupView>
-          </sfPopup:SfPopupLayout>          
-          
+          </sfPopup:SfPopupLayout>
+
+            <Grid>
+                <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+                                                           VerticalOptions="Center" />
+            </Grid>
+
             <!--Edit Asset Popup Box-->
             <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false">
                 <sfPopup:SfPopupLayout.PopupView>
@@ -186,7 +192,11 @@
                                     <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
                                         <textbox:SfNumericTextBox x:Name="editReturnGoal" FormatString="c" Watermark="{Binding OwnedAsset.ReturnGoal, StringFormat='{0:C}'}" AllowNull="True" Margin="3,3" ValueChangeMode="OnKeyFocus" ParserMode="Double" ValueChanged="Handle_ReturnGoalChanged" />
 
-                                    <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
+                                    <Grid>
+                                        <Button Text="Edit Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
+                                    </Grid>
+
+                                        <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                 </StackLayout>
                                 </ScrollView>
                             </DataTemplate>
