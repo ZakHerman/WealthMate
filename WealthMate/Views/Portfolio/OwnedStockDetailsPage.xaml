@@ -176,13 +176,13 @@
                                     <ScrollView>
                                     <StackLayout WidthRequest="300" HeightRequest="300">
                                         <Label Text="Edit purchase price:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                        <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.PurchasedPrice, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+                                        <textbox:SfNumericTextBox x:Name="editPurchasePrice" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.PurchasedPrice, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_PriceChanged"/>
                                         
                                         <Label Text="Edit number of shares:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1" HorizontalTextAlignment="Start" FontSize="12" />
-                                         <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" Watermark="{Binding OwnedStock.SharesPurchased}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+                                         <textbox:SfNumericTextBox x:Name="editNumOfShares" Margin="3,3" Watermark="{Binding OwnedStock.SharesPurchased}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_NumSharesChanged"/>
 
                                         <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="1,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                        <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.ReturnGoal, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal"/>
+                                        <textbox:SfNumericTextBox x:Name="editReturnGoal" Margin="3,3" FormatString="c" Watermark="{Binding OwnedStock.ReturnGoal, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Decimal" ValueChanged="Handle_ReturnGoalChanged"/>
 
                                         <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
                                     </StackLayout>

@@ -44,11 +44,12 @@ namespace WealthMate.Views.Portfolio
         {
             popupLayout.IsOpen = false;
 
-            var newNumShares = int.Parse(editNumOfShares.Value.ToString());
+            var newNumShares = float.Parse(editNumOfShares.Value.ToString());
             var newPrice = float.Parse(editPurchasePrice.Value.ToString());
+            var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
-            OwnedStock.EditStock(newNumShares, newPrice);
-            OwnedStock.UpdateOwnedAsset();
+            OwnedStock.EditStock(newNumShares, newPrice, newReturnGoal);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
 
         private void Handle_NumSharesChanged(object sender, ValueEventArgs e)
