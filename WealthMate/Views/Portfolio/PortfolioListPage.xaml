@@ -11,10 +11,9 @@
     <ContentPage.Content>
         <StackLayout>
             <!--Searchbar, placeholder text and on text change functionality-->
-                <SearchBar x:Name="SearchBar" Placeholder ="Search Portfolio" TextChanged="OnFilterTextChanged"/>
+            <SearchBar x:Name="SearchBar" Placeholder ="Search Portfolio" TextChanged="OnFilterTextChanged"/>
 
             <!--Picker for selecting attribute to sort list by-->
-
             <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start"  FontSize="Medium" WidthRequest="250" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedCriteria}"  Margin="52,0,0,0">
                 <Picker.ItemsSource>
@@ -28,6 +27,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
+
             <syncfusion:SfListView x:Name="List" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>

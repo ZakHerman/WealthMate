@@ -5,6 +5,7 @@ namespace WealthMate.Helpers
 {
     public class Settings
     {
+        // Loads all settings in the settings page with saved value else default value
         public static void Load()
         {
             Helper.SetTheme(Preferences.Get("Theme", "Light"));

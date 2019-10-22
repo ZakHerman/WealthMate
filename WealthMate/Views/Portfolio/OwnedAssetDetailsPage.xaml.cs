@@ -3,7 +3,6 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
-using Syncfusion.XForms.ComboBox;
 using WealthMate.Services;
 using System.Collections.ObjectModel;
 
@@ -15,14 +14,15 @@ namespace WealthMate.Views.Portfolio
         public OwnedAsset OwnedAsset { get; }
         public CustomDatePicker CustDate { get; set; }
  
-        private SfNumericTextBox editInterestRate;          //Text box for editing details.
+        private SfNumericTextBox editInterestRate;
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
         private SfNumericTextBox editReturnGoal;
         private SfNumericTextBox editPrincipalValue;
         private int editCompoundRate = -1;
 
-        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
+        // Passes selected owned asset to know what details to display
+        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)
         {
             OwnedAsset = ownedAsset;
             OwnedAsset.UpdateOwnedAsset();
@@ -72,6 +72,7 @@ namespace WealthMate.Views.Portfolio
             OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newCompoundRate, newLength, newReturnGoal);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
+
         private void Handle_PrincipalValueChanged(object sender, ValueEventArgs e)
         {
             editPrincipalValue.Value = e.Value.ToString();
@@ -100,7 +101,7 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.Value = e.Value.ToString();
         }
 
-        //Remove Asset from portfolio
+        // Remove Asset from portfolio
         private void RemoveAssetClicked(object sender, EventArgs e)
         {
             RemoveAssetConfirmationBox.IsOpen = true;
@@ -119,7 +120,7 @@ namespace WealthMate.Views.Portfolio
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
+            var selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
@@ -148,8 +149,8 @@ namespace WealthMate.Views.Portfolio
         {
             var selectedItem = Date.SelectedItem as ObservableCollection<object>;
 
-            string month = selectedItem[0].ToString();
-            int monthInt = 0;
+            var month = selectedItem?[0].ToString();
+            var monthInt = 0;
 
             switch (month)
             {
@@ -191,13 +192,16 @@ namespace WealthMate.Views.Portfolio
                     break;
             }
 
-            string day = selectedItem[1].ToString();
-            int dayInt = Int32.Parse(day);
+            if (selectedItem != null)
+            {
+                var day = selectedItem[1].ToString();
+                var dayInt = int.Parse(day);
 
-            string year = selectedItem[2].ToString();
-            int yearInt = Int32.Parse(year);
+                var year = selectedItem[2].ToString();
+                var yearInt = int.Parse(year);
 
-            OwnedAsset.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
+                OwnedAsset.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
+            }
         }
     }
 }

@@ -3,7 +3,6 @@ using Syncfusion.DataSource.Extensions;
 using Syncfusion.SfNumericTextBox.XForms;
 using Syncfusion.XForms.ComboBox;
 using WealthMate.Helpers;
-using WealthMate.Themes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,7 +37,7 @@ namespace WealthMate.Views.Settings
             PortfolioGoalForm.IsOpen = true;
         }
 
-        private void Handle_PortfolioGoalChanged(object sender, Syncfusion.SfNumericTextBox.XForms.ValueEventArgs e)
+        private void Handle_PortfolioGoalChanged(object sender, ValueEventArgs e)
         {
             editPortfolioReturnGoal.Value = e.Value.ToString();
         }

@@ -10,7 +10,7 @@ namespace WealthMate.Views.Portfolio
         public PortfolioPage()
         {
             InitializeComponent();
-            BindingContext = new PortfolioPageVM();
+            BindingContext = new PortfolioViewModel();
 
             // Center the text of the titleview 
             NavBarLayout.Children.Add(NavBarTitle, new Rectangle(0.5, 0.5, 0.9, 1), AbsoluteLayoutFlags.All);

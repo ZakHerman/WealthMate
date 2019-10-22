@@ -43,7 +43,7 @@
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
             <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold"
-                                   ItemTapped="WatchlistView_ItemTapped" ItemDragging="Watchlist_OnItemDragging">
+                                   ItemTapped="WatchlistView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid x:Name="WatchListItem" RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">

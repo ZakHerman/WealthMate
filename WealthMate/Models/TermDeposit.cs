@@ -5,7 +5,7 @@ namespace WealthMate.Models
     public class TermDeposit
     {
         [JsonProperty("provider")]
-        public string Provider { get; set; }                        //Provider of TermDeposit
+        public string Provider { get; set; }
 
         [JsonProperty("minimumDeposit")]
         public int? MinDeposit { get; set; }                    
@@ -25,6 +25,7 @@ namespace WealthMate.Models
         {
 
         }
+
         public TermDeposit(string provider, int? minDeposit, int? maxDeposit, int length, float interestRate)
         {
             Provider = provider;

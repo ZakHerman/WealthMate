@@ -10,7 +10,8 @@ namespace WealthMate.Views
         public MainPage()
         {
             InitializeComponent();
-            On<AndroidPlatform>().SetToolbarPlacement(ToolbarPlacement.Bottom); // Set navigation bar to bottom
+
+            On<AndroidPlatform>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             On<AndroidPlatform>().SetIsSwipePagingEnabled(false); // Disable tabbed page swiping
             On<AndroidPlatform>().SetIsSmoothScrollEnabled(false); //Disable default scrolling animation for button press
         }

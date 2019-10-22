@@ -6,15 +6,13 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
-             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.OwnedAssetDetailsPage">
 
     <NavigationPage.TitleView>
         <!--Name and Type of Asset in NavBar-->
-        <AbsoluteLayout x:Name="NavBarLayout">
+        <AbsoluteLayout>
             <Label Text="{Binding OwnedAsset.AssetNameType}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    FontAttributes="Bold" TextColor="{DynamicResource TertiaryTextColor}" FontSize="20" />
         </AbsoluteLayout>
@@ -141,21 +139,21 @@
             <Button Text="Edit Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0" Clicked="EditAssetClicked"/>
             <Button Text="Remove Owned Asset" VerticalOptions="Center" HorizontalOptions="Center" Clicked="RemoveAssetClicked"/>
 
-          <!--Remove Asset Popup Box-->
-          <sfPopup:SfPopupLayout x:Name="RemoveAssetConfirmationBox">
-            <sfPopup:SfPopupLayout.PopupView>
-              <sfPopup:PopupView HeaderTitle="Remove Asset?" ShowFooter="false">
-                <sfPopup:PopupView.ContentTemplate>
-                  <DataTemplate>
-                    <StackLayout Padding="6,1,3,1" VerticalOptions="CenterAndExpand">
-                      <Label Text="All shares and price details will be removed from your portfolio." HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
-                      <Button Text="Accept" VerticalOptions="EndAndExpand" HorizontalOptions="End" FontSize="14" TextColor="DarkRed" FontAttributes="Bold" Clicked="PopupAcceptRemoveClicked" />
-                    </StackLayout>
-                  </DataTemplate>
-                </sfPopup:PopupView.ContentTemplate>
-              </sfPopup:PopupView>
-            </sfPopup:SfPopupLayout.PopupView>
-          </sfPopup:SfPopupLayout>
+            <!--Remove Asset Popup Box-->
+            <sfPopup:SfPopupLayout x:Name="RemoveAssetConfirmationBox">
+                <sfPopup:SfPopupLayout.PopupView>
+                    <sfPopup:PopupView HeaderTitle="Remove Asset?" ShowFooter="false">
+                        <sfPopup:PopupView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="6,1,3,1" VerticalOptions="CenterAndExpand">
+                                    <Label Text="All shares and price details will be removed from your portfolio." HorizontalTextAlignment="Start" FontSize="12" TextColor="Black" />
+                                    <Button Text="Accept" VerticalOptions="EndAndExpand" HorizontalOptions="End" FontSize="14" TextColor="DarkRed" FontAttributes="Bold" Clicked="PopupAcceptRemoveClicked" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </sfPopup:PopupView.ContentTemplate>
+                    </sfPopup:PopupView>
+                </sfPopup:SfPopupLayout.PopupView>
+            </sfPopup:SfPopupLayout>
 
             <Grid> <!--Selects date-->
                 <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"

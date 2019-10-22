@@ -13,7 +13,6 @@ namespace WealthMate.Views.Markets
     {
         public WatchlistPage()
         {
-            //BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 
@@ -31,11 +30,7 @@ namespace WealthMate.Views.Markets
             ((SfListView)sender).SelectedItem = null;
         }
 
-        /// <summary>
-        /// Search bar functionality
-        /// </summary>
-        /// <param name="sender"></param> reference to object sending the data
-        /// <param name="e"></param> event data
+        // Search bar functionality
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             var vm = BindingContext as WatchListViewModel;
@@ -44,15 +39,7 @@ namespace WealthMate.Views.Markets
                 Watchlist.ItemsSource = vm?.WatchListStocks;
             else
                 Watchlist.ItemsSource = vm?.WatchListStocks.Where(stock => stock.CompanyName.ToLower().Contains(e.NewTextValue.ToLower()) 
-                                                                          || stock.Symbol.ToLower().Contains(e.NewTextValue.ToLower()));
-        }
-
-        private void Watchlist_OnItemDragging(object sender, ItemDraggingEventArgs e)
-        {
-            if (e.Action == DragAction.Start)  
-            {
-                //Watchlist.SelectedItem = Color.Aqua;
-            }
+                                                                           || stock.Symbol.ToLower().Contains(e.NewTextValue.ToLower()));
         }
     }
 }

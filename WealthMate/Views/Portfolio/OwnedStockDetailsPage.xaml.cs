@@ -76,7 +76,7 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.Value = e.Value.ToString();
         }
 
-        //Remove Stock from portfolio
+        // Remove Stock from portfolio
         private void RemoveStockClicked(object sender, EventArgs e)
         {
             RemoveStockConfirmationBox.IsOpen = true;
@@ -96,8 +96,8 @@ namespace WealthMate.Views.Portfolio
         {
             var selectedItem = Date.SelectedItem as ObservableCollection<object>;
 
-            string month = selectedItem[0].ToString();
-            int monthInt = 0;
+            var month = selectedItem?[0].ToString();
+            var monthInt = 0;
 
             switch (month)
             {
@@ -139,13 +139,16 @@ namespace WealthMate.Views.Portfolio
                     break;
             }
 
-            string day = selectedItem[1].ToString();
-            int dayInt = Int32.Parse(day);
+            if (selectedItem != null)
+            {
+                var day = selectedItem[1].ToString();
+                var dayInt = int.Parse(day);
 
-            string year = selectedItem[2].ToString();
-            int yearInt = Int32.Parse(year);
+                var year = selectedItem[2].ToString();
+                var yearInt = int.Parse(year);
 
-            OwnedStock.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
+                OwnedStock.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
+            }
         }
     }
 }

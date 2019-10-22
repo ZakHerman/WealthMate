@@ -26,34 +26,43 @@ namespace WealthMate.Models
             }
         }
 
-        [JsonProperty("symbol"), PrimaryKey]                    //Stocks NZX symbol
+        // NZX stock exchange symbol
+        [JsonProperty("symbol"), PrimaryKey]
         public string Symbol { get; set; }
 
         [JsonProperty("name")]
         public string CompanyName { get; set; }
 
-        [JsonProperty("price_open")]                //Price stock opened the market day with
+        // Price stock opened the market day with
+        [JsonProperty("price_open")]
         public float PriceOpen { get; set; }
 
-        [JsonProperty("close_yesterday")]       //Price stock closed the previous market day with
+        // Price stock closed the previous market day with
+        [JsonProperty("close_yesterday")]
         public float PriceClose { get; set; }
 
-        [JsonProperty("day_high")]                  //Highest price during market day
+        // Highest price during market day
+        [JsonProperty("day_high")]
         public float DayHigh { get; set; }
 
-        [JsonProperty("day_low")]                   //Lowest price during market day
+        // Lowest price during market day
+        [JsonProperty("day_low")]
         public float DayLow { get; set; }
 
-        [JsonProperty("52_week_high")]                  //Highest price in the past 52 weeks
+        // Highest price in the past 52 weeks
+        [JsonProperty("52_week_high")]
         public float FiftyTwoWeekHigh { get; set; }
 
-        [JsonProperty("52_week_low")]                   //Lowest price in the past 52 weeks
+        // Lowest price in the past 52 weeks
+        [JsonProperty("52_week_low")]
         public float FiftyTwoWeekLow { get; set; }
 
-        [JsonProperty("shares")]                        //Amount of shares available to purchase
+        // Amount of shares available to purchase
+        [JsonProperty("shares")]
         public long Shares { get; set; }
 
-        [JsonProperty("volume")]                        //Volume of shares traded during market day
+        // Volume of shares traded during market day
+        [JsonProperty("volume")]
         public int Volume { get; set; }
 
         [JsonProperty("last_trade_time")]
@@ -65,14 +74,15 @@ namespace WealthMate.Models
         [Ignore]
         public float DayReturnRate { get; set; }
 
+        //Flag indicators for view trigger purposes
         [Ignore]
-        public bool PositiveDayReturns { get; set; }                        //Flag indicators for view trigger purposes
+        public bool PositiveDayReturns { get; set; }
         
         [Ignore]
         public bool NoDayReturns { get; set; }
 
-        //Need to add Set methods for updating variables directly from the database when needed, e.g. public void refresh() {}
-        public void UpdateStock()                               //updates stock to ensure values are being calculated and displayed correctly when user views
+        // Updates stock to ensure values are being calculated and displayed correctly when user views
+        public void UpdateStock()
         {
             PositiveDayReturns = CurrentPrice > PriceOpen;
             NoDayReturns = CurrentPrice == PriceOpen;

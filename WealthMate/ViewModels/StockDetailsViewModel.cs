@@ -17,12 +17,12 @@ namespace WealthMate.ViewModels
         private string _watchListImage;
         private static readonly Dictionary<string, List<StockHistory>> StockHistoryDictionary = new Dictionary<string, List<StockHistory>>();
         public int Minimum { get; set; }
-        public Stock Stock { get; }                                         //Currently viewed stock and it's price history
-        public List<StockHistory> StockHistory { get; set; }                //History of prices of stock
-        public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList;           //Acquires users watchlist of stocks
-        public bool Watched { get; set; }                           //Flag indicating whether stock has been watched
+        public Stock Stock { get; }
+        public List<StockHistory> StockHistory { get; set; } // History of prices of stock
+        public ObservableCollection<Stock> WatchListStocks { get; set; } = App.WatchList;
+        public bool Watched { get; set; }
         public ICommand WatchListCommand { get; }
-        public string WatchListImage                                //Changes image when stock is watched or not
+        public string WatchListImage
         {
             get => _watchListImage;
             set
@@ -87,7 +87,8 @@ namespace WealthMate.ViewModels
                     WatchListStocks.Remove(remove);
                 }
 
-                await App.Database.DeleteWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});           //Removes watched stock from database
+                // Removes watched stock from database
+                await App.Database.DeleteWatchListAsync(new WatchedStock{Symbol = Stock.Symbol});
             }
         }
 

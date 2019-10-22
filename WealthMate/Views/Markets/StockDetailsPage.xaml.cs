@@ -34,8 +34,8 @@ namespace WealthMate.Views.Markets
         {
             var selectedItem = Date.SelectedItem as ObservableCollection<object>;
 
-            string month = selectedItem[0].ToString();
-            int monthInt = 0;
+            var month = selectedItem[0].ToString();
+            var monthInt = 0;
 
             switch (month)
             {
@@ -77,11 +77,11 @@ namespace WealthMate.Views.Markets
                     break;
             }
 
-            string day = selectedItem[1].ToString();
-            int dayInt = Int32.Parse(day);
+            var day = selectedItem[1].ToString();
+            var dayInt = int.Parse(day);
 
-            string year = selectedItem[2].ToString();
-            int yearInt = Int32.Parse(year);
+            var year = selectedItem[2].ToString();
+            var yearInt = int.Parse(year);
 
             _purchasedDate = new DateTime(yearInt, monthInt, dayInt);
         }
@@ -102,7 +102,7 @@ namespace WealthMate.Views.Markets
             else
             {
                 UpdatePurchaseDate();
-                OwnedStock os = new OwnedStock(PublicStock, _purchasedDate, _purchasedPrice, _sharesPurchased, _returnGoal);
+                var os = new OwnedStock(PublicStock, _purchasedDate, _purchasedPrice, _sharesPurchased, _returnGoal);
                 ((App)Application.Current).User.Portfolio.AddAsset(os);
                 StockPortfolioForm.IsOpen = false;
             }

@@ -15,30 +15,22 @@ namespace WealthMate.Views.Portfolio
         public PortfolioListPage()
         {
             InitializeComponent();
-            BindingContext = new PortfolioPageVM();
+            BindingContext = new PortfolioViewModel();
         }
 
-        /// <summary>
-        /// Search bar functionality
-        /// </summary>
-        /// <param name="sender"></param> reference to object sending the data
-        /// <param name="e"></param> event data
+        // Search bar functionality
         public void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar); //set sender to SearchBar
+            _searchBar = (sender as SearchBar);
 
             if (List.DataSource != null)
             {
-                List.DataSource.Filter = FilterAssets; //filters the data source
-                List.DataSource.RefreshFilter(); // refreshes the view
+                List.DataSource.Filter = FilterAssets;
+                List.DataSource.RefreshFilter();
             }
         }
 
-        /// <summary>
-        /// method for filtering the list view as text changes within the search bar
-        /// </summary>
-        /// <param name="obj"></param> object representing a search return
-        /// <returns></returns> boolean value for checking for text in the serach bar
+        // Filtering the list view as text changes within the search bar
         private bool FilterAssets(object obj)
         {
             if (_searchBar?.Text == null)
@@ -59,8 +51,8 @@ namespace WealthMate.Views.Portfolio
                 return;
 
             // Push stockdetailspage on top of stack
-            if(selected is OwnedStock)
-                await Navigation.PushAsync(new OwnedStockDetailsPage((OwnedStock)selected));
+            if (selected is OwnedStock stock)
+                await Navigation.PushAsync(new OwnedStockDetailsPage(stock));
             else
                 await Navigation.PushAsync(new OwnedAssetDetailsPage(selected));
 

@@ -22,7 +22,7 @@ namespace WealthMate.Helpers
         public static void SetTheme(string val)
         {
             Enum.TryParse(val, out Theme theme);
-            Preferences.Set("Theme", val);
+            Preferences.Set("Theme", val); // Save theme setting
 
             var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
 
@@ -31,6 +31,7 @@ namespace WealthMate.Helpers
 
             mergedDictionaries.Clear();
 
+            // Set android material theme and add custom resources
             switch (theme)
             {
                 case Theme.Dark:

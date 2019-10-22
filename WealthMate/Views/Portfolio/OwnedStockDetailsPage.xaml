@@ -12,7 +12,7 @@
 
     <NavigationPage.TitleView>
         <!--Displays name and that it's a stock, as well as it's bought price in the nav bar-->
-        <AbsoluteLayout x:Name="NavBarLayout">
+        <AbsoluteLayout>
             <Label Text="{Binding OwnedStock.AssetNameTypePurchasedPrice}" TextColor="{DynamicResource TertiaryTextColor}"
                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
         </AbsoluteLayout>

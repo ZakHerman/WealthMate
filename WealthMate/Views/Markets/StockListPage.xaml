@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:views="clr-namespace:WealthMate.Views.Markets;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockListPage"
              Title="Stocks"
