@@ -147,8 +147,6 @@
                 </Grid>
 
                 <!--Buttons below OwnedStock details-->
-                <Button Text="View Stock Details" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"/>
-                <!--Will open public view of stock-->
                 <Button Text="Edit Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="EditStockClicked"/>
                 <Button Text="Remove Owned Stock" VerticalOptions="Center" HorizontalOptions="Center" Clicked="RemoveStockClicked" />
 

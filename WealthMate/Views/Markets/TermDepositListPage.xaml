@@ -103,10 +103,10 @@
             <StackLayout Padding="6,0,3,0">
             
             <Label Text="Amount Invested:" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
-            <textbox:SfNumericTextBox x:Name="numericTextBox" Value="0" FormatString="N0" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_InvestAmountChanged" />
+            <textbox:SfNumericTextBox x:Name="numericTextBox" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_InvestAmountChanged" />
 
             <Label Text="Return Goal: (Optional)" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
-            <textbox:SfNumericTextBox x:Name="numericTextBox2" Value="0" FormatString="N0" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_GoalAmountChanged" />
+            <textbox:SfNumericTextBox x:Name="numericTextBox2" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_GoalAmountChanged" />
 
             <Label Text="Compound rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
             <Picker x:Name="compoundRatePicker"
