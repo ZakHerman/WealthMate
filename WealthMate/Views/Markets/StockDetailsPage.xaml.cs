@@ -24,10 +24,8 @@ namespace WealthMate.Views.Markets
         public StockDetailsPage(Stock stock)
         {
             PublicStock = stock;
-            //OwnedStock = new OwnedStock{Stock = stock, PurchaseDate = DateTime.Now, AssetName = stock.CompanyName};
             CustDate = new CustomDatePicker();
             BindingContext = new StockDetailsViewModel(stock);
-            //CustDate.SelectionChanged += DatePicker_Changed;
             updateDatePicker(CustDate);
             InitializeComponent();
         }
