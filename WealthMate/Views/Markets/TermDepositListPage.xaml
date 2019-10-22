@@ -10,6 +10,7 @@
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:pickerClass="clr-namespace:WealthMate.Services"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
@@ -86,6 +87,11 @@
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
+
+     <Grid>
+       <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
+                                                  VerticalOptions="Center" />
+     </Grid>
      
 <!--Term Deposit Clicked - Add to Portfolio popup-->
 <sfPopup:SfPopupLayout x:Name="AddTDForm">
@@ -113,7 +119,9 @@
                 </ListCollection:List>
               </combobox:SfComboBox.ComboBoxSource>
             </combobox:SfComboBox>
-            
+
+            <Button Text="Change Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
+
             <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" HeightRequest="40" />
             </StackLayout>
             </ScrollView>
