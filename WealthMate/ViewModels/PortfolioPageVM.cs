@@ -17,7 +17,6 @@ namespace WealthMate.ViewModels
         public ObservableCollection<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
         private PieData _termD = new PieData("Term Deposits");              //Pie data for each section/category of pie chart
-        private PieData _bond = new PieData("Bonds");
         private PieData _stock = new PieData("Stocks");
         public List<PieData> pieList { get; set; }
 
@@ -33,7 +32,7 @@ namespace WealthMate.ViewModels
         // list to display in picker menu, each item has a key and value
         public List<PieData> GetPiesData()
         {
-            var pieData = new List<PieData>()
+            var pieData = new List<PieData>()                                   //Gathers data of pie chart
             {
                 new PieData(){Key = 1, Value = "All Assets"},
                 new PieData(){Key = 2, Value = "Term Deposit"},
@@ -62,7 +61,7 @@ namespace WealthMate.ViewModels
         //method takes key of pieList and uses switch to change to respective pie chart
         public void SetData(int picker)
         {
-            switch(picker)
+            switch(picker)                                                              
             {
                 case 1:
                     pieChart.Clear();
@@ -73,23 +72,19 @@ namespace WealthMate.ViewModels
 
                         if (asset.Type.Equals("Term Deposit"))
                             _termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
-                        else if (asset.Type.Equals("Bond"))
-                            _bond.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                         else if (asset is OwnedStock)
                             _stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                         // insert more code for any other possible types      
                     }
 
                     _termD.CalculateReturnPercentage();
-                    _bond.CalculateReturnPercentage();
                     _stock.CalculateReturnPercentage();
 
-                    _bond.PositiveChecker();            //XAML Flag to see if label should be red or green (negative/positive returns)
+                     //XAML Flag to see if label should be red or green (negative/positive returns)
                     _termD.PositiveChecker();
                     _stock.PositiveChecker();
 
-                    pieChart.Add(_bond);
-                    pieChart.Add(_termD);
+                    pieChart.Add(_termD);       //Adds asset categories to Pie chart
                     pieChart.Add(_stock);
 
                     break;

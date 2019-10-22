@@ -20,11 +20,11 @@ namespace WealthMate.Models
         public float InterestRate { get; set; }
 
         public string Logo { get; set; }
-
-        public TermDeposit()    //Overloading constructor for testing purposes
-        {
-        }
         
+        public TermDeposit()
+        {
+
+        }
         public TermDeposit(string provider, int? minDeposit, int? maxDeposit, int length, float interestRate)
         {
             Provider = provider;

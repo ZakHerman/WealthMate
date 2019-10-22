@@ -174,5 +174,35 @@ namespace WealthMate.UnitTests
                 Console.WriteLine(asset.Length);
             }
         }
+
+        [TestMethod]
+        public void TestReturnGoalProgress() //Note this changes every day
+        {
+            Portfolio test1 = new Portfolio(500.0f);
+            test1.AddAsset(new OwnedAsset("Test1", new DateTime(2019, 9, 5), "Term Deposit", 1000, 0.10f, 5, 2, 0, 0));
+            test1.AddAsset(new OwnedStock(new Stock { CompanyName = "Burger Fuel", CurrentPrice = 42.2f, LastTrade = new DateTime(2019, 09, 09, 0, 0, 0),
+                                          Shares = 4, Volume = 4 }, new System.DateTime(2019, 09, 09, 0, 0, 0), 50.0f, 100, 0));
+
+            Portfolio test2 = new Portfolio(1000.0f);
+            test2.AddAsset(new OwnedAsset("Test2", new DateTime(2016, 1, 14), "Bond", 1000, 0.04f, 3, 1, 40, 0));
+
+            Portfolio test3 = new Portfolio(10.0f);
+            test3.AddAsset(new OwnedAsset("Test3", new DateTime(2018, 4, 19), "Term Deposit", 1000, 0.02f, 3, 1, 0, 0));
+
+            float delta = 0.1f;
+
+            float expectedVal = 0.0f;
+            float returnGoalProgress = test1.ReturnGoalProgress;
+
+            float expectedVal2 = 31.87f;
+            float returnGoalProgress2 = test2.ReturnGoalProgress;
+
+            float expectedVal3 = 100.0f;
+            float returnGoalProgress3 = test3.ReturnGoalProgress;
+
+            Assert.AreEqual(expectedVal, returnGoalProgress, delta);
+            Assert.AreEqual(expectedVal2, returnGoalProgress2, delta);
+            Assert.AreEqual(expectedVal3, returnGoalProgress3, delta);
+        }
     }
 }

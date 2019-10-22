@@ -9,7 +9,7 @@ namespace WealthMate.UnitTests
     [TestClass]
     public class CustomDatePickerTest
     {
-        private CustomDatePicker CDP1;
+        /*private CustomDatePicker CDP1;
         private ObservableCollection<object> Date;
         private OwnedAsset test3;
 
@@ -26,13 +26,13 @@ namespace WealthMate.UnitTests
             float delta = 0.1f;
 
             float expectedVal = 11.22f;
-            float returnGoalProgress = test1.ReturnGoalProgress;
+            //float returnGoalProgress = test1.ReturnGoalProgress;
 
             float expectedVal2 = 94.98f;
-            float returnGoalProgress2 = test2.ReturnGoalProgress;
+            //float returnGoalProgress2 = test2.ReturnGoalProgress;
 
             float expectedVal3 = 554.79f;
-            float returnGoalProgress3 = test3.ReturnGoalProgress;
+            //float returnGoalProgress3 = test3.ReturnGoalProgress;
 
             Assert.AreEqual(expectedVal, returnGoalProgress, delta);
             Assert.AreEqual(expectedVal2, returnGoalProgress2, delta);
@@ -45,13 +45,13 @@ namespace WealthMate.UnitTests
             float delta = 0.1f;
 
             float expectedVal = 10122.35f;
-            float currentVal = test1.CurrentValue;
+            //float currentVal = test1.CurrentValue;
 
             float expectedVal2 = 2447.60f;
-            float currentVal2 = test2.CurrentValue;
+            //float currentVal2 = test2.CurrentValue;
 
             float expectedVal3 = 1653.34f;
-            float currentVal3 = test3.CurrentValue;
+            //float currentVal3 = test3.CurrentValue;
 
             Assert.AreEqual(expectedVal, currentVal, delta);
             Assert.AreEqual(expectedVal2, currentVal2, delta);
@@ -64,17 +64,17 @@ namespace WealthMate.UnitTests
             float delta = 0.1f;
 
             float expectedVal = 122.35f;
-            float totalRet = test1.TotalReturn;
+            //float totalRet = test1.TotalReturn;
 
             float expectedVal2 = 447.61f;
-            float totalRet2 = test2.TotalReturn;
+            //float totalRet2 = test2.TotalReturn;
 
             float expectedVal3 = 653.34f;
-            float totalRet3 = test3.TotalReturn;
+            //float totalRet3 = test3.TotalReturn;
 
-            Assert.AreEqual(expectedVal, totalRet, delta);
-            Assert.AreEqual(expectedVal2, totalRet2, delta);
-            Assert.AreEqual(expectedVal3, totalRet3, delta);
+            //Assert.AreEqual(expectedVal, totalRet, delta);
+            //Assert.AreEqual(expectedVal2, totalRet2, delta);
+            //Assert.AreEqual(expectedVal3, totalRet3, delta);
         }
 
         [TestMethod]
@@ -83,10 +83,10 @@ namespace WealthMate.UnitTests
             float delta = 0.1f;
 
             float expectedVal = 1.22f;
-            float totalRetR = test1.TotalReturnRate;
+            //float totalRetR = test1.TotalReturnRate;
 
             float expectedVal2 = 22.38f;
-            float totalRetR2 = test2.TotalReturnRate;
+            //float totalRetR2 = test2.TotalReturnRate;
 
             float expectedVal3 = 65.33f;
             float totalRetR3 = test3.TotalReturnRate;
@@ -110,7 +110,7 @@ namespace WealthMate.UnitTests
             Assert.AreEqual(test1.InterestRate, t1.InterestRate);
             Assert.AreEqual(test1.Length, t1.Length);
             Assert.AreEqual(test1.RegularPayment, t1.RegularPayment);
-        }
+        }*/
 
 
     }
