@@ -104,7 +104,8 @@
             </Grid>
 
             <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
-
+            
+            <!--Grid to stack label on top of progress bar-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -113,6 +114,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
+                
+                <!--Retrun Goal progress bar-->
 
                 <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25" Minimum="0" Progress="{Binding OwnedAsset.TotalReturn}"
                                                  Maximum="{Binding OwnedAsset.ReturnGoal}" Margin="30,0"/>
@@ -154,7 +157,7 @@
             </sfPopup:SfPopupLayout.PopupView>
           </sfPopup:SfPopupLayout>
 
-            <Grid>
+            <Grid> <!--Selects date-->
                 <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
                                                            VerticalOptions="Center" />
             </Grid>
