@@ -73,12 +73,6 @@ namespace WealthMate.Models
             UpdateOwnedAsset();                                                 //Calculates all required values when constructed
         }
 
-        //Overloading constructor for testing purposes --> planning to remove
-        public OwnedStock()
-        {
-            Type = "Stock";
-        }
-
         // Creates up to date values for the Owned Asset
         public override void UpdateOwnedAsset()
         {
@@ -123,25 +117,5 @@ namespace WealthMate.Models
             PrincipalValue = SharesPurchased * PurchasedPrice;
             UpdateOwnedAsset();
         }
-
-        // Alters the asset the owned stock the user is editing
-        //public void EditStock(float shares, float price, float returnGoal, int year, int month, int day)
-        //{
-        //    if ((SharesPurchased != shares) && (shares != 0))
-        //        SharesPurchased = shares;
-
-        //    if ((PurchasedPrice != price) && (price != 0))
-        //        PurchasedPrice = price;
-
-        //    if ((ReturnGoal != returnGoal) && (returnGoal != 0))
-        //        ReturnGoal = returnGoal;
-
-        //    if (PurchaseDate.Year != year || PurchaseDate.Day != day || PurchaseDate.Month != month)
-        //        PurchaseDate = new DateTime(year, month, day);
-
-        //    PrincipalValue = SharesPurchased * PurchasedPrice;
-        //    UpdateOwnedAsset();
-        //}
-
     }
 }

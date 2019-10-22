@@ -44,13 +44,13 @@ namespace WealthMate.Models
         public int Key { get; set; }
         public string Value { get; set; }
 
+        public PieData()
+        {
+
+        }
         public PieData(string type)
         {
             AssetType = type;
-        }
-
-        public PieData()
-        {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

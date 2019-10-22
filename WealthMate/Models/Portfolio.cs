@@ -23,7 +23,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float PrincipalTotal { get; set; }
+        public float PrincipalTotal { get; set; }                   //Initial sum of all owned assets
         public float TotalReturnRate
         {
             get => _totalReturnRate;
@@ -33,7 +33,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float ReturnGoal
+        public float ReturnGoal                                 //Return goal for portfolio assigned
         {
             get => _returnGoal;
             set
@@ -52,7 +52,7 @@ namespace WealthMate.Models
             }
         }
         public bool PositiveTotal { get; set; }
-        public  float CurrentTotal {
+        public  float CurrentTotal {                                //Current value sum of all assets
             get => _currentTotal;
             set
             {
@@ -97,16 +97,16 @@ namespace WealthMate.Models
             {
                 ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;       //Updates how close the return value is to reaching its return goal
 
-                if (ReturnGoalProgress <= 0)
+                if (ReturnGoalProgress <= 0)                                //If returns are negative, progress is set to 0%.
                     ReturnGoalProgress = 0.0f;
-                else if (ReturnGoalProgress >= 100)
+                else if (ReturnGoalProgress >= 100)                         //If returns are beyond it's goal, progress is set to 100%
                     ReturnGoalProgress = 100.0f;
             }  
         }
 
         private void CalculateTotalReturn()
         {
-            if (PrincipalTotal == 0.0f)
+            if (PrincipalTotal == 0.0f)                                     //Error check to avoid division of 0
                 TotalReturnRate = 0.0f;
             else
                 TotalReturnRate = (TotalReturn / PrincipalTotal) * 100;
@@ -129,7 +129,7 @@ namespace WealthMate.Models
             }
         }
 
-        public void EditPortfolioGoal(float portfolioGoal)
+        public void EditPortfolioGoal(float portfolioGoal)              //Edits any changes that are made to the portfolio goal
         {
             if (portfolioGoal > 0 && portfolioGoal != ReturnGoal)
             {

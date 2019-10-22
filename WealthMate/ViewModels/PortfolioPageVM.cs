@@ -73,22 +73,18 @@ namespace WealthMate.ViewModels
 
                         if (asset.Type.Equals("Term Deposit"))
                             _termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
-                        else if (asset.Type.Equals("Bond"))
-                            _bond.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                         else if (asset is OwnedStock)
                             _stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                         // insert more code for any other possible types      
                     }
 
                     _termD.CalculateReturnPercentage();
-                    _bond.CalculateReturnPercentage();
                     _stock.CalculateReturnPercentage();
 
-                    _bond.PositiveChecker();            //XAML Flag to see if label should be red or green (negative/positive returns)
+                     //XAML Flag to see if label should be red or green (negative/positive returns)
                     _termD.PositiveChecker();
                     _stock.PositiveChecker();
 
-                    pieChart.Add(_bond);
                     pieChart.Add(_termD);
                     pieChart.Add(_stock);
 

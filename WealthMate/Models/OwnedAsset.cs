@@ -4,9 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace WealthMate.Models
 {
-    public class OwnedAsset : INotifyPropertyChanged
+    public class OwnedAsset : INotifyPropertyChanged            //Implement INotifyPropertyChanged to handle GUI changes in app
     {
-        private float _returnGoal;
+        private float _returnGoal;                  
         private float _returnGoalProgress;
         private DateTime _purchaseDate;
         private float _length;
@@ -32,7 +32,7 @@ namespace WealthMate.Models
             }
         }
         public string Type { get; set; }                                    //The type of OwnedAsset
-        public float Length                             //In number of years
+        public float Length                                                  //In number of years
         {
             get => _length;
             set
@@ -51,7 +51,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float RegularPayment
+        public float RegularPayment                         //Regular payments that are put toward the owned asset.
         {
             get => _regularPayment;
             set
@@ -160,13 +160,13 @@ namespace WealthMate.Models
             RegularPayment = 0f;
             PrincipalValue = 0f;
             InterestRate = 0f;
-            CompoundRate = 1; //how often per year that interest is calculated/added
+            CompoundRate = 1;
             CurrentValue = 0f;
         }
 
-        public virtual void UpdateOwnedAsset()
+        public virtual void UpdateOwnedAsset()                      
         {
-            if (CompoundRate == 0)
+            if (CompoundRate == 0)                                          //Value doesn't grow if interest is not being applied
             {
                 CurrentValue = PrincipalValue;
                 TotalReturn = 0.0f;
@@ -216,13 +216,13 @@ namespace WealthMate.Models
             TotalReturn = CurrentValue - PrincipalValue;
             TotalReturnRate = (TotalReturn / PrincipalValue) * 100;
 
-            if (TotalReturn > 0f)                               //Flag for XAML code (green or red colours)
+            if (TotalReturn > 0f)                                       //Flag for XAML code (green or red colours)
                 PositiveTotal = true;
             else
                 PositiveTotal = false;
         }
 
-        private void CalculateCurrentValue()                    //Uses financial calculation to calculate today's value of the asset from when it was first acquired.
+        private void CalculateCurrentValue()                            //Uses financial calculation to calculate today's value of the asset from when it was first acquired.
         {
             TimeSpan daysBetween = DateTime.Today - PurchaseDate;       //Calculates days between from when asset was purchased to today
 
@@ -238,7 +238,7 @@ namespace WealthMate.Models
         // Alters the asset the user is editing
         public void EditAsset(float principalValue, float interestRate, int compoundRate, int length, float returnGoal)
         {
-            if ((PrincipalValue != principalValue) && (principalValue != 0))
+            if ((PrincipalValue != principalValue) && (principalValue != 0))        
                 PrincipalValue = principalValue;
 
             if ((InterestRate != interestRate) && (interestRate != 0))
