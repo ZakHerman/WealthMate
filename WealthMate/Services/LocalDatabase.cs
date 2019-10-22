@@ -127,6 +127,11 @@ namespace WealthMate.Services
             return _database.InsertOrReplaceAsync(ownedAsset);
         }
 
+        public Task<int> DeleteOwnedAssetAsync(OwnedAsset ownedAsset)
+        {
+            return _database.DeleteAsync(ownedAsset);
+        }
+
         public Task<List<OwnedStock>> GetOwnedStocksAsync()
         {
             return _database.Table<OwnedStock>().ToListAsync();

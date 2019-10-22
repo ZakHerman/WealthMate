@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using SQLite;
 
 namespace WealthMate.Models
 {
@@ -21,6 +22,8 @@ namespace WealthMate.Models
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string AssetName { get; set; }
         public DateTime PurchaseDate
         {
