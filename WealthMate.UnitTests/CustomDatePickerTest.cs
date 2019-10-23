@@ -11,107 +11,74 @@ namespace WealthMate.UnitTests
     {
         private CustomDatePicker CDP1;
         private ObservableCollection<object> Date;
-        private OwnedAsset test3;
 
         public CustomDatePickerTest()
         {
-            CDP1 = new CustomDatePicker();
+            //CDP1 = new CustomDatePicker();
             Date = new ObservableCollection<object>();
+            string testMonth = "Aug";
+            string testDay = "12";
+            string testYear = "2000";
+            Date.Add(testMonth);
+            Date.Add(testDay);
+            Date.Add(testYear);
         }
 
         [TestMethod]
         public void TestUpdatePurchaseDate()
         {
+            string month = Date[0].ToString();
+            int[] actualInts = new int[3] ; 
+            int[] expectedInts = new int[] { 8, 12, 2000 }; //12th August, 2000
 
-            float delta = 0.1f;
+            switch (month)
+            {
+                case "Jan":
+                    actualInts[0] = 1;
+                    break;
+                case "Feb":
+                    actualInts[0] = 2;
+                    break;
+                case "Mar":
+                    actualInts[0] = 3;
+                    break;
+                case "Apr":
+                    actualInts[0] = 4;
+                    break;
+                case "May":
+                    actualInts[0] = 5;
+                    break;
+                case "Jun":
+                    actualInts[0] = 6;
+                    break;
+                case "Jul":
+                    actualInts[0] = 7;
+                    break;
+                case "Aug":
+                    actualInts[0] = 8;
+                    break;
+                case "Sep":
+                    actualInts[0] = 9;
+                    break;
+                case "Oct":
+                    actualInts[0] = 10;
+                    break;
+                case "Nov":
+                    actualInts[0] = 11;
+                    break;
+                case "Dec":
+                    actualInts[0] = 12;
+                    break;
+            }
 
-            float expectedVal = 11.22f;
-            float returnGoalProgress = test1.ReturnGoalProgress;
+            string day = Date[1].ToString();
+            actualInts[1] = Int32.Parse(day);
 
-            float expectedVal2 = 94.98f;
-            float returnGoalProgress2 = test2.ReturnGoalProgress;
-
-            float expectedVal3 = 554.79f;
-            float returnGoalProgress3 = test3.ReturnGoalProgress;
-
-            Assert.AreEqual(expectedVal, returnGoalProgress, delta);
-            Assert.AreEqual(expectedVal2, returnGoalProgress2, delta);
-            Assert.AreEqual(expectedVal3, returnGoalProgress3, delta);
+            string year = Date[2].ToString();
+            actualInts[2] = Int32.Parse(year);
+            Assert.AreEqual(expectedInts[0], actualInts[0]);
+            Assert.AreEqual(expectedInts[1], actualInts[1]);
+            Assert.AreEqual(expectedInts[2], actualInts[2]);
         }
-
-        [TestMethod]
-        public void TestCurrentValue() //Note this changes every day
-        {
-            float delta = 0.1f;
-
-            float expectedVal = 10122.35f;
-            float currentVal = test1.CurrentValue;
-
-            float expectedVal2 = 2447.60f;
-            float currentVal2 = test2.CurrentValue;
-
-            float expectedVal3 = 1653.34f;
-            float currentVal3 = test3.CurrentValue;
-
-            Assert.AreEqual(expectedVal, currentVal, delta);
-            Assert.AreEqual(expectedVal2, currentVal2, delta);
-            Assert.AreEqual(expectedVal3, currentVal3, delta);
-        }
-
-        [TestMethod]
-        public void TestTotalReturn() //Note this changes every day
-        {
-            float delta = 0.1f;
-
-            float expectedVal = 122.35f;
-            float totalRet = test1.TotalReturn;
-
-            float expectedVal2 = 447.61f;
-            float totalRet2 = test2.TotalReturn;
-
-            float expectedVal3 = 653.34f;
-            float totalRet3 = test3.TotalReturn;
-
-            Assert.AreEqual(expectedVal, totalRet, delta);
-            Assert.AreEqual(expectedVal2, totalRet2, delta);
-            Assert.AreEqual(expectedVal3, totalRet3, delta);
-        }
-
-        [TestMethod]
-        public void TestTotalReturnRate()
-        {
-            float delta = 0.1f;
-
-            float expectedVal = 1.22f;
-            float totalRetR = test1.TotalReturnRate;
-
-            float expectedVal2 = 22.38f;
-            float totalRetR2 = test2.TotalReturnRate;
-
-            float expectedVal3 = 65.33f;
-            float totalRetR3 = test3.TotalReturnRate;
-
-            Assert.AreEqual(expectedVal, totalRetR, delta);
-            Assert.AreEqual(expectedVal2, totalRetR2, delta);
-            Assert.AreEqual(expectedVal3, totalRetR3, delta);
-        }
-
-        [TestMethod]
-        public void TestEditOwnedAsset()
-        {
-            float newInterestRate = 1.2f;
-            int newLength = 9;
-            float newRegPayments = 3.2f;
-
-            //   test1.EditAsset(newInterestRate, newLength, newRegPayments, test1);
-
-            OwnedAsset t1 = new OwnedAsset("ANZ Bank", new DateTime(2019, 9, 3), "Term Deposit", 10000, 1.2f, 9, 4, 3.2f, 0);
-
-            Assert.AreEqual(test1.InterestRate, t1.InterestRate);
-            Assert.AreEqual(test1.Length, t1.Length);
-            Assert.AreEqual(test1.RegularPayment, t1.RegularPayment);
-        }
-
-
     }
 }
