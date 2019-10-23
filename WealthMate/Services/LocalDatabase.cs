@@ -20,6 +20,9 @@ namespace WealthMate.Services
             _database.CreateTableAsync<Stock>().Wait();
             _database.CreateTableAsync<StockHistory>().Wait();
             _database.CreateTableAsync<WatchedStock>().Wait();
+            _database.CreateTableAsync<OwnedAsset>().Wait();
+            _database.CreateTableAsync<OwnedStock>().Wait();
+
             PreviousTradingDate = GetPreviousTradingDate();
         }
 
@@ -108,6 +111,35 @@ namespace WealthMate.Services
         public Task<int> DeleteStockHistoryAsync(StockHistory stockHistory)
         {
             return _database.DeleteAsync(stockHistory);
+        }
+
+        #endregion
+
+        #region Portfolio
+
+        public Task<List<OwnedAsset>> GetOwnedAssetsAsync()
+        {
+            return _database.Table<OwnedAsset>().ToListAsync();
+        }
+
+        public Task<int> SaveOwnedAssetAsync(OwnedAsset ownedAsset)
+        {
+            return _database.InsertOrReplaceAsync(ownedAsset);
+        }
+
+        public Task<int> DeleteOwnedAssetAsync(OwnedAsset ownedAsset)
+        {
+            return _database.DeleteAsync(ownedAsset);
+        }
+
+        public Task<List<OwnedStock>> GetOwnedStocksAsync()
+        {
+            return _database.Table<OwnedStock>().ToListAsync();
+        }
+
+        public Task<int> SaveOwnedStockAsync(OwnedStock ownedStock)
+        {
+            return _database.InsertOrReplaceAsync(ownedStock);
         }
 
         #endregion

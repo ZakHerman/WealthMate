@@ -17,6 +17,5 @@
         <local:WatchlistPage/>
         <local:StockListPage/>
         <local:TermDepositListPage/>
-        <!--local:SavingsListPage/-->
     </TabbedPage.Children>
 </TabbedPage>

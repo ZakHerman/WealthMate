@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:views="clr-namespace:WealthMate.Views.Markets;assembly=WealthMate"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockListPage"
              Title="Stocks"
@@ -13,23 +15,39 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <!--Searchbar, placeholder text and on text change functionality-->
-            <SearchBar x:Name="SearchBar" Placeholder="Search Stocks" TextChanged="OnFilterTextChanged" />
+            <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="70">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65*" />
+                    <ColumnDefinition Width="35*" />
+                </Grid.ColumnDefinitions>
 
-            <!--Picker for selecting attribute to sort list by-->
-            <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged" Margin="52,0,0,0">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Company Name</x:String>
-                        <x:String>Current Price (high-low)</x:String>
-                        <x:String>Current Price (low-high)</x:String>
-                        <x:String>Day Return Rate</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <!--Picker for selecting attribute to sort list by-->
+                <Frame Grid.Column="1" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                    <comboBox:SfComboBox TextColor="{DynamicResource DisabledTextColor}" Text="Sort" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                         BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                         DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
+                        <comboBox:SfComboBox.ComboBoxSource>
+                            <generic:List x:TypeArguments="x:String">
+                                <x:String>Name ↑</x:String>
+                                <x:String>Name ↓</x:String>
+                                <x:String>Return Rate ↑</x:String>
+                                <x:String>Return Rate ↓</x:String>
+                                <x:String>Price ↑</x:String>
+                                <x:String>Price ↓</x:String>
+                            </generic:List>
+                        </comboBox:SfComboBox.ComboBoxSource>
+                    </comboBox:SfComboBox>
+                </Frame>
 
-            <syncfusion:SfListView x:Name="StockListView" ItemsSource="{Binding StockList}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="StockListView_ItemTapped">
+                <!--Searchbar, placeholder text and on text change functionality-->
+                <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                    <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Stocks" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                               PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
+                </Frame>
+            </Grid>
+
+            <syncfusion:SfListView x:Name="StockListView" ItemsSource="{Binding StockList}" SelectionBackgroundColor="{DynamicResource SurfaceSelectedColor}" ItemSize="52" DragStartMode="OnHold"
+                                   ItemTapped="StockListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid BackgroundColor="{DynamicResource SurfaceColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">

@@ -1,14 +1,16 @@
 ﻿using Syncfusion.SfNumericTextBox.XForms;
-using System.Collections.Generic;
 using WealthMate.Models;
 using WealthMate.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Syncfusion.XForms.ComboBox;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System;
+using System.Collections.Generic;
+using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.ComboBox;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
 {
@@ -43,11 +45,12 @@ namespace WealthMate.Views.Markets
 
         //clears TDList list and re-adds assets to collection
         //this is required due to the return type of OrderBy and OrderByDescending methods
-        private void sortList(IOrderedEnumerable<TermDeposit> linqResults)
+        private void SortList(IEnumerable<TermDeposit> linqResults)
         {
             var observableC = new ObservableCollection<TermDeposit>(linqResults);
             TDList.Clear();
-            foreach (TermDeposit termD in observableC)
+
+            foreach (var termD in observableC)
             {
                 TDList.Add(termD);
             }
@@ -62,8 +65,8 @@ namespace WealthMate.Views.Markets
         {
             var selectedItem = Date.SelectedItem as ObservableCollection<object>;
 
-            string month = selectedItem[0].ToString();
-            int monthInt = 0;
+            var month = selectedItem?[0].ToString();
+            var monthInt = 0;
 
             switch (month)
             {
@@ -105,58 +108,56 @@ namespace WealthMate.Views.Markets
                     break;
             }
 
-            string day = selectedItem[1].ToString();
-            int dayInt = Int32.Parse(day);
+            if (selectedItem != null)
+            {
+                var day = selectedItem[1].ToString();
+                var dayInt = int.Parse(day);
 
-            string year = selectedItem[2].ToString();
-            int yearInt = Int32.Parse(year);
+                var year = selectedItem[2].ToString();
+                var yearInt = int.Parse(year);
 
-            _purchaseDate = new System.DateTime(yearInt, monthInt, dayInt);
+                _purchaseDate = new DateTime(yearInt, monthInt, dayInt);
+            }
         }
 
-        // sorts StockList list according to picker value upon picker index value changing
-        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        // Sorts StockList list according to picker value upon picker index value changing
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = sender as Picker;
+
             if (picker.SelectedIndex == 0)
             {
-                sortList(TDList.OrderBy(termD => termD.Provider));
+                SortList(TDList.OrderBy(termD => termD.Provider));
             }
             else if (picker.SelectedIndex == 1)
             {
-                sortList(TDList.OrderByDescending(termD => termD.InterestRate));
+                SortList(TDList.OrderByDescending(termD => termD.InterestRate));
             }
             else if (picker.SelectedIndex == 2)
             {
-                sortList(TDList.OrderBy(termD => termD.MinDeposit));
+                SortList(TDList.OrderBy(termD => termD.MinDeposit));
             }
             else if (picker.SelectedIndex == 3)
             {
-                sortList(TDList.OrderBy(termD => termD.LengthInMonths));
+                SortList(TDList.OrderBy(termD => termD.LengthInMonths));
             }
         }
 
-        /// <summary>
-        /// Search bar functionality
-        /// </summary>
-        /// <param name="sender"></param> reference to object sending the data
-        /// <param name="e"></param> event data
+        // Search bar functionality
+
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar);//set sender to SearchBar
+            _searchBar = sender as SearchBar;
 
             if (TermDepositList.DataSource != null)
             {
-                TermDepositList.DataSource.Filter = FilterTDeposits;//filters the data source
-                TermDepositList.DataSource.RefreshFilter(); // refreshes the view
+                // Filters the data source
+                TermDepositList.DataSource.Filter = FilterTDeposits;
+                TermDepositList.DataSource.RefreshFilter();
             }
         }
 
-        /// <summary>
-        /// method for filtering the list view as text changes within the search bar
-        /// </summary>
-        /// <param name="obj"></param> object representing a search return
-        /// <returns></returns> boolean value for checking for text in the serach bar
+        // Filtering the list view as text changes within the search bar
         private bool FilterTDeposits(object obj)
         {
             if (_searchBar?.Text == null)
@@ -167,7 +168,7 @@ namespace WealthMate.Views.Markets
             return obj is TermDeposit termD && (termD.Provider.ToLower().Contains(_searchBar.Text.ToLower()));
         }
 
-        //Handles a term deposit being clicked from the term deposit page
+        // Handles a term deposit being clicked from the term deposit page
         private void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
             TermDeposit = (TermDeposit)e.ItemData;
@@ -176,10 +177,12 @@ namespace WealthMate.Views.Markets
             _length = (float)(TermDeposit.LengthInMonths / 0.5);
 
             AddTDForm.IsOpen = true;
+
+            ((SfListView)sender).SelectedItem = null;
         }
 
-        //Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
-        private void AddInPopupClicked(object sender, System.EventArgs e)
+        // Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
+        private void AddInPopupClicked(object sender, EventArgs e)
         {
             if (_principalValue <= 0.0f)
                 DisplayAlert(null, "Please enter purchase price!", "OK");
@@ -208,7 +211,7 @@ namespace WealthMate.Views.Markets
         private void Picker_CompoundRateChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
+            var selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
@@ -233,6 +236,37 @@ namespace WealthMate.Views.Markets
             }
         }
 
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var index = ((SfComboBox)sender).SelectedIndex;
 
+            switch (index)
+            {
+                case 0:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.Provider);
+                    break;
+                case 1:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.Provider);
+                    break;
+                case 2:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.InterestRate);
+                    break;
+                case 3:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.InterestRate);
+                    break;
+                case 4:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.MinDeposit);
+                    break;
+                case 5:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.MinDeposit);
+                    break;
+                case 6:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.LengthInMonths);
+                    break;
+                case 7:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.LengthInMonths);
+                    break;
+            }
+        }
     }
 }

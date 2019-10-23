@@ -8,7 +8,9 @@
     <Color x:Key="PrimaryColor">#2196F3</Color> <!--Navigation bar colour-->
     <Color x:Key="SurfaceColor">White</Color> <!--List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
-    <Color x:Key="AndroidPrimaryColor">#2196F3</Color> <!--Android Status bar / navigation bar colour-->
+    <Color x:Key="AndroidStatusColor">#1976D2</Color> <!--Android Status bar / navigation bar colour-->
+    <Color x:Key="ErrorColor">#B00020</Color>
+    <Color x:Key="AcceptColor">#2e7b32</Color>
 
     <Color x:Key="ButtonColor">#2196F3</Color>
     <Color x:Key="ButtonTextColor">White</Color>
@@ -17,6 +19,7 @@
     <Color x:Key="PrimaryTextColor">Black</Color>
     <Color x:Key="SecondaryTextColor">Gray</Color>
     <Color x:Key="TertiaryTextColor">White</Color>
+    <Color x:Key="DisabledTextColor">Gray</Color> <!--Label name text colour-->
 
     <!--Price indicator colour-->
     <Color x:Key="PositiveTextColor">ForestGreen</Color>
@@ -36,6 +39,9 @@
     <Color x:Key="AreaColor">#272E95B9</Color>
     <Color x:Key="TrackBallColor">Black</Color>
     <Color x:Key="TrackBallLabelBackgroundColor">#d1F9F9F9</Color>
+
+    <Color x:Key="ProgressColor">#D1088A23</Color>
+    <Color x:Key="ProgressColorEnd">#7E088A23</Color>
 
     <!--Toast notification colour-->
     <Color x:Key="ToastNotificationBackgroundColor">#CC212121</Color>

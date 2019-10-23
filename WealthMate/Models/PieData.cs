@@ -3,16 +3,14 @@ using System.Runtime.CompilerServices;
 
 namespace WealthMate.Models
 {
-    /// <summary>
-    /// Class representing the data used by the piechart 
-    /// contains a Quantity and a Type
-    /// </summary>
+    // Class representing the data used by the piechart 
+    // contains a Quantity and a Type
     public class PieData : INotifyPropertyChanged
     {
         private float _quantity;
         private float _returnPercentage;
         private float _principalQuantity;
-        public float Quantity                //Total current value of PieData category
+        public float Quantity
         {
             get => _quantity;
             set
@@ -21,8 +19,10 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public string AssetType { get; set; }               //Names/categorizes asset type
-        public float ReturnPercentage       //Returns percentage of PieChart asset type category
+
+        // Names/categorizes asset type
+        public string AssetType { get; set; }
+        public float ReturnPercentage
         {
             get => _returnPercentage;
             set
@@ -31,7 +31,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float PrincipalQuantity       //Total principal value of PieData category
+        public float PrincipalQuantity
         {
             get => _principalQuantity;
             set
@@ -40,17 +40,20 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public bool IsPositive { get; set; }                //Flag that checks if return is positive for view trigger purposes
+
+        // Flag that checks if return is positive for view trigger purposes
+        public bool IsPositive { get; set; }
         public int Key { get; set; }
         public string Value { get; set; }
+
+        public PieData()
+        {
+
+        }
 
         public PieData(string type)
         {
             AssetType = type;
-        }
-
-        public PieData()
-        {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,10 +61,7 @@ namespace WealthMate.Models
         // Checks the return percentage is positive
         public void PositiveChecker()
         {
-            if (ReturnPercentage > 0)
-                IsPositive = true;
-            else
-                IsPositive = false;
+            IsPositive = ReturnPercentage > 0;
         }
 
         // Updates the values for the pie chart title

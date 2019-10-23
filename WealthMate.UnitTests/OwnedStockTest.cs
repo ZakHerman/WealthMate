@@ -47,9 +47,8 @@ namespace WealthMate.UnitTests
 
             int newShares = 60;
             float newPrice = 28.5f;
-            float returnGoal = 400f;
 
-            test1.EditStock(newShares, newPrice, returnGoal);
+            //test1.EditStock(newShares, newPrice, test1);
 
             Assert.AreEqual(test1.SharesPurchased, newShares);
             Assert.AreEqual(test1.PurchasedPrice, newPrice);

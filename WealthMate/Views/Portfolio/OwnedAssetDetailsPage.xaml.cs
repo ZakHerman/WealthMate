@@ -3,7 +3,8 @@ using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Syncfusion.SfNumericTextBox.XForms;
-using Syncfusion.XForms.ComboBox;
+using WealthMate.Services;
+using System.Collections.ObjectModel;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -11,15 +12,17 @@ namespace WealthMate.Views.Portfolio
     public partial class OwnedAssetDetailsPage
     {
         public OwnedAsset OwnedAsset { get; }
-
-        private SfNumericTextBox editInterestRate;          //Text box for editing details.
+        public CustomDatePicker CustDate { get; set; }
+ 
+        private SfNumericTextBox editInterestRate;
         private SfNumericTextBox editLength;
         private SfNumericTextBox editRegPayments;
         private SfNumericTextBox editReturnGoal;
         private SfNumericTextBox editPrincipalValue;
         private int editCompoundRate = -1;
 
-        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)     //Passes selected owned asset to know what details to display
+        // Passes selected owned asset to know what details to display
+        public OwnedAssetDetailsPage(OwnedAsset ownedAsset)
         {
             OwnedAsset = ownedAsset;
             OwnedAsset.UpdateOwnedAsset();
@@ -42,7 +45,11 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.ValueChanged += Handle_ReturnGoalChanged;
         }
 
-       
+        private void DatePicker_Clicked(object sender, EventArgs e)
+        {
+            Date.IsOpen = !Date.IsOpen;
+        }
+
         // Event handler for edit stock button, enables popup
         private void EditAssetClicked(object sender, EventArgs e)
         {
@@ -61,9 +68,11 @@ namespace WealthMate.Views.Portfolio
             var newLength = int.Parse(editLength.Value.ToString());
             var newReturnGoal = float.Parse(editReturnGoal.Value.ToString());
 
+            UpdatePurchaseDate();
             OwnedAsset.EditAsset(newPrincipalValue, newInterestRate, newCompoundRate, newLength, newReturnGoal);
             ((App)Application.Current).User.Portfolio.UpdatePortfolio();
         }
+
         private void Handle_PrincipalValueChanged(object sender, ValueEventArgs e)
         {
             editPrincipalValue.Value = e.Value.ToString();
@@ -92,7 +101,7 @@ namespace WealthMate.Views.Portfolio
             editReturnGoal.Value = e.Value.ToString();
         }
 
-        //Remove Asset from portfolio
+        // Remove Asset from portfolio
         private void RemoveAssetClicked(object sender, EventArgs e)
         {
             RemoveAssetConfirmationBox.IsOpen = true;
@@ -111,7 +120,7 @@ namespace WealthMate.Views.Portfolio
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
+            var selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
@@ -133,6 +142,65 @@ namespace WealthMate.Views.Portfolio
                         editCompoundRate = 0;
                         break;
                 }
+            }
+        }
+
+        public void UpdatePurchaseDate()
+        {
+            var selectedItem = Date.SelectedItem as ObservableCollection<object>;
+
+            var month = selectedItem?[0].ToString();
+            var monthInt = 0;
+
+            switch (month)
+            {
+                case "Jan":
+                    monthInt = 1;
+                    break;
+                case "Feb":
+                    monthInt = 2;
+                    break;
+                case "Mar":
+                    monthInt = 3;
+                    break;
+                case "Apr":
+                    monthInt = 4;
+                    break;
+                case "May":
+                    monthInt = 5;
+                    break;
+                case "Jun":
+                    monthInt = 6;
+                    break;
+                case "Jul":
+                    monthInt = 7;
+                    break;
+                case "Aug":
+                    monthInt = 8;
+                    break;
+                case "Sep":
+                    monthInt = 9;
+                    break;
+                case "Oct":
+                    monthInt = 10;
+                    break;
+                case "Nov":
+                    monthInt = 11;
+                    break;
+                case "Dec":
+                    monthInt = 12;
+                    break;
+            }
+
+            if (selectedItem != null)
+            {
+                var day = selectedItem[1].ToString();
+                var dayInt = int.Parse(day);
+
+                var year = selectedItem[2].ToString();
+                var yearInt = int.Parse(year);
+
+                OwnedAsset.PurchaseDate = new DateTime(yearInt, monthInt, dayInt);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite;
 
 namespace WealthMate.Models
 {
@@ -9,8 +10,11 @@ namespace WealthMate.Models
         private float _currentPrice;
         private float _dayReturn;
         private float _dayReturnRate;
-        public Stock Stock { get; set; }                        //Takes public stock into constructor to access it's updating variables (i.e. current price of stock).
-        public float PurchasedPrice               //Price ownedstock was purchased at
+
+        [Ignore]
+        public Stock Stock { get; set; } // Takes public stock into constructor to access it's updating variables (i.e. current price of stock).
+        public string Symbol { get; set; }
+        public float PurchasedPrice
         {
             get => _purchasedPrice;
             set
@@ -19,7 +23,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float SharesPurchased             //Amount of shares the ownedstock owns
+        public float SharesPurchased
         {
             get => _sharesPurchased;
             set
@@ -28,7 +32,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float CurrentPrice                 //Current price of OwnedStcok
+        public float CurrentPrice
         {
             get => _currentPrice;
             set
@@ -37,7 +41,9 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float DayReturn                  //Returns made in a day
+
+        // Returns made in a day
+        public float DayReturn
         {
             get => _dayReturn;
             set
@@ -46,7 +52,9 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float DayReturnRate           //Percentage returns made in a day
+
+        // Percentage returns made in a day
+        public float DayReturnRate
         {
             get => _dayReturnRate;
             set
@@ -55,55 +63,66 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public bool PositiveDayReturns { get; set; }            //Flag for xamarin view page that determines the text colour (green/red) to display
-        public string AssetNameTypePurchasedPrice { get { return base.AssetNameType + " ($" + PurchasedPrice + ")"; } }     //Xamarin details page header displayed
+        public bool PositiveDayReturns { get; set; }
 
-        //OwnedStock Constructor
+        // Xamarin details page header displayed
+        public string AssetNameTypePurchasedPrice => base.AssetNameType + " ($" + PurchasedPrice + ")";
+
+        // OwnedStock Constructor
         public OwnedStock(Stock stock, DateTime purchaseDate, float purchasedPrice, float sharesPurchased, float returnGoal)
         {
             PurchasedPrice = purchasedPrice;
             SharesPurchased = sharesPurchased;
             Stock = stock;
-            CurrentPrice = Stock.CurrentPrice;                                  //Takes current price of the stock that is purchased
-            PrincipalValue = PurchasedPrice * SharesPurchased;                  //How much the shares are initially worth
-            AssetName = stock.CompanyName;                                      //Transfers base class values
+            CurrentPrice = Stock.CurrentPrice; // Takes current price of the stock that is purchased
+            PrincipalValue = PurchasedPrice * SharesPurchased; //How much the shares are initially worth
+            AssetName = stock.CompanyName; // Transfers base class values
             PurchaseDate = purchaseDate;
             Type = "Stock";
             ReturnGoal = returnGoal;
-            UpdateOwnedAsset();                                                 //Calculates all required values when constructed
+            Symbol = stock.Symbol;
+            UpdateOwnedAsset(); // Calculates all required values when constructed
         }
 
-        //Overloading constructor for testing purposes --> planning to remove
         public OwnedStock()
         {
-            Type = "Stock";
+
         }
 
         // Creates up to date values for the Owned Asset
         public override void UpdateOwnedAsset()
         {
-            UpdateCurrentDetails();                                                     //Updates current details of owned asset
-            UpdateDayReturnDetails();                                                   //Updates the returns made during the day
-            UpdateTotalReturnDetails();                                                 //Updates the total returns made on the owned stock
-            ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;                      //Updates how close the return value is to reaching its return goal
+            UpdateCurrentDetails();
+            UpdateDayReturnDetails();
+            UpdateTotalReturnDetails();
+            ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100; // Updates how close the return value is to reaching its return goal
         }
 
         private void UpdateTotalReturnDetails()
         {
             TotalReturn = CurrentValue - PrincipalValue;
-            TotalReturnRate = (TotalReturn / PrincipalValue) * 100;                     //Converts total returns to percentage
-            PositiveTotal = TotalReturn > 0;                                            //Updates xamarin view flag
+            TotalReturnRate = (TotalReturn / PrincipalValue) * 100; // Converts total returns to percentage
+            PositiveTotal = TotalReturn > 0;
         }
 
-        private void UpdateDayReturnDetails()
+        private async void UpdateDayReturnDetails()
         {
-            DayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);            //Current value less how much stock was worth at the start of the day
-            DayReturnRate = (DayReturn / PrincipalValue) * 100;                         //Converts day return into a percentage
-            PositiveDayReturns = DayReturn > 0;                                         //Updates xamarin view flag
+            if (Stock == null)
+                Stock = await App.Database.GetStockAsync(Symbol);
+
+            // Current value less how much stock was worth at the start of the day
+            DayReturn = CurrentValue - (Stock.PriceClose * SharesPurchased);
+            // Converts day return into a percentage
+            DayReturnRate = (DayReturn / PrincipalValue) * 100;
+            PositiveDayReturns = DayReturn > 0;
         }
 
-        private void UpdateCurrentDetails()                                             //Updates price of stock before calculated how much it is currently worth
+        // Updates price of stock before calculated how much it is currently worth
+        private async void UpdateCurrentDetails()
         {
+            if (Stock == null)
+                Stock = await App.Database.GetStockAsync(Symbol);
+
             CurrentPrice = Stock.CurrentPrice;                                      
             CurrentValue = CurrentPrice * SharesPurchased;
         }
@@ -123,6 +142,5 @@ namespace WealthMate.Models
             PrincipalValue = SharesPurchased * PurchasedPrice;
             UpdateOwnedAsset();
         }
-
     }
 }

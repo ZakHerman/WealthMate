@@ -1,4 +1,5 @@
-﻿using Syncfusion.ListView.XForms;
+﻿using System.Collections.Generic;
+using Syncfusion.ListView.XForms;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -6,6 +7,9 @@ using WealthMate.Services;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Syncfusion.XForms.ComboBox;
+using WealthMate.ViewModels;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
 {
@@ -27,7 +31,6 @@ namespace WealthMate.Views.Markets
             await DataService.FetchStocksAsync();
             StockList = DataService.Stocks;
             StockListView.ItemsSource = StockList;
-            //           StockList.ItemsSource = DataService.Stocks;
         }
 
         // Event handler for watchlist stock being pressed
@@ -44,14 +47,10 @@ namespace WealthMate.Views.Markets
             ((SfListView)sender).SelectedItem = null;
         }
 
-        /// <summary>
-        /// Search bar functionality
-        /// </summary>
-        /// <param name="sender"></param> reference to object sending the data
-        /// <param name="e"></param> event data
+        // Search bar functionality
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
-            _searchBar = (sender as SearchBar); //set sender to SearchBar
+            _searchBar = sender as SearchBar;
 
             if (StockListView.DataSource != null)
             {
@@ -60,11 +59,7 @@ namespace WealthMate.Views.Markets
             }
         }
 
-        /// <summary>
-        /// method for filtering the list view as text changes within the search bar
-        /// </summary>
-        /// <param name="obj"></param> object representing a search return
-        /// <returns></returns> boolean value for checking for text in the serach bar
+        // Filtering the list view as text changes within the search bar
         private bool FilterStocks(object obj)
         {
             if (_searchBar?.Text == null)
@@ -76,37 +71,43 @@ namespace WealthMate.Views.Markets
                                           || stock.Symbol.ToLower().Contains(_searchBar.Text.ToLower()));
         }
 
-        //clears StockList list and re-adds assets to collection
-        //this is required due to the return type of OrderBy and OrderByDescending methods
-        private void sortList(IOrderedEnumerable<Stock> linqResults)
+        // clears StockList list and re-adds assets to collection
+        // this is required due to the return type of OrderBy and OrderByDescending methods
+        private void SortList(IEnumerable<Stock> linqResults)
         {
             var observableC = new ObservableCollection<Stock>(linqResults);
             StockList.Clear();
-            foreach (Stock stock in observableC)
+            foreach (var stock in observableC)
             {
                 StockList.Add(stock);
             }
         }
 
-        // sorts StockList list according to picker value upon picker index value changing
-        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        // Sorts StockList list according to picker value upon picker index value changing
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var picker = sender as Picker;
-            if (picker.SelectedIndex == 0)
+            var index = ((SfComboBox)sender).SelectedIndex;
+
+            switch (index)
             {
-                sortList(StockList.OrderBy(stock => stock.CompanyName));
-            }
-            else if (picker.SelectedIndex == 1)
-            {
-                sortList(StockList.OrderByDescending(stock => stock.CurrentPrice));
-            }
-            else if (picker.SelectedIndex == 2)
-            {
-                sortList(StockList.OrderBy(stock => stock.CurrentPrice));
-            }
-            else if (picker.SelectedIndex == 3)
-            {
-                sortList(StockList.OrderByDescending(stock => stock.DayReturnRate));
+                case 0:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.CompanyName);
+                    break;
+                case 1:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.CompanyName);
+                    break;
+                case 2:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.DayReturnRate);
+                    break;
+                case 3:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.DayReturnRate);
+                    break;
+                case 4:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.CurrentPrice);
+                    break;
+                case 5:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.CurrentPrice);
+                    break;
             }
         }
     }

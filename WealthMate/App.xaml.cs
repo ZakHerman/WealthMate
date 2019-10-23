@@ -46,6 +46,19 @@ namespace WealthMate
             {
                 WatchList.Add(await Database.GetStockAsync(watchedStock.Symbol));
             }
+
+            var ownedAssets = await Database.GetOwnedAssetsAsync();
+            var ownedStocks = await Database.GetOwnedStocksAsync();
+
+            foreach (var ownedAsset in ownedAssets)
+            {
+                User.Portfolio.OwnedAssets.Add(ownedAsset);
+            }
+
+            foreach (var ownedStock in ownedStocks)
+            {
+                User.Portfolio.OwnedAssets.Add(ownedStock);
+            }
         }
 
         protected override void OnSleep()

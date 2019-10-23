@@ -3,14 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:textbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
-             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
+             xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
@@ -18,7 +19,7 @@
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.BindingContext>
-        <vm:TermDepositViewModel />
+        <models:TermDeposit />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -28,25 +29,42 @@
     </ContentPage.Resources>
 
    <StackLayout>
-        <!--Searchbar, placeholder text and on text change functionality-->
-        <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
-      
-       <!--Picker for selecting attribute to sort TD list by-->
-        <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged" Margin="52,0,0,0">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Provider</x:String>
-                    <x:String>Interest Rate (high-low)</x:String>
-                    <x:String>Minimum Deposit</x:String>
-                    <x:String>Term (low-high)</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+        <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65*" />
+                <ColumnDefinition Width="35*" />
+            </Grid.ColumnDefinitions>
+
+            <!--Picker for selecting attribute to sort list by-->
+            <Frame Grid.Column="1" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                <comboBox:SfComboBox TextColor="{DynamicResource DisabledTextColor}" Text="Sort" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                     BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                     DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
+                    <comboBox:SfComboBox.ComboBoxSource>
+                        <generic:List x:TypeArguments="x:String">
+                            <x:String>Provider ↑</x:String>
+                            <x:String>Provider ↓</x:String>
+                            <x:String>Interest Rate ↑</x:String>
+                            <x:String>Interest Rate ↓</x:String>
+                            <x:String>Min Deposit ↑</x:String>
+                            <x:String>Min Deposit ↓</x:String>
+                            <x:String>Term ↑</x:String>
+                            <x:String>Term ↓</x:String>
+                        </generic:List>
+                    </comboBox:SfComboBox.ComboBoxSource>
+                </comboBox:SfComboBox>
+            </Frame>
+
+            <!--Searchbar, placeholder text and on text change functionality-->
+            <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Term Deposits" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                           PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
+            </Frame>
+        </Grid>
 
         <!--The list view of the term deposits-->
-        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}"
-                               AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="TermDepositClicked">
+        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" SelectionBackgroundColor="{DynamicResource SurfaceSelectedColor}" 
+                               ItemSize="52" DragStartMode="OnHold" ItemTapped="TermDepositClicked">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid BackgroundColor="{DynamicResource SurfaceColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
@@ -92,62 +110,57 @@
        <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
                                                   VerticalOptions="Center" />
      </Grid>
-     
-<!--Term Deposit Clicked - Add to Portfolio popup-->
-<sfPopup:SfPopupLayout x:Name="AddTDForm">
-  <sfPopup:SfPopupLayout.PopupView>
-    <sfPopup:PopupView HeaderTitle="Add Term Deposit to Portfolio" ShowFooter="false" AutoSizeMode="Height">
-      <sfPopup:PopupView.ContentTemplate>
-        <DataTemplate>
-          <ScrollView>
-            <StackLayout Padding="6,0,3,0">
-            
-            <Label Text="Amount Invested:" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
-            <textbox:SfNumericTextBox x:Name="numericTextBox" Value="0" FormatString="N0" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_InvestAmountChanged" />
+        
+        <!--Term Deposit Clicked - Add to Portfolio popup-->
+        <sfPopup:SfPopupLayout x:Name="AddTDForm">
+            <sfPopup:SfPopupLayout.PopupView>
+                <sfPopup:PopupView HeaderTitle="Add Term Deposit to Portfolio" ShowFooter="false" AutoSizeMode="Height">
+                    <sfPopup:PopupView.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <StackLayout Padding="6,0,3,0">
+                                    <Label Text="Amount Invested:" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
+                                    <textbox:SfNumericTextBox x:Name="numericTextBox" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_InvestAmountChanged" />
 
-            <Label Text="Return Goal: (Optional)" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
-            <textbox:SfNumericTextBox x:Name="numericTextBox2" Value="0" FormatString="N0" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_GoalAmountChanged" />
+                                    <Label Text="Return Goal: (Optional)" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start" FontSize="10" />
+                                    <textbox:SfNumericTextBox x:Name="numericTextBox2" Value="0" FormatString="C" ValueChangeMode="OnKeyFocus" ValueChanged="Handle_GoalAmountChanged" />
 
-            <Label Text="Compound rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-            <Picker x:Name="compoundRatePicker"
-                    Title="Annual"
-                    SelectedIndexChanged="Picker_CompoundRateChanged"
-                    Margin="3,3">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Annual</x:String>
-                        <x:String>Semi-Annual</x:String>
-                        <x:String>Quarterly</x:String>
-                        <x:String>Monthly</x:String>
-                        <x:String>Never</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
-            <Button Text="Change Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
-
-            <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" HeightRequest="40" />
-            </StackLayout>
-            </ScrollView>
-        </DataTemplate>
-      </sfPopup:PopupView.ContentTemplate>
-    </sfPopup:PopupView>
-  </sfPopup:SfPopupLayout.PopupView>
-</sfPopup:SfPopupLayout>
-
-  <!--Add To Portfolio - Error popup-->
-  <sfPopup:SfPopupLayout x:Name="NullValueErrorPopup" IsOpen="False">
-    <sfPopup:SfPopupLayout.PopupView>
-      <sfPopup:PopupView ShowHeader="false">
-        <sfPopup:PopupView.ContentTemplate>
-          <DataTemplate>
-            <StackLayout>
-              <Label Text="Please enter amount purchased!" TextColor="Red" HorizontalTextAlignment="Start" FontSize="12" />
-            </StackLayout>
-          </DataTemplate>
-        </sfPopup:PopupView.ContentTemplate>
-      </sfPopup:PopupView>
-    </sfPopup:SfPopupLayout.PopupView>
-  </sfPopup:SfPopupLayout>
+                                    <Label Text="Compound rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
+                                    <Picker x:Name="compoundRatePicker" Title="Annual" SelectedIndexChanged="Picker_CompoundRateChanged" Margin="3,3">
+                                        <Picker.ItemsSource>
+                                            <x:Array Type="{x:Type x:String}">
+                                                <x:String>Annual</x:String>
+                                                <x:String>Semi-Annual</x:String>
+                                                <x:String>Quarterly</x:String>
+                                                <x:String>Monthly</x:String>
+                                                <x:String>Never</x:String>
+                                            </x:Array>
+                                        </Picker.ItemsSource>
+                                    </Picker>
+                                    
+                                    <Button Text="Change Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
+                                    <Button Text="Add" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="AddInPopupClicked" HeightRequest="40" />
+                                </StackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </sfPopup:PopupView.ContentTemplate>
+                </sfPopup:PopupView>
+            </sfPopup:SfPopupLayout.PopupView>
+        </sfPopup:SfPopupLayout>
+        
+        <!--Add To Portfolio - Error popup-->
+        <sfPopup:SfPopupLayout x:Name="NullValueErrorPopup" IsOpen="False">
+            <sfPopup:SfPopupLayout.PopupView>
+                <sfPopup:PopupView ShowHeader="false">
+                    <sfPopup:PopupView.ContentTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="Please enter amount purchased!" TextColor="Red" HorizontalTextAlignment="Start" FontSize="12" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </sfPopup:PopupView.ContentTemplate>
+                </sfPopup:PopupView>
+            </sfPopup:SfPopupLayout.PopupView>
+        </sfPopup:SfPopupLayout>
    </StackLayout>
 </ContentPage>

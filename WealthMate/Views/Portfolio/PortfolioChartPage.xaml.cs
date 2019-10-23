@@ -9,7 +9,7 @@ namespace WealthMate.Views.Portfolio
         public PortfolioChartPage()
         {
             InitializeComponent();
-            BindingContext = new PortfolioPageVM();
+            BindingContext = new PortfolioViewModel();
             picker.SelectedIndex = 0;
         }
     }

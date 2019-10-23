@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.ComboBox;
 using WealthMate.Models;
 using WealthMate.ViewModels;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
 {
@@ -13,7 +15,6 @@ namespace WealthMate.Views.Markets
     {
         public WatchlistPage()
         {
-            //BindingContext = new WatchListPageVM();
             InitializeComponent();
         }
 
@@ -31,11 +32,7 @@ namespace WealthMate.Views.Markets
             ((SfListView)sender).SelectedItem = null;
         }
 
-        /// <summary>
-        /// Search bar functionality
-        /// </summary>
-        /// <param name="sender"></param> reference to object sending the data
-        /// <param name="e"></param> event data
+        // Search bar functionality
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             var vm = BindingContext as WatchListViewModel;
@@ -44,14 +41,34 @@ namespace WealthMate.Views.Markets
                 Watchlist.ItemsSource = vm?.WatchListStocks;
             else
                 Watchlist.ItemsSource = vm?.WatchListStocks.Where(stock => stock.CompanyName.ToLower().Contains(e.NewTextValue.ToLower()) 
-                                                                          || stock.Symbol.ToLower().Contains(e.NewTextValue.ToLower()));
+                                                                           || stock.Symbol.ToLower().Contains(e.NewTextValue.ToLower()));
         }
 
-        private void Watchlist_OnItemDragging(object sender, ItemDraggingEventArgs e)
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.Action == DragAction.Start)  
+            var vm = BindingContext as WatchListViewModel;
+            var index = ((SfComboBox)sender).SelectedIndex;
+
+            switch (index)
             {
-                //Watchlist.SelectedItem = Color.Aqua;
+                case 0:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderBy(stock => stock.CompanyName);
+                    break;
+                case 1:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderByDescending(stock => stock.CompanyName);
+                    break;
+                case 2:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderBy(stock => stock.DayReturnRate);
+                    break;
+                case 3:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderByDescending(stock => stock.DayReturnRate);
+                    break;
+                case 4:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderBy(stock => stock.CurrentPrice);
+                    break;
+                case 5:
+                    Watchlist.ItemsSource = vm?.WatchListStocks.OrderByDescending(stock => stock.CurrentPrice);
+                    break;
             }
         }
     }
