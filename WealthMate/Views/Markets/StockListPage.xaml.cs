@@ -7,6 +7,9 @@ using WealthMate.Services;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Syncfusion.XForms.ComboBox;
+using WealthMate.ViewModels;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
 {
@@ -81,25 +84,30 @@ namespace WealthMate.Views.Markets
         }
 
         // Sorts StockList list according to picker value upon picker index value changing
-        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var picker = sender as Picker;
+            var index = ((SfComboBox)sender).SelectedIndex;
 
-            if (picker.SelectedIndex == 0)
+            switch (index)
             {
-                SortList(StockList.OrderBy(stock => stock.CompanyName));
-            }
-            else if (picker.SelectedIndex == 1)
-            {
-                SortList(StockList.OrderByDescending(stock => stock.CurrentPrice));
-            }
-            else if (picker.SelectedIndex == 2)
-            {
-                SortList(StockList.OrderBy(stock => stock.CurrentPrice));
-            }
-            else if (picker.SelectedIndex == 3)
-            {
-                SortList(StockList.OrderByDescending(stock => stock.DayReturnRate));
+                case 0:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.CompanyName);
+                    break;
+                case 1:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.CompanyName);
+                    break;
+                case 2:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.DayReturnRate);
+                    break;
+                case 3:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.DayReturnRate);
+                    break;
+                case 4:
+                    StockListView.ItemsSource = StockList.OrderBy(stock => stock.CurrentPrice);
+                    break;
+                case 5:
+                    StockListView.ItemsSource = StockList.OrderByDescending(stock => stock.CurrentPrice);
+                    break;
             }
         }
     }

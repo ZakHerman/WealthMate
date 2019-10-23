@@ -25,11 +25,11 @@
 
     <!--Price indicator colour-->
     <Color x:Key="PositiveTextColor">#44f674</Color>
-    <Color x:Key="PositiveBackgroundColor">#8130C196</Color>
+    <Color x:Key="PositiveBackgroundColor">#2730C196</Color>
     <Color x:Key="NegativeTextColor">#B00020</Color>
     <Color x:Key="NegativeBackgroundColor">#18FF2121</Color>
     <Color x:Key="NeutralTextColor">Gray</Color>
-    <Color x:Key="NeutralBackgroundColor">Gray</Color>
+    <Color x:Key="NeutralBackgroundColor">#1A808080</Color>
 
     <!--Tabbed paged colour-->
     <Color x:Key="SelectedColor">#2e95b9</Color> <!--Selected tab page colour-->

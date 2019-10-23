@@ -7,6 +7,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.WatchlistPage"
              Title="Watchlist">
@@ -17,7 +18,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Grid ColumnSpacing="10" Margin="8" HeightRequest="70">
+            <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="70">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="65*" />
                     <ColumnDefinition Width="35*" />
@@ -43,7 +44,7 @@
 
                 <!--Searchbar, placeholder text and on text change functionality-->
                 <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
-                    <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                    <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
                                PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
                 </Frame>
             </Grid>

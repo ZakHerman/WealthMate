@@ -8,6 +8,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.ComboBox;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
 {
@@ -174,10 +177,12 @@ namespace WealthMate.Views.Markets
             _length = (float)(TermDeposit.LengthInMonths / 0.5);
 
             AddTDForm.IsOpen = true;
+
+            ((SfListView)sender).SelectedItem = null;
         }
 
         // Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
-        private void AddInPopupClicked(object sender, System.EventArgs e)
+        private void AddInPopupClicked(object sender, EventArgs e)
         {
             if (_principalValue <= 0.0f)
                 DisplayAlert(null, "Please enter purchase price!", "OK");
@@ -231,6 +236,37 @@ namespace WealthMate.Views.Markets
             }
         }
 
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var index = ((SfComboBox)sender).SelectedIndex;
 
+            switch (index)
+            {
+                case 0:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.Provider);
+                    break;
+                case 1:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.Provider);
+                    break;
+                case 2:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.InterestRate);
+                    break;
+                case 3:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.InterestRate);
+                    break;
+                case 4:
+                    TermDepositList.ItemsSource = TDList.OrderBy(t => t.MinDeposit);
+                    break;
+                case 5:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.MinDeposit);
+                    break;
+                case 6:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.LengthInMonths);
+                    break;
+                case 7:
+                    TermDepositList.ItemsSource = TDList.OrderByDescending(t => t.LengthInMonths);
+                    break;
+            }
+        }
     }
 }

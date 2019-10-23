@@ -9,6 +9,9 @@
              xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              xmlns:pickerClass="clr-namespace:WealthMate.Services"
              xmlns:models="clr-namespace:WealthMate.Models;assembly=WealthMate"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.TermDepositListPage"
              x:Name="Root"
@@ -26,25 +29,42 @@
     </ContentPage.Resources>
 
    <StackLayout>
-        <!--Searchbar, placeholder text and on text change functionality-->
-        <SearchBar x:Name="SearchBar" Placeholder ="Search Term Deposits" TextChanged="OnFilterTextChanged" />
-      
-       <!--Picker for selecting attribute to sort TD list by-->
-        <Picker Title="Sort by" x:Name="picker" HorizontalOptions="Start" FontSize="Medium" WidthRequest="200" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedIndexChanged="Picker_SelectedIndexChanged" Margin="52,0,0,0">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Provider</x:String>
-                    <x:String>Interest Rate (high-low)</x:String>
-                    <x:String>Minimum Deposit</x:String>
-                    <x:String>Term (low-high)</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+        <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65*" />
+                <ColumnDefinition Width="35*" />
+            </Grid.ColumnDefinitions>
+
+            <!--Picker for selecting attribute to sort list by-->
+            <Frame Grid.Column="1" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                <comboBox:SfComboBox TextColor="{DynamicResource DisabledTextColor}" Text="Sort" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                     BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                     DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
+                    <comboBox:SfComboBox.ComboBoxSource>
+                        <generic:List x:TypeArguments="x:String">
+                            <x:String>Provider ↑</x:String>
+                            <x:String>Provider ↓</x:String>
+                            <x:String>Interest Rate ↑</x:String>
+                            <x:String>Interest Rate ↓</x:String>
+                            <x:String>Min Deposit ↑</x:String>
+                            <x:String>Min Deposit ↓</x:String>
+                            <x:String>Term ↑</x:String>
+                            <x:String>Term ↓</x:String>
+                        </generic:List>
+                    </comboBox:SfComboBox.ComboBoxSource>
+                </comboBox:SfComboBox>
+            </Frame>
+
+            <!--Searchbar, placeholder text and on text change functionality-->
+            <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Term Deposits" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                           PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
+            </Frame>
+        </Grid>
 
         <!--The list view of the term deposits-->
-        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}"
-                               AutoFitMode="None" ItemSize="52" DragStartMode="OnHold" ItemTapped="TermDepositClicked">
+        <syncfusion:SfListView x:Name="TermDepositList" ItemsSource="{Binding TermDeposits, Source={x:Reference Root}}" SelectionBackgroundColor="{DynamicResource SurfaceSelectedColor}" 
+                               ItemSize="52" DragStartMode="OnHold" ItemTapped="TermDepositClicked">
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid BackgroundColor="{DynamicResource SurfaceColor}" RowSpacing="0" ColumnSpacing="10" Padding="12,0">
