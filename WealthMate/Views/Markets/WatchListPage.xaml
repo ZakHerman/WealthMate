@@ -5,6 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodels="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.WatchlistPage"
              Title="Watchlist">
@@ -15,34 +17,39 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Grid ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Margin="12,0">
+            <Grid ColumnSpacing="10" Margin="8" HeightRequest="70">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7*" />
-                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="65*" />
+                    <ColumnDefinition Width="35*" />
                 </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                <!--Picker for selecting attribute to sort list by-->
+                <Frame Grid.Column="1" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                    <comboBox:SfComboBox TextColor="{DynamicResource DisabledTextColor}" Text="Sort" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                         BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                         DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
+                        <comboBox:SfComboBox.ComboBoxSource>
+                            <generic:List x:TypeArguments="x:String">
+                                <x:String>Name ↑</x:String>
+                                <x:String>Name ↓</x:String>
+                                <x:String>Return Rate ↑</x:String>
+                                <x:String>Return Rate ↓</x:String>
+                                <x:String>Price ↑</x:String>
+                                <x:String>Price ↓</x:String>
+                            </generic:List>
+                        </comboBox:SfComboBox.ComboBoxSource>
+                    </comboBox:SfComboBox>
+                </Frame>
 
                 <!--Searchbar, placeholder text and on text change functionality-->
-                <SearchBar x:Name="SearchBar" Grid.Column="0" HorizontalOptions="Start" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged"/>
-
-                <!--Picker for selecting attribute to sort list by-->
-                <Picker Title="Sort" x:Name="picker" Grid.Column="1" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource PrimaryTextColor}" SelectedItem="{Binding SelectedCriteria}">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Company Name</x:String>
-                            <x:String>Day Return Rate</x:String>
-                            <x:String>Current Price (high-low)</x:String>
-                            <x:String>Current Price (low-high)</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                    <SearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                               PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
+                </Frame>
             </Grid>
 
             <!-- SfListView instead of xamarin forms listview for built in reordering, sorting and filtering -->
-            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" AutoFitMode="None" ItemSize="52" DragStartMode="OnHold"
+            <syncfusion:SfListView x:Name="Watchlist" ItemsSource="{Binding WatchListStocks}" SelectionBackgroundColor="{DynamicResource SurfaceSelectedColor}" ItemSize="52" DragStartMode="OnHold"
                                    ItemTapped="WatchlistView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -67,7 +74,7 @@
                                    VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
 
                             <!-- Stock symbol -->
-                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Start" FontSize="12" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Start" FontSize="12" />
 
                             <Frame Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="{DynamicResource PositiveBackgroundColor}" Padding="4" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="64" CornerRadius="8">
                                 <Frame.Triggers>

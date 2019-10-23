@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioChartPage"
              Title="Pie Chart"
-             BackgroundColor="{DynamicResource SurfaceColor}">
+             BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" VerticalOptions="Fill">
@@ -58,40 +58,47 @@
             <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
                     SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
 
-            <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}" WidthRequest="500" HeightRequest="400">
-                <syncfusion:SfChart.Series>
-                    <syncfusion:PieSeries EnableAnimation="True" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
-                                          EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">
-                        <syncfusion:PieSeries.ColorModel>
-                            <syncfusion:ChartColorModel Palette="Natural" />
-                        </syncfusion:PieSeries.ColorModel>
-                    </syncfusion:PieSeries>
-                </syncfusion:SfChart.Series>
+            <Frame BackgroundColor="{DynamicResource SurfaceColor}" CornerRadius="16" Margin="8,0">
+                <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource TransparentColor}">
+                    <syncfusion:SfChart.Title>
+                        <syncfusion:ChartTitle Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                                               BackgroundColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}" />
+                    </syncfusion:SfChart.Title>
 
-                <!--The pie chart legends of categories and returns-->
-                <syncfusion:SfChart.Legend>
-                    <syncfusion:ChartLegend OverflowMode="Wrap" ItemMargin="20,0">
-                        <syncfusion:ChartLegend.LabelStyle>
-                            <syncfusion:ChartLegendLabelStyle TextColor="{DynamicResource PrimaryTextColor}" FontSize="14" />
-                        </syncfusion:ChartLegend.LabelStyle>
-                    </syncfusion:ChartLegend>
-                </syncfusion:SfChart.Legend>
-            </syncfusion:SfChart>
+                    <syncfusion:SfChart.Series>
+                        <syncfusion:PieSeries EnableAnimation="True" AnimationDuration="3" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
+                                              EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">
+                            <syncfusion:PieSeries.ColorModel>
+                                <syncfusion:ChartColorModel Palette="Natural" />
+                            </syncfusion:PieSeries.ColorModel>
+                        </syncfusion:PieSeries>
+                    </syncfusion:SfChart.Series>
+
+                    <!--The pie chart legends of categories and returns-->
+                    <syncfusion:SfChart.Legend>
+                        <syncfusion:ChartLegend OverflowMode="Wrap" ItemMargin="20,0" DockPosition="Bottom">
+                            <syncfusion:ChartLegend.LabelStyle>
+                                <syncfusion:ChartLegendLabelStyle TextColor="{DynamicResource PrimaryTextColor}" FontSize="14" />
+                            </syncfusion:ChartLegend.LabelStyle>
+                        </syncfusion:ChartLegend>
+                    </syncfusion:SfChart.Legend>
+                </syncfusion:SfChart>
+            </Frame>
 
             <Label Text="Return Goal: " TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium" Margin="30,0,0,0"/>
 
             <!--Grid in order to stack progress label on top of progress bar -->
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-
-                <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25"  Minimum="0" Progress="{Binding CurrentPortfolio.TotalReturn}" Maximum="{Binding CurrentPortfolio.ReturnGoal}" Margin="30, 0"/>
-                <Label Grid.Row="0" Grid.Column="0" Text="{Binding CurrentPortfolio.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium" HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}"/>
+                <progressBar:SfLinearProgressBar TrackHeight="25" Progress="{Binding CurrentPortfolio.TotalReturn}" Maximum="{Binding CurrentPortfolio.ReturnGoal}" Margin="30,0" CornerRadius="32" >
+                    <progressBar:SfLinearProgressBar.RangeColors>
+                        <progressBar:RangeColorCollection>
+                            <progressBar:RangeColor IsGradient="True" Color="{DynamicResource ProgressColor}" Start="0" End="50"/>
+                            <progressBar:RangeColor IsGradient="True" Color="{DynamicResource ProgressColorEnd}" Start="50" End="100"/>
+                        </progressBar:RangeColorCollection>
+                    </progressBar:SfLinearProgressBar.RangeColors>
+                </progressBar:SfLinearProgressBar>
+                <Label Text="{Binding CurrentPortfolio.ReturnGoalProgress, StringFormat='{0:F}%'}" TextColor="{DynamicResource PrimaryTextColor}" FontSize="Medium"
+                       HorizontalOptions="Center" VerticalOptions="Center" />
             </Grid>
 
             <!--Grid that adds the minimum value and maximum value labels to the progress bar-->

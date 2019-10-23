@@ -7,11 +7,15 @@
     <Color x:Key="BackgroundColor">#121212</Color> <!--Page background colour-->
     <Color x:Key="PrimaryColor">#1FFFFFFF</Color> <!--Navigation bar colour-->
     <Color x:Key="SurfaceColor">#11FFFFFF</Color> <!--List view item background colour-->
+    <Color x:Key="SurfaceSelectedColor">#1FFFFFFF</Color> <!--List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
     <Color x:Key="AndroidStatusColor">#101010</Color> <!--Android Status bar / navigation bar colour-->
+    <Color x:Key="ErrorColor">#B00020</Color>
+    <Color x:Key="AcceptColor">#2E7B32</Color>
 
-    <Color x:Key="ButtonColor">#11FFFFFF</Color>>
+    <Color x:Key="ButtonColor">#11FFFFFF</Color>
     <Color x:Key="ButtonTextColor">#2e95b9</Color>
+    <Color x:Key="ButtonSecondaryTextColor">#AAFFFFFF</Color>
 
     <!--Text colour-->
     <Color x:Key="PrimaryTextColor">#DEFFFFFF</Color> <!--Label data text colour-->
@@ -22,8 +26,8 @@
     <!--Price indicator colour-->
     <Color x:Key="PositiveTextColor">#44f674</Color>
     <Color x:Key="PositiveBackgroundColor">#8130C196</Color>
-    <Color x:Key="NegativeTextColor">#e84c40</Color>
-    <Color x:Key="NegativeBackgroundColor">Red</Color>
+    <Color x:Key="NegativeTextColor">#B00020</Color>
+    <Color x:Key="NegativeBackgroundColor">#18FF2121</Color>
     <Color x:Key="NeutralTextColor">Gray</Color>
     <Color x:Key="NeutralBackgroundColor">Gray</Color>
 
@@ -38,7 +42,14 @@
     <Color x:Key="TrackBallColor">LightGray</Color>
     <Color x:Key="TrackBallLabelBackgroundColor">#D1373737</Color>
 
+    <Color x:Key="ProgressColor">#D1088A23</Color>
+    <Color x:Key="ProgressColorEnd">#7E088A23</Color>
+
     <!--Toast notification colour-->
     <Color x:Key="ToastNotificationBackgroundColor">Gray</Color>
     <Color x:Key="ToastNotificationTextColor">White</Color>
+
+    <!--Dropdown colour-->
+    <Color x:Key="DropdownSelectedColor">#F05A5A5A</Color>
+    <Color x:Key="DropdownUnselectedColor">#F0464646</Color>
 </ResourceDictionary>

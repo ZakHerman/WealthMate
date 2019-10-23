@@ -34,7 +34,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="TrackballTemplate">
-                <Grid RowSpacing="0" ColumnSpacing="0" Padding="5,0">
+                <Grid RowSpacing="0" ColumnSpacing="4" Padding="5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -46,8 +46,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" FontSize="12" FontAttributes="Bold"
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="2" />
+                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" FontSize="12" HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Center" Grid.ColumnSpan="2" />
                     <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" />
                     <Label Text="{Binding PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="End" />
                     <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" />

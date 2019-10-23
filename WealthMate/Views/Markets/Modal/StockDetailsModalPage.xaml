@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.Modal.StockDetailsModalPage"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout HeightRequest="50" BackgroundColor="{DynamicResource SurfaceColor}">
+            <StackLayout HeightRequest="60" BackgroundColor="{DynamicResource PrimaryColor}">
                 <Label Text="Add stock to portfolio" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="{DynamicResource PrimaryTextColor}" />
             </StackLayout>
 
@@ -20,14 +21,15 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
                                     <Label Text="Shares purchased*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="CenterAndExpand" FontSize="18" />
-                                    <Entry x:Name="SharesEntry"  Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                    <Entry x:Name="SharesEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
                             </ViewCell>
 
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
                                     <Label Text="Purchase price*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
-                                    <Entry x:Name="PriceEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                    <Entry x:Name="PriceEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center"
+                                           HorizontalOptions="FillAndExpand" Text="{Binding CurrentPrice}" />
                                 </StackLayout>
                             </ViewCell>
 
@@ -41,7 +43,8 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
                                     <Label Text="Purchase date" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
-                                    <DatePicker x:Name="PurchaseDate" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Format="dd MMM, yyyy" />
+                                    <DatePicker x:Name="PurchaseDate" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Format="dd MMM, yyyy"
+                                                MaximumDate="{x:Static sys:DateTime.Now}" />
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
@@ -49,7 +52,7 @@
                 </TableView>
             </Frame>
 
-            <Grid Margin="20,20" ColumnSpacing="20">
+            <Grid Margin="20" ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*" />
                     <ColumnDefinition Width="50*" />
@@ -59,10 +62,10 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button Text="Add" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ButtonColor}"
-                        TextColor="{DynamicResource ButtonTextColor}" CornerRadius="16" Clicked="AddButton_OnClicked" />
-                <Button Text="Cancel" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource ButtonColor}" 
-                        TextColor="{DynamicResource ButtonTextColor}" CornerRadius="16" Clicked="CancelButton_OnClicked" />
+                <Button Text="Cancel" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}" 
+                        TextColor="{DynamicResource ErrorColor}" CornerRadius="16" Clicked="CancelButton_OnClicked" FontAttributes="Bold" />
+                <Button Text="Add" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}"
+                        TextColor="{DynamicResource AcceptColor}" CornerRadius="16" Clicked="AddButton_OnClicked" FontAttributes="Bold" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

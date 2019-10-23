@@ -13,6 +13,7 @@ namespace WealthMate.Views.Markets.Modal
         public StockDetailsModalPage(Stock stock)
         {
             Stock = stock;
+            BindingContext = stock;
 
             InitializeComponent();
         }
