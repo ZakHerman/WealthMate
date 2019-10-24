@@ -18,9 +18,20 @@ namespace WealthMate.Views.Markets
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IsBusy = false;
+        }
+
         // Asks for details of shares purchased
         private async void AddToPortfolioClicked(object sender, EventArgs e)
         {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
             await Navigation.PushModalAsync(new StockDetailsModalPage(Stock));
         }
     }

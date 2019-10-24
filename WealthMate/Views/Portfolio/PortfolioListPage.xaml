@@ -56,13 +56,12 @@
             <syncfusion:SfListView x:Name="PortfolioList" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0">
+                        <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0" Margin="0,1">
                             <Grid.ColumnDefinitions>
                                 <!--4 columns per asset-->
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="20" />
-                                <ColumnDefinition Width="52" />
-                                <ColumnDefinition Width="46" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
@@ -71,20 +70,16 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
+                            <!--Asset type-->
                             <Label Grid.Column="0" Grid.Row="0" Text="{Binding Type}" TextColor="{DynamicResource PrimaryTextColor}"
                                    VerticalOptions="Start" FontSize="20" LineBreakMode="TailTruncation" />
 
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding stock.Symbol}" TextColor="{DynamicResource SecondaryTextColor}"
-                                   VerticalOptions="Start" FontSize="20" LineBreakMode="TailTruncation" />
-
+                            <!--Company name-->
                             <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding AssetName}" TextColor="{DynamicResource SecondaryTextColor}"
                                    VerticalOptions="Start" FontSize="12" LineBreakMode="TailTruncation" />
 
-                            <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding CurrentValue, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                   VerticalOptions="Start" HorizontalTextAlignment="Center" FontSize="20" LineBreakMode="TailTruncation" />
-                            
-                            <Label Grid.Column="2" Grid.Row="1" Text="{Binding TotalReturn, StringFormat='{0:C2}'}" VerticalOptions="Start"
-                                   HorizontalTextAlignment="Center" FontSize="12" TextColor="{DynamicResource PositiveTextColor}" LineBreakMode="TailTruncation" >
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding TotalReturn, StringFormat='{0:C2}'}" VerticalOptions="End" HorizontalOptions="End" FontSize="12"
+                                   TextColor="{DynamicResource PositiveTextColor}" LineBreakMode="TailTruncation" >
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding PositiveTotal}" Value="False">
                                         <!--Default text colour is green, change text to red when total returns are negative-->
@@ -93,8 +88,8 @@
                                 </Label.Triggers>
                             </Label>
           
-                            <Label Grid.Column="3" Grid.Row="1" Text="{Binding TotalReturnRate, StringFormat='{0:F2}%'}" VerticalOptions="Start"
-                                   HorizontalTextAlignment="Center" FontSize="12" TextColor="{DynamicResource PositiveTextColor}" LineBreakMode="TailTruncation" >
+                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding TotalReturnRate, StringFormat='{0:F2}%'}" VerticalOptions="Start" HorizontalOptions="End" FontSize="12"
+                                   TextColor="{DynamicResource PositiveTextColor}" LineBreakMode="TailTruncation" >
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding PositiveTotal}" Value="False">
                                         <!--Default text colour is green, change text to red when total returns are negative-->
@@ -102,6 +97,9 @@
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>
+
+                            <Label Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" Text="{Binding CurrentValue, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
+                                   VerticalOptions="Center" HorizontalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
                         </Grid>
                     </DataTemplate>
                 </syncfusion:SfListView.ItemTemplate>
