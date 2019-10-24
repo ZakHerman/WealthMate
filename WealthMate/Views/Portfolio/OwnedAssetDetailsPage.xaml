@@ -121,7 +121,7 @@
                         <progressBar:SfLinearProgressBar Grid.Row="0" Grid.Column="0" TrackHeight="25" HeightRequest="25" Minimum="0" Progress="{Binding OwnedAsset.TotalReturn}"
                                                          Maximum="{Binding OwnedAsset.ReturnGoal}" Margin="30,0" CornerRadius="32" />
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding OwnedAsset.ReturnGoalProgress, StringFormat='{0:F}%'}" FontSize="Medium"
-                               HorizontalTextAlignment="Center" TextColor="{DynamicResource PrimaryTextColor}" />
+                               HorizontalTextAlignment="Center" TextColor="Black" />
                     </Grid>
 
                     <Grid Margin="30,0,30,0">
@@ -134,8 +134,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Text="$0.00" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding OwnedAsset.ReturnGoal, StringFormat='{0:C}'}" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="End"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="$0" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="Start"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding OwnedAsset.ReturnGoal, StringFormat='{0:C0}'}" FontSize="Medium" TextColor="{DynamicResource PrimaryTextColor}" HorizontalTextAlignment="End"/>
                     </Grid>
                 </StackLayout>
             </Frame>

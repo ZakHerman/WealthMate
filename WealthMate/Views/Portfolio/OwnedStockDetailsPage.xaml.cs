@@ -2,10 +2,8 @@
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Syncfusion.SfNumericTextBox.XForms;
-using WealthMate.Services;
-using System.Collections.ObjectModel;
 using WealthMate.Views.Markets.Modal;
+using WealthMate.Views.Portfolio.Modal;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -30,19 +28,18 @@ namespace WealthMate.Views.Portfolio
         }
 
         // Remove Stock from portfolio
-        private void RemoveStockClicked(object sender, EventArgs e)
+        private async void RemoveStockClicked(object sender, EventArgs e)
         {
-            RemoveStockConfirmationBox.IsOpen = true;
-        }
+            var confirm = await DisplayAlert("Remove Asset", "Are you sure you want to remove this asset from your portfolio?", "Yes", "No");
 
-        private async void PopupAcceptRemoveClicked(object sender, EventArgs e)
-        {
-            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedStock);
-            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
-            RemoveStockConfirmationBox.IsOpen = false;
+            if (confirm)
+            {
+                ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedStock);
+                ((App)Application.Current).User.Portfolio.UpdatePortfolio();
 
-            // Pop owned stock details page off the stack
-            await Navigation.PopAsync();
+                // Pop owned asset details page off the stack
+                await Navigation.PopAsync();
+            }
         }
     }
 }
