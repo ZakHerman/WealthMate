@@ -12,7 +12,6 @@ namespace WealthMate.Views.Portfolio
         {
             InitializeComponent();
             BindingContext = new PortfolioViewModel();
-            //picker.SelectedIndex = 0;
         }
 
         private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -82,7 +81,7 @@ namespace WealthMate.Views.Portfolio
                             vm?.pieChart.Add(stock);
                         }
                     }
-                    break;
+                break;
             }
         }
     }
