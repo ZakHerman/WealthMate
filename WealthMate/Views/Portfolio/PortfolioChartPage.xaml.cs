@@ -24,27 +24,29 @@ namespace WealthMate.Views.Portfolio
             {
                 case 0:
                     vm?.pieChart.Clear();
+                    PieData termDCat = new PieData("Term Deposits"); //Pie data for each section/category of pie chart
+                    PieData stockCat = new PieData("Stocks");
 
                     foreach (var asset in vm?.CurrentPortfolio.OwnedAssets)
                     {
                         asset.UpdateOwnedAsset();
 
                         if (asset.Type.Equals("Term Deposit"))
-                            vm?._termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                            termDCat.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                         else if (asset is OwnedStock)
-                            vm?._stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                            stockCat.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
                     }
 
-                    vm?._termD.CalculateReturnPercentage();
-                    vm?._stock.CalculateReturnPercentage();
+                    termDCat.CalculateReturnPercentage();
+                    stockCat.CalculateReturnPercentage();
 
                     // XAML Flag to see if label should be red or green (negative/positive returns)
-                    vm?._termD.PositiveChecker();
-                    vm?._stock.PositiveChecker();
+                    termDCat.PositiveChecker();
+                    stockCat.PositiveChecker();
 
                     // Adds asset categories to Pie chart
-                    vm?.pieChart.Add(vm?._termD);
-                    vm?.pieChart.Add(vm?._stock);
+                    vm?.pieChart.Add(termDCat);
+                    vm?.pieChart.Add(stockCat);
 
                     break;
                 case 1:
