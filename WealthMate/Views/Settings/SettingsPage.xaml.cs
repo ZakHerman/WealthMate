@@ -3,6 +3,7 @@ using Syncfusion.DataSource.Extensions;
 using Syncfusion.SfNumericTextBox.XForms;
 using Syncfusion.XForms.ComboBox;
 using WealthMate.Helpers;
+using WealthMate.Views.Markets.Modal;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -34,7 +35,7 @@ namespace WealthMate.Views.Settings
 
         private void PortfolioGoal_Clicked(object sender, EventArgs e)
         {
-            PortfolioGoalForm.IsOpen = true;
+            Navigation.PushModalAsync(new PortfolioReturnGoalModalPage());
         }
 
         private void Handle_PortfolioGoalChanged(object sender, ValueEventArgs e)
