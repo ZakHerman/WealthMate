@@ -137,7 +137,7 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the owned stock the user is editing
-        public void EditStock(float shares, float price, float returnGoal)
+        public void EditStock(float shares, float price, float returnGoal, DateTime date)
         {
             if ((SharesPurchased != shares) && (shares != 0))
                 SharesPurchased = shares;
@@ -147,6 +147,8 @@ namespace WealthMate.Models
 
             if ((ReturnGoal != returnGoal) && (returnGoal != 0))
                 ReturnGoal = returnGoal;
+
+            PurchaseDate = date;
 
             PrincipalValue = SharesPurchased * PurchasedPrice;
             UpdateOwnedAsset();
