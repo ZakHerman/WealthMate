@@ -47,7 +47,7 @@
                                     <Label Text="Compound rate" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
                                     <comboBox:SfComboBox x:Name="InterestDropdown"  TextColor="{DynamicResource DisabledTextColor}" Text="Never" DropDownBackgroundColor="{DynamicResource TransparentColor}" HorizontalOptions="FillAndExpand"
                                                          SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}" BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}"
-                                                         BorderColor="{DynamicResource TransparentColor}" DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}">
+                                                         BorderColor="{DynamicResource TransparentColor}" DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
                                         <comboBox:SfComboBox.ComboBoxSource>
                                             <generic:List x:TypeArguments="x:String">
                                                 <x:String>Annual</x:String>

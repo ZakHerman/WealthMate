@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Syncfusion.XForms.ComboBox;
+using System;
 using WealthMate.Helpers;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets.Modal
 {
@@ -10,6 +12,7 @@ namespace WealthMate.Views.Markets.Modal
     public partial class TermDepositModalPage
     {
         public TermDeposit TermDeposit { get; set; }
+        public int _compundRate;
 
         public TermDepositModalPage(TermDeposit termDeposit)
         {
@@ -34,8 +37,8 @@ namespace WealthMate.Views.Markets.Modal
                 await DisplayAlert(null, "Please enter invested amount!", "OK");
             else
             {
-                var asset = new OwnedAsset(TermDeposit.Provider, date, "Term Deposit", investment, TermDeposit.InterestRate,
-                    TermDeposit.LengthInMonths, GetInvestmentCompoundRate(), 0, goal);
+                var asset = new OwnedAsset(TermDeposit.Provider, date, "Term Deposit", investment, (TermDeposit.InterestRate / 100),
+                    TermDeposit.LengthInMonths, _compundRate, 0, goal);
                 ((App)Application.Current).User.Portfolio.AddAsset(asset);
 
                 Helper.DisplayToastNotification("Added to portfolio");
@@ -44,22 +47,27 @@ namespace WealthMate.Views.Markets.Modal
             }
         }
 
-        private int GetInvestmentCompoundRate()
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var index = InterestDropdown.SelectedIndex;
+            var index = ((SfComboBox)sender).SelectedIndex;
 
             switch (index)
             {
                 case 0:
-                    return 12;
+                    _compundRate = 1;
+                    break;
                 case 1:
-                    return 6;
+                    _compundRate = 2;
+                    break;
                 case 2:
-                    return 3;
+                    _compundRate = 4;
+                    break;
                 case 3:
-                    return 1;
-                default :
-                    return 0;
+                    _compundRate = 12;
+                    break;
+                default:
+                    _compundRate = 0;
+                    break;
             }
         }
     }
