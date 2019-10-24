@@ -199,29 +199,50 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Timestamp of last price changing trade -->
-                    <Label Text="Last Traded:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" />
+                    <Label Text="Last Traded" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
                     <Label Text="{Binding Stock.LastTrade, Converter={StaticResource ConvertToLocalTime}}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="0" Grid.Column="2" 
-                           Grid.ColumnSpan="2" HorizontalTextAlignment="End" />
+                           Grid.ColumnSpan="2" HorizontalOptions="End" LineBreakMode="TailTruncation" />
 
                     <!--Stock Statistic Details-->
-                    <Label Text="Open:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                    <Label Text="Close:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="3" HorizontalTextAlignment="End" />
-                    <Label Text="Day Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                    <Label Text="Day High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.DayHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="3" HorizontalTextAlignment="End" />
-                    <Label Text="52 Week Low:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                    <Label Text="52 Week High:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="Start" />
-                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalTextAlignment="End" />
-                    <Label Text="Volume:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Start" />
+                    <!--Opening stock market price-->
+                    <Label Text="Open" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.PriceOpen, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End"
+                           Margin="0,0,15,0" LineBreakMode="TailTruncation" />
+
+                    <!--Yesterdays closing stock market price-->
+                    <Label Text="Close" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="1" Grid.Column="2" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.PriceClose, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="1" Grid.Column="3" HorizontalOptions="End"
+                           LineBreakMode="TailTruncation" />
+
+                    <!--Stock day low price-->
+                    <Label Text="Day Low" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.DayLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Margin="0,0,15,0"
+                           LineBreakMode="TailTruncation" />
+
+                    <!--Stock day high price-->
+                    <Label Text="Day High" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="2" Grid.Column="2" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.DayHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="2" Grid.Column="3" HorizontalOptions="End"
+                           LineBreakMode="TailTruncation" />
+
+                    <!--Stock 52 week low price-->
+                    <Label Text="52 Week Low" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekLow, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" Margin="0,0,15,0"
+                           LineBreakMode="TailTruncation" />
+
+                    <!--Stock 52 week high price-->
+                    <Label Text="52 Week High" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="3" Grid.Column="2" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Stock.FiftyTwoWeekHigh, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}" Grid.Row="3" Grid.Column="3" HorizontalOptions="End"
+                           LineBreakMode="TailTruncation" />
+
+                    <!--Volume of shares traded during the day-->
+                    <Label Text="Volume" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="0" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
                     <Label Text="{Binding Stock.Volume, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}"
-                           Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Margin="0,0,15,0" />
-                    <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="Start" />
+                           Grid.Row="4" Grid.Column="1" HorizontalOptions="End" Margin="0,0,15,0" LineBreakMode="TailTruncation" />
+
+                    <!--Total shares allocated by company-->
+                    <Label Text="Shares:" TextColor="{DynamicResource SecondaryTextColor}" Grid.Row="4" Grid.Column="2" HorizontalOptions="Start" LineBreakMode="TailTruncation" />
                     <Label Text="{Binding Stock.Shares, Converter={StaticResource ConvertLargeNumber}}" TextColor="{DynamicResource PrimaryTextColor}"
-                           Grid.Row="4" Grid.Column="3" HorizontalTextAlignment="End" />
+                           Grid.Row="4" Grid.Column="3" HorizontalOptions="End" LineBreakMode="TailTruncation" />
                 </Grid>
             </Frame>
 
