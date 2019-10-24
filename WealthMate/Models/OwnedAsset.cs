@@ -10,7 +10,7 @@ namespace WealthMate.Models
         private float _returnGoal;                  
         private float _returnGoalProgress;
         private DateTime _purchaseDate;
-        private float _length;
+        private int _length;
         private int _compoundRate;
         private float _regularPayment;
         private float _principalValue;
@@ -36,7 +36,7 @@ namespace WealthMate.Models
                 OnPropertyChanged();
             }
         }
-        public float Length //In number of years
+        public int Length //In number of months
         {
             get => _length;
             set
@@ -153,7 +153,7 @@ namespace WealthMate.Models
         }
 
 
-        public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, float length, int compoundRate, float regularPayment, float returnGoal)
+        public OwnedAsset(string assetName, DateTime purchaseDate, string type, float principalValue, float interestRate, int length, int compoundRate, float regularPayment, float returnGoal)
         {
             AssetName = assetName;
             PurchaseDate = purchaseDate;

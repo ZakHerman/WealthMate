@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             mc:Ignorable="d"
+             x:Class="WealthMate.Views.Portfolio.Modal.EditAssetModalPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="60" BackgroundColor="{DynamicResource PrimaryColor}">
+                <Label Text="Add term deposit to portfolio" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="{DynamicResource TertiaryTextColor}" />
+            </StackLayout>
+
+            <Frame Margin="20" BackgroundColor="{DynamicResource SurfaceColor}" CornerRadius="16">
+                <TableView RowHeight="70">
+                    <TableRoot>
+                        <TableSection>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
+                                    <Label Text="Invested*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="CenterAndExpand" FontSize="18" />
+                                    <Entry x:Name="InvestedEntry" Placeholder="0" Text="{Binding OwnedAsset.PrincipalValue}" Keyboard="Numeric" 
+                                           TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
+                                    <Label Text="Return goal" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
+                                    <Entry x:Name="GoalEntry" Placeholder="0" Text="{Binding OwnedAsset.ReturnGoal}" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}"
+                                           VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
+                                    <Label Text="Purchase date" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
+                                    <DatePicker x:Name="PurchaseDate" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Format="dd MMM, yyyy"
+                                                MaximumDate="{x:Static sys:DateTime.Now}" />
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
+                                    <Label Text="Compound rate" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
+                                    <comboBox:SfComboBox x:Name="InterestDropdown" TextColor="{DynamicResource DisabledTextColor}" Text="Never" DropDownBackgroundColor="{DynamicResource TransparentColor}" HorizontalOptions="FillAndExpand"
+                                                         SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}" BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}"
+                                                         BorderColor="{DynamicResource TransparentColor}" DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}">
+                                        <comboBox:SfComboBox.ComboBoxSource>
+                                            <generic:List x:TypeArguments="x:String">
+                                                <x:String>Annual</x:String>
+                                                <x:String>Semi-Annual</x:String>
+                                                <x:String>Quarterly</x:String>
+                                                <x:String>Monthly</x:String>
+                                                <x:String>Never</x:String>
+                                            </generic:List>
+                                        </comboBox:SfComboBox.ComboBoxSource>
+                                    </comboBox:SfComboBox>
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+            </Frame>
+
+            <Grid Margin="20" ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button Text="Cancel" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}" 
+                        TextColor="{DynamicResource ErrorColor}" CornerRadius="16" Clicked="CancelButton_OnClicked" FontAttributes="Bold" />
+                <Button Text="Confirm" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SurfaceColor}"
+                        TextColor="{DynamicResource AcceptColor}" CornerRadius="16" Clicked="AddButton_OnClicked" FontAttributes="Bold" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

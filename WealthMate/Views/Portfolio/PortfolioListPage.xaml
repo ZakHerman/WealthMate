@@ -10,7 +10,7 @@
              xmlns:viewModels="clr-namespace:WealthMate.ViewModels;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioListPage"
-             Title="List">
+             Title="Portfolio list">
 
     <ContentPage.BindingContext>
         <viewModels:PortfolioViewModel />
@@ -53,7 +53,8 @@
                 </Frame>
             </Grid>
 
-            <syncfusion:SfListView x:Name="PortfolioList" AutoFitMode="None" ItemsSource="{Binding OwnedAssets}" DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped">
+            <syncfusion:SfListView x:Name="PortfolioList" ItemsSource="{Binding OwnedAssets}" DragStartMode="OnHold" ItemSize="52" ItemTapped="PortfolioListView_ItemTapped"
+                                   SelectionBackgroundColor="{DynamicResource SurfaceSelectedColor}">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid RowSpacing="0" ColumnSpacing="10" BackgroundColor="{DynamicResource SurfaceColor}" Padding="12,0" Margin="0,1">

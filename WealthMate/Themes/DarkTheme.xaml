@@ -24,7 +24,7 @@
     <Color x:Key="DisabledTextColor">#62FFFFFF</Color> <!--Label name text colour-->
 
     <!--Price indicator colour-->
-    <Color x:Key="PositiveTextColor">#44f674</Color>
+    <Color x:Key="PositiveTextColor">#2E7B32</Color>
     <Color x:Key="PositiveBackgroundColor">#2730C196</Color>
     <Color x:Key="NegativeTextColor">#B00020</Color>
     <Color x:Key="NegativeBackgroundColor">#18FF2121</Color>
