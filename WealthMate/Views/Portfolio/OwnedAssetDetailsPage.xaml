@@ -154,57 +154,6 @@
                     </sfPopup:PopupView>
                 </sfPopup:SfPopupLayout.PopupView>
             </sfPopup:SfPopupLayout>
-
-            <Grid> <!--Selects date-->
-                <pickerClass:CustomDatePicker x:Name="Date" ColumnHeaderHeight="40" HorizontalOptions="Center" PickerHeight="400" PickerMode="Dialog" PickerWidth="300" SelectedItem="{Binding StartDate}"
-                                                           VerticalOptions="Center" />
-            </Grid>
-
-            <!--Edit Asset Popup Box-->
-            <sfPopup:SfPopupLayout x:Name="popupLayout" IsOpen="false">
-                <sfPopup:SfPopupLayout.PopupView>
-                    <sfPopup:PopupView HeaderTitle="Edit Owned Asset Details" ShowFooter="false">
-                        <sfPopup:PopupView.ContentTemplate>
-                            <DataTemplate>
-                                <ScrollView>
-                                <StackLayout WidthRequest="300" HeightRequest="450">
-                                    <Label Text="Edit principal value:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                        <textbox:SfNumericTextBox x:Name="editPrincipalValue" Margin="3,3" FormatString="c" Watermark="{Binding OwnedAsset.PrincipalValue, StringFormat='{0:C}'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Double" ValueChanged="Handle_PrincipalValueChanged" />
-                                    
-                                    <Label Text="Edit length:" TextColor="{DynamicResource PrimaryTextColor}" Margin="2,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                        <textbox:SfNumericTextBox x:Name="editLength" Margin="3,3" Watermark="{Binding OwnedAsset.Length, StringFormat='{0:F2} years'}" AllowNull="True" ValueChangeMode="OnLostFocus" ParserMode="Double"  ValueChanged="Handle_LengthChanged"/>
-
-                                    <Label Text="Edit compound rate:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                    <Picker x:Name="picker"
-                                            Title="{Binding OwnedAsset.CompoundRateToString}"
-                                            SelectedIndexChanged="Picker_SelectedIndexChanged"
-                                            Margin="3,3">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Annual</x:String>
-                                                <x:String>Semi-Annual</x:String>
-                                                <x:String>Quarterly</x:String>
-                                                <x:String>Monthly</x:String>
-                                                <x:String>Never</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-
-                                    <Label Text="Edit return goal:" TextColor="{DynamicResource PrimaryTextColor}" Margin="3,3" HorizontalTextAlignment="Start" FontSize="12" />
-                                        <textbox:SfNumericTextBox x:Name="editReturnGoal" FormatString="c" Watermark="{Binding OwnedAsset.ReturnGoal, StringFormat='{0:C}'}" AllowNull="True" Margin="3,3" ValueChangeMode="OnKeyFocus" ParserMode="Double" ValueChanged="Handle_ReturnGoalChanged" />
-
-                                    <Grid>
-                                        <Button Text="Edit Purchase Date" Clicked ="DatePicker_Clicked" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="200" />
-                                    </Grid>
-
-                                        <Button Text="Save" VerticalOptions="End" HorizontalOptions="Center" FontSize="14" TextColor="DarkGreen" BackgroundColor="LightGreen" Clicked="SaveInPopupClicked"/>
-                                </StackLayout>
-                                </ScrollView>
-                            </DataTemplate>
-                        </sfPopup:PopupView.ContentTemplate>
-                    </sfPopup:PopupView>
-                </sfPopup:SfPopupLayout.PopupView>
-            </sfPopup:SfPopupLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
