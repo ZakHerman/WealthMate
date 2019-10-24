@@ -11,7 +11,9 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <comboBox:SfComboBox x:Name="Themes" HeightRequest="40" TextColor="gray" Text="Theme" SelectionChanged="OnThemeClicked" />
+            <comboBox:SfComboBox x:Name="Themes" HeightRequest="50" Text="Theme" TextColor="{DynamicResource DisabledTextColor}" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                 BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                 DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="OnThemeClicked" />
 
             <Button x:Name="PortfolioGoal" Text="Edit Portfolio Goal" Clicked="PortfolioGoal_Clicked" />
 

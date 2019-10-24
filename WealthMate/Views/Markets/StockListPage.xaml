@@ -21,7 +21,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="65">
+            <Grid ColumnSpacing="10" Margin="8,12,8,6" HeightRequest="65">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="65*" />
                     <ColumnDefinition Width="35*" />

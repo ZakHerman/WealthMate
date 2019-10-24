@@ -21,6 +21,12 @@ namespace WealthMate.Views.Portfolio
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IsBusy = false;
+        }
+
         // Search bar functionality
         public void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -48,6 +54,10 @@ namespace WealthMate.Views.Portfolio
         // Event handler for watchlist stock being pressed
         private async void PortfolioListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
             var selected = (OwnedAsset)e.ItemData;
 
             if (selected == null)

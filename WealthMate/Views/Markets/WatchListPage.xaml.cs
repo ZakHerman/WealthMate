@@ -18,9 +18,19 @@ namespace WealthMate.Views.Markets
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IsBusy = false;
+        }
+
         // Event handler for watchlist stock being pressed
         private async void WatchlistView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
             var selected = (Stock)e.ItemData;
 
             if (selected == null)

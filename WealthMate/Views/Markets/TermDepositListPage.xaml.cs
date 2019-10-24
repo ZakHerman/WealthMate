@@ -29,6 +29,12 @@ namespace WealthMate.Views.Markets
             InitializeComponent();          
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IsBusy = false;
+        }
+
         private async void LoadTermDeposits()
         {
             await DataService.FetchTermDepositsAsync();
@@ -36,44 +42,7 @@ namespace WealthMate.Views.Markets
             TermDepositList.ItemsSource = TDList;
         }
 
-        //clears TDList list and re-adds assets to collection
-        //this is required due to the return type of OrderBy and OrderByDescending methods
-        private void SortList(IEnumerable<TermDeposit> linqResults)
-        {
-            var observableC = new ObservableCollection<TermDeposit>(linqResults);
-            TDList.Clear();
-
-            foreach (var termD in observableC)
-            {
-                TDList.Add(termD);
-            }
-        }
-
-        // Sorts StockList list according to picker value upon picker index value changing
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var picker = sender as Picker;
-
-            if (picker.SelectedIndex == 0)
-            {
-                SortList(TDList.OrderBy(termD => termD.Provider));
-            }
-            else if (picker.SelectedIndex == 1)
-            {
-                SortList(TDList.OrderByDescending(termD => termD.InterestRate));
-            }
-            else if (picker.SelectedIndex == 2)
-            {
-                SortList(TDList.OrderBy(termD => termD.MinDeposit));
-            }
-            else if (picker.SelectedIndex == 3)
-            {
-                SortList(TDList.OrderBy(termD => termD.LengthInMonths));
-            }
-        }
-
         // Search bar functionality
-
         private void OnFilterTextChanged(object sender, TextChangedEventArgs e)
         {
             _searchBar = sender as SearchBar;
@@ -100,6 +69,10 @@ namespace WealthMate.Views.Markets
         // Handles a term deposit being clicked from the term deposit page
         private async void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
             var selected = (TermDeposit)e.ItemData;
 
             if (selected == null)

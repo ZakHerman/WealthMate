@@ -50,5 +50,5 @@
 
     <!--Dropdown colour-->
     <Color x:Key="DropdownSelectedColor">#F0E6E6E6</Color>
-    <Color x:Key="DropdownUnselectedColor">#F0DCDCDC</Color>
+    <Color x:Key="DropdownUnselectedColor">#ffffff</Color>
 </ResourceDictionary>
