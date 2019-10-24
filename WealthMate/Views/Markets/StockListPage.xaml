@@ -15,7 +15,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <valueConverter:RemoveWhiteSpaceConverter x:Key="ConvertToResourceName" />
+            <valueConverter:CompanyLogoNameConverter x:Key="ConvertToResourceName" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
