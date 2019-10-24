@@ -2,7 +2,10 @@
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using WealthMate.Views.Portfolio.Modal;
+using Syncfusion.SfNumericTextBox.XForms;
+using WealthMate.Services;
+using System.Collections.ObjectModel;
+using WealthMate.Views.Markets.Modal;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -21,24 +24,26 @@ namespace WealthMate.Views.Portfolio
         }
 
         // Event handler for edit stock button, enables popup
-        private async void EditAssetClicked(object sender, EventArgs e)
+        private void EditAssetClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new EditAssetModalPage(OwnedAsset));
+            Navigation.PushModalAsync(new EditAssetDetailsModalPage(OwnedAsset));
         }
 
+
         // Remove Asset from portfolio
-        private async void RemoveAssetClicked(object sender, EventArgs e)
+        private void RemoveAssetClicked(object sender, EventArgs e)
         {
-            var confirm = await DisplayAlert("Remove Asset", "Are you sure you want to remove this asset from your portfolio?", "Yes", "No");
+            RemoveAssetConfirmationBox.IsOpen = true;
+        }
 
-            if (confirm)
-            {
-                ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
-                ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+        private async void PopupAcceptRemoveClicked(object sender, EventArgs e)
+        {
+            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+            RemoveAssetConfirmationBox.IsOpen = false;
 
-                // Pop owned asset details page off the stack
-                await Navigation.PopAsync();
-            }
+            // Pop owned asset details page off the stack
+            await Navigation.PopAsync();
         }
     }
 }

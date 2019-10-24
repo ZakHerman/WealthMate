@@ -262,22 +262,18 @@ namespace WealthMate.Models
         }
 
         // Alters the asset the user is editing
-        public void EditAsset(float principalValue, float interestRate, int compoundRate, int length, float returnGoal)
+        public void EditAsset(float principalValue, int compoundRate, float returnGoal, DateTime date)
         {
             if ((PrincipalValue != principalValue) && (principalValue != 0))        
                 PrincipalValue = principalValue;
 
-            if ((InterestRate != interestRate) && (interestRate != 0))
-                InterestRate = interestRate;
-
             if ((CompoundRate != compoundRate) && (compoundRate != -1))
                 CompoundRate = compoundRate;
 
-            if ((Length != length) && (length != 0))
-                Length = length;
-
             if ((ReturnGoal != returnGoal) && (returnGoal != 0))
                 ReturnGoal = returnGoal;
+
+            PurchaseDate = date;
 
             UpdateOwnedAsset();
         }
