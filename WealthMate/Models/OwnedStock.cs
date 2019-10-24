@@ -95,7 +95,11 @@ namespace WealthMate.Models
             UpdateCurrentDetails();
             UpdateDayReturnDetails();
             UpdateTotalReturnDetails();
-            ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100; // Updates how close the return value is to reaching its return goal
+
+            if (ReturnGoal == 0.0f)
+                ReturnGoalProgress = 0.0f;
+            else
+                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100; // Updates how close the return value is to reaching its return goal
         }
 
         private void UpdateTotalReturnDetails()

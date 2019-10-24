@@ -87,7 +87,11 @@ namespace WealthMate.Models
             PositiveDayReturns = CurrentPrice > PriceOpen;
             NoDayReturns = CurrentPrice == PriceOpen;
             DayReturn = CurrentPrice - PriceOpen;
-            DayReturnRate = DayReturn / PriceOpen * 100;
+
+            if (PriceOpen == 0)
+                DayReturnRate = 0.0f;
+            else
+                DayReturnRate = DayReturn / PriceOpen * 100;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

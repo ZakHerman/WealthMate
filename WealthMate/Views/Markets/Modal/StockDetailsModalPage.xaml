@@ -29,7 +29,7 @@
                                 <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
                                     <Label Text="Purchase price*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
                                     <Entry x:Name="PriceEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center"
-                                           HorizontalOptions="FillAndExpand"/>
+                                           HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
                             </ViewCell>
 

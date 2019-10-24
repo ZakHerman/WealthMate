@@ -195,7 +195,10 @@ namespace WealthMate.Models
                 CalculateReturn();
 
                 //Updates how close the return value is to reaching its return goal
-                ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;
+                if (ReturnGoal == 0.0f)
+                    ReturnGoalProgress = 0.0f;
+                else
+                    ReturnGoalProgress = (TotalReturn / ReturnGoal) * 100;
 
                 if (ReturnGoalProgress <= 0)
                     ReturnGoalProgress = 0.0f;
