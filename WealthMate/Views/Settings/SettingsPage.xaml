@@ -7,7 +7,8 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              xmlns:xForms="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.Settings.SettingsPage">
+             x:Class="WealthMate.Views.Settings.SettingsPage"
+             Title="Settings">
 
     <ContentPage.Content>
         <StackLayout>
