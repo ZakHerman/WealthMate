@@ -1,4 +1,6 @@
-﻿using WealthMate.ViewModels;
+﻿using Syncfusion.XForms.ComboBox;
+using WealthMate.Models;
+using WealthMate.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace WealthMate.Views.Portfolio
@@ -10,7 +12,76 @@ namespace WealthMate.Views.Portfolio
         {
             InitializeComponent();
             BindingContext = new PortfolioViewModel();
-            picker.SelectedIndex = 0;
+            //picker.SelectedIndex = 0;
+        }
+
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var vm = BindingContext as PortfolioViewModel;
+            var index = ((SfComboBox)sender).SelectedIndex;
+
+            switch (index)
+            {
+                case 0:
+                    vm?.pieChart.Clear();
+
+                    foreach (var asset in vm?.CurrentPortfolio.OwnedAssets)
+                    {
+                        asset.UpdateOwnedAsset();
+
+                        if (asset.Type.Equals("Term Deposit"))
+                            vm?._termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                        else if (asset is OwnedStock)
+                            vm?._stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                    }
+
+                    vm?._termD.CalculateReturnPercentage();
+                    vm?._stock.CalculateReturnPercentage();
+
+                    // XAML Flag to see if label should be red or green (negative/positive returns)
+                    vm?._termD.PositiveChecker();
+                    vm?._stock.PositiveChecker();
+
+                    // Adds asset categories to Pie chart
+                    vm?.pieChart.Add(vm?._termD);
+                    vm?.pieChart.Add(vm?._stock);
+
+                    break;
+                case 1:
+                    vm?.pieChart.Clear();
+                    foreach (var asset in vm?.CurrentPortfolio.OwnedAssets)
+                    {
+                        if (asset.Type.Equals("Term Deposit"))
+                        {
+                            asset.UpdateOwnedAsset();
+                            var termD = new PieData(asset.AssetName);
+
+                            termD.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                            termD.CalculateReturnPercentage();
+                            termD.PositiveChecker();
+
+                            vm?.pieChart.Add(termD);
+                        }
+                    }
+                    break;
+                case 2:
+                    vm?.pieChart.Clear();
+                    foreach (var asset in vm?.CurrentPortfolio.OwnedAssets)
+                    {
+                        if (asset is OwnedStock)
+                        {
+                            asset.UpdateOwnedAsset();
+                            var stock = new PieData(asset.AssetName);
+
+                            stock.UpdateValues(asset.CurrentValue, asset.PrincipalValue);
+                            stock.CalculateReturnPercentage();
+                            stock.PositiveChecker();
+
+                            vm?.pieChart.Add(stock);
+                        }
+                    }
+                    break;
+            }
         }
     }
 }

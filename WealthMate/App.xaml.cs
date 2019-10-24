@@ -59,6 +59,8 @@ namespace WealthMate
             {
                 User.Portfolio.OwnedAssets.Add(ownedStock);
             }
+
+            User.Portfolio.UpdatePortfolio();
         }
 
         protected override void OnSleep()

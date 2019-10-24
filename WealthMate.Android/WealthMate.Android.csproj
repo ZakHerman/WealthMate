@@ -222,12 +222,6 @@
     <AndroidResource Include="Resources\drawable\AirNewZealand.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Finzsoft.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Finzsoft.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\EvolveEducationGroup.png" />
   </ItemGroup>
   <ItemGroup>

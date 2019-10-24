@@ -11,8 +11,8 @@ namespace WealthMate.ViewModels
         public Portfolio CurrentPortfolio { get; set; }
         public ObservableCollection<OwnedAsset> OwnedAssets { get; set; }
         public ObservableCollection<PieData> pieChart { get; set; }
-        private PieData _termD = new PieData("Term Deposits"); //Pie data for each section/category of pie chart
-        private PieData _stock = new PieData("Stocks");
+        public PieData _termD = new PieData("Term Deposits"); //Pie data for each section/category of pie chart
+        public PieData _stock = new PieData("Stocks");
         public List<PieData> pieList { get; set; }
 
         public PortfolioViewModel()

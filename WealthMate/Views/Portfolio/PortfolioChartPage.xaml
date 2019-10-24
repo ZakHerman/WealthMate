@@ -5,6 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Portfolio.PortfolioChartPage"
              Title="Pie Chart"
@@ -55,16 +57,29 @@
             </Grid>
 
             <!--Picker for selecting type of pie chart to view-->
-            <Picker Title="--Select--" x:Name="picker" HorizontalOptions="Center" FontSize="Medium" WidthRequest="130" TextColor="{DynamicResource PrimaryTextColor}"
-                    SelectedItem="{Binding SelectedPie}" ItemsSource="{Binding pieList}" ItemDisplayBinding="{Binding Value}" />
+            <Grid ColumnSpacing="10" Margin="8,12,2,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Picker for selecting attribute to sort list by-->
+                <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
+                    <comboBox:SfComboBox TextColor="{DynamicResource DisabledTextColor}" Watermark="Select Piechart" DropDownBackgroundColor="{DynamicResource TransparentColor}" SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}"
+                                     BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}"
+                                     DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}" SelectionChanged="SfComboBox_OnSelectionChanged">
+                        <comboBox:SfComboBox.ComboBoxSource>
+                            <generic:List x:TypeArguments="x:String">
+                                <x:String>All Owned Assets</x:String>
+                                    <x:String>Owned Term Deposits</x:String>
+                                    <x:String>Owned Stocks</x:String>
+                                </generic:List>
+                        </comboBox:SfComboBox.ComboBoxSource>
+                    </comboBox:SfComboBox>
+                </Frame>
+            </Grid>
 
             <Frame BackgroundColor="{DynamicResource SurfaceColor}" CornerRadius="16" Margin="8,0">
                 <syncfusion:SfChart VerticalOptions="FillAndExpand" BackgroundColor="{DynamicResource TransparentColor}">
-                    <syncfusion:SfChart.Title>
-                        <syncfusion:ChartTitle Text="{Binding CurrentPortfolio.TotalReturn, StringFormat='{0:C}'}" TextColor="{DynamicResource PrimaryTextColor}"
-                                               BackgroundColor="{DynamicResource TransparentColor}" BorderColor="{DynamicResource TransparentColor}" />
-                    </syncfusion:SfChart.Title>
-
                     <syncfusion:SfChart.Series>
                         <syncfusion:PieSeries EnableAnimation="True" AnimationDuration="3" CircularCoefficient="0.8" ItemsSource="{Binding pieChart}" XBindingPath="AssetType" YBindingPath="Quantity"
                                               EnableTooltip="True" ExplodeOnTouch="True" GroupMode="Percentage" GroupTo="5">
