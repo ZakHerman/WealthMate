@@ -14,15 +14,10 @@ namespace WealthMate.Views.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage
     {
-        private SfNumericTextBox editPortfolioReturnGoal;
-
         public SettingsPage()
         {
             InitializeComponent();
             Themes.DataSource = Enum.GetValues(typeof(Theme)).ToList<Enum>();
-
-            editPortfolioReturnGoal = new SfNumericTextBox { Value = 0 };
-            editPortfolioReturnGoal.ValueChanged += Handle_PortfolioGoalChanged;
         }
 
         private void OnThemeClicked(object sender, SelectionChangedEventArgs e)
@@ -36,21 +31,6 @@ namespace WealthMate.Views.Settings
         private void PortfolioGoal_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new PortfolioReturnGoalModalPage());
-        }
-
-        private void Handle_PortfolioGoalChanged(object sender, ValueEventArgs e)
-        {
-            editPortfolioReturnGoal.Value = e.Value.ToString();
-        }
-
-        protected void SaveInPopupClicked(object sender, EventArgs args)
-        {
-            PortfolioGoalForm.IsOpen = false;
-
-            var newPortfolioGoal = float.Parse(editPortfolioReturnGoal.Value.ToString());
-
-            ((App)Application.Current).User.Portfolio.EditPortfolioGoal(newPortfolioGoal);
-            Preferences.Set("PortfolioGoal", newPortfolioGoal);
         }
     }
 }
