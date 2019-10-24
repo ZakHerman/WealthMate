@@ -33,7 +33,7 @@
             <Label Text="{Binding OwnedAsset.CompoundRateToString, StringFormat='Interest Reinvested: {0:S}'}" TextColor="{DynamicResource PrimaryTextColor}"
                    FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
 
-            <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:F} years'}" TextColor="{DynamicResource PrimaryTextColor}"
+            <Label Text="{Binding OwnedAsset.Length, StringFormat='Length: {0:N0} months'}" TextColor="{DynamicResource PrimaryTextColor}"
                    FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.Triggers>
                     <DataTrigger TargetType ="Label" Binding="{Binding OwnedAsset.Length}" Value="0">

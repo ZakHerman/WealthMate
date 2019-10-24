@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Syncfusion.ListView.XForms;
 using Syncfusion.XForms.ComboBox;
+using WealthMate.Views.Markets.Modal;
 using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Markets
@@ -17,14 +18,6 @@ namespace WealthMate.Views.Markets
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermDepositListPage
     {
-        private int _compoundRate;
-        private string _assetName;
-        private DateTime _purchaseDate;
-        private float _principalValue;
-        private float _interestRate;
-        private float _length;
-        private float _returnGoal; 
-
         private SearchBar _searchBar;
         private TermDeposit TermDeposit { get; set; }
         public ObservableCollection<TermDeposit> TDList { get; set; }
@@ -53,70 +46,6 @@ namespace WealthMate.Views.Markets
             foreach (var termD in observableC)
             {
                 TDList.Add(termD);
-            }
-        }
-
-        private void DatePicker_Clicked(object sender, EventArgs e)
-        {
-            Date.IsOpen = !Date.IsOpen;
-        }
-
-        public void UpdatePurchaseDate()
-        {
-            var selectedItem = Date.SelectedItem as ObservableCollection<object>;
-
-            var month = selectedItem?[0].ToString();
-            var monthInt = 0;
-
-            switch (month)
-            {
-                case "Jan":
-                    monthInt = 1;
-                    break;
-                case "Feb":
-                    monthInt = 2;
-                    break;
-                case "Mar":
-                    monthInt = 3;
-                    break;
-                case "Apr":
-                    monthInt = 4;
-                    break;
-                case "May":
-                    monthInt = 5;
-                    break;
-                case "Jun":
-                    monthInt = 6;
-                    break;
-                case "Jul":
-                    monthInt = 7;
-                    break;
-                case "Aug":
-                    monthInt = 8;
-                    break;
-                case "Sep":
-                    monthInt = 9;
-                    break;
-                case "Oct":
-                    monthInt = 10;
-                    break;
-                case "Nov":
-                    monthInt = 11;
-                    break;
-                case "Dec":
-                    monthInt = 12;
-                    break;
-            }
-
-            if (selectedItem != null)
-            {
-                var day = selectedItem[1].ToString();
-                var dayInt = int.Parse(day);
-
-                var year = selectedItem[2].ToString();
-                var yearInt = int.Parse(year);
-
-                _purchaseDate = new DateTime(yearInt, monthInt, dayInt);
             }
         }
 
@@ -169,71 +98,17 @@ namespace WealthMate.Views.Markets
         }
 
         // Handles a term deposit being clicked from the term deposit page
-        private void TermDepositClicked(object sender, ItemTappedEventArgs e)
+        private async void TermDepositClicked(object sender, ItemTappedEventArgs e)
         {
-            TermDeposit = (TermDeposit)e.ItemData;
-            _assetName = TermDeposit.Provider;
-            _interestRate = TermDeposit.InterestRate / 100;
-            _length = (float)(TermDeposit.LengthInMonths / 0.5);
+            var selected = (TermDeposit)e.ItemData;
 
-            AddTDForm.IsOpen = true;
+            if (selected == null)
+                return;
+
+            // Push term deposit modal page on top of modal stack
+            await Navigation.PushModalAsync(new TermDepositModalPage(selected));
 
             ((SfListView)sender).SelectedItem = null;
-        }
-
-        // Handles when the "Add" button inside the pop-up is clicked to initiate adding the term deposit to the users profile
-        private void AddInPopupClicked(object sender, EventArgs e)
-        {
-            if (_principalValue <= 0.0f)
-                DisplayAlert(null, "Please enter purchase price!", "OK");
-            else
-            {
-                UpdatePurchaseDate();
-                OwnedAsset oa = new OwnedAsset(_assetName, _purchaseDate, "Term Deposit", _principalValue, _interestRate, _length, _compoundRate, 0, _returnGoal);
-                ((App)Application.Current).User.Portfolio.AddAsset(oa);
-                AddTDForm.IsOpen = false;
-            }
-        }
-
-        //Handles the "Amount Purchased" field in the term deposit popup being changed by the user
-        private void Handle_InvestAmountChanged(object sender, ValueEventArgs e)
-        {
-            float.TryParse(e.Value.ToString(), out var value);
-            _principalValue = value;
-        }
-
-        private void Handle_GoalAmountChanged(object sender, ValueEventArgs e)
-        {
-            float.TryParse(e.Value.ToString(), out var value);
-            _returnGoal = value;
-        }
-
-        private void Picker_CompoundRateChanged(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            var selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex != -1)
-            {
-                switch (selectedIndex)
-                {
-                    case 0:
-                        _compoundRate = 1;
-                        break;
-                    case 1:
-                        _compoundRate = 2;
-                        break;
-                    case 2:
-                        _compoundRate = 4;
-                        break;
-                    case 3:
-                        _compoundRate = 12;
-                        break;
-                    default:
-                        _compoundRate = 0;
-                        break;
-                }
-            }
         }
 
         private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

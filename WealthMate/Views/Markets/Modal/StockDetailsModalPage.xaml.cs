@@ -1,4 +1,5 @@
 ﻿using System;
+using WealthMate.Helpers;
 using WealthMate.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,6 +39,9 @@ namespace WealthMate.Views.Markets.Modal
             {
                 var os = new OwnedStock(Stock, date, price, shares, goal);
                 ((App)Application.Current).User.Portfolio.AddAsset(os);
+
+                Helper.DisplayToastNotification("Added to portfolio");
+
                 await Navigation.PopModalAsync();
             }
         }

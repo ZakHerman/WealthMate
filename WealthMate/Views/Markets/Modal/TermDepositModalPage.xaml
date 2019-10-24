@@ -4,14 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
              mc:Ignorable="d"
-             x:Class="WealthMate.Views.Markets.Modal.StockDetailsModalPage"
+             x:Class="WealthMate.Views.Markets.Modal.TermDepositModalPage"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
     <ContentPage.Content>
         <StackLayout>
             <StackLayout HeightRequest="60" BackgroundColor="{DynamicResource PrimaryColor}">
-                <Label Text="Add stock to portfolio" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="{DynamicResource TertiaryTextColor}" />
+                <Label Text="Add term deposit to portfolio" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Title" TextColor="{DynamicResource TertiaryTextColor}" />
             </StackLayout>
 
             <Frame Margin="20" BackgroundColor="{DynamicResource SurfaceColor}" CornerRadius="16">
@@ -20,16 +22,8 @@
                         <TableSection>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
-                                    <Label Text="Shares purchased*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="CenterAndExpand" FontSize="18" />
-                                    <Entry x:Name="SharesEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-                                </StackLayout>
-                            </ViewCell>
-
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
-                                    <Label Text="Purchase price*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
-                                    <Entry x:Name="PriceEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center"
-                                           HorizontalOptions="FillAndExpand"/>
+                                    <Label Text="Invested*" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="CenterAndExpand" FontSize="18" />
+                                    <Entry x:Name="InvestedEntry" Placeholder="0" Keyboard="Numeric" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                                 </StackLayout>
                             </ViewCell>
 
@@ -45,6 +39,25 @@
                                     <Label Text="Purchase date" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
                                     <DatePicker x:Name="PurchaseDate" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Format="dd MMM, yyyy"
                                                 MaximumDate="{x:Static sys:DateTime.Now}" />
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="20,0" Spacing="20">
+                                    <Label Text="Compound rate" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Center" FontSize="18" />
+                                    <comboBox:SfComboBox x:Name="InterestDropdown"  TextColor="{DynamicResource DisabledTextColor}" Text="Never" DropDownBackgroundColor="{DynamicResource TransparentColor}" HorizontalOptions="FillAndExpand"
+                                                         SelectedDropDownItemColor="{DynamicResource DropdownSelectedColor}" BackgroundColor="{DynamicResource TransparentColor}" ClearButtonColor="{DynamicResource TransparentColor}"
+                                                         BorderColor="{DynamicResource TransparentColor}" DropDownBorderColor="{DynamicResource DropdownUnselectedColor}" DropDownTextColor="{DynamicResource PrimaryTextColor}">
+                                        <comboBox:SfComboBox.ComboBoxSource>
+                                            <generic:List x:TypeArguments="x:String">
+                                                <x:String>Annual</x:String>
+                                                <x:String>Semi-Annual</x:String>
+                                                <x:String>Quarterly</x:String>
+                                                <x:String>Monthly</x:String>
+                                                <x:String>Never</x:String>
+                                            </generic:List>
+                                        </comboBox:SfComboBox.ComboBoxSource>
+                                    </comboBox:SfComboBox>
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
