@@ -97,7 +97,7 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\drawable\SKT.webp" />
+    <AndroidResource Include="Resources\drawable\SkyNetworkTelevision.webp" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -143,37 +143,43 @@
     <AndroidResource Include="Resources\drawable\settings.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\WBC.png" />
+    <AndroidResource Include="Resources\drawable\Westpac.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SPK.jpg" />
+    <AndroidResource Include="Resources\drawable\Spark.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\AIR.jpg" />
+    <AndroidResource Include="Resources\drawable\AFC.png" />
+    <AndroidResource Include="Resources\drawable\AFTPharmaceuticals.png" />
+    <AndroidResource Include="Resources\drawable\AlliedFarmers.png" />
+    <AndroidResource Include="Resources\drawable\AorereResources.png" />
+    <AndroidResource Include="Resources\drawable\ArgosyProperty.png" />
+    <AndroidResource Include="Resources\drawable\ASB.png" />
+    <AndroidResource Include="Resources\drawable\AWFMadison.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ANZ.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\AIA.png" />
+    <AndroidResource Include="Resources\drawable\AucklandInternationalAirport.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\GNE.png" />
+    <AndroidResource Include="Resources\drawable\GenesisEnergy.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\AMP.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BFG.png" />
+    <AndroidResource Include="Resources\drawable\BurgerFuel.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\CNU.jpg" />
+    <AndroidResource Include="Resources\drawable\Chorus.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\MCY.png" />
+    <AndroidResource Include="Resources\drawable\Mercury.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\TLS.png" />
+    <AndroidResource Include="Resources\drawable\Telstra.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\uparrow.png" />
@@ -195,6 +201,45 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\A2MilkCompany.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\AbanoHealthcare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Barramundi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BLISTechnologies.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Comvita.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ChathamRockPhosphate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CDLInvestmentsNewZealand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CavalierCorporation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Cannasouth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BriscoeGroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CooksGlobalFoods.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ContactEnergy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\AIRNewZealand.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

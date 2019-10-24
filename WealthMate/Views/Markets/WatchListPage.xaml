@@ -8,6 +8,7 @@
              xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
+             xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.WatchlistPage"
              Title="Watchlist">
@@ -15,6 +16,12 @@
     <ContentPage.BindingContext>
         <viewmodels:WatchListViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueConverter:RemoveWhiteSpaceConverter x:Key="ConvertToResourceName" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout>
@@ -68,7 +75,7 @@
                             </Grid.RowDefinitions>
 
                             <!-- Stock company logo -->
-                            <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding Symbol}" />
+                            <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding CompanyName, Converter={StaticResource ConvertToResourceName}}" />
 
                             <!-- stock company name -->
                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding CompanyName}" TextColor="{DynamicResource PrimaryTextColor}"

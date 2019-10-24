@@ -7,12 +7,18 @@
              xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:controls="clr-namespace:WealthMate.Renderers.Controls;assembly=WealthMate"
+             xmlns:valueConverter="clr-namespace:WealthMate.ViewModels.ValueConverter;assembly=WealthMate"
              mc:Ignorable="d"
              x:Class="WealthMate.Views.Markets.StockListPage"
              Title="Stocks"
              BackgroundColor="{DynamicResource BackgroundColor}">
 
-    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueConverter:RemoveWhiteSpaceConverter x:Key="ConvertToResourceName" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout>
             <Grid ColumnSpacing="10" Margin="8,12,2,8" HeightRequest="65">
@@ -62,7 +68,7 @@
                                 <RowDefinition Height="4*" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding Symbol}" />
+                            <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding CompanyName, Converter={StaticResource ConvertToResourceName}}" />
                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding CompanyName}" TextColor="{DynamicResource PrimaryTextColor}" VerticalOptions="End" FontSize="20" LineBreakMode="TailTruncation" />
                             <Label Grid.Column="1" Grid.Row="1" Text="{Binding Symbol}" TextColor="{DynamicResource SecondaryTextColor}" VerticalOptions="Start" FontSize="12" />
 
