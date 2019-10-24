@@ -19,6 +19,7 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="0,10">
             <Frame Margin="20" BackgroundColor="{DynamicResource SurfaceColor}" CornerRadius="16">
                 <StackLayout>
@@ -171,5 +172,6 @@
                         TextColor="{DynamicResource AcceptColor}" CornerRadius="16" Clicked="EditStockClicked" FontAttributes="Bold" />
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

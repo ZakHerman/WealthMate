@@ -30,17 +30,12 @@ namespace WealthMate.Views.Portfolio.Modal
             float.TryParse(GoalEntry.Text, out var goal);
             var date = PurchaseDate.Date;
 
-            if (investment <= 0.0f)
-                await DisplayAlert(null, "Please enter an investment amount above 0!", "OK");
-            else
-            {
-                OwnedAsset.EditAsset(investment, OwnedAsset.InterestRate, GetInvestmentCompoundRate(), OwnedAsset.Length, goal);
-                ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+            OwnedAsset.EditAsset(investment, GetInvestmentCompoundRate(), goal, date);
+            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
 
-                Helper.DisplayToastNotification("Edited portfolio");
+            Helper.DisplayToastNotification("Edited portfolio");
 
-                await Navigation.PopModalAsync();
-            }
+            await Navigation.PopModalAsync();
         }
 
         private int GetInvestmentCompoundRate()

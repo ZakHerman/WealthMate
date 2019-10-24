@@ -31,19 +31,16 @@ namespace WealthMate.Views.Portfolio
 
 
         // Remove Asset from portfolio
-        private void RemoveAssetClicked(object sender, EventArgs e)
+        private async void RemoveAssetClicked(object sender, EventArgs e)
         {
-            RemoveAssetConfirmationBox.IsOpen = true;
-        }
+            bool answer = await DisplayAlert("Remove Asset", "Are you sure you want to remove this asset from your portfolio?", "Yes", "No");
 
-        private async void PopupAcceptRemoveClicked(object sender, EventArgs e)
-        {
-            ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
-            ((App)Application.Current).User.Portfolio.UpdatePortfolio();
-            RemoveAssetConfirmationBox.IsOpen = false;
-
-            // Pop owned asset details page off the stack
-            await Navigation.PopAsync();
+            if (answer)
+            {
+                ((App)Application.Current).User.Portfolio.OwnedAssets.Remove(OwnedAsset);
+                ((App)Application.Current).User.Portfolio.UpdatePortfolio();
+                await Navigation.PopAsync();
+            }
         }
     }
 }
