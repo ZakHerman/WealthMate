@@ -7,7 +7,7 @@
     <Color x:Key="BackgroundColor">#121212</Color> <!--Page background colour-->
     <Color x:Key="PrimaryColor">#1FFFFFFF</Color> <!--Navigation bar colour-->
     <Color x:Key="SurfaceColor">#11FFFFFF</Color> <!--List view item background colour-->
-    <Color x:Key="SurfaceSelectedColor">#1FFFFFFF</Color> <!--List view item background colour-->
+    <Color x:Key="SurfaceSelectedColor">#1FFFFFFF</Color> <!--Selected List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
     <Color x:Key="AndroidStatusColor">#101010</Color> <!--Android Status bar / navigation bar colour-->
     <Color x:Key="ErrorColor">#B00020</Color>

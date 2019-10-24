@@ -4,9 +4,10 @@
                     x:Class="WealthMate.Themes.LightTheme">
 
     <!--Layout colour-->
-    <Color x:Key="BackgroundColor">White</Color> <!--Page background colour-->
+    <Color x:Key="BackgroundColor">#E6E6E6</Color> <!--Page background colour-->
     <Color x:Key="PrimaryColor">#2196F3</Color> <!--Navigation bar colour-->
-    <Color x:Key="SurfaceColor">White</Color> <!--List view item background colour-->
+    <Color x:Key="SurfaceColor">WhiteSmoke</Color> <!--List view item background colour-->
+    <Color x:Key="SurfaceSelectedColor">#eae1e1</Color> <!--Selected List view item background colour-->
     <Color x:Key="AccentColor">#2e95b9</Color> <!--Line graph colour-->
     <Color x:Key="AndroidStatusColor">#1976D2</Color> <!--Android Status bar / navigation bar colour-->
     <Color x:Key="ErrorColor">#B00020</Color>
@@ -46,4 +47,8 @@
     <!--Toast notification colour-->
     <Color x:Key="ToastNotificationBackgroundColor">#CC212121</Color>
     <Color x:Key="ToastNotificationTextColor">White</Color>
+
+    <!--Dropdown colour-->
+    <Color x:Key="DropdownSelectedColor">#F0E6E6E6</Color>
+    <Color x:Key="DropdownUnselectedColor">#F0DCDCDC</Color>
 </ResourceDictionary>

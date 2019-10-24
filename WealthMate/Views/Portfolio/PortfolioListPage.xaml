@@ -48,7 +48,7 @@
 
                 <!--Searchbar, placeholder text and on text change functionality-->
                 <Frame Grid.Column="0" BackgroundColor="{DynamicResource SurfaceColor}" Padding="2,0" CornerRadius="8">
-                    <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Watchlist" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
+                    <controls:CustomSearchBar x:Name="SearchBar" Placeholder="Search Portfolio" TextChanged="OnFilterTextChanged" TextColor="{DynamicResource PrimaryTextColor}"
                                PlaceholderColor="{DynamicResource DisabledTextColor}" CancelButtonColor="{DynamicResource ErrorColor}" />
                 </Frame>
             </Grid>
