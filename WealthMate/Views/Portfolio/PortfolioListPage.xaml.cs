@@ -1,9 +1,13 @@
-﻿using Syncfusion.ListView.XForms;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.ComboBox;
 using WealthMate.Models;
 using WealthMate.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using SelectionChangedEventArgs = Syncfusion.XForms.ComboBox.SelectionChangedEventArgs;
 
 namespace WealthMate.Views.Portfolio
 {
@@ -15,7 +19,6 @@ namespace WealthMate.Views.Portfolio
         public PortfolioListPage()
         {
             InitializeComponent();
-            BindingContext = new PortfolioViewModel();
         }
 
         // Search bar functionality
@@ -23,10 +26,10 @@ namespace WealthMate.Views.Portfolio
         {
             _searchBar = (sender as SearchBar);
 
-            if (List.DataSource != null)
+            if (PortfolioList.DataSource != null)
             {
-                List.DataSource.Filter = FilterAssets;
-                List.DataSource.RefreshFilter();
+                PortfolioList.DataSource.Filter = FilterAssets;
+                PortfolioList.DataSource.RefreshFilter();
             }
         }
 
@@ -57,6 +60,47 @@ namespace WealthMate.Views.Portfolio
                 await Navigation.PushAsync(new OwnedAssetDetailsPage(selected));
 
             ((SfListView)sender).SelectedItem = null;
+        }
+
+        // Sorts StockList list according to picker value upon picker index value changing
+        private void SfComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var vm = BindingContext as PortfolioViewModel;
+            var index = ((SfComboBox)sender).SelectedIndex;
+
+            switch (index)
+            {
+                case 0:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderBy(asset => asset.AssetName);
+                    break;
+                case 1:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderByDescending(asset => asset.AssetName);
+                    break;
+                case 2:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderBy(asset => asset.TotalReturn);
+                    break;
+                case 3:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderByDescending(asset => asset.TotalReturn);
+                    break;
+                case 4:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderBy(asset => asset.CurrentValue);
+                    break;
+                case 5:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderByDescending(asset => asset.CurrentValue);
+                    break;
+                case 6:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderBy(asset => asset.PurchaseDate);
+                    break;
+                case 7:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderByDescending(asset => asset.PurchaseDate);
+                    break;
+                case 8:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderBy(asset => asset.TotalReturnRate);
+                    break;
+                case 9:
+                    PortfolioList.ItemsSource = vm?.OwnedAssets.OrderByDescending(asset => asset.TotalReturnRate);
+                    break;
+            }
         }
     }
 }
