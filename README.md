@@ -3,5 +3,5 @@ WealthMate is an all in one mobile application that is designed to help users ke
 options, cash savings rates, etc). WealthMate’s primary focus however is on users’ financial portfolios, where they will be able see live updates on their current financial positions (this is based on how their assets are performing).
 
 <p align="center">
-  <img align="right" src="DemoImages/demo_collage.png">
+  <img src="DemoImages/demo_collage.png">
 </p>
